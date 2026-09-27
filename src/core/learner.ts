@@ -1,15 +1,18 @@
 // The learner model: an append-only log of observations, run through BKT to get P(known)
 // for each skill, and the rule for picking the next scenario (ADR 0002).
 
-import { BASE_PARAMS, update } from "./bkt";
+import { BASE_PARAMS, type Evidence, update } from "./bkt";
 import type { GraderOutput } from "./contract";
 import { paramsFor, type Source } from "./evidence";
 import type { Scenario } from "./scenarios";
 import { SKILL_IDS, SKILLS, type SkillId } from "./skills";
 
+/** At most one correct use and one mistake count per skill per answer (ADR 0002). */
+export type Outcome = "right" | "wrong" | "mixed";
+
 export interface Observation {
   skill: SkillId;
-  correct: boolean;
+  outcome: Outcome;
   source: Source;
   scenarioId: string;
   /** ISO timestamp. */
@@ -18,24 +21,25 @@ export interface Observation {
 
 export type Mastery = Record<SkillId, number>;
 
-/**
- * One observation per skill per answer. A skill with any listed mistake is wrong, even if
- * the grader also listed a correct use of it.
- */
+const EVIDENCE: Record<Outcome, Evidence> = {
+  right: { right: 1, wrong: 0 },
+  wrong: { right: 0, wrong: 1 },
+  mixed: { right: 1, wrong: 1 },
+};
+
+/** One observation per skill per answer, from what the grader listed. */
 export function toObservations(
   grade: GraderOutput,
   scenarioId: string,
   source: Source,
   at: string,
 ): Observation[] {
-  const correctBySkill = new Map<SkillId, boolean>();
-  for (const mistake of grade.mistakes) correctBySkill.set(mistake.skill, false);
-  for (const use of grade.correctUses) {
-    if (!correctBySkill.has(use.skill)) correctBySkill.set(use.skill, true);
-  }
-  return [...correctBySkill].map(([skill, correct]) => ({
+  const wrong = new Set(grade.mistakes.map((mistake) => mistake.skill));
+  const right = new Set(grade.correctUses.map((use) => use.skill));
+  const skills = [...wrong, ...[...right].filter((skill) => !wrong.has(skill))];
+  return skills.map((skill) => ({
     skill,
-    correct,
+    outcome: wrong.has(skill) ? (right.has(skill) ? "mixed" : "wrong") : "right",
     source,
     scenarioId,
     at,
@@ -46,7 +50,8 @@ export function mastery(log: readonly Observation[]): Mastery {
   const result = Object.fromEntries(SKILL_IDS.map((id) => [id, BASE_PARAMS.init])) as Mastery;
   for (const observation of log) {
     const params = paramsFor(SKILLS[observation.skill], observation.source);
-    result[observation.skill] = update(result[observation.skill], observation.correct, params);
+    const evidence = EVIDENCE[observation.outcome];
+    result[observation.skill] = update(result[observation.skill], evidence, params);
   }
   return result;
 }

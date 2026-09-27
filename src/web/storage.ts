@@ -10,15 +10,26 @@ import { SKILL_IDS } from "../core/skills";
 const LOG_KEY = "fluent-prior:log:v1";
 const LEARNER_KEY = "fluent-prior:learner-id";
 
-const StoredLog = z.array(
-  z.object({
-    skill: z.enum(SKILL_IDS),
-    correct: z.boolean(),
-    source: z.literal("app"),
-    scenarioId: z.string(),
-    at: z.string(),
-  }),
-) satisfies z.ZodType<Observation[]>;
+const StoredObservation = z.object({
+  skill: z.enum(SKILL_IDS),
+  outcome: z.enum(["right", "wrong", "mixed"]),
+  source: z.literal("app"),
+  scenarioId: z.string(),
+  at: z.string(),
+});
+
+/** Before ADR 0002's mixed-answer amendment, entries had `correct` instead of `outcome`. */
+const LegacyObservation = StoredObservation.omit({ outcome: true })
+  .extend({ correct: z.boolean() })
+  .transform(({ correct, ...rest }) => ({
+    ...rest,
+    outcome: correct ? ("right" as const) : ("wrong" as const),
+  }));
+
+const StoredLog = z.array(z.union([StoredObservation, LegacyObservation])) satisfies z.ZodType<
+  Observation[],
+  unknown
+>;
 
 export function loadLog(): Observation[] {
   try {

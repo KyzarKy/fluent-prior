@@ -14,7 +14,7 @@ const AT = "2026-09-26T12:00:00.000Z";
 function observation(overrides: Partial<Observation>): Observation {
   return {
     skill: "articles",
-    correct: true,
+    outcome: "right",
     source: "app",
     scenarioId: "broken-lamp",
     at: AT,
@@ -23,20 +23,25 @@ function observation(overrides: Partial<Observation>): Observation {
 }
 
 describe("toObservations", () => {
-  it("reports each skill once; a listed mistake beats a listed correct use", () => {
+  it("reports each skill once as right, wrong, or mixed", () => {
     const grade: GraderOutput = {
-      mistakes: [{ skill: "articles", quote: "in room", fix: "in the room" }],
+      mistakes: [
+        { skill: "articles", quote: "in room", fix: "in the room" },
+        { skill: "past-irregular", quote: "i find", fix: "i found" },
+        { skill: "past-irregular", quote: "i see", fix: "i saw" },
+      ],
       correctUses: [
-        { skill: "articles", quote: "the lamp" },
-        { skill: "past-irregular", quote: "found" },
+        { skill: "past-irregular", quote: "broke" },
+        { skill: "plurals", quote: "towels" },
       ],
       taskMet: "yes",
       feedback: "",
       betterVersion: "",
     };
     expect(toObservations(grade, "broken-lamp", "app", AT)).toEqual([
-      observation({ skill: "articles", correct: false }),
-      observation({ skill: "past-irregular", correct: true }),
+      observation({ skill: "articles", outcome: "wrong" }),
+      observation({ skill: "past-irregular", outcome: "mixed" }),
+      observation({ skill: "plurals", outcome: "right" }),
     ]);
   });
 });
@@ -49,6 +54,13 @@ describe("mastery", () => {
     ]);
     expect(result["past-irregular"]).toBeGreaterThan(result.articles);
     expect(result.articles).toBeGreaterThan(0.3);
+  });
+
+  it("dings a mixed answer less than a wrong one", () => {
+    const wrong = mastery([observation({ skill: "past-irregular", outcome: "wrong" })]);
+    const mixed = mastery([observation({ skill: "past-irregular", outcome: "mixed" })]);
+    expect(mixed["past-irregular"]).toBeGreaterThan(wrong["past-irregular"]);
+    expect(mixed["past-irregular"]).toBeLessThan(0.3);
   });
 
   it("leaves skills with no evidence at the prior", () => {

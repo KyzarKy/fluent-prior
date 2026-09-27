@@ -61,6 +61,31 @@ the last three scenarios seen.
 
 **Storage:** the log lives in the browser's localStorage in v1. There are no accounts yet.
 
+## Amendment, 2026-09-27: mixed answers
+
+An answer can use a skill both correctly and incorrectly ("i **find** a broken lamp… somebody
+**broke** it"). Until now any mistake made the whole observation wrong, so a mixed answer
+counted the same as an all-wrong one. Now each observation's `outcome` is `right`, `wrong`
+or `mixed`: at most one correct use and one mistake count per skill per answer. That's
+still one practice opportunity, with one Bayes step and one learning step, but the
+likelihood includes both uses:
+
+- P(evidence | known) = (1 − `slip`)^right × `slip`^wrong
+- P(evidence | not known) = `guess`^right × (1 − `guess`)^wrong
+
+The cap is 1 of each because uses within one answer aren't independent: someone who says
+"find" in one clause tends to repeat the pattern. Starting from 0.3 on a clear skill:
+
+| Evidence in one answer | P(known) after |
+|---|---|
+| wrong | 0.15 |
+| mixed | 0.27 |
+| right | 0.69 |
+
+A mixed answer is weak evidence either way. On a faint skill it still leans clearly toward
+not known, because a visible error is strong evidence there and a correct form is weak.
+Stored logs from before this amendment read `correct: true/false` as `right`/`wrong`.
+
 ## Why
 
 - Deriving the faint parameters from one `keep` rate means the adjustment has a physical
