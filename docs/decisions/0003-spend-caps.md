@@ -16,7 +16,7 @@ Caps in layers. Each catches something the layer above misses.
 
 | Layer | Limit | Protects against |
 |---|---|---|
-| **Per call** | Answer ≤ 600 characters; model output ≤ 4,000 tokens | A single expensive request. Worst case ≈ 4.4¢ |
+| **Per call** | Answer ≤ 600 characters; model output ≤ 2,000 tokens | A single expensive request. Worst case ≈ 2.4¢ on Sonnet 5; $0 on the free grader |
 | **Per session** | 30 graded answers | Runaway loops in the UI; a nudge to take a break |
 | **Per learner** | 5 a minute, 40 an hour, 100 a day | One person using the day's budget |
 | **Per network (IP)** | 5× the per-learner limits | Someone rotating learner ids. Loose, because a whole hotel staff may share one Wi-Fi |
@@ -41,7 +41,7 @@ the layers are unit-tested without a server.
 ## Why
 
 - Check-then-record is simple and needs no reservation step. Concurrent requests can pass
-  the check together, so the overshoot is at most (concurrent requests × 4.4¢).
+  the check together, so the overshoot is at most (concurrent requests × 2.4¢).
 - Dollar limits for the whole app, count limits for people: the bill is in dollars, but a
   person's fair share is easier to reason about as answers.
 - The Console limit sits outside our code, so it still holds if our code is wrong.

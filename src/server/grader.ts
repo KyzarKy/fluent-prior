@@ -14,7 +14,7 @@ export type GradeOutcome =
 export type Grader = (scenario: Scenario, answer: string) => Promise<GradeOutcome>;
 
 /** Includes reasoning tokens. The per-call ceiling from ADR 0003. */
-export const MAX_OUTPUT_TOKENS = 4000;
+export const MAX_OUTPUT_TOKENS = 2000;
 
 const SKILL_LIST = SKILL_IDS.map(
   (id) => `- ${id} (${SKILLS[id].name}): ${SKILLS[id].description}`,

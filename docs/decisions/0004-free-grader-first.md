@@ -34,7 +34,7 @@ Recheck them against the provider's own docs before relying on them.
 - Groq keeps no inference data by default. Learner answers are personal, so this matters
   more than speed.
 - Among Groq's strong models, `gpt-oss-120b` had the largest free daily token allowance
-  (about 200K tokens a day, per the sources above). At about 2,500 tokens a grade, that's
+  (about 200K tokens a day, per the sources above). At about 2,400 tokens a grade (measured below), that's
   roughly 80 graded answers a day.
 
 ## Consequences
@@ -46,3 +46,22 @@ Recheck them against the provider's own docs before relying on them.
   [ROADMAP](../ROADMAP.md) measures it, and that number decides whether and when to switch.
 - Free-tier terms can change without notice. If Groq's do, Cloudflare Workers AI (10,000
   free units of compute a day, also no card) is the fallback, one provider file away.
+
+## Measured, 2026-09-27
+
+One grade of "i find a broken lamp…" at each reasoning effort:
+
+| Effort | Prompt tokens | Output (of which reasoning) | Total |
+|---|---|---|---|
+| low | 1,139 | 480 (300) | 1,619 |
+| medium | 1,187 | 1,223 (1,098) | 2,410 |
+
+- **Stay at medium.** Low effort filed "find → found" under regular past; medium filed it
+  correctly under irregular past.
+- **Output limit lowered from 4,000 to 2,000 tokens.** The free tier also allows 8,000
+  tokens a minute, and each request appears to count as its prompt plus the output limit,
+  not the tokens actually used: Groq's usage graph showed 5.5K–6.5K per request with the
+  4,000 limit. That's inferred from the numbers, not from Groq's docs. At 2,000, a request
+  counts as about 3,200, so two grades fit in a minute instead of one.
+- If an answer ever needs more than 2,000 output tokens, the reply stops early and shows as
+  a failed grade (`finish_reason length` in the server log), so it can't pass unnoticed.
