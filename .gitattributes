@@ -1,0 +1,2 @@
+# LF everywhere, including Windows checkouts, so Biome's formatter and Git agree.
+* text=auto eol=lf
