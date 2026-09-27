@@ -34,7 +34,7 @@ Requires Node 24.
 ```bash
 npm install
 cp .env.example .env    # then add ANTHROPIC_API_KEY
-npm run dev             # API on :8787, web app on :5173
+npm run dev             # API on :8790, web app on :5180
 ```
 
 On Windows PowerShell, use `npm.cmd` in place of `npm`.

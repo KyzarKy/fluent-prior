@@ -1,0 +1,58 @@
+/* Design tokens. Components use the Tailwind names mapped in @theme, never raw colors, so
+   light and dark mode are one change here. */
+@import "tailwindcss";
+
+:root {
+  color-scheme: light dark;
+  --bg: #f6f4ef;
+  --surface: #ffffff;
+  --surface-muted: #efece4;
+  --text: #1f2326;
+  --muted: #5b6166;
+  --border: #dedad0;
+  --accent: #1d6b73;
+  --accent-text: #ffffff;
+  --good: #2c7a4b;
+  --partly: #9a6300;
+  --bad: #b1352b;
+  --meter: #1d6b73;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15181a;
+    --surface: #1e2225;
+    --surface-muted: #272c30;
+    --text: #eceae4;
+    --muted: #a3a9ad;
+    --border: #353b40;
+    --accent: #5fb3ba;
+    --accent-text: #0e1a1c;
+    --good: #6cc38f;
+    --partly: #e0a846;
+    --bad: #ef8a7f;
+    --meter: #5fb3ba;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-good: var(--good);
+  --color-partly: var(--partly);
+  --color-bad: var(--bad);
+  --color-meter: var(--meter);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}

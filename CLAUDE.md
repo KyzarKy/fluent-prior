@@ -61,7 +61,7 @@ abstractions, no `utils` grab-bags. Use the standard tool the standard way.
 
 | Command | What it does |
 |---|---|
-| `npm run dev` | API on :8787 and the web app on :5173 (Vite proxies `/api`) |
+| `npm run dev` | API on :8790 and the web app on :5180 (Vite proxies `/api`) |
 | `npm run verify` | Typecheck, lint, unit tests, build |
 | `npm test` | Unit tests (Vitest) |
 | `npm run format` | Biome: format and apply safe lint fixes |
