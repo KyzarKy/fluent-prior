@@ -17,18 +17,25 @@ export type GradeRequest = z.infer<typeof GradeRequest>;
 
 // Sent to the model as its output schema, so it avoids length constraints that
 // structured output doesn't support. Lengths are asked for in the prompt instead.
+// Mistakes come first: models write fields in order, so the feedback is written after the
+// mistakes are listed. A listed mistake always wins over a listed correct use (learner.ts).
 export const GraderOutput = z.object({
+  mistakes: z.array(
+    z.object({
+      skill: z.enum(SKILL_IDS),
+      quote: z.string(),
+      fix: z.string(),
+    }),
+  ),
+  correctUses: z.array(
+    z.object({
+      skill: z.enum(SKILL_IDS),
+      quote: z.string(),
+    }),
+  ),
   taskMet: z.enum(["yes", "partly", "no"]),
   feedback: z.string(),
   betterVersion: z.string(),
-  skillsUsed: z.array(
-    z.object({
-      skill: z.enum(SKILL_IDS),
-      correct: z.boolean(),
-      quote: z.string(),
-      note: z.string(),
-    }),
-  ),
 });
 export type GraderOutput = z.infer<typeof GraderOutput>;
 

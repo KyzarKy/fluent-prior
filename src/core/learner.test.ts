@@ -23,16 +23,16 @@ function observation(overrides: Partial<Observation>): Observation {
 }
 
 describe("toObservations", () => {
-  it("reports each skill once, wrong if any use was wrong", () => {
+  it("reports each skill once; a listed mistake beats a listed correct use", () => {
     const grade: GraderOutput = {
+      mistakes: [{ skill: "articles", quote: "in room", fix: "in the room" }],
+      correctUses: [
+        { skill: "articles", quote: "the lamp" },
+        { skill: "past-irregular", quote: "found" },
+      ],
       taskMet: "yes",
       feedback: "",
       betterVersion: "",
-      skillsUsed: [
-        { skill: "articles", correct: true, quote: "the lamp", note: "" },
-        { skill: "articles", correct: false, quote: "in room", note: "" },
-        { skill: "past-irregular", correct: true, quote: "found", note: "" },
-      ],
     };
     expect(toObservations(grade, "broken-lamp", "app", AT)).toEqual([
       observation({ skill: "articles", correct: false }),

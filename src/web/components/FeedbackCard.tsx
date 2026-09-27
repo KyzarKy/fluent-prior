@@ -27,24 +27,35 @@ export function FeedbackCard({ grade }: { grade: GraderOutput }) {
         <p className="mt-1">“{grade.betterVersion}”</p>
       </div>
 
-      {grade.skillsUsed.length > 0 && (
+      {(grade.mistakes.length > 0 || grade.correctUses.length > 0) && (
         <ul className="flex flex-col gap-3">
-          {grade.skillsUsed.map((used) => (
-            <li key={`${used.skill}-${used.quote}`} className="flex gap-3">
-              <span
-                aria-hidden="true"
-                className={`mt-0.5 font-bold ${used.correct ? "text-good" : "text-bad"}`}
-              >
-                {used.correct ? "✓" : "✗"}
+          {grade.mistakes.map((mistake) => (
+            <li key={`x-${mistake.skill}-${mistake.quote}`} className="flex gap-3">
+              <span aria-hidden="true" className="mt-0.5 font-bold text-bad">
+                ✗
               </span>
               <div>
                 <p className="font-medium">
-                  <span className="sr-only">{used.correct ? "Correct: " : "Needs work: "}</span>
-                  {SKILLS[used.skill].name}
+                  <span className="sr-only">Needs work: </span>
+                  {SKILLS[mistake.skill].name}
                 </p>
                 <p className="text-muted text-sm">
-                  “{used.quote}” · {used.note}
+                  “{mistake.quote}” → “{mistake.fix}”
                 </p>
+              </div>
+            </li>
+          ))}
+          {grade.correctUses.map((use) => (
+            <li key={`ok-${use.skill}-${use.quote}`} className="flex gap-3">
+              <span aria-hidden="true" className="mt-0.5 font-bold text-good">
+                ✓
+              </span>
+              <div>
+                <p className="font-medium">
+                  <span className="sr-only">Correct: </span>
+                  {SKILLS[use.skill].name}
+                </p>
+                <p className="text-muted text-sm">“{use.quote}”</p>
               </div>
             </li>
           ))}

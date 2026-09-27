@@ -1,0 +1,125 @@
+{
+  "about": "Ky's hand grades for 20 answers, the yardstick for every grader and prompt change (ROADMAP v1.1). For each answer, fill in taskMet (yes / partly / no) and list every mistake as { skill, quote }. Skill ids are in src/core/skills.ts. Answers are written the way phone dictation delivers them: little punctuation, no capital letters.",
+  "answers": [
+    {
+      "id": 1,
+      "scenarioId": "broken-lamp",
+      "answer": "this morning i find a broken lamp in room 214 i think somebody broke it yesterday",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 2,
+      "scenarioId": "shift-handoff",
+      "answer": "the guest in room 118 call two times today about the air conditioning. maintenance visit at 4 pm and he say it works now",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 3,
+      "scenarioId": "check-in-id",
+      "answer": "Could I please see your ID and a credit card for the reservation?",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 4,
+      "scenarioId": "early-arrival",
+      "answer": "i'm sorry your room is not ready yet check in is at 3 pm but you can leave your bags with us and have a coffee in the lobby",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 5,
+      "scenarioId": "early-arrival",
+      "answer": "room not ready. come back 3 o'clock",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 6,
+      "scenarioId": "pharmacy-directions",
+      "answer": "the pharmacy is two blocks from here go out of the hotel and turn left on main street it is on the right side",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 7,
+      "scenarioId": "pharmacy-directions",
+      "answer": "pharmacy is two block away you go left in main street",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 8,
+      "scenarioId": "come-back-later",
+      "answer": "no problem what time i can come back to clean your room",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 9,
+      "scenarioId": "come-back-later",
+      "answer": "of course sorry to bother you what time would be better for me to come back",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 10,
+      "scenarioId": "peanut-allergy",
+      "answer": "thank you for telling me i will tell the chef right away the kitchen use separate board for allergy orders so your food will be safe",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 11,
+      "scenarioId": "peanut-allergy",
+      "answer": "ok i tell the chef",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 12,
+      "scenarioId": "slow-food",
+      "answer": "i am so sorry for the wait the kitchen is very busy tonight your food is coming in five minutes and i would like to bring you a free dessert",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 13,
+      "scenarioId": "slow-food",
+      "answer": "the kitchen is busy you have to wait like everybody",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 14,
+      "scenarioId": "todays-special",
+      "answer": "today special is grilled salmon it come with rice and vegetable",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 15,
+      "scenarioId": "ran-out-of-salmon",
+      "answer": "chef we run out of salmon at lunch what the servers should tell to the guests",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 16,
+      "scenarioId": "end-of-shift",
+      "answer": "before you go home you have to clean your station label all the food and take out the trash",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 17,
+      "scenarioId": "delivery-question",
+      "answer": "where i should put these boxes of vegetable",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 18,
+      "scenarioId": "noisy-room",
+      "answer": "i'm really sorry about the noise i can call the room next door or if you prefer we can move you to a quiet room on another floor",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 19,
+      "scenarioId": "room-report",
+      "answer": "in room 305 i clean the bathroom change the sheet and replace the towels",
+      "ky": { "taskMet": null, "mistakes": [] }
+    },
+    {
+      "id": 20,
+      "scenarioId": "room-report",
+      "answer": "can you tell me where the extra towels are kept",
+      "ky": { "taskMet": null, "mistakes": [] }
+    }
+  ]
+}

@@ -5,10 +5,11 @@ import { createMemoryStore } from "./cap-store";
 import type { Grader } from "./grader";
 
 const output: GraderOutput = {
+  mistakes: [],
+  correctUses: [],
   taskMet: "yes",
   feedback: "Clear and polite.",
   betterVersion: "I'm sorry, your room isn't ready yet.",
-  skillsUsed: [],
 };
 
 const request = {

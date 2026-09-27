@@ -18,7 +18,10 @@ export interface Observation {
 
 export type Mastery = Record<SkillId, number>;
 
-/** One observation per skill per answer. Any wrong use of a skill makes it wrong. */
+/**
+ * One observation per skill per answer. A skill with any listed mistake is wrong, even if
+ * the grader also listed a correct use of it.
+ */
 export function toObservations(
   grade: GraderOutput,
   scenarioId: string,
@@ -26,8 +29,9 @@ export function toObservations(
   at: string,
 ): Observation[] {
   const correctBySkill = new Map<SkillId, boolean>();
-  for (const used of grade.skillsUsed) {
-    correctBySkill.set(used.skill, (correctBySkill.get(used.skill) ?? true) && used.correct);
+  for (const mistake of grade.mistakes) correctBySkill.set(mistake.skill, false);
+  for (const use of grade.correctUses) {
+    if (!correctBySkill.has(use.skill)) correctBySkill.set(use.skill, true);
   }
   return [...correctBySkill].map(([skill, correct]) => ({
     skill,
