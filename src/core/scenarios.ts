@@ -24,107 +24,116 @@ export interface Scenario {
   targetSkills: SkillId[];
 }
 
+// Situations are written as work notes (logs, checklists, tickets) and tasks as goals, so
+// the prompt doesn't hand the learner the words or grammar being graded. People reuse
+// structures they just read, most strongly when the words overlap ("structural priming").
+// Keep new scenarios in this style.
 export const SCENARIOS: Scenario[] = [
   {
     id: "early-arrival",
     role: "front-desk",
-    situation: "A guest arrives at 11 a.m. Check-in is at 3 p.m., and their room isn't ready.",
-    task: "Tell the guest politely, and offer them something they can do while they wait.",
+    situation:
+      "Guest at the desk. Time now: 11:00 a.m. Check-in time: 3:00 p.m. Room status: not ready.",
+    task: "Explain the situation to the guest and suggest something to do in the meantime.",
     targetSkills: ["polite-requests", "time-prepositions", "register"],
   },
   {
     id: "pharmacy-directions",
     role: "front-desk",
     situation:
-      "A guest asks where the nearest pharmacy is. It's two blocks away, left on Main Street.",
-    task: "Give the guest directions.",
+      "A guest needs a pharmacy. Nearest one: exit the hotel, turn left, Main Street, about five minutes on foot.",
+    task: "Help the guest get there.",
     targetSkills: ["articles", "register", "workplace-vocabulary"],
   },
   {
     id: "broken-lamp",
     role: "housekeeping",
-    situation: "This morning you found a broken lamp in room 214.",
-    task: "Tell your supervisor what you found and when.",
+    situation: "Your notes from this morning's rounds. 8:15 a.m., room 214: lamp, broken.",
+    task: "Report it to your supervisor.",
     targetSkills: ["past-irregular", "articles", "time-prepositions"],
   },
   {
     id: "come-back-later",
     role: "housekeeping",
-    situation: 'You knock on a door to clean the room. The guest says, "Not now, please."',
-    task: "Ask the guest what time would be better for you to come back.",
+    situation: 'Room 409, cleaning time. The guest opens the door: "Not now, please."',
+    task: "Arrange a better time for cleaning with the guest.",
     targetSkills: ["question-forms", "polite-requests", "time-prepositions"],
   },
   {
     id: "peanut-allergy",
     role: "front-of-house",
-    situation: "A guest at your table tells you they have a peanut allergy.",
-    task: "Tell them what you will do, and what the kitchen does to keep their food safe.",
+    situation:
+      "Table 6, ordering. Guest's note: peanut allergy. Kitchen procedure for allergies: separate cutting board, chef checks every plate.",
+    task: "Reassure the guest. Explain your next step and the kitchen's procedure.",
     targetSkills: ["third-person-s", "workplace-vocabulary", "obligation"],
   },
   {
     id: "slow-food",
     role: "front-of-house",
-    situation: "A table has waited 40 minutes for their food, and they're unhappy.",
-    task: "Apologize, explain what's happening, and offer something to make it better.",
+    situation:
+      "Table 12. Order time: 7:05 p.m. Time now: 7:45 p.m. No food yet. The guests look unhappy. Kitchen status: very busy, food ready in about 5 minutes.",
+    task: "Talk to the table and make it right.",
     targetSkills: ["apologizing", "register", "third-person-s"],
   },
   {
     id: "todays-special",
     role: "front-of-house",
     situation:
-      "A guest asks what today's special is. It's grilled salmon with rice and vegetables.",
-    task: "Describe the special to the guest.",
+      "Menu board, today's special: grilled salmon. Sides: rice, seasonal veg. A guest asks about the special.",
+    task: "Describe the dish to the guest.",
     targetSkills: ["third-person-s", "plurals", "articles"],
   },
   {
     id: "ran-out-of-salmon",
     role: "kitchen",
-    situation: "During lunch, the kitchen ran out of salmon.",
-    task: "Tell the head chef what happened and ask what the servers should tell guests.",
+    situation:
+      "Lunch service. Salmon count at 12:40: zero. Servers keep asking what to say to guests.",
+    task: "Let the head chef know, and get instructions for the servers.",
     targetSkills: ["past-irregular", "question-forms", "articles"],
   },
   {
     id: "end-of-shift",
     role: "kitchen",
-    situation: "A new coworker asks what they need to do before they go home.",
-    task: "Explain the end-of-shift tasks: cleaning stations, labeling food, taking out trash.",
+    situation:
+      "A new coworker, first day, asks about the end of the shift. Checklist: station clean-down, labels on all stored food, trash out.",
+    task: "Explain the end-of-shift routine.",
     targetSkills: ["obligation", "plurals", "workplace-vocabulary"],
   },
   {
     id: "delivery-question",
     role: "food-prep",
-    situation: "A delivery of vegetables just arrived, and you don't know where it goes.",
-    task: "Ask a coworker where to put the boxes.",
+    situation: "Delivery at the back door: fresh produce, six cartons. Storage location: unknown.",
+    task: "Get the information you need from a coworker.",
     targetSkills: ["question-forms", "plurals", "articles"],
   },
   {
     id: "shift-handoff",
     role: "front-desk",
     situation:
-      "The guest in room 118 called twice today about the air conditioning. Maintenance visited at 4 p.m.",
-    task: "Tell the next shift what happened with room 118.",
+      "Log for room 118. 10:15 a.m.: guest phone call, air conditioning too warm. 1:30 p.m.: guest phone call, same problem. 4:00 p.m.: maintenance visit, problem fixed.",
+    task: "Brief the next shift on room 118.",
     targetSkills: ["past-regular", "time-prepositions", "third-person-s"],
   },
   {
     id: "noisy-room",
     role: "front-desk",
-    situation: "A guest calls the front desk to complain that the room next door is very noisy.",
-    task: "Apologize and offer a solution.",
+    situation:
+      "Phone call from room 402. Complaint: loud music next door. Available: a quiet room on the 6th floor.",
+    task: "Respond to the guest and resolve the problem.",
     targetSkills: ["apologizing", "polite-requests", "obligation"],
   },
   {
     id: "room-report",
     role: "housekeeping",
-    situation:
-      "You finished room 305: you cleaned the bathroom, changed the sheets, and replaced the towels.",
-    task: "Tell your supervisor what you did in room 305.",
+    situation: "Room 305 checklist, all done: bathroom, bed linen, towel change.",
+    task: "Report on room 305 to your supervisor.",
     targetSkills: ["past-regular", "plurals", "articles"],
   },
   {
     id: "check-in-id",
     role: "front-desk",
-    situation: "A guest is checking in. You need to see their ID and a credit card.",
-    task: "Ask the guest for what you need.",
+    situation: "Guest checking in. Requirements: photo ID, credit card.",
+    task: "Get what you need from the guest.",
     targetSkills: ["polite-requests", "register", "articles"],
   },
 ];
