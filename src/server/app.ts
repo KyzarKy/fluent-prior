@@ -67,6 +67,16 @@ export function createApp(deps: AppDeps): Hono {
     }
 
     await recordUsage(deps.store, who, now, outcome.costUsd);
+    if ("retryAfterSeconds" in outcome) {
+      // The free grader's quota is a limit like our own app cap, so it reads the same.
+      c.header("Retry-After", String(outcome.retryAfterSeconds));
+      const capped: CapExceeded = {
+        error: "cap",
+        layer: "app",
+        resetsInSeconds: outcome.retryAfterSeconds,
+      };
+      return c.json(capped, 429);
+    }
     if (!outcome.ok) {
       console.error("Grader reply unusable:", outcome.reason);
       return c.json({ error: "grader-unavailable" }, 502);

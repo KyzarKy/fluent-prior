@@ -1,6 +1,7 @@
 # 0001. Text in, meaning graded
 
-**Status:** accepted, 2026-09-26.
+**Status:** accepted, 2026-09-26. The grader choice is replaced by
+[ADR 0004](0004-free-grader-first.md): a free open model grades by default.
 
 ## Context
 

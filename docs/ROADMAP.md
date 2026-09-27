@@ -8,13 +8,14 @@
 - Knowledge tracing per skill, weighted by what dictation can hear, choosing the next
   scenario ([ADR 0002](decisions/0002-learner-model.md)).
 - Layered spend caps ([ADR 0003](decisions/0003-spend-caps.md)).
-- Runs locally. Deploy once the production counter store is chosen and the Console
-  workspace limit is set. The repo stays private until v1 ships.
+- A free grader by default ([ADR 0004](decisions/0004-free-grader-first.md)).
+- Runs locally. Deploy once the production counter store is chosen. The repo stays private until v1 ships.
 
 ## v1.1: measure
 
-- **Grader eval.** Ky hand-grades 20 answers; compare Sonnet 5, Haiku 4.5 and Opus 5
-  against his grades and keep the cheapest one that agrees.
+- **Grader eval.** Ky hand-grades 20 answers; compare the free grader (gpt-oss-120b on
+  Groq, [ADR 0004](decisions/0004-free-grader-first.md)) with Sonnet 5, Haiku 4.5 and
+  Opus 5. The result decides whether and when to switch to a paid grader.
 - **Measure `keep`.** Dictate sentences with known small-sound errors on a few phones and
   count how many survive. Replace the 0.5 guess.
 - **Measure cost** per graded answer and update ADR 0003's estimate.

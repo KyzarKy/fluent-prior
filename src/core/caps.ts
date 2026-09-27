@@ -33,6 +33,8 @@ export const LIMITS: Limit[] = [
       max: LEARNER_LIMITS[window] * NETWORK_MULTIPLIER,
     },
   ]),
+  // Under the free grader's daily quota, so we stop first and can say why (ADR 0004).
+  { layer: "app", window: "day", unit: "answers", max: 60 },
   { layer: "app", window: "minute", unit: "usd", max: 0.25 },
   { layer: "app", window: "hour", unit: "usd", max: 1 },
   { layer: "app", window: "day", unit: "usd", max: 3 },

@@ -64,4 +64,17 @@ describe("POST /api/grade", () => {
     const response = await post(app, request);
     expect(await response.json()).toMatchObject({ error: "cap", layer: "app" });
   });
+
+  it("shows the free grader's quota as the app limit, with its reset time", async () => {
+    const grade: Grader = async () => ({
+      ok: false,
+      reason: "quota",
+      costUsd: 0,
+      retryAfterSeconds: 120,
+    });
+    const app = createApp({ grade, store: createMemoryStore(), ipHashSalt: "t" });
+    const response = await post(app, request);
+    expect(response.status).toBe(429);
+    expect(await response.json()).toEqual({ error: "cap", layer: "app", resetsInSeconds: 120 });
+  });
 });

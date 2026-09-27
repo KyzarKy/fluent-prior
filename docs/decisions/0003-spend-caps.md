@@ -20,8 +20,8 @@ Caps in layers. Each catches something the layer above misses.
 | **Per session** | 30 graded answers | Runaway loops in the UI; a nudge to take a break |
 | **Per learner** | 5 a minute, 40 an hour, 100 a day | One person using the day's budget |
 | **Per network (IP)** | 5× the per-learner limits | Someone rotating learner ids. Loose, because a whole hotel staff may share one Wi-Fi |
-| **Whole app** | $0.25 a minute, $1 an hour, $3 a day, $15 a month | The bill. This is the layer that bounds spending |
-| **Console workspace** | $20 a month | Bugs in all of the above. Anthropic enforces it |
+| **Whole app** | 60 answers a day; $0.25 a minute, $1 an hour, $3 a day, $15 a month | The count stays under the free grader's quota ([ADR 0004](0004-free-grader-first.md)); the dollar limits bound the bill if a paid grader is selected |
+| **Provider** | Groq: no payment method on the account. Anthropic, if used: a $20-a-month workspace limit | Bugs in all of the above. The provider enforces it |
 
 **How it's enforced:**
 

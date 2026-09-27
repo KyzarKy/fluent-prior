@@ -1,0 +1,54 @@
+// The default grader (ADR 0004): gpt-oss-120b on Groq's free tier. The account has no
+// payment method, so running out of quota is an HTTP 429, never a bill.
+
+import Groq from "groq-sdk";
+import { z } from "zod";
+import { GraderOutput } from "../core/contract";
+import { costUsd } from "../core/pricing";
+import { type Grader, MAX_OUTPUT_TOKENS, parseReply, SYSTEM_PROMPT, userMessage } from "./grader";
+
+export const GROQ_MODEL = "openai/gpt-oss-120b";
+const OUTPUT_SCHEMA = z.toJSONSchema(GraderOutput);
+/** If Groq doesn't say when the quota resets, assume the daily window. */
+const DEFAULT_RETRY_SECONDS = 60 * 60;
+
+export function createGroqGrader(client: Groq): Grader {
+  return async (scenario, answer) => {
+    try {
+      const response = await client.chat.completions.create({
+        model: GROQ_MODEL,
+        max_completion_tokens: MAX_OUTPUT_TOKENS,
+        reasoning_effort: "medium",
+        response_format: {
+          type: "json_schema",
+          json_schema: { name: "grade", schema: OUTPUT_SCHEMA, strict: true },
+        },
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          { role: "user", content: userMessage(scenario, answer) },
+        ],
+      });
+      const usage = response.usage;
+      const cost = costUsd(GROQ_MODEL, {
+        input_tokens: usage?.prompt_tokens ?? 0,
+        output_tokens: usage?.completion_tokens ?? 0,
+      });
+      const choice = response.choices[0];
+      if (choice?.finish_reason !== "stop") {
+        return { ok: false, reason: `finish_reason ${choice?.finish_reason}`, costUsd: cost };
+      }
+      return parseReply(choice.message.content, cost);
+    } catch (error) {
+      if (error instanceof Groq.RateLimitError) {
+        const retryAfter = Number(error.headers?.get?.("retry-after"));
+        return {
+          ok: false,
+          reason: "quota",
+          costUsd: 0,
+          retryAfterSeconds: Number.isFinite(retryAfter) ? retryAfter : DEFAULT_RETRY_SECONDS,
+        };
+      }
+      throw error;
+    }
+  };
+}
