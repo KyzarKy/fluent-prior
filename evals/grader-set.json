@@ -1,5 +1,5 @@
 {
-  "about": "Ky's answer key: the yardstick for every grader and prompt change (ROADMAP v1.1). Each entry shows the scenario as the learner saw it, then their answer. ky.taskMet (yes / partly / no) is completeness only: did the answer do every part of the task? ky.tone is one of polite / neutral / too-direct / rude, judged separately. ky.mistakes are grammar only, each with the learner's words (quote), the fix, and a skill id from src/core/skills.ts; alsoAccept lists other skill ids that count as a match. ky.wordChoice lists phrasing that sounds off without breaking a grammar rule: logged for a tutor, never penalized. American English (ADR 0005).",
+  "about": "Ky's answer key: the yardstick for every grader and prompt change (ROADMAP v1.1). Each entry shows the scenario as the learner saw it, then their answer. ky.taskMet (yes / partly / no) is completeness only: did the answer do every part of the task? ky.tone is one of polite / neutral / rude (too direct counts as rude), judged separately. ky.mistakes are grammar only, each with the learner's words (quote), the fix, and a skill id from src/core/skills.ts; alsoAccept lists other skill ids that count as a match. ky.wordChoice lists phrasing that sounds off without breaking a grammar rule: logged for a tutor, never penalized. American English (ADR 0005).",
   "answers": [
     {
       "id": 1,
@@ -10,7 +10,7 @@
       "answer": "this morning i find a broken lamp in room 214 i think somebody broke it yesterday",
       "ky": {
         "taskMet": "yes",
-        "tone": null,
+        "tone": "neutral",
         "mistakes": [
           {
             "skill": "past-irregular",
@@ -30,7 +30,7 @@
       "answer": "the guest in room 118 call two times today about the air conditioning. maintenance visit at 4 pm and he say it works now",
       "ky": {
         "taskMet": "yes",
-        "tone": null,
+        "tone": "neutral",
         "mistakes": [
           {
             "skill": "past-regular",
@@ -61,7 +61,7 @@
       "answer": "Could I please see your ID and a credit card for the reservation?",
       "ky": {
         "taskMet": "yes",
-        "tone": null,
+        "tone": "polite",
         "mistakes": [],
         "wordChoice": []
       }
@@ -75,7 +75,7 @@
       "answer": "i'm sorry your room is not ready yet check in is at 3 pm but you can leave your bags with us and have a coffee in the lobby",
       "ky": {
         "taskMet": "yes",
-        "tone": null,
+        "tone": "polite",
         "mistakes": [],
         "wordChoice": []
       }
@@ -89,7 +89,7 @@
       "answer": "room not ready. come back 3 o'clock",
       "ky": {
         "taskMet": "partly",
-        "tone": null,
+        "tone": "rude",
         "mistakes": [
           {
             "skill": "be-verbs",
@@ -103,7 +103,7 @@
           }
         ],
         "wordChoice": [],
-        "note": "Doesn't suggest something to do, and isn't especially polite."
+        "note": "Explains, but doesn't suggest something to do meanwhile."
       }
     },
     {
@@ -115,7 +115,7 @@
       "answer": "the pharmacy is two blocks from here go out of the hotel and turn left on main street it is on the right side",
       "ky": {
         "taskMet": "yes",
-        "tone": null,
+        "tone": "neutral",
         "mistakes": [],
         "wordChoice": [],
         "note": "Doesn't give the walking time, but the task was to help the guest get there. Inventing 'on the right side' is fine."
@@ -129,8 +129,8 @@
       "task": "Help the guest get there.",
       "answer": "pharmacy is two block away you go left in main street",
       "ky": {
-        "taskMet": "partly",
-        "tone": null,
+        "taskMet": "yes",
+        "tone": "neutral",
         "mistakes": [
           {
             "skill": "articles",
@@ -149,7 +149,7 @@
           }
         ],
         "wordChoice": [],
-        "note": "Walking time not required; tone isn't especially polite."
+        "note": "Directions are complete; walking time wasn't required."
       }
     },
     {
@@ -181,7 +181,7 @@
       "answer": "of course sorry to bother you what time would be better for me to come back",
       "ky": {
         "taskMet": "yes",
-        "tone": null,
+        "tone": "polite",
         "mistakes": [],
         "wordChoice": []
       }
@@ -195,7 +195,7 @@
       "answer": "thank you for telling me i will tell the chef right away the kitchen use separate board for allergy orders so your food will be safe",
       "ky": {
         "taskMet": "yes",
-        "tone": null,
+        "tone": "polite",
         "mistakes": [
           {
             "skill": "third-person-s",
@@ -221,7 +221,7 @@
       "answer": "ok i tell the chef",
       "ky": {
         "taskMet": "partly",
-        "tone": null,
+        "tone": "neutral",
         "mistakes": [
           {
             "skill": "future-forms",
@@ -242,7 +242,7 @@
       "answer": "i am so sorry for the wait the kitchen is very busy tonight your food is coming in five minutes and i would like to bring you a free dessert",
       "ky": {
         "taskMet": "yes",
-        "tone": null,
+        "tone": "polite",
         "mistakes": [],
         "wordChoice": []
       }
@@ -256,7 +256,7 @@
       "answer": "the kitchen is busy you have to wait like everybody",
       "ky": {
         "taskMet": "no",
-        "tone": null,
+        "tone": "rude",
         "mistakes": [],
         "wordChoice": [
           {
@@ -264,7 +264,7 @@
             "suggestion": "like everybody else"
           }
         ],
-        "note": "Tone is rude."
+        "note": "Has none of the parts: no apology, no update, nothing offered."
       }
     },
     {
@@ -276,7 +276,7 @@
       "answer": "today special is grilled salmon it come with rice and vegetable",
       "ky": {
         "taskMet": "yes",
-        "tone": null,
+        "tone": "neutral",
         "mistakes": [
           {
             "skill": "possessive-s",
@@ -306,7 +306,7 @@
       "answer": "chef we run out of salmon at lunch what the servers should tell to the guests",
       "ky": {
         "taskMet": "yes",
-        "tone": null,
+        "tone": "neutral",
         "mistakes": [
           {
             "skill": "past-irregular",
@@ -331,7 +331,7 @@
       "answer": "before you go home you have to clean your station label all the food and take out the trash",
       "ky": {
         "taskMet": "yes",
-        "tone": null,
+        "tone": "neutral",
         "mistakes": [],
         "wordChoice": []
       }
@@ -345,7 +345,7 @@
       "answer": "where i should put these boxes of vegetable",
       "ky": {
         "taskMet": "yes",
-        "tone": null,
+        "tone": "neutral",
         "mistakes": [
           {
             "skill": "question-forms",
@@ -370,7 +370,7 @@
       "answer": "i'm really sorry about the noise i can call the room next door or if you prefer we can move you to a quiet room on another floor",
       "ky": {
         "taskMet": "yes",
-        "tone": null,
+        "tone": "polite",
         "mistakes": [],
         "wordChoice": []
       }
@@ -384,7 +384,7 @@
       "answer": "in room 305 i clean the bathroom change the sheet and replace the towels",
       "ky": {
         "taskMet": "yes",
-        "tone": null,
+        "tone": "neutral",
         "mistakes": [
           {
             "skill": "past-regular",
