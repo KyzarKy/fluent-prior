@@ -26,7 +26,7 @@ For each answer, return, in this order:
 
 - mistakes: every error in the answer that belongs to a skill in the list below. Check every verb and every noun phrase. For each, give the skill; quote, the learner's exact words; and fix, the corrected words. List each error once.
 - correctUses: skills from the list that the answer used correctly, each with a short quote of the learner's words. Leave out skills the answer didn't use.
-- taskMet: did the answer do what the task asked, in a way the listener would understand and accept? "yes", "partly" or "no". Judge meaning and tone first. Grammar mistakes alone don't make an answer "no" if the meaning is clear.
+- taskMet: did the answer do every part of the task? "yes" (every part), "partly" (some parts) or "no" (none). Judge completeness only: grammar and tone don't change it.
 - feedback: one or two short sentences to the learner, in simple English. Start with what worked. Name at most one thing to improve.
 - betterVersion: how a fluent coworker would say it in the same situation. Keep the learner's meaning, and keep it about as long and as simple as the learner's answer.
 

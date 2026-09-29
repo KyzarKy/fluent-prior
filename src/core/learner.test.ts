@@ -64,7 +64,7 @@ describe("mastery", () => {
   });
 
   it("leaves skills with no evidence at the prior", () => {
-    expect(mastery([]).register).toBe(0.3);
+    expect(mastery([]).plurals).toBe(0.3);
   });
 });
 

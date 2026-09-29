@@ -5,13 +5,16 @@
 
 import { z } from "zod";
 import type { Observation } from "../core/learner";
-import { SKILL_IDS } from "../core/skills";
+import { SKILL_IDS, type SkillId } from "../core/skills";
 
 const LOG_KEY = "fluent-prior:log:v1";
 const LEARNER_KEY = "fluent-prior:learner-id";
+const KNOWN_SKILLS = new Set<string>(SKILL_IDS);
 
+// Any string here, not the current skill list: a skill removed from the catalog (ADR 0006)
+// must drop its own entries, not make the whole log fail to parse and lose all progress.
 const StoredObservation = z.object({
-  skill: z.enum(SKILL_IDS),
+  skill: z.string(),
   outcome: z.enum(["right", "wrong", "mixed"]),
   source: z.literal("app"),
   scenarioId: z.string(),
@@ -26,17 +29,18 @@ const LegacyObservation = StoredObservation.omit({ outcome: true })
     outcome: correct ? ("right" as const) : ("wrong" as const),
   }));
 
-const StoredLog = z.array(z.union([StoredObservation, LegacyObservation])) satisfies z.ZodType<
-  Observation[],
-  unknown
->;
+const StoredLog = z.array(z.union([StoredObservation, LegacyObservation]));
+
+function isCurrentSkill<T extends { skill: string }>(entry: T): entry is T & { skill: SkillId } {
+  return KNOWN_SKILLS.has(entry.skill);
+}
 
 export function loadLog(): Observation[] {
   try {
     const raw = localStorage.getItem(LOG_KEY);
     if (!raw) return [];
     const parsed = StoredLog.safeParse(JSON.parse(raw));
-    return parsed.success ? parsed.data : [];
+    return parsed.success ? parsed.data.filter(isCurrentSkill) : [];
   } catch {
     return [];
   }

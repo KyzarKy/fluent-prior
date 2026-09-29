@@ -8,7 +8,7 @@ meant for the days between sessions with a real tutor.
 1. The app gives you a work situation: a guest arrives before check-in, the kitchen ran
    out of salmon, the next shift needs a handoff.
 2. You answer out loud with your phone's keyboard microphone, or you type.
-3. A free open model grades the answer: did you get the job done, and which grammar and vocabulary
+3. A free open model grades the answer: did you do every part of the task, and which grammar
    did you use correctly?
 4. A Bayesian model of what you know updates, and picks the next situation to work on
    your weakest skill.

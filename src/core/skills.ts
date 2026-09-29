@@ -4,8 +4,6 @@
 // smooth over, so a correct form in the transcript is weak evidence.
 
 export const SKILL_IDS = [
-  "polite-requests",
-  "apologizing",
   "question-forms",
   "past-irregular",
   "past-regular",
@@ -18,8 +16,6 @@ export const SKILL_IDS = [
   "obligation",
   "time-prepositions",
   "place-prepositions",
-  "workplace-vocabulary",
-  "register",
 ] as const;
 
 export type SkillId = (typeof SKILL_IDS)[number];
@@ -36,18 +32,6 @@ export interface Skill {
 }
 
 export const SKILLS: Record<SkillId, Skill> = {
-  "polite-requests": {
-    id: "polite-requests",
-    name: "Polite requests",
-    description: "Asking politely: could you, would you mind, may I, please.",
-    audibility: "clear",
-  },
-  apologizing: {
-    id: "apologizing",
-    name: "Apologizing and offering a fix",
-    description: "Saying sorry and offering a solution: I'm sorry about, let me, I can.",
-    audibility: "clear",
-  },
   "question-forms": {
     id: "question-forms",
     name: "Question word order",
@@ -120,17 +104,5 @@ export const SKILLS: Record<SkillId, Skill> = {
     name: "At, on, in for time",
     description: "Prepositions of time: at 3 p.m., on Monday, in the morning.",
     audibility: "faint",
-  },
-  "workplace-vocabulary": {
-    id: "workplace-vocabulary",
-    name: "Hospitality words",
-    description: "Job words used correctly: check-in, reservation, allergy, amenities, shift.",
-    audibility: "clear",
-  },
-  register: {
-    id: "register",
-    name: "Right tone",
-    description: "Formal with guests, direct but respectful with coworkers and supervisors.",
-    audibility: "clear",
   },
 };
