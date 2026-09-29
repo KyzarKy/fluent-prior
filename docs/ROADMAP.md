@@ -22,6 +22,15 @@
 - **Typed drills** for faint skills: "type this one", logged with source `typed-drill`.
 - Prompt caching, if the system prompt is long enough to qualify.
 
+## Decided, design next
+
+- **Three separate tracks** (Ky, 2026-09-29): grammar skills; task completion (`taskMet`,
+  completeness only); and tone, a scale shown as "how this may sound", never a mistake.
+  Skills stay grammatical. An ADR comes with the design: the tone scale, how completeness
+  feeds the learner model, and which current skills aren't grammar.
+- **Word choice goes to a tutor log.** Phrasing that sounds off without breaking a grammar
+  rule is recorded for the tutor and never penalized.
+
 ## Next: the tutor (central to the vision)
 
 The learner practices between sessions with a real tutor, and the app connects the two.
@@ -35,6 +44,11 @@ To be designed after v1:
 - Needs accounts, learner-controlled sharing, and server-side storage of the log.
 
 ## Ideas, not scheduled
+
+- Other varieties of English (British, Australian, New Zealand, South African), selectable
+  per learner ([ADR 0005](decisions/0005-american-english.md)).
+- A comparisons skill ("than anyone else", "than any other room"): a real rule, and useful
+  when describing rooms and dishes.
 
 - Feedback in the learner's first language.
 - More profession packs.

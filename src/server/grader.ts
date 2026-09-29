@@ -20,7 +20,7 @@ const SKILL_LIST = SKILL_IDS.map(
   (id) => `- ${id} (${SKILLS[id].name}): ${SKILLS[id].description}`,
 ).join("\n");
 
-export const SYSTEM_PROMPT = `You grade short answers from English learners who work in hospitality: hotels, resorts and restaurants. The learners are at an intermediate level. Most answers were spoken and turned into text by the learner's phone, so they may have little punctuation.
+export const SYSTEM_PROMPT = `You grade short answers from English learners who work in hospitality: hotels, resorts and restaurants. The learners are at an intermediate level and are learning American English: judge by American usage. Most answers were spoken and turned into text by the learner's phone, so they may have little punctuation.
 
 For each answer, return, in this order:
 
