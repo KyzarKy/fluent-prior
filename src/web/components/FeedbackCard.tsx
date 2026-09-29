@@ -1,7 +1,7 @@
 // The grade: whether the answer did the job, one piece of feedback, a more natural
 // version, and each skill the answer used.
 
-import type { GraderOutput } from "../../core/contract";
+import type { Grade } from "../../core/contract";
 import { SKILLS } from "../../core/skills";
 
 const TASK_LABEL = {
@@ -10,7 +10,7 @@ const TASK_LABEL = {
   no: { text: "Not yet", className: "bg-bad/15 text-bad" },
 } as const;
 
-export function FeedbackCard({ grade }: { grade: GraderOutput }) {
+export function FeedbackCard({ grade }: { grade: Grade }) {
   const label = TASK_LABEL[grade.taskMet];
   return (
     <section

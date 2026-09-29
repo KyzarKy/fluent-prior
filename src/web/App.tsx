@@ -3,7 +3,7 @@
 // React state and the browser.
 
 import { useMemo, useState } from "react";
-import type { CapExceeded, GraderOutput } from "../core/contract";
+import type { CapExceeded, Grade } from "../core/contract";
 import {
   mastery,
   nextScenario,
@@ -29,7 +29,7 @@ const RECENT_TO_SKIP = 3;
 export type Status =
   | { kind: "answering" }
   | { kind: "grading" }
-  | { kind: "graded"; grade: GraderOutput }
+  | { kind: "graded"; grade: Grade }
   | { kind: "capped"; capped: CapExceeded }
   | { kind: "failed" };
 

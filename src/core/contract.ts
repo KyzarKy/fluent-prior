@@ -15,10 +15,18 @@ export const GradeRequest = z.object({
 });
 export type GradeRequest = z.infer<typeof GradeRequest>;
 
+export const TaskMet = z.enum(["yes", "partly", "no"]);
+export type TaskMet = z.infer<typeof TaskMet>;
+
+/** Too direct counts as rude (ADR 0006). */
+export const Tone = z.enum(["polite", "neutral", "rude"]);
+export type Tone = z.infer<typeof Tone>;
+
 // Sent to the model as its output schema, so it avoids length constraints that
 // structured output doesn't support. Lengths are asked for in the prompt instead.
-// Mistakes come first: models write fields in order, so the feedback is written after the
-// mistakes are listed. A listed mistake always wins over a listed correct use (learner.ts).
+// Details come first: models write fields in order, so the feedback is written after the
+// mistakes and checklist are committed. The model never gives a task verdict; the server
+// computes it from taskParts (ADR 0006).
 export const GraderOutput = z.object({
   mistakes: z.array(
     z.object({
@@ -33,14 +41,25 @@ export const GraderOutput = z.object({
       quote: z.string(),
     }),
   ),
-  taskMet: z.enum(["yes", "partly", "no"]),
+  taskParts: z.array(
+    z.object({
+      part: z.number().int(),
+      present: z.boolean(),
+      evidence: z.string(),
+    }),
+  ),
+  tone: Tone,
   feedback: z.string(),
   betterVersion: z.string(),
 });
 export type GraderOutput = z.infer<typeof GraderOutput>;
 
+/** What the learner gets: the grader's report plus the verdict the server computed from it. */
+export const Grade = GraderOutput.extend({ taskMet: TaskMet });
+export type Grade = z.infer<typeof Grade>;
+
 export const GradeResponse = z.object({
-  grade: GraderOutput,
+  grade: Grade,
   costUsd: z.number(),
 });
 export type GradeResponse = z.infer<typeof GradeResponse>;

@@ -1,10 +1,10 @@
 // Calls the grading API and turns every response into one of three outcomes the UI knows
 // how to show. Responses are parsed, never cast (CLAUDE.md rule 2).
 
-import { CapExceeded, type GradeRequest, GradeResponse, type GraderOutput } from "../core/contract";
+import { CapExceeded, type Grade, type GradeRequest, GradeResponse } from "../core/contract";
 
 export type GradeResult =
-  | { kind: "graded"; grade: GraderOutput }
+  | { kind: "graded"; grade: Grade }
   | { kind: "capped"; capped: CapExceeded }
   | { kind: "failed" };
 

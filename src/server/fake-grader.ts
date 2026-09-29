@@ -12,7 +12,13 @@ export const fakeGrader: Grader = async (scenario, answer) => {
     output: {
       mistakes: second ? [{ skill: second, quote, fix: "(fake fix)" }] : [],
       correctUses: first ? [{ skill: first, quote }] : [],
-      taskMet: answer.length > 20 ? "yes" : "partly",
+      // First part present, the rest missing, so the UI shows a partial answer.
+      taskParts: scenario.taskParts.map((_, index) => ({
+        part: index + 1,
+        present: index === 0,
+        evidence: index === 0 ? quote : "",
+      })),
+      tone: "neutral",
       feedback: "(Fake grader) Clear and polite. Try adding one more detail.",
       betterVersion: answer,
     },

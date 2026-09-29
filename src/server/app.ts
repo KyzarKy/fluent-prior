@@ -7,6 +7,7 @@ import { type Context, Hono } from "hono";
 import { type CounterStore, checkCaps, recordUsage } from "../core/caps";
 import { type CapExceeded, GradeRequest, type GradeResponse } from "../core/contract";
 import { findScenario } from "../core/scenarios";
+import { taskVerdict } from "../core/tasks";
 import type { Grader } from "./grader";
 
 export interface AppDeps {
@@ -81,7 +82,16 @@ export function createApp(deps: AppDeps): Hono {
       console.error("Grader reply unusable:", outcome.reason);
       return c.json({ error: "grader-unavailable" }, 502);
     }
-    const graded: GradeResponse = { grade: outcome.output, costUsd: outcome.costUsd };
+    // The verdict is computed here from the checklist, never taken from the model (ADR 0006).
+    const taskMet = taskVerdict(scenario.taskParts.length, outcome.output.taskParts);
+    if (!taskMet) {
+      console.error("Grader reply unusable: task parts", outcome.output.taskParts);
+      return c.json({ error: "grader-unavailable" }, 502);
+    }
+    const graded: GradeResponse = {
+      grade: { ...outcome.output, taskMet },
+      costUsd: outcome.costUsd,
+    };
     return c.json(graded);
   });
 

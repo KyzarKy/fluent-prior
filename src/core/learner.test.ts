@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { GraderOutput } from "./contract";
+import type { Grade } from "./contract";
 import {
   mastery,
   nextScenario,
@@ -24,7 +24,7 @@ function observation(overrides: Partial<Observation>): Observation {
 
 describe("toObservations", () => {
   it("reports each skill once as right, wrong, or mixed", () => {
-    const grade: GraderOutput = {
+    const grade: Grade = {
       mistakes: [
         { skill: "articles", quote: "in room", fix: "in the room" },
         { skill: "past-irregular", quote: "i find", fix: "i found" },
@@ -34,6 +34,8 @@ describe("toObservations", () => {
         { skill: "past-irregular", quote: "broke" },
         { skill: "plurals", quote: "towels" },
       ],
+      taskParts: [{ part: 1, present: true, evidence: "" }],
+      tone: "neutral",
       taskMet: "yes",
       feedback: "",
       betterVersion: "",

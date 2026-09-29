@@ -2,7 +2,7 @@
 // for each skill, and the rule for picking the next scenario (ADR 0002).
 
 import { BASE_PARAMS, type Evidence, update } from "./bkt";
-import type { GraderOutput } from "./contract";
+import type { Grade } from "./contract";
 import { paramsFor, type Source } from "./evidence";
 import type { Scenario } from "./scenarios";
 import { SKILL_IDS, SKILLS, type SkillId } from "./skills";
@@ -29,7 +29,7 @@ const EVIDENCE: Record<Outcome, Evidence> = {
 
 /** One observation per skill per answer, from what the grader listed. */
 export function toObservations(
-  grade: GraderOutput,
+  grade: Grade,
   scenarioId: string,
   source: Source,
   at: string,

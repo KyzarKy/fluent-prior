@@ -4,10 +4,15 @@ import { createApp } from "./app";
 import { createMemoryStore } from "./cap-store";
 import type { Grader } from "./grader";
 
+// early-arrival has two checklist parts; this answer does the first only.
 const output: GraderOutput = {
   mistakes: [],
   correctUses: [],
-  taskMet: "yes",
+  taskParts: [
+    { part: 1, present: true, evidence: "your room is not ready" },
+    { part: 2, present: false, evidence: "" },
+  ],
+  tone: "polite",
   feedback: "Clear and polite.",
   betterVersion: "I'm sorry, your room isn't ready yet.",
 };
@@ -40,12 +45,22 @@ describe("POST /api/grade", () => {
     expect(calls).toBe(0);
   });
 
-  it("grades a valid answer", async () => {
+  it("grades a valid answer and computes taskMet from the checklist", async () => {
     const grade: Grader = async () => ({ ok: true, output, costUsd: 0.01 });
     const app = createApp({ grade, store: createMemoryStore(), ipHashSalt: "t" });
     const response = await post(app, request);
     expect(response.status).toBe(200);
-    expect(await response.json()).toEqual({ grade: output, costUsd: 0.01 });
+    expect(await response.json()).toEqual({
+      grade: { ...output, taskMet: "partly" },
+      costUsd: 0.01,
+    });
+  });
+
+  it("refuses a checklist report that skips a part", async () => {
+    const skipped = { ...output, taskParts: [{ part: 1, present: true, evidence: "" }] };
+    const grade: Grader = async () => ({ ok: true, output: skipped, costUsd: 0.01 });
+    const app = createApp({ grade, store: createMemoryStore(), ipHashSalt: "t" });
+    expect((await post(app, request)).status).toBe(502);
   });
 
   it("returns 429 naming the layer once the learner's minute is used up", async () => {

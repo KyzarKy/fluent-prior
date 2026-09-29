@@ -2,6 +2,8 @@
 // talking to, and the rule that turns a checklist into a verdict. The grader only reports
 // which parts are present; the verdict is computed here, where it can be tested.
 
+import type { TaskMet } from "./contract";
+
 export const TASK_TYPES = [
   "guest-problems",
   "guest-information",
@@ -23,8 +25,6 @@ export const TASK_TYPE_NAMES: Record<TaskType, string> = {
 /** Who the learner is talking to. Sets what tone is expected (ADR 0006). */
 export type Audience = "guest" | "coworker";
 
-export type TaskVerdict = "yes" | "partly" | "no";
-
 export interface PartReport {
   /** 1-based, matching the numbered parts the grader was shown. */
   part: number;
@@ -35,7 +35,7 @@ export interface PartReport {
  * Every part present is yes, some is partly, none is no. Returns null when the report
  * doesn't cover each part exactly once: a verdict built on a partial report would be a guess.
  */
-export function taskVerdict(partCount: number, reports: readonly PartReport[]): TaskVerdict | null {
+export function taskVerdict(partCount: number, reports: readonly PartReport[]): TaskMet | null {
   const presentByPart = new Map<number, boolean>();
   for (const report of reports) {
     const outOfRange = report.part < 1 || report.part > partCount;
