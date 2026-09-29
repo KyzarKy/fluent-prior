@@ -379,7 +379,7 @@
       "id": 19,
       "scenarioId": "room-report",
       "role": "Housekeeping",
-      "situation": "Room 305 checklist, all done: bathroom, bed linen, towel change.",
+      "situation": "Room 305, status: complete. ✓ bathroom ✓ bed linen ✓ towel change.",
       "task": "Report on room 305 to your supervisor.",
       "answer": "in room 305 i clean the bathroom change the sheet and replace the towels",
       "ky": {
@@ -414,7 +414,7 @@
       "id": 20,
       "scenarioId": "room-report",
       "role": "Housekeeping",
-      "situation": "Room 305 checklist, all done: bathroom, bed linen, towel change.",
+      "situation": "Room 305, status: complete. ✓ bathroom ✓ bed linen ✓ towel change.",
       "task": "Report on room 305 to your supervisor.",
       "answer": "i will clean room 305 now",
       "ky": {
@@ -946,7 +946,7 @@
       "id": 58,
       "scenarioId": "room-report",
       "role": "Housekeeping",
-      "situation": "Room 305 checklist, all done: bathroom, bed linen, towel change.",
+      "situation": "Room 305, status: complete. ✓ bathroom ✓ bed linen ✓ towel change.",
       "task": "Report on room 305 to your supervisor.",
       "answer": "room 305 finish. i clean bathroom, change bed and towel",
       "ky": {

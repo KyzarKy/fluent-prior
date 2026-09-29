@@ -187,7 +187,7 @@ export const SCENARIOS: Scenario[] = [
     id: "room-report",
     role: "housekeeping",
     audience: "coworker",
-    situation: "Room 305 checklist, all done: bathroom, bed linen, towel change.",
+    situation: "Room 305, status: complete. ✓ bathroom ✓ bed linen ✓ towel change.",
     task: "Report on room 305 to your supervisor.",
     taskType: "reporting-up",
     taskParts: ["Reports what was done in room 305"],
