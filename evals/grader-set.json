@@ -1,5 +1,5 @@
 {
-  "about": "Ky's hand grades for 20 answers, the yardstick for every grader and prompt change (ROADMAP v1.1). Each entry shows the scenario exactly as the learner saw it (role, situation, task), then their answer. For each answer, fill in taskMet (yes / partly / no) and list every mistake as { skill, quote }. Skill ids are in src/core/skills.ts. Answers are written the way phone dictation delivers them: little punctuation, no capital letters.",
+  "about": "Ky's hand grades: the yardstick for every grader and prompt change (ROADMAP v1.1). Each entry shows the scenario as the learner saw it, then their answer. ky.taskMet is yes / partly / no. Each mistake has the learner's words (quote), the fix, and a skill id from src/core/skills.ts. alsoAccept lists other skill ids that count as a match. A mistake with skill null fits no skill in the catalog; gap names what's missing.",
   "answers": [
     {
       "id": 1,
@@ -9,8 +9,14 @@
       "task": "Report it to your supervisor.",
       "answer": "this morning i find a broken lamp in room 214 i think somebody broke it yesterday",
       "ky": {
-        "taskMet": null,
-        "mistakes": []
+        "taskMet": "yes",
+        "mistakes": [
+          {
+            "skill": "past-irregular",
+            "quote": "i find",
+            "fix": "i found"
+          }
+        ]
       }
     },
     {
@@ -21,8 +27,25 @@
       "task": "Brief the next shift on room 118.",
       "answer": "the guest in room 118 call two times today about the air conditioning. maintenance visit at 4 pm and he say it works now",
       "ky": {
-        "taskMet": null,
-        "mistakes": []
+        "taskMet": "yes",
+        "mistakes": [
+          {
+            "skill": "past-regular",
+            "quote": "call",
+            "fix": "called"
+          },
+          {
+            "skill": "past-regular",
+            "quote": "visit",
+            "fix": "visited"
+          },
+          {
+            "skill": "past-irregular",
+            "quote": "he say",
+            "fix": "he said / he says",
+            "alsoAccept": ["third-person-s"]
+          }
+        ]
       }
     },
     {
@@ -33,7 +56,7 @@
       "task": "Get what you need from the guest.",
       "answer": "Could I please see your ID and a credit card for the reservation?",
       "ky": {
-        "taskMet": null,
+        "taskMet": "yes",
         "mistakes": []
       }
     },
@@ -45,7 +68,7 @@
       "task": "Explain the situation to the guest and suggest something to do in the meantime.",
       "answer": "i'm sorry your room is not ready yet check in is at 3 pm but you can leave your bags with us and have a coffee in the lobby",
       "ky": {
-        "taskMet": null,
+        "taskMet": "yes",
         "mistakes": []
       }
     },
@@ -57,8 +80,21 @@
       "task": "Explain the situation to the guest and suggest something to do in the meantime.",
       "answer": "room not ready. come back 3 o'clock",
       "ky": {
-        "taskMet": null,
-        "mistakes": []
+        "taskMet": "partly",
+        "mistakes": [
+          {
+            "skill": null,
+            "gap": "be verb (is/are) missing",
+            "quote": "room not ready",
+            "fix": "room is not ready"
+          },
+          {
+            "skill": "time-prepositions",
+            "quote": "come back 3 o'clock",
+            "fix": "come back at 3 o'clock"
+          }
+        ],
+        "note": "Doesn't suggest something to do, and isn't especially polite."
       }
     },
     {
@@ -69,8 +105,9 @@
       "task": "Help the guest get there.",
       "answer": "the pharmacy is two blocks from here go out of the hotel and turn left on main street it is on the right side",
       "ky": {
-        "taskMet": null,
-        "mistakes": []
+        "taskMet": "yes",
+        "mistakes": [],
+        "note": "Doesn't give the walking time, but the task was to help the guest get there. Inventing 'on the right side' is fine."
       }
     },
     {
@@ -81,8 +118,26 @@
       "task": "Help the guest get there.",
       "answer": "pharmacy is two block away you go left in main street",
       "ky": {
-        "taskMet": null,
-        "mistakes": []
+        "taskMet": "partly",
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "pharmacy is",
+            "fix": "the pharmacy is"
+          },
+          {
+            "skill": "plurals",
+            "quote": "two block",
+            "fix": "two blocks"
+          },
+          {
+            "skill": null,
+            "gap": "place prepositions",
+            "quote": "in main street",
+            "fix": "on main street"
+          }
+        ],
+        "note": "Walking time not required; tone isn't especially polite."
       }
     },
     {
@@ -93,8 +148,14 @@
       "task": "Arrange a better time for cleaning with the guest.",
       "answer": "no problem what time i can come back to clean your room",
       "ky": {
-        "taskMet": null,
-        "mistakes": []
+        "taskMet": "yes",
+        "mistakes": [
+          {
+            "skill": "question-forms",
+            "quote": "what time i can come back",
+            "fix": "what time can i come back"
+          }
+        ]
       }
     },
     {
@@ -105,7 +166,7 @@
       "task": "Arrange a better time for cleaning with the guest.",
       "answer": "of course sorry to bother you what time would be better for me to come back",
       "ky": {
-        "taskMet": null,
+        "taskMet": "yes",
         "mistakes": []
       }
     },
@@ -117,8 +178,14 @@
       "task": "Reassure the guest. Explain your next step and the kitchen's procedure.",
       "answer": "thank you for telling me i will tell the chef right away the kitchen use separate board for allergy orders so your food will be safe",
       "ky": {
-        "taskMet": null,
-        "mistakes": []
+        "taskMet": "yes",
+        "mistakes": [
+          {
+            "skill": "third-person-s",
+            "quote": "the kitchen use",
+            "fix": "the kitchen uses"
+          }
+        ]
       }
     },
     {
@@ -129,8 +196,16 @@
       "task": "Reassure the guest. Explain your next step and the kitchen's procedure.",
       "answer": "ok i tell the chef",
       "ky": {
-        "taskMet": null,
-        "mistakes": []
+        "taskMet": "partly",
+        "mistakes": [
+          {
+            "skill": null,
+            "gap": "future with will",
+            "quote": "i tell the chef",
+            "fix": "i will tell the chef"
+          }
+        ],
+        "note": "Doesn't explain the kitchen procedure or meaningfully reassure the guest."
       }
     },
     {
@@ -141,7 +216,7 @@
       "task": "Talk to the table and make it right.",
       "answer": "i am so sorry for the wait the kitchen is very busy tonight your food is coming in five minutes and i would like to bring you a free dessert",
       "ky": {
-        "taskMet": null,
+        "taskMet": "yes",
         "mistakes": []
       }
     },
@@ -153,8 +228,16 @@
       "task": "Talk to the table and make it right.",
       "answer": "the kitchen is busy you have to wait like everybody",
       "ky": {
-        "taskMet": null,
-        "mistakes": []
+        "taskMet": "no",
+        "mistakes": [
+          {
+            "skill": null,
+            "gap": "word choice",
+            "quote": "like everybody",
+            "fix": "like everybody else"
+          }
+        ],
+        "note": "Tone is rude."
       }
     },
     {
@@ -165,8 +248,25 @@
       "task": "Describe the dish to the guest.",
       "answer": "today special is grilled salmon it come with rice and vegetable",
       "ky": {
-        "taskMet": null,
-        "mistakes": []
+        "taskMet": "yes",
+        "mistakes": [
+          {
+            "skill": null,
+            "gap": "possessive 's",
+            "quote": "today special",
+            "fix": "today's special"
+          },
+          {
+            "skill": "third-person-s",
+            "quote": "it come",
+            "fix": "it comes"
+          },
+          {
+            "skill": "plurals",
+            "quote": "rice and vegetable",
+            "fix": "rice and vegetables"
+          }
+        ]
       }
     },
     {
@@ -177,8 +277,19 @@
       "task": "Let the head chef know, and get instructions for the servers.",
       "answer": "chef we run out of salmon at lunch what the servers should tell to the guests",
       "ky": {
-        "taskMet": null,
-        "mistakes": []
+        "taskMet": "yes",
+        "mistakes": [
+          {
+            "skill": "past-irregular",
+            "quote": "we run out",
+            "fix": "we ran out / we have run out"
+          },
+          {
+            "skill": "question-forms",
+            "quote": "what the servers should tell",
+            "fix": "what should the servers tell"
+          }
+        ]
       }
     },
     {
@@ -189,7 +300,7 @@
       "task": "Explain the end-of-shift routine.",
       "answer": "before you go home you have to clean your station label all the food and take out the trash",
       "ky": {
-        "taskMet": null,
+        "taskMet": "yes",
         "mistakes": []
       }
     },
@@ -201,8 +312,19 @@
       "task": "Get the information you need from a coworker.",
       "answer": "where i should put these boxes of vegetable",
       "ky": {
-        "taskMet": null,
-        "mistakes": []
+        "taskMet": "yes",
+        "mistakes": [
+          {
+            "skill": "question-forms",
+            "quote": "where i should put",
+            "fix": "where should i put"
+          },
+          {
+            "skill": "plurals",
+            "quote": "boxes of vegetable",
+            "fix": "boxes of vegetables"
+          }
+        ]
       }
     },
     {
@@ -213,7 +335,7 @@
       "task": "Respond to the guest and resolve the problem.",
       "answer": "i'm really sorry about the noise i can call the room next door or if you prefer we can move you to a quiet room on another floor",
       "ky": {
-        "taskMet": null,
+        "taskMet": "yes",
         "mistakes": []
       }
     },
@@ -225,8 +347,24 @@
       "task": "Report on room 305 to your supervisor.",
       "answer": "in room 305 i clean the bathroom change the sheet and replace the towels",
       "ky": {
-        "taskMet": null,
-        "mistakes": []
+        "taskMet": "yes",
+        "mistakes": [
+          {
+            "skill": "past-regular",
+            "quote": "i clean",
+            "fix": "i cleaned"
+          },
+          {
+            "skill": "past-regular",
+            "quote": "change the sheet",
+            "fix": "changed the sheet"
+          },
+          {
+            "skill": "past-regular",
+            "quote": "replace the towels",
+            "fix": "replaced the towels"
+          }
+        ]
       }
     },
     {
@@ -237,8 +375,9 @@
       "task": "Report on room 305 to your supervisor.",
       "answer": "can you tell me where the extra towels are kept",
       "ky": {
-        "taskMet": null,
-        "mistakes": []
+        "taskMet": "no",
+        "mistakes": [],
+        "note": "Asks a question instead of reporting on the room. Unrealistic: only an app bug would produce it."
       }
     }
   ]
