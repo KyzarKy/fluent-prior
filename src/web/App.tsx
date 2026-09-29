@@ -5,7 +5,8 @@
 import { useMemo, useState } from "react";
 import type { CapExceeded, Grade } from "../core/contract";
 import {
-  mastery,
+  dueRetries,
+  knowledge,
   nextScenario,
   type Observation,
   practiceCounts,
@@ -36,7 +37,7 @@ export type Status =
 function chooseNext(log: readonly Observation[], current?: Scenario): Scenario {
   const skip = recentScenarioIds(log, RECENT_TO_SKIP);
   if (current) skip.push(current.id);
-  return nextScenario(SCENARIOS, mastery(log), skip);
+  return nextScenario(SCENARIOS, knowledge(log), skip, dueRetries(log));
 }
 
 export function App() {
@@ -45,7 +46,7 @@ export function App() {
   const [answer, setAnswer] = useState("");
   const [status, setStatus] = useState<Status>({ kind: "answering" });
 
-  const knowledge = useMemo(() => mastery(log), [log]);
+  const current = useMemo(() => knowledge(log), [log]);
   const counts = useMemo(() => practiceCounts(log), [log]);
 
   function updateLog(next: Observation[]) {
@@ -62,12 +63,7 @@ export function App() {
       sessionId: SESSION_ID,
     });
     if (result.kind === "graded") {
-      const observations = toObservations(
-        result.grade,
-        scenario.id,
-        "app",
-        new Date().toISOString(),
-      );
+      const observations = toObservations(result.grade, scenario, "app", new Date().toISOString());
       updateLog([...log, ...observations]);
       setStatus({ kind: "graded", grade: result.grade });
     } else if (result.kind === "capped") {
@@ -108,7 +104,7 @@ export function App() {
         />
         {status.kind === "graded" && <FeedbackCard grade={status.grade} />}
         <StatusMessage status={status} />
-        <MasteryPanel mastery={knowledge} counts={counts} onReset={resetProgress} />
+        <MasteryPanel mastery={current.skills} counts={counts.skills} onReset={resetProgress} />
       </main>
     </div>
   );

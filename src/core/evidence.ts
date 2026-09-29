@@ -24,6 +24,14 @@ export function paramsFor(skill: Skill, source: Source, base: BktParams = BASE_P
   };
 }
 
+/**
+ * Tone evidence is weak in both directions (ADR 0006): dictation keeps the words but loses
+ * the voice that carries most of politeness, and graders disagree about tone more than
+ * about grammar. A polite answer counts 2x toward "knows the right tone", a rude one 3x
+ * against, compared with 4.5x and 8x for a clear grammar skill.
+ */
+export const TONE_PARAMS: BktParams = { ...BASE_PARAMS, slip: 0.2, guess: 0.4 };
+
 /** How many times more likely each outcome is under one hypothesis than the other. */
 export function likelihoodRatios(params: BktParams): { correct: number; error: number } {
   return {

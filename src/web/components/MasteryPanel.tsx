@@ -2,11 +2,10 @@
 // because a correct answer counts for less when dictation may have filled it in (ADR 0002).
 
 import { useState } from "react";
-import type { Mastery } from "../../core/learner";
 import { SKILL_IDS, SKILLS, type SkillId } from "../../core/skills";
 
 interface Props {
-  mastery: Mastery;
+  mastery: Record<SkillId, number>;
   counts: Record<SkillId, number>;
   onReset: () => void;
 }
