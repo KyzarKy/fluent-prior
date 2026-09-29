@@ -83,7 +83,6 @@ export const SCENARIOS: Scenario[] = [
     task: "Arrange a better time for cleaning with the guest.",
     taskType: "requests",
     taskParts: [
-      "Accepts that the guest doesn't want cleaning now",
       "Arranges a time to clean: asks the guest for one, or proposes one",
     ],
     targetSkills: ["question-forms", "time-prepositions"],

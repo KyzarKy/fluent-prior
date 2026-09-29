@@ -63,7 +63,7 @@ never a mistake, and it's never part of `taskMet`.
 | pharmacy-directions | Guest information | Gives directions a guest could follow |
 | todays-special | Guest information | Names the dish · Mentions the sides |
 | peanut-allergy | Guest information | Reassures the guest · Says what they'll do next · Explains the kitchen's allergy procedure |
-| come-back-later | Requests | Accepts the guest's wish · Arranges a time (asks for one or proposes one) |
+| come-back-later | Requests | Arranges a new time (asks for one or proposes one) |
 | check-in-id | Requests | Asks for photo ID · Asks for a credit card |
 | delivery-question | Requests | Asks where the delivery goes |
 | broken-lamp | Reporting up | Says what's broken and where · Says when it was noticed |
