@@ -71,7 +71,7 @@
       "scenarioId": "early-arrival",
       "role": "Front desk",
       "situation": "Guest at the desk. Time now: 11:00 a.m. Check-in time: 3:00 p.m. Room status: not ready.",
-      "task": "Explain the situation to the guest and suggest something to do in the meantime.",
+      "task": "Explain the situation to the guest and suggest a way for them to spend the wait.",
       "answer": "i'm sorry your room is not ready yet check in is at 3 pm but you can leave your bags with us and have a coffee in the lobby",
       "ky": {
         "taskMet": "yes",
@@ -85,7 +85,7 @@
       "scenarioId": "early-arrival",
       "role": "Front desk",
       "situation": "Guest at the desk. Time now: 11:00 a.m. Check-in time: 3:00 p.m. Room status: not ready.",
-      "task": "Explain the situation to the guest and suggest something to do in the meantime.",
+      "task": "Explain the situation to the guest and suggest a way for them to spend the wait.",
       "answer": "room not ready. come back 3 o'clock",
       "ky": {
         "taskMet": "partly",
@@ -191,7 +191,7 @@
       "scenarioId": "peanut-allergy",
       "role": "Front of house",
       "situation": "Table 6, ordering. Guest's note: peanut allergy. Kitchen procedure for allergies: separate cutting board, chef checks every plate.",
-      "task": "Reassure the guest. Explain your next step and the kitchen's procedure.",
+      "task": "Reassure the guest by explaining your next step and the kitchen's procedure.",
       "answer": "thank you for telling me i will tell the chef right away the kitchen use separate board for allergy orders so your food will be safe",
       "ky": {
         "taskMet": "yes",
@@ -217,7 +217,7 @@
       "scenarioId": "peanut-allergy",
       "role": "Front of house",
       "situation": "Table 6, ordering. Guest's note: peanut allergy. Kitchen procedure for allergies: separate cutting board, chef checks every plate.",
-      "task": "Reassure the guest. Explain your next step and the kitchen's procedure.",
+      "task": "Reassure the guest by explaining your next step and the kitchen's procedure.",
       "answer": "ok i tell the chef",
       "ky": {
         "taskMet": "partly",
@@ -238,7 +238,7 @@
       "scenarioId": "slow-food",
       "role": "Front of house",
       "situation": "Table 12. Order time: 7:05 p.m. Time now: 7:45 p.m. No food yet. The guests look unhappy. Kitchen status: very busy, food ready in about 5 minutes.",
-      "task": "Talk to the table and make it right.",
+      "task": "Talk to the table: give them an update, and offer something for their trouble.",
       "answer": "i am so sorry for the wait the kitchen is very busy tonight your food is coming in five minutes and i would like to bring you a free dessert",
       "ky": {
         "taskMet": "yes",
@@ -252,7 +252,7 @@
       "scenarioId": "slow-food",
       "role": "Front of house",
       "situation": "Table 12. Order time: 7:05 p.m. Time now: 7:45 p.m. No food yet. The guests look unhappy. Kitchen status: very busy, food ready in about 5 minutes.",
-      "task": "Talk to the table and make it right.",
+      "task": "Talk to the table: give them an update, and offer something for their trouble.",
       "answer": "the kitchen is busy you have to wait like everybody",
       "ky": {
         "taskMet": "no",
@@ -429,7 +429,7 @@
       "scenarioId": "early-arrival",
       "role": "Front desk",
       "situation": "Guest at the desk. Time now: 11:00 a.m. Check-in time: 3:00 p.m. Room status: not ready.",
-      "task": "Explain the situation to the guest and suggest something to do in the meantime.",
+      "task": "Explain the situation to the guest and suggest a way for them to spend the wait.",
       "answer": "i'm sorry your room isn't ready until 3 pm. you can wait hear in the lobby or leave your bags with us for a few hours",
       "ky": {
         "taskMet": null,
@@ -443,7 +443,7 @@
       "scenarioId": "early-arrival",
       "role": "Front desk",
       "situation": "Guest at the desk. Time now: 11:00 a.m. Check-in time: 3:00 p.m. Room status: not ready.",
-      "task": "Explain the situation to the guest and suggest something to do in the meantime.",
+      "task": "Explain the situation to the guest and suggest a way for them to spend the wait.",
       "answer": "your room is not ready. you wait in the lobby and come back on 3 pm",
       "ky": {
         "taskMet": null,
@@ -569,7 +569,7 @@
       "scenarioId": "peanut-allergy",
       "role": "Front of house",
       "situation": "Table 6, ordering. Guest's note: peanut allergy. Kitchen procedure for allergies: separate cutting board, chef checks every plate.",
-      "task": "Reassure the guest. Explain your next step and the kitchen's procedure.",
+      "task": "Reassure the guest by explaining your next step and the kitchen's procedure.",
       "answer": "don't worry, i'll tell the kitchen right now. they use a separate cutting board for allergies and the chef checks every plate before it goes out",
       "ky": {
         "taskMet": null,
@@ -583,7 +583,7 @@
       "scenarioId": "peanut-allergy",
       "role": "Front of house",
       "situation": "Table 6, ordering. Guest's note: peanut allergy. Kitchen procedure for allergies: separate cutting board, chef checks every plate.",
-      "task": "Reassure the guest. Explain your next step and the kitchen's procedure.",
+      "task": "Reassure the guest by explaining your next step and the kitchen's procedure.",
       "answer": "ok no peanuts. i tell the chef, he control your plate",
       "ky": {
         "taskMet": null,
@@ -597,7 +597,7 @@
       "scenarioId": "peanut-allergy",
       "role": "Front of house",
       "situation": "Table 6, ordering. Guest's note: peanut allergy. Kitchen procedure for allergies: separate cutting board, chef checks every plate.",
-      "task": "Reassure the guest. Explain your next step and the kitchen's procedure.",
+      "task": "Reassure the guest by explaining your next step and the kitchen's procedure.",
       "answer": "thank you for telling me. i will inform the chef, he use a separate board and he checks each plate",
       "ky": {
         "taskMet": null,
@@ -611,7 +611,7 @@
       "scenarioId": "peanut-allergy",
       "role": "Front of house",
       "situation": "Table 6, ordering. Guest's note: peanut allergy. Kitchen procedure for allergies: separate cutting board, chef checks every plate.",
-      "task": "Reassure the guest. Explain your next step and the kitchen's procedure.",
+      "task": "Reassure the guest by explaining your next step and the kitchen's procedure.",
       "answer": "you must to tell us before you order next time",
       "ky": {
         "taskMet": null,
@@ -625,7 +625,7 @@
       "scenarioId": "slow-food",
       "role": "Front of house",
       "situation": "Table 12. Order time: 7:05 p.m. Time now: 7:45 p.m. No food yet. The guests look unhappy. Kitchen status: very busy, food ready in about 5 minutes.",
-      "task": "Talk to the table and make it right.",
+      "task": "Talk to the table: give them an update, and offer something for their trouble.",
       "answer": "excuse me for the wait, the kitchen is very busy. your food come in five minute",
       "ky": {
         "taskMet": null,
@@ -639,7 +639,7 @@
       "scenarioId": "slow-food",
       "role": "Front of house",
       "situation": "Table 12. Order time: 7:05 p.m. Time now: 7:45 p.m. No food yet. The guests look unhappy. Kitchen status: very busy, food ready in about 5 minutes.",
-      "task": "Talk to the table and make it right.",
+      "task": "Talk to the table: give them an update, and offer something for their trouble.",
       "answer": "i'm so sorry about the wait, the kitchen is really busy tonight",
       "ky": {
         "taskMet": null,
@@ -653,7 +653,7 @@
       "scenarioId": "slow-food",
       "role": "Front of house",
       "situation": "Table 12. Order time: 7:05 p.m. Time now: 7:45 p.m. No food yet. The guests look unhappy. Kitchen status: very busy, food ready in about 5 minutes.",
-      "task": "Talk to the table and make it right.",
+      "task": "Talk to the table: give them an update, and offer something for their trouble.",
       "answer": "i apologize the delay, the kitchen are busy",
       "ky": {
         "taskMet": null,
@@ -667,7 +667,7 @@
       "scenarioId": "slow-food",
       "role": "Front of house",
       "situation": "Table 12. Order time: 7:05 p.m. Time now: 7:45 p.m. No food yet. The guests look unhappy. Kitchen status: very busy, food ready in about 5 minutes.",
-      "task": "Talk to the table and make it right.",
+      "task": "Talk to the table: give them an update, and offer something for their trouble.",
       "answer": "i'm really sorry for the weight, your food will be here in five minutes. can i get you something to drink while you wait, its on the house",
       "ky": {
         "taskMet": null,

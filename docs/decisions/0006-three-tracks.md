@@ -53,16 +53,18 @@ never a mistake, and it's never part of `taskMet`.
   coworker, neutral is fine. How tone feeds the learner model is designed with the checklist
   code, weighted low because dictation loses the voice that carries most of politeness.
 
-## Proposed task types and checklists
+## Task types and checklists
+
+The lines as of 2026-09-29. `src/core/scenarios.ts` is the source of truth.
 
 | Scenario | Task type | Parts of a complete answer |
 |---|---|---|
-| early-arrival | Guest problems | Explains the room isn't ready or when it will be · Suggests something to do meanwhile |
-| slow-food | Guest problems | Gives an update (food in about 5 minutes) · Offers something to make it right |
+| early-arrival | Guest problems | Explains the room isn't ready or when it will be · Suggests an additional activity to pass the time until the room is ready |
+| slow-food | Guest problems | Tells the guests when their food will arrive · Offers something extra, beyond an apology, to make up for the wait |
 | noisy-room | Guest problems | Offers a solution (call next door, or move rooms) |
 | pharmacy-directions | Guest information | Gives directions a guest could follow |
 | todays-special | Guest information | Names the dish · Mentions the sides |
-| peanut-allergy | Guest information | Reassures the guest · Says what they'll do next · Explains the kitchen's allergy procedure |
+| peanut-allergy | Guest information | Says what they'll do next about the allergy · Explains how the kitchen keeps the guest's food free of peanuts |
 | come-back-later | Requests | Arranges a new time (asks for one or proposes one) |
 | check-in-id | Requests | Asks for photo ID · Asks for a credit card |
 | delivery-question | Requests | Asks where the delivery goes |
@@ -78,6 +80,35 @@ Settled in review:
   would mark a learner incomplete for something they weren't asked to do. An apology counts
   toward tone instead.
 - **One-part checklists are fine.** Those scenarios can only be yes or no.
+
+## How to write checklist lines
+
+Added 2026-09-29, after the grader counted "come back 3 o'clock" as suggesting something to
+do while waiting, and failed an answer that named the separate cutting board but not the
+chef's check.
+
+1. **Describe the listener's need, not a loose action.** "Suggests something the guest can
+   do" is met by "come back at 3". "Suggests an additional activity to pass the time" says
+   what the guest needs, and "come back later" doesn't meet it.
+2. **Parts don't overlap.** One piece of an answer should satisfy at most one part.
+   "Additional" does this for early-arrival: part 2 has to add something beyond part 1. The
+   old peanut-allergy list had "Reassures the guest" beside "Explains the procedure", and
+   explaining the procedure is the reassurance, so reassurance is no longer a part.
+3. **Name a category, never example answers.** "An activity to pass the time" is a
+   category; "coffee in the lobby" would be fitting the checklist to one answer.
+4. **List a detail only if every complete answer must include it.** The grader reads a list
+   as a requirement: "(separate cutting board, chef checks the plates)" failed an answer
+   that gave only the board.
+5. **The task text and the checklist mean the same thing.** The checklist can be more
+   explicit, but it can't require more than the task asks; otherwise it grades a hidden
+   expectation. Tighten the task text to match, without modeling the scenario's target
+   grammar: early-arrival's task says "spend the wait", not "until the room is ready",
+   which would hand the learner "is" in a scenario that grades be-verbs.
+
+Test each new line two ways: the laziest answer that matches its words without meeting the
+need should fail, and a borderline good answer should pass. Then grade the answer key's
+entries for that scenario, before and after, so a fix for one answer can't quietly break
+another.
 
 ## Consequences
 

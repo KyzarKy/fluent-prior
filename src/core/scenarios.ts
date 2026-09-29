@@ -43,11 +43,11 @@ export const SCENARIOS: Scenario[] = [
     audience: "guest",
     situation:
       "Guest at the desk. Time now: 11:00 a.m. Check-in time: 3:00 p.m. Room status: not ready.",
-    task: "Explain the situation to the guest and suggest something to do in the meantime.",
+    task: "Explain the situation to the guest and suggest a way for them to spend the wait.",
     taskType: "guest-problems",
     taskParts: [
       "Explains that the room isn't ready, or when it will be",
-      "Suggests something the guest can do in the meantime",
+      "Suggests an additional activity to pass the time until the room is ready",
     ],
     targetSkills: ["be-verbs", "time-prepositions"],
   },
@@ -82,9 +82,7 @@ export const SCENARIOS: Scenario[] = [
     situation: 'Room 409, cleaning time. The guest opens the door: "Not now, please."',
     task: "Arrange a better time for cleaning with the guest.",
     taskType: "requests",
-    taskParts: [
-      "Arranges a time to clean: asks the guest for one, or proposes one",
-    ],
+    taskParts: ["Arranges a time to clean: asks the guest for one, or proposes one"],
     targetSkills: ["question-forms", "time-prepositions"],
   },
   {
@@ -93,12 +91,11 @@ export const SCENARIOS: Scenario[] = [
     audience: "guest",
     situation:
       "Table 6, ordering. Guest's note: peanut allergy. Kitchen procedure for allergies: separate cutting board, chef checks every plate.",
-    task: "Reassure the guest. Explain your next step and the kitchen's procedure.",
+    task: "Reassure the guest by explaining your next step and the kitchen's procedure.",
     taskType: "guest-information",
     taskParts: [
-      "Reassures the guest",
-      "Says what they will do next (tell the chef or the kitchen)",
-      "Explains the kitchen's allergy procedure (separate cutting board, chef checks the plates)",
+      "Says what they will do next about the allergy",
+      "Explains how the kitchen keeps the guest's food free of peanuts",
     ],
     targetSkills: ["future-forms", "third-person-s", "modal-verbs"],
   },
@@ -108,11 +105,11 @@ export const SCENARIOS: Scenario[] = [
     audience: "guest",
     situation:
       "Table 12. Order time: 7:05 p.m. Time now: 7:45 p.m. No food yet. The guests look unhappy. Kitchen status: very busy, food ready in about 5 minutes.",
-    task: "Talk to the table and make it right.",
+    task: "Talk to the table: give them an update, and offer something for their trouble.",
     taskType: "guest-problems",
     taskParts: [
-      "Gives an update on the food (ready in about 5 minutes)",
-      "Offers something to make up for the wait",
+      "Tells the guests when their food will arrive",
+      "Offers something extra, beyond an apology, to make up for the wait",
     ],
     targetSkills: ["future-forms", "be-verbs"],
   },
