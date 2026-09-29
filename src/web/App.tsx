@@ -48,6 +48,8 @@ export function App() {
 
   const current = useMemo(() => knowledge(log), [log]);
   const counts = useMemo(() => practiceCounts(log), [log]);
+  // Checked against the log as it was when the scenario was chosen; answering it clears it.
+  const [retry, setRetry] = useState(() => dueRetries(log).includes(scenario.id));
 
   function updateLog(next: Observation[]) {
     setLog(next);
@@ -74,7 +76,9 @@ export function App() {
   }
 
   function next() {
-    setScenario(chooseNext(log, scenario));
+    const chosen = chooseNext(log, scenario);
+    setScenario(chosen);
+    setRetry(dueRetries(log).includes(chosen.id));
     setAnswer("");
     setStatus({ kind: "answering" });
   }
@@ -82,6 +86,7 @@ export function App() {
   function resetProgress() {
     updateLog([]);
     setScenario(chooseNext([]));
+    setRetry(false);
     setAnswer("");
     setStatus({ kind: "answering" });
   }
@@ -94,7 +99,7 @@ export function App() {
       </header>
 
       <main className="flex flex-col gap-5">
-        <ScenarioCard scenario={scenario} />
+        <ScenarioCard scenario={scenario} retry={retry} />
         <AnswerForm
           answer={answer}
           onChange={setAnswer}
@@ -102,9 +107,9 @@ export function App() {
           onNext={next}
           status={status}
         />
-        {status.kind === "graded" && <FeedbackCard grade={status.grade} />}
+        {status.kind === "graded" && <FeedbackCard grade={status.grade} scenario={scenario} />}
         <StatusMessage status={status} />
-        <MasteryPanel mastery={current.skills} counts={counts.skills} onReset={resetProgress} />
+        <MasteryPanel knowledge={current} counts={counts} onReset={resetProgress} />
       </main>
     </div>
   );
