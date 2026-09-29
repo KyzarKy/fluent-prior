@@ -65,7 +65,7 @@ export const SCENARIOS: Scenario[] = [
     situation:
       "Table 6, ordering. Guest's note: peanut allergy. Kitchen procedure for allergies: separate cutting board, chef checks every plate.",
     task: "Reassure the guest. Explain your next step and the kitchen's procedure.",
-    targetSkills: ["future-forms", "third-person-s", "obligation"],
+    targetSkills: ["future-forms", "third-person-s", "modal-verbs"],
   },
   {
     id: "slow-food",
@@ -97,7 +97,7 @@ export const SCENARIOS: Scenario[] = [
     situation:
       "A new coworker, first day, asks about the end of the shift. Checklist: station clean-down, labels on all stored food, trash out.",
     task: "Explain the end-of-shift routine.",
-    targetSkills: ["obligation", "plurals"],
+    targetSkills: ["modal-verbs", "plurals"],
   },
   {
     id: "delivery-question",

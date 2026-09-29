@@ -13,7 +13,7 @@ export const SKILL_IDS = [
   "articles",
   "plurals",
   "possessive-s",
-  "obligation",
+  "modal-verbs",
   "time-prepositions",
   "place-prepositions",
 ] as const;
@@ -93,10 +93,11 @@ export const SKILLS: Record<SkillId, Skill> = {
     description: "Plural nouns: two towels, the sheets, some guests.",
     audibility: "faint",
   },
-  obligation: {
-    id: "obligation",
-    name: "Must, have to, should",
-    description: "Rules and advice: you have to, you must, you should.",
+  "modal-verbs": {
+    id: "modal-verbs",
+    name: "Can, could, must, should",
+    description:
+      "Modal verbs and have to, followed by a plain verb: could you help, you must tell, you have to clean. Not 'must to tell' or 'can you helping'.",
     audibility: "clear",
   },
   "time-prepositions": {

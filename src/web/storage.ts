@@ -31,6 +31,9 @@ const LegacyObservation = StoredObservation.omit({ outcome: true })
 
 const StoredLog = z.array(z.union([StoredObservation, LegacyObservation]));
 
+/** Skills renamed in the catalog, old id to new (ADR 0006). */
+const RENAMED_SKILLS: Record<string, SkillId> = { obligation: "modal-verbs" };
+
 function isCurrentSkill<T extends { skill: string }>(entry: T): entry is T & { skill: SkillId } {
   return KNOWN_SKILLS.has(entry.skill);
 }
@@ -40,7 +43,10 @@ export function loadLog(): Observation[] {
     const raw = localStorage.getItem(LOG_KEY);
     if (!raw) return [];
     const parsed = StoredLog.safeParse(JSON.parse(raw));
-    return parsed.success ? parsed.data.filter(isCurrentSkill) : [];
+    if (!parsed.success) return [];
+    return parsed.data
+      .map((entry) => ({ ...entry, skill: RENAMED_SKILLS[entry.skill] ?? entry.skill }))
+      .filter(isCurrentSkill);
   } catch {
     return [];
   }

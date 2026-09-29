@@ -1,7 +1,7 @@
 # 0006. Three separate tracks: grammar, task completion, tone
 
-**Status:** 2026-09-29. Accepted: the three tracks, the skill removals, the tone scale.
-Proposed, for Ky's review before code: the task checklists and task types below.
+**Status:** accepted, 2026-09-29, including the checklists and task types below (reviewed
+by Ky the same day).
 
 ## Context
 
@@ -19,12 +19,16 @@ and skills are grammar only. The four non-grammar skills are removed:
 | Removed skill | Now |
 |---|---|
 | `register` | The tone track (3) |
-| `polite-requests` | The tone track. Its grammar, question word order, stays in `question-forms` |
-| `apologizing` | A task-checklist part, in scenarios where the task calls for it |
+| `polite-requests` | The tone track. Its grammar stays: word order in `question-forms`, and "could you help", not "could you to help", in `modal-verbs` |
+| `apologizing` | The tone track: an apology is one of the things that makes an answer polite |
 | `workplace-vocabulary` | The tutor's word log (ROADMAP), with word choice |
 
-Saved logs keep working: entries for removed skills are dropped on load; the rest of the
-learner's history stays.
+`obligation` is renamed `modal-verbs` and widened from must, have to and should to every
+modal verb, because "could you to help" is the same rule as "must to tell" and would
+otherwise go untracked once `polite-requests` is gone.
+
+Saved logs keep working: entries for removed skills are dropped on load, renamed skills are
+mapped to their new id, and the rest of the learner's history stays.
 
 **2. Task completion.** `taskMet` means completeness only.
 
@@ -54,8 +58,8 @@ never a mistake, and it's never part of `taskMet`.
 | Scenario | Task type | Parts of a complete answer |
 |---|---|---|
 | early-arrival | Guest problems | Explains the room isn't ready or when it will be · Suggests something to do meanwhile |
-| slow-food | Guest problems | Apologizes or acknowledges the wait · Gives an update (food in about 5 minutes) · Offers something to make it right |
-| noisy-room | Guest problems | Apologizes or acknowledges the problem · Offers a solution (call next door, or move rooms) |
+| slow-food | Guest problems | Gives an update (food in about 5 minutes) · Offers something to make it right |
+| noisy-room | Guest problems | Offers a solution (call next door, or move rooms) |
 | pharmacy-directions | Guest information | Gives directions a guest could follow |
 | todays-special | Guest information | Names the dish · Mentions the sides |
 | peanut-allergy | Guest information | Reassures the guest · Says what they'll do next · Explains the kitchen's allergy procedure |
@@ -68,12 +72,12 @@ never a mistake, and it's never part of `taskMet`.
 | end-of-shift | Briefing coworkers | Clean the station · Label stored food · Take out the trash |
 | shift-handoff | Briefing coworkers | The guest's calls about the air conditioning · The maintenance visit and fix |
 
-Two things to check in review:
+Settled in review:
 
-- **Apologizing is a required part in two guest-problem scenarios.** The task text doesn't
-  say "apologize", so a learner who solves the problem without one would get partly. The
-  alternative is making apology part of tone instead.
-- **One-part checklists** (pharmacy, delivery, room report) can only produce yes or no.
+- **Apologizing isn't a checklist part.** The task text never asks for one, so requiring it
+  would mark a learner incomplete for something they weren't asked to do. An apology counts
+  toward tone instead.
+- **One-part checklists are fine.** Those scenarios can only be yes or no.
 
 ## Consequences
 
