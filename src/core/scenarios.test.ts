@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { SCENARIOS } from "./scenarios";
 import { SKILL_IDS } from "./skills";
+import { TASK_TYPES } from "./tasks";
 
 describe("the scenario pack", () => {
   it("targets every skill at least once, so the learner model can choose to practice it", () => {
@@ -11,5 +12,14 @@ describe("the scenario pack", () => {
   it("has unique ids", () => {
     const ids = SCENARIOS.map((scenario) => scenario.id);
     expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it("gives every scenario at least one checklist part", () => {
+    expect(SCENARIOS.filter((scenario) => scenario.taskParts.length === 0)).toEqual([]);
+  });
+
+  it("uses every task type, so each task-type track can be practiced", () => {
+    const used = new Set(SCENARIOS.map((scenario) => scenario.taskType));
+    expect(TASK_TYPES.filter((type) => !used.has(type))).toEqual([]);
   });
 });
