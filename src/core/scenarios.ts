@@ -35,7 +35,7 @@ export const SCENARIOS: Scenario[] = [
     situation:
       "Guest at the desk. Time now: 11:00 a.m. Check-in time: 3:00 p.m. Room status: not ready.",
     task: "Explain the situation to the guest and suggest something to do in the meantime.",
-    targetSkills: ["polite-requests", "time-prepositions", "register"],
+    targetSkills: ["polite-requests", "be-verbs", "time-prepositions", "register"],
   },
   {
     id: "pharmacy-directions",
@@ -43,7 +43,7 @@ export const SCENARIOS: Scenario[] = [
     situation:
       "A guest needs a pharmacy. Nearest one: exit the hotel, turn left, Main Street, about five minutes on foot.",
     task: "Help the guest get there.",
-    targetSkills: ["articles", "register", "workplace-vocabulary"],
+    targetSkills: ["place-prepositions", "articles", "register"],
   },
   {
     id: "broken-lamp",
@@ -65,7 +65,7 @@ export const SCENARIOS: Scenario[] = [
     situation:
       "Table 6, ordering. Guest's note: peanut allergy. Kitchen procedure for allergies: separate cutting board, chef checks every plate.",
     task: "Reassure the guest. Explain your next step and the kitchen's procedure.",
-    targetSkills: ["third-person-s", "workplace-vocabulary", "obligation"],
+    targetSkills: ["future-forms", "third-person-s", "workplace-vocabulary", "obligation"],
   },
   {
     id: "slow-food",
@@ -73,7 +73,7 @@ export const SCENARIOS: Scenario[] = [
     situation:
       "Table 12. Order time: 7:05 p.m. Time now: 7:45 p.m. No food yet. The guests look unhappy. Kitchen status: very busy, food ready in about 5 minutes.",
     task: "Talk to the table and make it right.",
-    targetSkills: ["apologizing", "register", "third-person-s"],
+    targetSkills: ["apologizing", "register", "future-forms"],
   },
   {
     id: "todays-special",
@@ -81,7 +81,7 @@ export const SCENARIOS: Scenario[] = [
     situation:
       "Menu board, today's special: grilled salmon. Sides: rice, seasonal veg. A guest asks about the special.",
     task: "Describe the dish to the guest.",
-    targetSkills: ["third-person-s", "plurals", "articles"],
+    targetSkills: ["third-person-s", "plurals", "articles", "possessive-s"],
   },
   {
     id: "ran-out-of-salmon",
@@ -104,7 +104,7 @@ export const SCENARIOS: Scenario[] = [
     role: "food-prep",
     situation: "Delivery at the back door: fresh produce, six cartons. Storage location: unknown.",
     task: "Get the information you need from a coworker.",
-    targetSkills: ["question-forms", "plurals", "articles"],
+    targetSkills: ["question-forms", "place-prepositions", "plurals"],
   },
   {
     id: "shift-handoff",
@@ -112,7 +112,7 @@ export const SCENARIOS: Scenario[] = [
     situation:
       "Log for room 118. 10:15 a.m.: guest phone call, air conditioning too warm. 1:30 p.m.: guest phone call, same problem. 4:00 p.m.: maintenance visit, problem fixed.",
     task: "Brief the next shift on room 118.",
-    targetSkills: ["past-regular", "time-prepositions", "third-person-s"],
+    targetSkills: ["past-regular", "be-verbs", "time-prepositions", "third-person-s"],
   },
   {
     id: "noisy-room",
@@ -120,7 +120,7 @@ export const SCENARIOS: Scenario[] = [
     situation:
       "Phone call from room 402. Complaint: loud music next door. Available: a quiet room on the 6th floor.",
     task: "Respond to the guest and resolve the problem.",
-    targetSkills: ["apologizing", "polite-requests", "obligation"],
+    targetSkills: ["apologizing", "future-forms", "polite-requests"],
   },
   {
     id: "room-report",

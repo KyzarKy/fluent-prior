@@ -86,6 +86,35 @@ A mixed answer is weak evidence either way. On a faint skill it still leans clea
 not known, because a visible error is strong evidence there and a correct form is weak.
 Stored logs from before this amendment read `correct: true/false` as `right`/`wrong`.
 
+## Amendment, 2026-09-29: four more skills
+
+Ky's grades on the first 20 eval answers found 23 mistakes, and 5 fit none of the 12 skills.
+Four of them become skills; word choice stays out of the catalog for now (see below).
+
+| Skill | Example from the eval | Why it's faint |
+|---|---|---|
+| `be-verbs` (is, are, was) | "room not ready" → "room is not ready" | Usually unstressed or contracted: "the room's ready", "we're checking" |
+| `future-forms` | "i tell the chef" → "i will tell the chef" | The common form is the contraction "I'll", easily heard as "I" |
+| `possessive-s` | "today special" → "today's special" | A single short /s/ or /z/ sound |
+| `place-prepositions` (at, on, in) | "in main street" → "on main street" | Short, unstressed words |
+
+Consequences:
+
+- **Faint is decided per skill, not per form.** "I'm going to" is clearly audible, but
+  `future-forms` is faint because its most common form, "I'll", isn't. Clearly audible
+  errors in a faint skill count for a little less than they should.
+- **Possessives are only sometimes audible.** "Today special" versus "today's special" can
+  be heard. "Chefs special" versus "chef's special" can't: that's apostrophe spelling,
+  which the phone chooses, and it's never graded (ADR 0001).
+- **Place prepositions vary by dialect.** "In Main Street" is standard British English,
+  where American English says "on". Which variety the app teaches is open.
+- Every skill must be targeted by at least one scenario, or the learner model can never
+  choose to practice it. `scenarios.test.ts` enforces this.
+- Existing logs are unaffected: new skills start at the prior.
+
+**Word choice is open.** It's not one skill a learner knows or doesn't; it's thousands of
+separate words and phrases. Where it belongs in the model is under discussion.
+
 ## Why
 
 - Deriving the faint parameters from one `keep` rate means the adjustment has a physical

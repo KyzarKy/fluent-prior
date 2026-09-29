@@ -10,10 +10,14 @@ export const SKILL_IDS = [
   "past-irregular",
   "past-regular",
   "third-person-s",
+  "be-verbs",
+  "future-forms",
   "articles",
   "plurals",
+  "possessive-s",
   "obligation",
   "time-prepositions",
+  "place-prepositions",
   "workplace-vocabulary",
   "register",
 ] as const;
@@ -66,6 +70,31 @@ export const SKILLS: Record<SkillId, Skill> = {
     id: "third-person-s",
     name: "He/she/it verbs (-s)",
     description: "The -s on present-tense verbs after he, she, it: 'the chef checks'.",
+    audibility: "faint",
+  },
+  "be-verbs": {
+    id: "be-verbs",
+    name: "Is, are, was",
+    description:
+      "Forms of be, as a main verb or a helper: the room is ready, we are checking, it was broken.",
+    audibility: "faint",
+  },
+  "future-forms": {
+    id: "future-forms",
+    name: "Talking about the future",
+    description: "Plans and promises: I'll call, I'm going to check, we're sending someone.",
+    audibility: "faint",
+  },
+  "possessive-s": {
+    id: "possessive-s",
+    name: "Possessive 's",
+    description: "Belonging, said with 's: today's special, the guest's bag.",
+    audibility: "faint",
+  },
+  "place-prepositions": {
+    id: "place-prepositions",
+    name: "At, on, in for places",
+    description: "Prepositions of place and direction: on Main Street, at the desk, in room 214.",
     audibility: "faint",
   },
   articles: {
