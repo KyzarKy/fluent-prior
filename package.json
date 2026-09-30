@@ -14,7 +14,8 @@
     "lint": "biome check .",
     "format": "biome check --write .",
     "test": "vitest run",
-    "verify": "npm run typecheck && npm run lint && npm run test && npm run build"
+    "verify": "npm run typecheck && npm run lint && npm run test && npm run build",
+    "eval": "tsx --env-file-if-exists=.env evals/score.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.128.0",
