@@ -1,5 +1,5 @@
 {
-  "about": "Ky's answer key: the yardstick for every grader and prompt change (ROADMAP v1.1). Each entry shows the scenario as the learner saw it, then their answer. Every answer is an honest attempt by a learner who has read the situation, and fails only through language: grammar, missing words, telegraphic phrasing, a part left out because it's hard to say, a tone that comes out too direct, or dictation. A 'no' is an attempt that's roughly on target but gets none of the required parts across because the learner lacks the words or grammar. Answers never fail from not knowing, forgetting or misreading the facts on screen, and never from refusing the task. ky.taskMet (yes / partly / no) is completeness only. ky.tone is polite / neutral / rude (too direct counts as rude). ky.mistakes are grammar only, each with the learner's words (quote), the fix, and a skill id from src/core/skills.ts; alsoAccept lists other skill ids that count as a match. ky.wordChoice lists phrasing that sounds off without breaking a grammar rule: logged for a tutor, never penalized. American English (ADR 0005). Prompt-injection tests live in security-set.json.",
+  "about": "Ky's answer key: the yardstick for every grader and prompt change (ROADMAP v1.1). Each entry shows the scenario as the learner saw it, then their answer. Every answer is an honest attempt by a learner who has read the situation, and fails only through language: grammar, missing words, telegraphic phrasing, a part left out because it's hard to say, a tone that comes out too direct, or dictation. A 'no' is an attempt that's roughly on target but gets none of the required parts across because the learner lacks the words or grammar. Answers never fail from not knowing, forgetting or misreading the facts on screen, and never from refusing the task. ky.taskMet (yes / partly / no) is completeness only. ky.tone is polite / neutral / rude (too direct counts as rude); toneAlsoAccept lists another tone Ky would accept. ky.mistakes are grammar only, each with the learner's words (quote), the fix, and a skill id from src/core/skills.ts; alsoAccept lists other skill ids that count as a match. An optional mistake is one Ky is on the fence about: a grader is neither credited nor penalized for it. A mistake with skill null fits no skill in the catalog; gap names what's missing. ky.wordChoice lists phrasing that sounds off without breaking a grammar rule: logged for a tutor, never penalized. American English (ADR 0005). Prompt-injection tests live in security-set.json.",
   "answers": [
     {
       "id": 1,
@@ -418,10 +418,17 @@
       "task": "Report on room 305 to your supervisor.",
       "answer": "room 305 ok",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
-        "wordChoice": []
+        "taskMet": "yes",
+        "tone": "neutral",
+        "mistakes": [
+          {
+            "skill": "be-verbs",
+            "quote": "room 305 ok",
+            "fix": "room 305 is ok"
+          }
+        ],
+        "wordChoice": [],
+        "note": "Complete but terse: the app should nudge toward a fuller answer."
       }
     },
     {
@@ -432,10 +439,11 @@
       "task": "Explain the situation to the guest and suggest a way for them to spend the wait.",
       "answer": "i'm sorry your room isn't ready until 3 pm. you can wait hear in the lobby or leave your bags with us for a few hours",
       "ky": {
-        "taskMet": null,
-        "tone": null,
+        "taskMet": "yes",
+        "tone": "polite",
         "mistakes": [],
-        "wordChoice": []
+        "wordChoice": [],
+        "note": "\"hear\" is a dictation error, not graded."
       }
     },
     {
@@ -446,9 +454,20 @@
       "task": "Explain the situation to the guest and suggest a way for them to spend the wait.",
       "answer": "your room is not ready. you wait in the lobby and come back on 3 pm",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
+        "taskMet": "yes",
+        "tone": "rude",
+        "mistakes": [
+          {
+            "skill": "modal-verbs",
+            "quote": "you wait",
+            "fix": "you can wait"
+          },
+          {
+            "skill": "time-prepositions",
+            "quote": "on 3 pm",
+            "fix": "at 3 pm"
+          }
+        ],
         "wordChoice": []
       }
     },
@@ -460,9 +479,27 @@
       "task": "Help the guest get there.",
       "answer": "you go out, turn left, go to main street. is five minute walking",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
+        "taskMet": "yes",
+        "tone": "neutral",
+        "mistakes": [
+          {
+            "skill": null,
+            "gap": "linking words",
+            "quote": "go to main street",
+            "fix": "then go to main street / and go to main street"
+          },
+          {
+            "skill": null,
+            "gap": "missing subject",
+            "quote": "is five",
+            "fix": "it is five"
+          },
+          {
+            "skill": "plurals",
+            "quote": "minute",
+            "fix": "minutes"
+          }
+        ],
         "wordChoice": []
       }
     },
@@ -474,10 +511,12 @@
       "task": "Help the guest get there.",
       "answer": "yes the pharmacy is near, very close",
       "ky": {
-        "taskMet": null,
-        "tone": null,
+        "taskMet": "no",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
         "mistakes": [],
-        "wordChoice": []
+        "wordChoice": [],
+        "note": "Doesn't help the guest get there; grammatical enough for speech."
       }
     },
     {
@@ -488,10 +527,18 @@
       "task": "Help the guest get there.",
       "answer": "the pharmacy is at main street, it's on the left side after the bank. it takes five minutes by foot",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
-        "wordChoice": []
+        "taskMet": "yes",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
+        "mistakes": [
+          {
+            "skill": "place-prepositions",
+            "quote": "is at main street",
+            "fix": "is on main street"
+          }
+        ],
+        "wordChoice": [],
+        "note": "Inventing \"left side after the bank\" is fine: learners can play a little."
       }
     },
     {
@@ -502,9 +549,16 @@
       "task": "Report it to your supervisor.",
       "answer": "i went to room 214 at 8:15 and find a broken lamp",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
+        "taskMet": "yes",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
+        "mistakes": [
+          {
+            "skill": "past-irregular",
+            "quote": "and find",
+            "fix": "and found"
+          }
+        ],
         "wordChoice": []
       }
     },
@@ -516,9 +570,21 @@
       "task": "Report it to your supervisor.",
       "answer": "the lamp of room 214 is broke. i see it at 8:15",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
+        "taskMet": "yes",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
+        "mistakes": [
+          {
+            "skill": "past-irregular",
+            "quote": "is broke",
+            "fix": "is broken"
+          },
+          {
+            "skill": "past-irregular",
+            "quote": "i see",
+            "fix": "i saw"
+          }
+        ],
         "wordChoice": []
       }
     },
@@ -530,10 +596,11 @@
       "task": "Arrange a better time for cleaning with the guest.",
       "answer": "ok sorry, later",
       "ky": {
-        "taskMet": null,
-        "tone": null,
+        "taskMet": "no",
+        "tone": "polite",
         "mistakes": [],
-        "wordChoice": []
+        "wordChoice": [],
+        "note": "\"later\" doesn't arrange a time. Not a full sentence, but no grammar errors in spoken American English."
       }
     },
     {
@@ -544,9 +611,28 @@
       "task": "Arrange a better time for cleaning with the guest.",
       "answer": "sorry for disturb you. you want i come back in the afternoon or tomorrow?",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
+        "taskMet": "yes",
+        "tone": "polite",
+        "mistakes": [
+          {
+            "skill": null,
+            "gap": "verb patterns",
+            "quote": "for disturb",
+            "fix": "for disturbing"
+          },
+          {
+            "skill": "question-forms",
+            "quote": "you want",
+            "fix": "do you want / if you want"
+          },
+          {
+            "skill": null,
+            "gap": "verb patterns",
+            "quote": "i come back",
+            "fix": "me to come back / for me to come back / i can come back",
+            "alsoAccept": ["modal-verbs"]
+          }
+        ],
         "wordChoice": []
       }
     },
@@ -558,10 +644,12 @@
       "task": "Arrange a better time for cleaning with the guest.",
       "answer": "no problem, i can come back in one hour or after lunch, which is better?",
       "ky": {
-        "taskMet": null,
-        "tone": null,
+        "taskMet": "yes",
+        "tone": "neutral",
+        "toneAlsoAccept": ["rude"],
         "mistakes": [],
-        "wordChoice": []
+        "wordChoice": [],
+        "note": "\"No problem\" implies the guest's request could have been a problem."
       }
     },
     {
@@ -572,8 +660,8 @@
       "task": "Reassure the guest by explaining your next step and the kitchen's procedure.",
       "answer": "don't worry, i'll tell the kitchen right now. they use a separate cutting board for allergies and the chef checks every plate before it goes out",
       "ky": {
-        "taskMet": null,
-        "tone": null,
+        "taskMet": "yes",
+        "tone": "polite",
         "mistakes": [],
         "wordChoice": []
       }
@@ -586,10 +674,23 @@
       "task": "Reassure the guest by explaining your next step and the kitchen's procedure.",
       "answer": "ok no peanuts. i tell the chef, he control your plate",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
-        "wordChoice": []
+        "taskMet": "partly",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
+        "mistakes": [
+          {
+            "skill": "future-forms",
+            "quote": "i tell",
+            "fix": "i will tell"
+          },
+          {
+            "skill": "third-person-s",
+            "quote": "he control",
+            "fix": "he controls"
+          }
+        ],
+        "wordChoice": [],
+        "note": "Doesn't explain the procedure."
       }
     },
     {
@@ -600,9 +701,15 @@
       "task": "Reassure the guest by explaining your next step and the kitchen's procedure.",
       "answer": "thank you for telling me. i will inform the chef, he use a separate board and he checks each plate",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
+        "taskMet": "yes",
+        "tone": "polite",
+        "mistakes": [
+          {
+            "skill": "third-person-s",
+            "quote": "he use",
+            "fix": "he uses"
+          }
+        ],
         "wordChoice": []
       }
     },
@@ -614,10 +721,24 @@
       "task": "Reassure the guest by explaining your next step and the kitchen's procedure.",
       "answer": "don't worry. i tell the chef and he must to check your plate",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
-        "wordChoice": []
+        "taskMet": "partly",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
+        "mistakes": [
+          {
+            "skill": "future-forms",
+            "quote": "i tell",
+            "fix": "i will tell"
+          },
+          {
+            "skill": "modal-verbs",
+            "quote": "he must to check",
+            "fix": "he will check / he must check",
+            "alsoAccept": ["future-forms"]
+          }
+        ],
+        "wordChoice": [],
+        "note": "Doesn't explain the procedure. Several rephrasings of \"must to check\" work."
       }
     },
     {
@@ -628,10 +749,18 @@
       "task": "Talk to the table: give them an update, and offer something for their trouble.",
       "answer": "excuse me for the wait, the kitchen is very busy. your food come in five minute",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
-        "wordChoice": []
+        "taskMet": "partly",
+        "tone": "polite",
+        "mistakes": [
+          {
+            "skill": "future-forms",
+            "quote": "your food come",
+            "fix": "your food will come / should come",
+            "alsoAccept": ["modal-verbs"]
+          }
+        ],
+        "wordChoice": [],
+        "note": "Doesn't offer something."
       }
     },
     {
@@ -642,10 +771,11 @@
       "task": "Talk to the table: give them an update, and offer something for their trouble.",
       "answer": "i'm so sorry about the wait, the kitchen is really busy tonight",
       "ky": {
-        "taskMet": null,
-        "tone": null,
+        "taskMet": "partly",
+        "tone": "polite",
         "mistakes": [],
-        "wordChoice": []
+        "wordChoice": [],
+        "note": "Doesn't offer something."
       }
     },
     {
@@ -656,10 +786,23 @@
       "task": "Talk to the table: give them an update, and offer something for their trouble.",
       "answer": "i apologize the delay, the kitchen are busy",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
-        "wordChoice": []
+        "taskMet": "partly",
+        "tone": "polite",
+        "mistakes": [
+          {
+            "skill": null,
+            "gap": "verb patterns",
+            "quote": "i apologize the delay",
+            "fix": "i apologize for the delay"
+          },
+          {
+            "skill": "be-verbs",
+            "quote": "the kitchen are",
+            "fix": "the kitchen is"
+          }
+        ],
+        "wordChoice": [],
+        "note": "Doesn't offer something."
       }
     },
     {
@@ -670,10 +813,11 @@
       "task": "Talk to the table: give them an update, and offer something for their trouble.",
       "answer": "i'm really sorry for the weight, your food will be here in five minutes. can i get you something to drink while you wait, its on the house",
       "ky": {
-        "taskMet": null,
-        "tone": null,
+        "taskMet": "yes",
+        "tone": "polite",
         "mistakes": [],
-        "wordChoice": []
+        "wordChoice": [],
+        "note": "\"weight\" and \"its\" are dictation errors, not graded."
       }
     },
     {
@@ -684,8 +828,9 @@
       "task": "Describe the dish to the guest.",
       "answer": "the chefs special today is grilled salmon with rice and seasonal vegetables",
       "ky": {
-        "taskMet": null,
-        "tone": null,
+        "taskMet": "yes",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
         "mistakes": [],
         "wordChoice": []
       }
@@ -698,8 +843,9 @@
       "task": "Describe the dish to the guest.",
       "answer": "today's special is a grilled salmon with a rice and vegetables",
       "ky": {
-        "taskMet": null,
-        "tone": null,
+        "taskMet": "yes",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
         "mistakes": [],
         "wordChoice": []
       }
@@ -712,10 +858,32 @@
       "task": "Describe the dish to the guest.",
       "answer": "the chef special is salmon grill, it's come with rice and some vegetable",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
-        "wordChoice": []
+        "taskMet": "yes",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
+        "mistakes": [
+          {
+            "skill": null,
+            "gap": "adjective form and order",
+            "quote": "salmon grill",
+            "fix": "grilled salmon",
+            "alsoAccept": ["past-regular"]
+          },
+          {
+            "skill": "third-person-s",
+            "quote": "it's come with",
+            "fix": "it comes with",
+            "alsoAccept": ["be-verbs"]
+          },
+          {
+            "skill": "plurals",
+            "quote": "some vegetable",
+            "fix": "some vegetables",
+            "optional": true
+          }
+        ],
+        "wordChoice": [],
+        "note": "\"some vegetable\" is on the fence: not penalized either way."
       }
     },
     {
@@ -726,10 +894,28 @@
       "task": "Describe the dish to the guest.",
       "answer": "today special very good, you will like",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
-        "wordChoice": []
+        "taskMet": "no",
+        "tone": "polite",
+        "mistakes": [
+          {
+            "skill": "possessive-s",
+            "quote": "today special",
+            "fix": "today's special"
+          },
+          {
+            "skill": "be-verbs",
+            "quote": "special very",
+            "fix": "special is very"
+          },
+          {
+            "skill": null,
+            "gap": "missing object",
+            "quote": "you will like",
+            "fix": "you will like it"
+          }
+        ],
+        "wordChoice": [],
+        "note": "\"very good\" doesn't describe the dish."
       }
     },
     {
@@ -740,10 +926,12 @@
       "task": "Let the head chef know, and get instructions for the servers.",
       "answer": "chef, we ran out of salmon at 12:40",
       "ky": {
-        "taskMet": null,
-        "tone": null,
+        "taskMet": "partly",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
         "mistakes": [],
-        "wordChoice": []
+        "wordChoice": [],
+        "note": "Doesn't ask for instructions for the servers."
       }
     },
     {
@@ -754,9 +942,26 @@
       "task": "Let the head chef know, and get instructions for the servers.",
       "answer": "chef the salmon is finish. servers ask what they say to the clients",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
+        "taskMet": "yes",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
+        "mistakes": [
+          {
+            "skill": "past-regular",
+            "quote": "is finish",
+            "fix": "is finished"
+          },
+          {
+            "skill": "be-verbs",
+            "quote": "servers ask",
+            "fix": "servers are asking"
+          },
+          {
+            "skill": "modal-verbs",
+            "quote": "what they say",
+            "fix": "what they should say"
+          }
+        ],
         "wordChoice": []
       }
     },
@@ -768,8 +973,9 @@
       "task": "Explain the end-of-shift routine.",
       "answer": "before you leave you have to clean your station, put labels on all the food you store, and take the trash out",
       "ky": {
-        "taskMet": null,
-        "tone": null,
+        "taskMet": "yes",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
         "mistakes": [],
         "wordChoice": []
       }
@@ -782,10 +988,35 @@
       "task": "Explain the end-of-shift routine.",
       "answer": "you must cleaning the station and you should to put label on the food, then trash",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
-        "wordChoice": []
+        "taskMet": "yes",
+        "tone": "neutral",
+        "toneAlsoAccept": ["rude"],
+        "mistakes": [
+          {
+            "skill": "modal-verbs",
+            "quote": "must cleaning",
+            "fix": "must clean"
+          },
+          {
+            "skill": "modal-verbs",
+            "quote": "should to put",
+            "fix": "should put"
+          },
+          {
+            "skill": "plurals",
+            "quote": "label",
+            "fix": "labels"
+          },
+          {
+            "skill": null,
+            "gap": "incomplete phrase",
+            "quote": "then trash",
+            "fix": "then take out the trash",
+            "optional": true
+          }
+        ],
+        "wordChoice": [],
+        "note": "\"you must\" is a little strong. \"then trash\" is reasonable in conversation: not penalized either way."
       }
     },
     {
@@ -796,9 +1027,16 @@
       "task": "Explain the end-of-shift routine.",
       "answer": "you have to clean your station and you need label all the food and take out the trash",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
+        "taskMet": "yes",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
+        "mistakes": [
+          {
+            "skill": "modal-verbs",
+            "quote": "need label",
+            "fix": "need to label"
+          }
+        ],
         "wordChoice": []
       }
     },
@@ -810,10 +1048,12 @@
       "task": "Get the information you need from a coworker.",
       "answer": "hey where do these boxes go? the vegetables just came in the back door",
       "ky": {
-        "taskMet": null,
-        "tone": null,
+        "taskMet": "yes",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
         "mistakes": [],
-        "wordChoice": []
+        "wordChoice": [],
+        "note": "Polite enough for a coworker; maybe too informal for a boss."
       }
     },
     {
@@ -824,9 +1064,16 @@
       "task": "Get the information you need from a coworker.",
       "answer": "where i put the vegetable boxes, in the fridge or in the storage room?",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
+        "taskMet": "yes",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
+        "mistakes": [
+          {
+            "skill": "question-forms",
+            "quote": "where i",
+            "fix": "where do i"
+          }
+        ],
         "wordChoice": []
       }
     },
@@ -838,10 +1085,11 @@
       "task": "Get the information you need from a coworker.",
       "answer": "hi can you tell me where to put the produce? there are six boxes by the back door and i don't no where they go",
       "ky": {
-        "taskMet": null,
-        "tone": null,
+        "taskMet": "yes",
+        "tone": "polite",
         "mistakes": [],
-        "wordChoice": []
+        "wordChoice": [],
+        "note": "\"no\" for \"know\" is a dictation error, not graded."
       }
     },
     {
@@ -852,8 +1100,9 @@
       "task": "Brief the next shift on room 118.",
       "answer": "room 118 called at 10:15 and again at 1:30 about the air conditioning. maintenance came at 4 and fixed it, so it should be ok now",
       "ky": {
-        "taskMet": null,
-        "tone": null,
+        "taskMet": "yes",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
         "mistakes": [],
         "wordChoice": []
       }
@@ -866,9 +1115,27 @@
       "task": "Brief the next shift on room 118.",
       "answer": "the guest from 118 was call two times about AC, in 10:15 and 1:30. maintenance fix it at 4",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
+        "taskMet": "yes",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
+        "mistakes": [
+          {
+            "skill": "past-regular",
+            "quote": "was call",
+            "fix": "called",
+            "alsoAccept": ["be-verbs"]
+          },
+          {
+            "skill": "time-prepositions",
+            "quote": "in 10:15",
+            "fix": "at 10:15"
+          },
+          {
+            "skill": "past-regular",
+            "quote": "fix",
+            "fix": "fixed"
+          }
+        ],
         "wordChoice": []
       }
     },
@@ -880,10 +1147,12 @@
       "task": "Brief the next shift on room 118.",
       "answer": "room 118 is ok now",
       "ky": {
-        "taskMet": null,
-        "tone": null,
+        "taskMet": "partly",
+        "tone": "neutral",
+        "toneAlsoAccept": ["rude"],
         "mistakes": [],
-        "wordChoice": []
+        "wordChoice": [],
+        "note": "Says no action is needed, but not the problem, the calls, or the timing. Overly terse can read as rude in American English."
       }
     },
     {
@@ -894,8 +1163,8 @@
       "task": "Respond to the guest and resolve the problem.",
       "answer": "i'm very sorry about that. i'll call the room next door right now, and if it doesn't stop i can move you to a quiet room on the sixth floor",
       "ky": {
-        "taskMet": null,
-        "tone": null,
+        "taskMet": "yes",
+        "tone": "polite",
         "mistakes": [],
         "wordChoice": []
       }
@@ -908,9 +1177,52 @@
       "task": "Respond to the guest and resolve the problem.",
       "answer": "sorry, i send security. or you want change room? we have room in six floor",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
+        "taskMet": "yes",
+        "tone": "polite",
+        "mistakes": [
+          {
+            "skill": "future-forms",
+            "quote": "i send",
+            "fix": "i will send"
+          },
+          {
+            "skill": "question-forms",
+            "quote": "or you want",
+            "fix": "or do you want"
+          },
+          {
+            "skill": null,
+            "gap": "verb patterns",
+            "quote": "want change",
+            "fix": "want to change"
+          },
+          {
+            "skill": "plurals",
+            "quote": "change room",
+            "fix": "change rooms"
+          },
+          {
+            "skill": "articles",
+            "quote": "have room",
+            "fix": "have a room"
+          },
+          {
+            "skill": "place-prepositions",
+            "quote": "in six floor",
+            "fix": "on six floor"
+          },
+          {
+            "skill": "articles",
+            "quote": "six floor",
+            "fix": "the sixth floor"
+          },
+          {
+            "skill": null,
+            "gap": "ordinal numbers",
+            "quote": "six floor",
+            "fix": "sixth floor"
+          }
+        ],
         "wordChoice": []
       }
     },
@@ -922,10 +1234,11 @@
       "task": "Respond to the guest and resolve the problem.",
       "answer": "sorry for the noise, i understand",
       "ky": {
-        "taskMet": null,
-        "tone": null,
+        "taskMet": "partly",
+        "tone": "polite",
         "mistakes": [],
-        "wordChoice": []
+        "wordChoice": [],
+        "note": "Responds to the guest but doesn't resolve the problem."
       }
     },
     {
@@ -936,10 +1249,11 @@
       "task": "Respond to the guest and resolve the problem.",
       "answer": "sorry about the noise, i'll call them write now. if it continues we have a quiet room for you on the 6th floor",
       "ky": {
-        "taskMet": null,
-        "tone": null,
+        "taskMet": "yes",
+        "tone": "polite",
         "mistakes": [],
-        "wordChoice": []
+        "wordChoice": [],
+        "note": "\"write\" is a dictation error, not graded."
       }
     },
     {
@@ -950,9 +1264,46 @@
       "task": "Report on room 305 to your supervisor.",
       "answer": "room 305 finish. i clean bathroom, change bed and towel",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
+        "taskMet": "yes",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
+        "mistakes": [
+          {
+            "skill": "be-verbs",
+            "quote": "room 305 finish",
+            "fix": "room 305 is finished"
+          },
+          {
+            "skill": "past-regular",
+            "quote": "finish",
+            "fix": "finished"
+          },
+          {
+            "skill": "past-regular",
+            "quote": "i clean",
+            "fix": "i cleaned"
+          },
+          {
+            "skill": "articles",
+            "quote": "bathroom",
+            "fix": "the bathroom"
+          },
+          {
+            "skill": "past-regular",
+            "quote": "change",
+            "fix": "changed"
+          },
+          {
+            "skill": "articles",
+            "quote": "bed",
+            "fix": "the bed"
+          },
+          {
+            "skill": "plurals",
+            "quote": "towel",
+            "fix": "towels"
+          }
+        ],
         "wordChoice": []
       }
     },
@@ -964,9 +1315,15 @@
       "task": "Get what you need from the guest.",
       "answer": "give me passport and credit card",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
+        "taskMet": "yes",
+        "tone": "rude",
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "passport",
+            "fix": "your passport"
+          }
+        ],
         "wordChoice": []
       }
     },
@@ -978,9 +1335,22 @@
       "task": "Get what you need from the guest.",
       "answer": "please you give me the card of credit and your id",
       "ky": {
-        "taskMet": null,
-        "tone": null,
-        "mistakes": [],
+        "taskMet": "yes",
+        "tone": "polite",
+        "mistakes": [
+          {
+            "skill": null,
+            "gap": "imperative form",
+            "quote": "please you give me",
+            "fix": "please give me"
+          },
+          {
+            "skill": null,
+            "gap": "compound nouns",
+            "quote": "the card of credit",
+            "fix": "your credit card"
+          }
+        ],
         "wordChoice": []
       }
     }
