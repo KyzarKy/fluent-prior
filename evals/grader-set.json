@@ -585,7 +585,12 @@
             "fix": "i saw"
           }
         ],
-        "wordChoice": []
+        "wordChoice": [
+          {
+            "quote": "the lamp of room 214",
+            "suggestion": "the lamp in room 214"
+          }
+        ]
       }
     },
     {
@@ -757,6 +762,11 @@
             "quote": "your food come",
             "fix": "your food will come / should come",
             "alsoAccept": ["modal-verbs"]
+          },
+          {
+            "skill": "plurals",
+            "quote": "five minute",
+            "fix": "five minutes"
           }
         ],
         "wordChoice": [],
@@ -846,7 +856,13 @@
         "taskMet": "yes",
         "tone": "polite",
         "toneAlsoAccept": ["neutral"],
-        "mistakes": [],
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "a rice",
+            "fix": "rice"
+          }
+        ],
         "wordChoice": []
       }
     },
@@ -880,6 +896,11 @@
             "quote": "some vegetable",
             "fix": "some vegetables",
             "optional": true
+          },
+          {
+            "skill": "possessive-s",
+            "quote": "the chef special",
+            "fix": "the chef's special"
           }
         ],
         "wordChoice": [],
