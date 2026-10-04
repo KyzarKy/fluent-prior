@@ -65,6 +65,10 @@ abstractions, no `utils` grab-bags. Use the standard tool the standard way.
 | `npm run verify` | Typecheck, lint, unit tests, build |
 | `npm test` | Unit tests (Vitest) |
 | `npm run format` | Biome: format and apply safe lint fixes |
+| `npm run eval -- [results file]` | Grade Ky's answer key with the free grader and score it; a results file resumes or re-scores |
+| `npm run trial -- <ids> [tries]` | Grade a few key answers several times each (default 3), to test a prompt or checklist change |
+
+Both eval scripts spend Groq's free daily quota (about 80 grades), shared with the app.
 
 The server reads `.env` in development (copy `.env.example`). On Windows, PowerShell blocks
 `npm.ps1`, so use `npm.cmd`.

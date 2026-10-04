@@ -4,26 +4,15 @@
 //   npm run eval -- <results file>      resume that file (grade only what's missing), then
 //                                       score; a finished file is just re-scored, for free
 //
-// Results are saved after every answer, so running out of quota loses nothing. Paced for
-// the free tier's 8,000 tokens a minute (ADR 0004): about 2 grades a minute.
+// Results are saved after every answer, so running out of quota loses nothing.
 
 import { execSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import Groq from "groq-sdk";
-import type { Grade } from "../src/core/contract";
-import { findScenario } from "../src/core/scenarios";
-import { taskVerdict } from "../src/core/tasks";
 import { createGroqGrader, GROQ_MODEL } from "../src/server/groq-grader";
-import { compareSkills, type KeyMistake, precisionRecallF05, wilson } from "./scoring";
+import { answers, gradeEntry, PACE_MS, type Result, security, sleep } from "./grade";
+import { compareSkills, precisionRecallF05, wilson } from "./scoring";
 
-interface KeyEntry {
-  id: number | string;
-  scenarioId: string;
-  answer: string;
-  ky?: { taskMet: string; tone: string; toneAlsoAccept?: string[]; mistakes: KeyMistake[] };
-  expectMistake?: { skill: string };
-}
-type Result = { ok: true; grade: Grade } | { ok: false; reason: string };
 interface ResultsFile {
   model: string;
   commit: string;
@@ -31,13 +20,6 @@ interface ResultsFile {
   results: Record<string, Result>;
 }
 
-const PACE_MS = 31_000;
-/** A quota wait longer than this is the daily limit: stop and resume another day. */
-const MAX_QUOTA_WAIT_SECONDS = 120;
-
-const answers: KeyEntry[] = JSON.parse(readFileSync("evals/grader-set.json", "utf8")).answers;
-const security: KeyEntry[] = JSON.parse(readFileSync("evals/security-set.json", "utf8")).answers;
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const pct = (x: number) => `${Math.round(x * 100)}%`;
 
 function openResults(path: string | undefined): [string, ResultsFile] {
@@ -54,31 +36,10 @@ async function gradeMissing(path: string, file: ResultsFile) {
   const grade = createGroqGrader(new Groq());
   const todo = [...answers, ...security].filter((entry) => !(String(entry.id) in file.results));
   for (const [index, entry] of todo.entries()) {
-    const scenario = findScenario(entry.scenarioId);
-    if (!scenario) throw new Error(`Unknown scenario ${entry.scenarioId}`);
-    let result: Result | undefined;
-    while (!result) {
-      const outcome = await grade(scenario, entry.answer).catch((error: unknown) => ({
-        ok: false as const,
-        reason: `threw: ${String(error)}`,
-        costUsd: 0,
-      }));
-      if ("retryAfterSeconds" in outcome) {
-        if (outcome.retryAfterSeconds > MAX_QUOTA_WAIT_SECONDS) {
-          console.log(`Daily quota reached. Resume later: npm run eval -- ${path}`);
-          return false;
-        }
-        await sleep(outcome.retryAfterSeconds * 1000);
-        continue;
-      }
-      if (!outcome.ok) {
-        result = { ok: false, reason: outcome.reason };
-        break;
-      }
-      const taskMet = taskVerdict(scenario.taskParts.length, outcome.output.taskParts);
-      result = taskMet
-        ? { ok: true, grade: { ...outcome.output, taskMet } }
-        : { ok: false, reason: "task parts didn't cover each part once" };
+    const result = await gradeEntry(grade, entry);
+    if (result === "daily quota") {
+      console.log(`Daily quota reached. Resume later: npm run eval -- ${path}`);
+      return false;
     }
     file.results[String(entry.id)] = result;
     writeFileSync(path, `${JSON.stringify(file, null, 2)}\n`);
