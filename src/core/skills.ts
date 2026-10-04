@@ -66,7 +66,8 @@ export const SKILLS: Record<SkillId, Skill> = {
   "future-forms": {
     id: "future-forms",
     name: "Talking about the future",
-    description: "Plans and promises: I'll call, I'm going to check, we're sending someone.",
+    description:
+      "Plans and promises: I'll call, I'm going to check, we're sending someone. Not the plain present for a promise: 'I check for you now' should be 'I'll check for you now'.",
     audibility: "faint",
   },
   "possessive-s": {
