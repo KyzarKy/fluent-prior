@@ -199,7 +199,7 @@
       "task": "Reassure the guest by explaining your next step and the kitchen's procedure.",
       "answer": "thank you for telling me i will tell the chef right away the kitchen use separate board for allergy orders so your food will be safe",
       "ky": {
-        "taskMet": "yes",
+        "taskMet": "partly",
         "tone": "polite",
         "mistakes": [
           {
@@ -214,7 +214,8 @@
             "alsoAccept": ["plurals"]
           }
         ],
-        "wordChoice": []
+        "wordChoice": [],
+        "note": "Names the separate board but not the chef's check."
       }
     },
     {
@@ -706,7 +707,7 @@
           }
         ],
         "wordChoice": [],
-        "note": "Doesn't explain the procedure."
+        "note": "Names the chef's check but not the separate board."
       }
     },
     {
@@ -754,7 +755,7 @@
           }
         ],
         "wordChoice": [],
-        "note": "Doesn't explain the procedure. Several rephrasings of \"must to check\" work."
+        "note": "Names the chef's check but not the separate board. Several rephrasings of \"must to check\" work."
       }
     },
     {

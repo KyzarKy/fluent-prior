@@ -55,7 +55,7 @@ never a mistake, and it's never part of `taskMet`.
 
 ## Task types and checklists
 
-The lines as of 2026-10-03. `src/core/scenarios.ts` is the source of truth.
+The lines as of 2026-10-04. `src/core/scenarios.ts` is the source of truth.
 
 | Scenario | Task type | Parts of a complete answer |
 |---|---|---|
@@ -64,7 +64,7 @@ The lines as of 2026-10-03. `src/core/scenarios.ts` is the source of truth.
 | noisy-room | Guest problems | Offers a fix: stopping the noise, or moving the guest away from it |
 | pharmacy-directions | Guest information | Gives directions a guest could follow |
 | todays-special | Guest information | Names the dish · Mentions the sides |
-| peanut-allergy | Guest information | Says what they'll do next about the allergy · Explains how the kitchen keeps the guest's food free of peanuts |
+| peanut-allergy | Guest information | Says what they'll do next about the allergy · Says the kitchen uses a separate cutting board · Says the chef checks the plate |
 | come-back-later | Requests | Arranges a new time (asks for one or proposes one) |
 | check-in-id | Requests | Asks for photo ID · Asks for a credit card |
 | delivery-question | Requests | Asks where the delivery goes |
@@ -98,7 +98,10 @@ chef's check.
    category; "coffee in the lobby" would be fitting the checklist to one answer.
 4. **List a detail only if every complete answer must include it.** The grader reads a list
    as a requirement: "(separate cutting board, chef checks the plates)" failed an answer
-   that gave only the board.
+   that gave only the board. When every detail does matter, make each one its own part, so
+   an answer that gives some of them is partly. Safety is the case for this (Ky,
+   2026-10-04): a guest with an allergy needs every precaution, so peanut-allergy checks
+   the cutting board and the chef's check separately.
 5. **The task text and the checklist mean the same thing.** The checklist can be more
    explicit, but it can't require more than the task asks; otherwise it grades a hidden
    expectation. Tighten the task text to match, without modeling the scenario's target

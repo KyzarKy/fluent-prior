@@ -95,7 +95,8 @@ export const SCENARIOS: Scenario[] = [
     taskType: "guest-information",
     taskParts: [
       "Says what they will do next about the allergy",
-      "Explains how the kitchen keeps the guest's food free of peanuts",
+      "Says the kitchen uses a separate cutting board",
+      "Says the chef checks the plate",
     ],
     targetSkills: ["future-forms", "third-person-s", "modal-verbs"],
   },
