@@ -164,10 +164,7 @@ export const SCENARIOS: Scenario[] = [
       "Log for room 118. 10:15 a.m.: guest phone call, air conditioning too warm. 1:30 p.m.: guest phone call, same problem. 4:00 p.m.: maintenance visit, problem fixed.",
     task: "Brief the next shift on room 118.",
     taskType: "briefing-coworkers",
-    taskParts: [
-      "The guest's calls about the air conditioning",
-      "That the air conditioning is fixed now",
-    ],
+    taskParts: ["The guest's calls about the air conditioning", "That the problem is fixed now"],
     targetSkills: ["past-regular", "be-verbs", "time-prepositions", "third-person-s"],
   },
   {
