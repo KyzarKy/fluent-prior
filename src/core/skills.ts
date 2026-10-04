@@ -85,7 +85,8 @@ export const SKILLS: Record<SkillId, Skill> = {
   articles: {
     id: "articles",
     name: "A, an, the",
-    description: "Articles before nouns: a room, an hour, the manager.",
+    description:
+      "Articles before nouns: a room, an hour, the manager. No article with names (Oak Avenue), numbered rooms (room 512), food in general (we're out of bread), or a title used to call someone (Manager, one question).",
     audibility: "faint",
   },
   plurals: {
