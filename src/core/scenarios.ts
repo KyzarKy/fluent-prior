@@ -105,7 +105,7 @@ export const SCENARIOS: Scenario[] = [
     audience: "guest",
     situation:
       "Table 12. Order time: 7:05 p.m. Time now: 7:45 p.m. No food yet. The guests look unhappy. Kitchen status: very busy, food ready in about 5 minutes.",
-    task: "Talk to the table: give them an update, and offer something for their trouble.",
+    task: "Talk to the table: give them a time for their food, and offer something for their trouble.",
     taskType: "guest-problems",
     taskParts: [
       "Tells the guests when their food will arrive",
@@ -166,7 +166,7 @@ export const SCENARIOS: Scenario[] = [
     taskType: "briefing-coworkers",
     taskParts: [
       "The guest's calls about the air conditioning",
-      "The maintenance visit that fixed it",
+      "That the air conditioning is fixed now",
     ],
     targetSkills: ["past-regular", "be-verbs", "time-prepositions", "third-person-s"],
   },
@@ -176,11 +176,9 @@ export const SCENARIOS: Scenario[] = [
     audience: "guest",
     situation:
       "Phone call from room 402. Complaint: loud music next door. Available: a quiet room on the 6th floor.",
-    task: "Respond to the guest and resolve the problem.",
+    task: "Solve the guest's problem.",
     taskType: "guest-problems",
-    taskParts: [
-      "Offers a solution (calling the room next door, or moving the guest to a quiet room)",
-    ],
+    taskParts: ["Offers a fix: stopping the noise, or moving the guest away from it"],
     targetSkills: ["future-forms", "place-prepositions"],
   },
   {
@@ -188,7 +186,7 @@ export const SCENARIOS: Scenario[] = [
     role: "housekeeping",
     audience: "coworker",
     situation: "Room 305, status: complete. ✓ bathroom ✓ bed linen ✓ towel change.",
-    task: "Report on room 305 to your supervisor.",
+    task: "Tell your supervisor about the work in room 305.",
     taskType: "reporting-up",
     taskParts: ["Reports what was done in room 305"],
     targetSkills: ["past-regular", "plurals", "articles"],

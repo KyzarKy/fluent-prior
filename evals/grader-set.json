@@ -97,6 +97,11 @@
             "fix": "room is not ready"
           },
           {
+            "skill": "articles",
+            "quote": "room not ready",
+            "fix": "the room is not ready"
+          },
+          {
             "skill": "time-prepositions",
             "quote": "come back 3 o'clock",
             "fix": "come back at 3 o'clock"
@@ -238,7 +243,7 @@
       "scenarioId": "slow-food",
       "role": "Front of house",
       "situation": "Table 12. Order time: 7:05 p.m. Time now: 7:45 p.m. No food yet. The guests look unhappy. Kitchen status: very busy, food ready in about 5 minutes.",
-      "task": "Talk to the table: give them an update, and offer something for their trouble.",
+      "task": "Talk to the table: give them a time for their food, and offer something for their trouble.",
       "answer": "i am so sorry for the wait the kitchen is very busy tonight your food is coming in five minutes and i would like to bring you a free dessert",
       "ky": {
         "taskMet": "yes",
@@ -252,7 +257,7 @@
       "scenarioId": "slow-food",
       "role": "Front of house",
       "situation": "Table 12. Order time: 7:05 p.m. Time now: 7:45 p.m. No food yet. The guests look unhappy. Kitchen status: very busy, food ready in about 5 minutes.",
-      "task": "Talk to the table: give them an update, and offer something for their trouble.",
+      "task": "Talk to the table: give them a time for their food, and offer something for their trouble.",
       "answer": "the kitchen is busy you have to wait like everybody",
       "ky": {
         "taskMet": "no",
@@ -264,7 +269,7 @@
             "suggestion": "like everybody else"
           }
         ],
-        "note": "Has none of the parts: no apology, no update, nothing offered."
+        "note": "Has none of the parts: no time for the food, nothing offered."
       }
     },
     {
@@ -366,7 +371,7 @@
       "scenarioId": "noisy-room",
       "role": "Front desk",
       "situation": "Phone call from room 402. Complaint: loud music next door. Available: a quiet room on the 6th floor.",
-      "task": "Respond to the guest and resolve the problem.",
+      "task": "Solve the guest's problem.",
       "answer": "i'm really sorry about the noise i can call the room next door or if you prefer we can move you to a quiet room on another floor",
       "ky": {
         "taskMet": "yes",
@@ -380,7 +385,7 @@
       "scenarioId": "room-report",
       "role": "Housekeeping",
       "situation": "Room 305, status: complete. ✓ bathroom ✓ bed linen ✓ towel change.",
-      "task": "Report on room 305 to your supervisor.",
+      "task": "Tell your supervisor about the work in room 305.",
       "answer": "in room 305 i clean the bathroom change the sheet and replace the towels",
       "ky": {
         "taskMet": "yes",
@@ -415,10 +420,10 @@
       "scenarioId": "room-report",
       "role": "Housekeeping",
       "situation": "Room 305, status: complete. ✓ bathroom ✓ bed linen ✓ towel change.",
-      "task": "Report on room 305 to your supervisor.",
+      "task": "Tell your supervisor about the work in room 305.",
       "answer": "room 305 ok",
       "ky": {
-        "taskMet": "yes",
+        "taskMet": "no",
         "tone": "neutral",
         "mistakes": [
           {
@@ -428,7 +433,7 @@
           }
         ],
         "wordChoice": [],
-        "note": "Complete but terse: the app should nudge toward a fuller answer."
+        "note": "Gives the room's status but none of the work: the learner fell back on \"ok\"."
       }
     },
     {
@@ -498,6 +503,12 @@
             "skill": "plurals",
             "quote": "minute",
             "fix": "minutes"
+          },
+          {
+            "skill": "articles",
+            "quote": "is five minute walking",
+            "fix": "it's a five-minute walk",
+            "optional": true
           }
         ],
         "wordChoice": []
@@ -575,6 +586,11 @@
         "toneAlsoAccept": ["neutral"],
         "mistakes": [
           {
+            "skill": "place-prepositions",
+            "quote": "the lamp of room 214",
+            "fix": "the lamp in room 214"
+          },
+          {
             "skill": "past-irregular",
             "quote": "is broke",
             "fix": "is broken"
@@ -585,12 +601,7 @@
             "fix": "i saw"
           }
         ],
-        "wordChoice": [
-          {
-            "quote": "the lamp of room 214",
-            "suggestion": "the lamp in room 214"
-          }
-        ]
+        "wordChoice": []
       }
     },
     {
@@ -751,7 +762,7 @@
       "scenarioId": "slow-food",
       "role": "Front of house",
       "situation": "Table 12. Order time: 7:05 p.m. Time now: 7:45 p.m. No food yet. The guests look unhappy. Kitchen status: very busy, food ready in about 5 minutes.",
-      "task": "Talk to the table: give them an update, and offer something for their trouble.",
+      "task": "Talk to the table: give them a time for their food, and offer something for their trouble.",
       "answer": "excuse me for the wait, the kitchen is very busy. your food come in five minute",
       "ky": {
         "taskMet": "partly",
@@ -778,14 +789,14 @@
       "scenarioId": "slow-food",
       "role": "Front of house",
       "situation": "Table 12. Order time: 7:05 p.m. Time now: 7:45 p.m. No food yet. The guests look unhappy. Kitchen status: very busy, food ready in about 5 minutes.",
-      "task": "Talk to the table: give them an update, and offer something for their trouble.",
+      "task": "Talk to the table: give them a time for their food, and offer something for their trouble.",
       "answer": "i'm so sorry about the wait, the kitchen is really busy tonight",
       "ky": {
-        "taskMet": "partly",
+        "taskMet": "no",
         "tone": "polite",
         "mistakes": [],
         "wordChoice": [],
-        "note": "Doesn't offer something."
+        "note": "Explains the delay, but gives no time and offers nothing."
       }
     },
     {
@@ -793,10 +804,10 @@
       "scenarioId": "slow-food",
       "role": "Front of house",
       "situation": "Table 12. Order time: 7:05 p.m. Time now: 7:45 p.m. No food yet. The guests look unhappy. Kitchen status: very busy, food ready in about 5 minutes.",
-      "task": "Talk to the table: give them an update, and offer something for their trouble.",
+      "task": "Talk to the table: give them a time for their food, and offer something for their trouble.",
       "answer": "i apologize the delay, the kitchen are busy",
       "ky": {
-        "taskMet": "partly",
+        "taskMet": "no",
         "tone": "polite",
         "mistakes": [
           {
@@ -812,7 +823,7 @@
           }
         ],
         "wordChoice": [],
-        "note": "Doesn't offer something."
+        "note": "Explains the delay, but gives no time and offers nothing."
       }
     },
     {
@@ -820,7 +831,7 @@
       "scenarioId": "slow-food",
       "role": "Front of house",
       "situation": "Table 12. Order time: 7:05 p.m. Time now: 7:45 p.m. No food yet. The guests look unhappy. Kitchen status: very busy, food ready in about 5 minutes.",
-      "task": "Talk to the table: give them an update, and offer something for their trouble.",
+      "task": "Talk to the table: give them a time for their food, and offer something for their trouble.",
       "answer": "i'm really sorry for the weight, your food will be here in five minutes. can i get you something to drink while you wait, its on the house",
       "ky": {
         "taskMet": "yes",
@@ -1026,7 +1037,8 @@
           {
             "skill": "plurals",
             "quote": "label",
-            "fix": "labels"
+            "fix": "labels",
+            "alsoAccept": ["articles"]
           },
           {
             "skill": null,
@@ -1181,7 +1193,7 @@
       "scenarioId": "noisy-room",
       "role": "Front desk",
       "situation": "Phone call from room 402. Complaint: loud music next door. Available: a quiet room on the 6th floor.",
-      "task": "Respond to the guest and resolve the problem.",
+      "task": "Solve the guest's problem.",
       "answer": "i'm very sorry about that. i'll call the room next door right now, and if it doesn't stop i can move you to a quiet room on the sixth floor",
       "ky": {
         "taskMet": "yes",
@@ -1195,7 +1207,7 @@
       "scenarioId": "noisy-room",
       "role": "Front desk",
       "situation": "Phone call from room 402. Complaint: loud music next door. Available: a quiet room on the 6th floor.",
-      "task": "Respond to the guest and resolve the problem.",
+      "task": "Solve the guest's problem.",
       "answer": "sorry, i send security. or you want change room? we have room in six floor",
       "ky": {
         "taskMet": "yes",
@@ -1252,14 +1264,14 @@
       "scenarioId": "noisy-room",
       "role": "Front desk",
       "situation": "Phone call from room 402. Complaint: loud music next door. Available: a quiet room on the 6th floor.",
-      "task": "Respond to the guest and resolve the problem.",
+      "task": "Solve the guest's problem.",
       "answer": "sorry for the noise, i understand",
       "ky": {
-        "taskMet": "partly",
+        "taskMet": "no",
         "tone": "polite",
         "mistakes": [],
         "wordChoice": [],
-        "note": "Responds to the guest but doesn't resolve the problem."
+        "note": "Apologizes, which counts toward tone, but offers no fix."
       }
     },
     {
@@ -1267,7 +1279,7 @@
       "scenarioId": "noisy-room",
       "role": "Front desk",
       "situation": "Phone call from room 402. Complaint: loud music next door. Available: a quiet room on the 6th floor.",
-      "task": "Respond to the guest and resolve the problem.",
+      "task": "Solve the guest's problem.",
       "answer": "sorry about the noise, i'll call them write now. if it continues we have a quiet room for you on the 6th floor",
       "ky": {
         "taskMet": "yes",
@@ -1282,7 +1294,7 @@
       "scenarioId": "room-report",
       "role": "Housekeeping",
       "situation": "Room 305, status: complete. ✓ bathroom ✓ bed linen ✓ towel change.",
-      "task": "Report on room 305 to your supervisor.",
+      "task": "Tell your supervisor about the work in room 305.",
       "answer": "room 305 finish. i clean bathroom, change bed and towel",
       "ky": {
         "taskMet": "yes",

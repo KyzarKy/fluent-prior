@@ -55,13 +55,13 @@ never a mistake, and it's never part of `taskMet`.
 
 ## Task types and checklists
 
-The lines as of 2026-09-29. `src/core/scenarios.ts` is the source of truth.
+The lines as of 2026-10-03. `src/core/scenarios.ts` is the source of truth.
 
 | Scenario | Task type | Parts of a complete answer |
 |---|---|---|
 | early-arrival | Guest problems | Explains the room isn't ready or when it will be · Suggests an additional activity to pass the time until the room is ready |
 | slow-food | Guest problems | Tells the guests when their food will arrive · Offers something extra, beyond an apology, to make up for the wait |
-| noisy-room | Guest problems | Offers a solution (call next door, or move rooms) |
+| noisy-room | Guest problems | Offers a fix: stopping the noise, or moving the guest away from it |
 | pharmacy-directions | Guest information | Gives directions a guest could follow |
 | todays-special | Guest information | Names the dish · Mentions the sides |
 | peanut-allergy | Guest information | Says what they'll do next about the allergy · Explains how the kitchen keeps the guest's food free of peanuts |
@@ -72,7 +72,7 @@ The lines as of 2026-09-29. `src/core/scenarios.ts` is the source of truth.
 | ran-out-of-salmon | Reporting up | Tells the chef the salmon is gone · Asks what servers should tell guests |
 | room-report | Reporting up | Reports what was done in room 305 |
 | end-of-shift | Briefing coworkers | Clean the station · Label stored food · Take out the trash |
-| shift-handoff | Briefing coworkers | The guest's calls about the air conditioning · The maintenance visit and fix |
+| shift-handoff | Briefing coworkers | The guest's calls about the air conditioning · That it's fixed now |
 
 Settled in review:
 
@@ -104,6 +104,13 @@ chef's check.
    expectation. Tighten the task text to match, without modeling the scenario's target
    grammar: early-arrival's task says "spend the wait", not "until the room is ready",
    which would hand the learner "is" in a scenario that grades be-verbs.
+
+   The first eval (2026-10-03) found three tasks that asked for less than their checklists.
+   Where the scenario's target grammar lives in the detail, the task now asks for the
+   detail: slow-food asks for "a time for their food", not "an update", and room-report asks
+   about "the work in room 305", not just the room. noisy-room dropped "respond to the
+   guest", since every answer is a response. A shift handoff needs the current status more
+   than the history, so shift-handoff checks "fixed now" instead of the maintenance visit.
 
 Test each new line two ways: the laziest answer that matches its words without meeting the
 need should fail, and a borderline good answer should pass. Then grade the answer key's
