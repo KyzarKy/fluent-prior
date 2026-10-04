@@ -25,13 +25,24 @@ export const security: KeyEntry[] = JSON.parse(
 
 /** Paced for the free tier's 8,000 tokens a minute (ADR 0004): about 2 grades a minute. */
 export const PACE_MS = 31_000;
-/** A quota wait longer than this is the daily limit: stop and resume another day. */
+/** A quota wait longer than this is the daily limit: stop, and resume when Groq says. */
 const MAX_QUOTA_WAIT_SECONDS = 120;
 
 export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-/** Grades one answer, waiting out the per-minute limit. "daily quota" means stop for today. */
-export async function gradeEntry(grade: Grader, entry: KeyEntry): Promise<Result | "daily quota"> {
+/**
+ * Groq's daily token limit is a rolling 24-hour window. Its 429 says how long until a
+ * grade fits again; no rate-limit header reports it.
+ */
+export interface DailyQuota {
+  retryAfterSeconds: number;
+}
+
+export const dailyQuotaMessage = (quota: DailyQuota) =>
+  `Daily quota reached. Groq says a grade fits again in about ${Math.ceil(quota.retryAfterSeconds / 60)} minutes.`;
+
+/** Grades one answer, waiting out the per-minute limit but not the daily one. */
+export async function gradeEntry(grade: Grader, entry: KeyEntry): Promise<Result | DailyQuota> {
   const scenario = findScenario(entry.scenarioId);
   if (!scenario) throw new Error(`Unknown scenario ${entry.scenarioId}`);
   const attempt = () =>
@@ -42,7 +53,9 @@ export async function gradeEntry(grade: Grader, entry: KeyEntry): Promise<Result
     }));
   let outcome = await attempt();
   while ("retryAfterSeconds" in outcome) {
-    if (outcome.retryAfterSeconds > MAX_QUOTA_WAIT_SECONDS) return "daily quota";
+    if (outcome.retryAfterSeconds > MAX_QUOTA_WAIT_SECONDS) {
+      return { retryAfterSeconds: outcome.retryAfterSeconds };
+    }
     await sleep(outcome.retryAfterSeconds * 1000);
     outcome = await attempt();
   }

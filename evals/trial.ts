@@ -10,7 +10,7 @@
 
 import Groq from "groq-sdk";
 import { createGroqGrader } from "../src/server/groq-grader";
-import { answers, gradeEntry, PACE_MS, sleep } from "./grade";
+import { answers, dailyQuotaMessage, gradeEntry, PACE_MS, sleep } from "./grade";
 import { compareSkills } from "./scoring";
 
 const [idList, triesArg = "3"] = process.argv.slice(2);
@@ -38,8 +38,8 @@ trials: for (let round = 1; round <= tries; round++) {
   for (const row of rows) {
     if (calls++ > 0) await sleep(PACE_MS);
     const result = await gradeEntry(grader, row.entry);
-    if (result === "daily quota") {
-      console.log("Daily quota reached: the tally below is partial.");
+    if ("retryAfterSeconds" in result) {
+      console.log(`${dailyQuotaMessage(result)} The tally below is partial.`);
       break trials;
     }
     row.graded++;

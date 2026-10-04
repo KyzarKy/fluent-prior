@@ -69,3 +69,13 @@ One grade of "i find a broken lamp…" at each reasoning effort:
   counts as about 3,200, so two grades fit in a minute instead of one.
 - If an answer ever needs more than 2,000 output tokens, the reply stops early and shows as
   a failed grade (`finish_reason length` in the server log), so it can't pass unnoticed.
+
+## Measured, 2026-10-04: the daily limit
+
+- **It behaves like a rolling 24-hour window, not a midnight reset.** At 20:35 UTC, with the
+  day's quota spent, a 112-token request went through but a grade didn't, and the grade's
+  429 said `retry-after: 903` (15 minutes), not the 3.4 hours to midnight UTC. Tokens seem
+  to free up as day-old ones age out.
+- **No header reports it.** `x-ratelimit-*-tokens` are the per-minute limit (8,000) and
+  `x-ratelimit-*-requests` are requests per day (1,000). Only a 429's `retry-after` says
+  when the daily token limit allows another grade.

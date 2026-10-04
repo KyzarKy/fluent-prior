@@ -10,7 +10,15 @@ import { execSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import Groq from "groq-sdk";
 import { createGroqGrader, GROQ_MODEL } from "../src/server/groq-grader";
-import { answers, gradeEntry, PACE_MS, type Result, security, sleep } from "./grade";
+import {
+  answers,
+  dailyQuotaMessage,
+  gradeEntry,
+  PACE_MS,
+  type Result,
+  security,
+  sleep,
+} from "./grade";
 import { compareSkills, precisionRecallF05, wilson } from "./scoring";
 
 interface ResultsFile {
@@ -37,8 +45,8 @@ async function gradeMissing(path: string, file: ResultsFile) {
   const todo = [...answers, ...security].filter((entry) => !(String(entry.id) in file.results));
   for (const [index, entry] of todo.entries()) {
     const result = await gradeEntry(grade, entry);
-    if (result === "daily quota") {
-      console.log(`Daily quota reached. Resume later: npm run eval -- ${path}`);
+    if ("retryAfterSeconds" in result) {
+      console.log(`${dailyQuotaMessage(result)} Then resume: npm run eval -- ${path}`);
       return false;
     }
     file.results[String(entry.id)] = result;
