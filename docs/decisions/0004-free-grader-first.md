@@ -23,6 +23,10 @@ Recheck them against the provider's own docs before relying on them.
   model can't be swapped in without a visible price change.
 - **Out of quota:** the grader reports it, and the learner sees the same message as for the
   whole-app spend cap. It's a limit, not a failure.
+- **Rejected JSON:** Groq sometimes refuses a reply that breaks the schema
+  (`json_validate_failed`, 1 in 60 in the first eval). The grader retries once, inside the
+  same capped request. That second call isn't checked against the caps again, which is safe
+  only because the free grader costs $0; a paid grader shouldn't copy it.
 - **Sonnet stays:** `GRADER=anthropic` selects it; `GRADER=fake` still exists for UI work.
   The prompt, the parsing, and the contract are shared, so the only difference between
   graders is the provider call.

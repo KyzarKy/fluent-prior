@@ -14,8 +14,8 @@ const DEFAULT_RETRY_SECONDS = 60 * 60;
 
 export function createGroqGrader(client: Groq): Grader {
   return async (scenario, answer) => {
-    try {
-      const response = await client.chat.completions.create({
+    const request = () =>
+      client.chat.completions.create({
         model: GROQ_MODEL,
         max_completion_tokens: MAX_OUTPUT_TOKENS,
         reasoning_effort: "medium",
@@ -27,6 +27,14 @@ export function createGroqGrader(client: Groq): Grader {
           { role: "system", content: SYSTEM_PROMPT },
           { role: "user", content: userMessage(scenario, answer) },
         ],
+      });
+    try {
+      // Groq rejects a reply that breaks the schema (1 in 60 in the first eval). A second
+      // sample usually passes, and calls on the free tier cost nothing, so retry once.
+      const response = await request().catch((error: unknown) => {
+        if (error instanceof Groq.BadRequestError && error.message.includes("json_validate_failed"))
+          return request();
+        throw error;
       });
       const usage = response.usage;
       const cost = costUsd(GROQ_MODEL, {
