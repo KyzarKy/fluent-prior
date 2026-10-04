@@ -43,6 +43,21 @@ To be designed after v1:
   reliable evidence there is.
 - Needs accounts, learner-controlled sharing, and server-side storage of the log.
 
+## Later: progress over time
+
+The learner sees how they've improved, as charts with a short written explanation. Order
+relative to the tutor work, accounts and security is open.
+
+- **Charts per track:** mastery for each grammar skill, tone, and task completion by task
+  type, over days and weeks.
+- **A written summary** in simple English, for example "Your past tense is much steadier
+  than two weeks ago; articles still come and go." Code computes the trends and the model
+  only words them, so the summary can't invent progress (CLAUDE.md rule 3). Each summary is
+  a model call, so it goes through the spend caps.
+- **No new data needed:** observations are append-only and timestamped, so mastery on any
+  past day comes from replaying the log up to that day.
+- The tutor view's "mastery over time" can share these charts.
+
 ## Ideas, not scheduled
 
 - Other varieties of English (British, Australian, New Zealand, South African), selectable
