@@ -10,7 +10,7 @@ export const fakeGrader: Grader = async (scenario, answer) => {
     ok: true,
     costUsd: 0,
     output: {
-      mistakes: second ? [{ skill: second, quote, fix: "(fake fix)" }] : [],
+      mistakes: second ? [{ skill: second, quote, fix: "(fake fix)", why: "(fake rule)" }] : [],
       correctUses: first ? [{ skill: first, quote }] : [],
       // First part present, the rest missing, so the UI shows a partial answer.
       taskParts: scenario.taskParts.map((_, index) => ({

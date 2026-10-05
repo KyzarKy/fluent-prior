@@ -33,6 +33,8 @@ export const GraderOutput = z.object({
       skill: z.enum(SKILL_IDS),
       quote: z.string(),
       fix: z.string(),
+      /** The rule the learner broke, in words they can use next time. */
+      why: z.string(),
     }),
   ),
   correctUses: z.array(

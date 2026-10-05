@@ -46,9 +46,9 @@ function answered(scenarioId: string, outcome: Observation["outcome"] = "right")
 
 const grade: Grade = {
   mistakes: [
-    { skill: "articles", quote: "in room", fix: "in the room" },
-    { skill: "past-irregular", quote: "i find", fix: "i found" },
-    { skill: "past-irregular", quote: "i see", fix: "i saw" },
+    { skill: "articles", quote: "in room", fix: "in the room", why: "" },
+    { skill: "past-irregular", quote: "i find", fix: "i found", why: "" },
+    { skill: "past-irregular", quote: "i see", fix: "i saw", why: "" },
   ],
   correctUses: [
     { skill: "past-irregular", quote: "broke" },

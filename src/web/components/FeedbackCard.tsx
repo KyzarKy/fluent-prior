@@ -74,6 +74,7 @@ export function FeedbackCard({ grade, scenario }: { grade: Grade; scenario: Scen
                 <p className="text-muted text-sm">
                   “{mistake.quote}” → “{mistake.fix}”
                 </p>
+                <p className="text-sm">{mistake.why}</p>
               </div>
             </li>
           ))}
