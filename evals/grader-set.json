@@ -1387,6 +1387,36 @@
         ],
         "wordChoice": []
       }
+    },
+    {
+      "id": 61,
+      "scenarioId": "early-arrival",
+      "role": "Front desk",
+      "situation": "Guest at the desk. Time now: 11:00 a.m. Check-in time: 3:00 p.m. Room status: not ready.",
+      "task": "Explain the situation to the guest and suggest a way for them to spend the wait.",
+      "answer": "the room's not ready figure out something to do",
+      "ky": {
+        "taskMet": "partly",
+        "tone": "rude",
+        "mistakes": [],
+        "wordChoice": [],
+        "note": "A bare command to a guest. \"Something to do\" leaves the guest to think of an activity, so part 2 is missing."
+      }
+    },
+    {
+      "id": 62,
+      "scenarioId": "early-arrival",
+      "role": "Front desk",
+      "situation": "Guest at the desk. Time now: 11:00 a.m. Check-in time: 3:00 p.m. Room status: not ready.",
+      "task": "Explain the situation to the guest and suggest a way for them to spend the wait.",
+      "answer": "the room is not ready figure out something to do",
+      "ky": {
+        "taskMet": "partly",
+        "tone": "rude",
+        "mistakes": [],
+        "wordChoice": [],
+        "note": "A bare command to a guest. \"Something to do\" leaves the guest to think of an activity, so part 2 is missing."
+      }
     }
   ]
 }

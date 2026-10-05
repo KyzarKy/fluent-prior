@@ -59,7 +59,7 @@ The lines as of 2026-10-04. `src/core/scenarios.ts` is the source of truth.
 
 | Scenario | Task type | Parts of a complete answer |
 |---|---|---|
-| early-arrival | Guest problems | Explains the room isn't ready or when it will be · Suggests an additional activity to pass the time until the room is ready |
+| early-arrival | Guest problems | Explains the room isn't ready or when it will be · Suggests a specific activity or place to spend the wait |
 | slow-food | Guest problems | Tells the guests when their food will arrive · Offers something extra, beyond an apology, to make up for the wait |
 | noisy-room | Guest problems | Offers a fix: stopping the noise, or moving the guest away from it |
 | pharmacy-directions | Guest information | Gives directions a guest could follow |
@@ -88,10 +88,13 @@ do while waiting, and failed an answer that named the separate cutting board but
 chef's check.
 
 1. **Describe the listener's need, not a loose action.** "Suggests something the guest can
-   do" is met by "come back at 3". "Suggests an additional activity to pass the time" says
-   what the guest needs, and "come back later" doesn't meet it.
+   do" is met by "come back at 3". "Suggests a specific activity or place to spend the
+   wait" says what the guest needs: "come back later" doesn't meet it, and since
+   2026-10-04 neither does "figure out something to do", which leaves the thinking to the
+   guest.
 2. **Parts don't overlap.** One piece of an answer should satisfy at most one part.
-   "Additional" does this for early-arrival: part 2 has to add something beyond part 1. The
+   For early-arrival, "come back at 3" says when the room will be ready (part 1), but it
+   isn't an activity or a place, so it can't also count as part 2. The
    old peanut-allergy list had "Reassures the guest" beside "Explains the procedure", and
    explaining the procedure is the reassurance, so reassurance is no longer a part.
 3. **Name a category, never example answers.** "An activity to pass the time" is a

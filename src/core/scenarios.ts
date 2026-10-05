@@ -47,7 +47,7 @@ export const SCENARIOS: Scenario[] = [
     taskType: "guest-problems",
     taskParts: [
       "Explains that the room isn't ready, or when it will be",
-      "Suggests an additional activity to pass the time until the room is ready",
+      "Suggests a specific activity or place to spend the wait",
     ],
     targetSkills: ["be-verbs", "time-prepositions"],
   },
