@@ -9,6 +9,7 @@
 import { execSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import Groq from "groq-sdk";
+import type { TokenUsage } from "../src/server/grader";
 import { createGroqGrader, GROQ_MODEL } from "../src/server/groq-grader";
 import {
   answers,
@@ -146,6 +147,17 @@ function report(file: ResultsFile) {
   for (const [skill, row] of [...perSkill].sort(([a], [b]) => a.localeCompare(b))) {
     console.log(
       `  ${skill.padEnd(20)}${String(row.caught).padEnd(8)}${String(row.missed).padEnd(8)}${row.invented}`,
+    );
+  }
+
+  const counted = Object.values(file.results).flatMap((r) => (r.ok && r.tokens ? [r.tokens] : []));
+  if (counted.length > 0) {
+    const sum = (key: keyof TokenUsage) => counted.reduce((total, t) => total + t[key], 0);
+    const avg = (key: keyof TokenUsage) => Math.round(sum(key) / counted.length);
+    const maxOutput = Math.max(...counted.map((t) => t.output));
+    console.log(`\nTokens per grade, averaged over ${counted.length} grades:`);
+    console.log(
+      `  prompt ${avg("input")}, of which cached ${avg("cachedInput")} (${pct(sum("cachedInput") / sum("input"))}) · output ${avg("output")}, of which reasoning ${avg("reasoning")} · largest output ${maxOutput}`,
     );
   }
 

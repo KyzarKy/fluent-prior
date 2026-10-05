@@ -15,7 +15,12 @@ const output: GraderOutput = {
 
 const reply = {
   choices: [{ finish_reason: "stop", message: { content: JSON.stringify(output) } }],
-  usage: { prompt_tokens: 100, completion_tokens: 50 },
+  usage: {
+    prompt_tokens: 100,
+    completion_tokens: 50,
+    prompt_tokens_details: { cached_tokens: 80 },
+    completion_tokens_details: { reasoning_tokens: 30 },
+  },
 };
 
 // The body Groq sent for #41 in the first eval.
@@ -43,7 +48,11 @@ describe("createGroqGrader", () => {
   it("retries once when Groq rejects the reply's JSON", async () => {
     const { client, calls } = clientFailingFirst(jsonValidateFailed);
     const outcome = await createGroqGrader(client)(scenario, "where do these go");
-    expect(outcome).toMatchObject({ ok: true, output });
+    expect(outcome).toMatchObject({
+      ok: true,
+      output,
+      tokens: { input: 100, cachedInput: 80, output: 50, reasoning: 30 },
+    });
     expect(calls()).toBe(2);
   });
 

@@ -5,8 +5,16 @@ import { GraderOutput } from "../core/contract";
 import { ROLE_NAMES, type Scenario } from "../core/scenarios";
 import { SKILL_IDS, SKILLS } from "../core/skills";
 
+/** One call's token counts, for measuring cost and prompt-cache hits. */
+export interface TokenUsage {
+  input: number;
+  cachedInput: number;
+  output: number;
+  reasoning: number;
+}
+
 export type GradeOutcome =
-  | { ok: true; output: GraderOutput; costUsd: number }
+  | { ok: true; output: GraderOutput; costUsd: number; tokens?: TokenUsage }
   | { ok: false; reason: string; costUsd: number }
   /** The provider's free quota is used up. Shown to the learner as a limit, not an error. */
   | { ok: false; reason: "quota"; costUsd: number; retryAfterSeconds: number };

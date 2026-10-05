@@ -45,7 +45,15 @@ export function createGroqGrader(client: Groq): Grader {
       if (choice?.finish_reason !== "stop") {
         return { ok: false, reason: `finish_reason ${choice?.finish_reason}`, costUsd: cost };
       }
-      return parseReply(choice.message.content, cost);
+      const outcome = parseReply(choice.message.content, cost);
+      if (!outcome.ok) return outcome;
+      const tokens = {
+        input: usage?.prompt_tokens ?? 0,
+        cachedInput: usage?.prompt_tokens_details?.cached_tokens ?? 0,
+        output: usage?.completion_tokens ?? 0,
+        reasoning: usage?.completion_tokens_details?.reasoning_tokens ?? 0,
+      };
+      return { ...outcome, tokens };
     } catch (error) {
       if (error instanceof Groq.RateLimitError) {
         const retryAfter = Number(error.headers?.get?.("retry-after"));

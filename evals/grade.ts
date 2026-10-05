@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import type { Grade } from "../src/core/contract";
 import { findScenario } from "../src/core/scenarios";
 import { taskVerdict } from "../src/core/tasks";
-import type { Grader } from "../src/server/grader";
+import type { Grader, TokenUsage } from "../src/server/grader";
 import type { KeyMistake } from "./scoring";
 
 export interface KeyEntry {
@@ -14,7 +14,9 @@ export interface KeyEntry {
   ky?: { taskMet: string; tone: string; toneAlsoAccept?: string[]; mistakes: KeyMistake[] };
   expectMistake?: { skill: string };
 }
-export type Result = { ok: true; grade: Grade } | { ok: false; reason: string };
+export type Result =
+  | { ok: true; grade: Grade; tokens?: TokenUsage }
+  | { ok: false; reason: string };
 
 export const answers: KeyEntry[] = JSON.parse(
   readFileSync("evals/grader-set.json", "utf8"),
@@ -62,6 +64,6 @@ export async function gradeEntry(grade: Grader, entry: KeyEntry): Promise<Result
   if (!outcome.ok) return { ok: false, reason: outcome.reason };
   const taskMet = taskVerdict(scenario.taskParts.length, outcome.output.taskParts);
   return taskMet
-    ? { ok: true, grade: { ...outcome.output, taskMet } }
+    ? { ok: true, grade: { ...outcome.output, taskMet }, tokens: outcome.tokens }
     : { ok: false, reason: "task parts didn't cover each part once" };
 }
