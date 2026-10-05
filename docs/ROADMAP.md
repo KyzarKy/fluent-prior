@@ -104,3 +104,11 @@ USDOL/ETA, link the license, and say the text was adapted.
 - Scenarios generated for the learner's own workplace, reviewed before use.
 - Forgetting: a decay term, so old practice counts for less.
 - Detecting dictated versus typed answers from how the text arrives.
+- **Reuse grades for identical answers**, after removing what isn't graded (punctuation,
+  capitalization, spacing). Same answer, same grade: it saves little, but grading becomes
+  consistent. Needs the production store, and saved grades go stale when the prompt or a
+  scenario changes. Not "similar" answers: similarity measures ignore the missing "is" or
+  "-s" that the grammar grade is about.
+- **A backup grader for when the quota runs out.** Groq's free limits are per model, so
+  gpt-oss-20b has its own daily quota. If it scores well enough on the eval, it could grade
+  instead of the app showing "limit reached".
