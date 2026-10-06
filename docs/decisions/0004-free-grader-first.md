@@ -43,7 +43,8 @@ Recheck them against the provider's own docs before relying on them.
 
 ## Consequences
 
-- About 80 graded answers a day, shared by everyone. Fine for a portfolio demo, not for
+- About 80 graded answers a day (measured on 2026-10-06 as 65 to 70; see below), shared by
+  everyone, eval runs included. Fine for a portfolio demo, not for
   real users. The whole-app cap in ADR 0003 gains a count limit (60 answers a day), so we
   stop before Groq does and can say why.
 - Grading will likely miss more small grammar errors than Sonnet. The 20-answer eval on the
@@ -79,3 +80,21 @@ One grade of "i find a broken lamp…" at each reasoning effort:
 - **No header reports it.** `x-ratelimit-*-tokens` are the per-minute limit (8,000) and
   `x-ratelimit-*-requests` are requests per day (1,000). Only a 429's `retry-after` says
   when the daily token limit allows another grade.
+
+## Measured, 2026-10-06: tokens per grade
+
+Two full eval runs, 128 grades (results 2026-10-05T0159 and T0200):
+
+- **About 3,000 tokens a grade:** a prompt of about 1,690 (1,187 on 2026-09-27; every rule
+  added since costs tokens on every call) and output of about 1,200, of which about 1,015
+  is reasoning. That's 65 to 70 grades a day in the 200,000-token daily limit.
+- **Prompt caching barely helps.** Groq caches automatically and cached tokens don't count
+  toward limits, but the cache served only 4 to 6% of prompt tokens. Hits aren't
+  guaranteed, so capacity can't be planned around them.
+- **Eval runs compete with the app.** A full run is about 190,000 tokens, nearly a day's
+  quota. Two runs side by side took every grade the quota freed for about 32 hours, leaving
+  the app none. The app's
+  60-answers-a-day cap (ADR 0003) doesn't help while an eval runs.
+- **Little headroom under the output ceiling.** The largest reply was 1,964 of 2,000
+  tokens. A longer one is cut off and fails. Lower reasoning effort is the lever if that
+  starts happening.

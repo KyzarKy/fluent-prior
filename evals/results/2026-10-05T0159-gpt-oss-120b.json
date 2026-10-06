@@ -1,0 +1,2777 @@
+{
+  "model": "openai/gpt-oss-120b",
+  "commit": "8956f81",
+  "startedAt": "2026-10-05T02:14:45.650Z",
+  "results": {
+    "1": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "past-irregular",
+            "quote": "i find",
+            "fix": "I found"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "past-irregular",
+            "quote": "broke"
+          },
+          {
+            "skill": "articles",
+            "quote": "a broken lamp"
+          },
+          {
+            "skill": "place-prepositions",
+            "quote": "in room 214"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "a broken lamp in room 214"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "this morning"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You correctly mentioned the broken lamp and the time you noticed it. Try using the past tense for what you found (e.g., “I found”).",
+        "betterVersion": "I found a broken lamp in room 214 this morning; I think it was broken yesterday.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1692,
+        "cachedInput": 0,
+        "output": 1354,
+        "reasoning": 1183
+      }
+    },
+    "2": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "past-regular",
+            "quote": "call",
+            "fix": "called"
+          },
+          {
+            "skill": "be-verbs",
+            "quote": "maintenance visit at 4 pm",
+            "fix": "maintenance visit was at 4 pm"
+          },
+          {
+            "skill": "third-person-s",
+            "quote": "say",
+            "fix": "says"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "articles",
+            "quote": "the guest"
+          },
+          {
+            "skill": "time-prepositions",
+            "quote": "at 4 pm"
+          },
+          {
+            "skill": "place-prepositions",
+            "quote": "in room 118"
+          },
+          {
+            "skill": "plurals",
+            "quote": "two times"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "the guest in room 118 call two times today about the air conditioning"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "he say it works now"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You mentioned the guest’s calls and that maintenance fixed the AC. Watch the verb tenses – use past tense for the calls and add an -s to “say.”",
+        "betterVersion": "The guest in room 118 called twice today about the air conditioning. Maintenance visited at 4 p.m., and he says it works now.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1724,
+        "cachedInput": 0,
+        "output": 1795,
+        "reasoning": 1551
+      }
+    },
+    "3": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "modal-verbs",
+            "quote": "Could I please see your ID and a credit card for the reservation?"
+          },
+          {
+            "skill": "articles",
+            "quote": "a credit card"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "your ID"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "a credit card"
+          }
+        ],
+        "tone": "polite",
+        "feedback": "Good job asking for both the ID and the credit card politely. Keep using polite requests like this.",
+        "betterVersion": "Could I please see your photo ID and a credit card for the reservation?",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1659,
+        "cachedInput": 0,
+        "output": 838,
+        "reasoning": 703
+      }
+    },
+    "4": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "check in is at 3 pm",
+            "fix": "the check‑in is at 3 p.m."
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "room is not ready"
+          },
+          {
+            "skill": "time-prepositions",
+            "quote": "at 3 pm"
+          },
+          {
+            "skill": "place-prepositions",
+            "quote": "in the lobby"
+          },
+          {
+            "skill": "modal-verbs",
+            "quote": "can leave"
+          },
+          {
+            "skill": "articles",
+            "quote": "the lobby"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "your room is not ready yet"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "have a coffee in the lobby"
+          }
+        ],
+        "tone": "polite",
+        "feedback": "You explained the situation and gave a good suggestion. Add \"the\" before \"check‑in\".",
+        "betterVersion": "I'm sorry, your room isn’t ready yet; check‑in is at 3 p.m., but you can leave your bags with us and enjoy a coffee in the lobby while you wait.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1720,
+        "cachedInput": 1536,
+        "output": 1515,
+        "reasoning": 1292
+      }
+    },
+    "5": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "be-verbs",
+            "quote": "room not ready",
+            "fix": "The room is not ready"
+          },
+          {
+            "skill": "articles",
+            "quote": "room not ready",
+            "fix": "The room is not ready"
+          },
+          {
+            "skill": "time-prepositions",
+            "quote": "come back 3 o'clock",
+            "fix": "Come back at 3 o'clock"
+          }
+        ],
+        "correctUses": [],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "room not ready"
+          },
+          {
+            "part": 2,
+            "present": false,
+            "evidence": ""
+          }
+        ],
+        "tone": "rude",
+        "feedback": "You explained that the room isn’t ready, which is good. Add the missing verb, article, and the word “at” for the time, and use a more polite tone.",
+        "betterVersion": "I'm sorry, the room isn’t ready yet. It should be ready by 3 p.m.; you could relax in the lobby while you wait.",
+        "taskMet": "partly"
+      },
+      "tokens": {
+        "input": 1699,
+        "cachedInput": 0,
+        "output": 1076,
+        "reasoning": 879
+      }
+    },
+    "6": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "the pharmacy is"
+          },
+          {
+            "skill": "place-prepositions",
+            "quote": "out of the hotel"
+          },
+          {
+            "skill": "articles",
+            "quote": "the pharmacy"
+          },
+          {
+            "skill": "plurals",
+            "quote": "two blocks"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "the pharmacy is two blocks from here go out of the hotel and turn left on main street it is on the right side"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You gave clear directions and used the correct articles. Try separating the steps into shorter sentences.",
+        "betterVersion": "The pharmacy is about two blocks from here. Please go out of the hotel, turn left onto Main Street, and it will be on the right side.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1676,
+        "cachedInput": 0,
+        "output": 1327,
+        "reasoning": 1164
+      }
+    },
+    "7": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "plurals",
+            "quote": "two block",
+            "fix": "two blocks"
+          },
+          {
+            "skill": "articles",
+            "quote": "pharmacy",
+            "fix": "The pharmacy"
+          },
+          {
+            "skill": "place-prepositions",
+            "quote": "in main street",
+            "fix": "on Main Street"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "pharmacy is"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "pharmacy is two block away you go left in main street"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "Your directions were clear, which is great. Remember to add articles and plural -s where needed.",
+        "betterVersion": "The pharmacy is two blocks away; just go left onto Main Street and it’s about a five‑minute walk.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1664,
+        "cachedInput": 0,
+        "output": 1045,
+        "reasoning": 881
+      }
+    },
+    "8": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "question-forms",
+            "quote": "what time i can come back to clean your room",
+            "fix": "what time can I come back to clean your room"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "modal-verbs",
+            "quote": "can come back"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "what time i can come back to clean your room"
+          }
+        ],
+        "tone": "polite",
+        "feedback": "Good job offering to set a new cleaning time. Try using the correct question word order: \"What time can I come back...\"",
+        "betterVersion": "No problem. What time would be convenient for me to come back and clean your room?",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1670,
+        "cachedInput": 0,
+        "output": 1115,
+        "reasoning": 964
+      }
+    },
+    "9": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "question-forms",
+            "quote": "what time would be better for me to come back"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "what time would be better for me to come back"
+          }
+        ],
+        "tone": "polite",
+        "feedback": "You asked nicely for a better cleaning time. Keep using polite phrases like this.",
+        "betterVersion": "I'm sorry to disturb you. What time would be better for me to come back?",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1674,
+        "cachedInput": 1536,
+        "output": 1018,
+        "reasoning": 906
+      }
+    },
+    "10": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "third-person-s",
+            "quote": "the kitchen use",
+            "fix": "the kitchen uses"
+          },
+          {
+            "skill": "articles",
+            "quote": "separate board",
+            "fix": "a separate board"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "future-forms",
+            "quote": "i will tell the chef right away"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "i will tell the chef right away"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "the kitchen use separate board"
+          },
+          {
+            "part": 3,
+            "present": false,
+            "evidence": ""
+          }
+        ],
+        "tone": "polite",
+        "feedback": "You thanked the guest and explained what you’ll do next. Remember to add the missing article and use ‘uses’ with the kitchen.",
+        "betterVersion": "Thank you for letting me know. I’ll tell the chef right away, and the kitchen uses a separate cutting board for allergy orders, and the chef checks each plate to make sure it’s safe.",
+        "taskMet": "partly"
+      },
+      "tokens": {
+        "input": 1716,
+        "cachedInput": 0,
+        "output": 1207,
+        "reasoning": 1005
+      }
+    },
+    "11": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "future-forms",
+            "quote": "i tell the chef",
+            "fix": "I'll tell the chef"
+          }
+        ],
+        "correctUses": [],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "i tell the chef"
+          },
+          {
+            "part": 2,
+            "present": false,
+            "evidence": ""
+          },
+          {
+            "part": 3,
+            "present": false,
+            "evidence": ""
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "Good job responding promptly. Try using a future form, e.g., \"I'll tell the chef.\"",
+        "betterVersion": "Okay, I'll tell the chef.",
+        "taskMet": "partly"
+      },
+      "tokens": {
+        "input": 1695,
+        "cachedInput": 0,
+        "output": 794,
+        "reasoning": 667
+      }
+    },
+    "12": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "i am"
+          },
+          {
+            "skill": "articles",
+            "quote": "the wait"
+          },
+          {
+            "skill": "time-prepositions",
+            "quote": "in five minutes"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "your food is coming in five minutes"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "i would like to bring you a free dessert"
+          }
+        ],
+        "tone": "polite",
+        "feedback": "You correctly told the guests when the food will arrive and offered a free dessert. Try using a future form like “will be ready” for a clearer promise.",
+        "betterVersion": "I’m very sorry for the wait; the kitchen is a bit busy, but your food will be out in about five minutes. To make up for it, I’d like to bring you a complimentary dessert.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1737,
+        "cachedInput": 0,
+        "output": 1567,
+        "reasoning": 1384
+      }
+    },
+    "13": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "the kitchen is busy"
+          },
+          {
+            "skill": "modal-verbs",
+            "quote": "you have to wait"
+          },
+          {
+            "skill": "articles",
+            "quote": "the kitchen"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": false,
+            "evidence": ""
+          },
+          {
+            "part": 2,
+            "present": false,
+            "evidence": ""
+          }
+        ],
+        "tone": "rude",
+        "feedback": "You used the verb \"is\" correctly and included the article \"the\". Next time, give the guests an estimated arrival time and offer something extra for the wait.",
+        "betterVersion": "I’m sorry for the delay; your meals will be ready in about five minutes, and we’d like to offer you a complimentary appetizer while you wait.",
+        "taskMet": "no"
+      },
+      "tokens": {
+        "input": 1717,
+        "cachedInput": 0,
+        "output": 1139,
+        "reasoning": 975
+      }
+    },
+    "14": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "possessive-s",
+            "quote": "today special",
+            "fix": "today's special"
+          },
+          {
+            "skill": "third-person-s",
+            "quote": "it come",
+            "fix": "it comes"
+          },
+          {
+            "skill": "plurals",
+            "quote": "vegetable",
+            "fix": "vegetables"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "is"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "grilled salmon"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "rice and vegetable"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You named the dish correctly, but fix the verb form, add the possessive, and make vegetables plural.",
+        "betterVersion": "Today's special is grilled salmon; it comes with rice and vegetables.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1679,
+        "cachedInput": 0,
+        "output": 931,
+        "reasoning": 769
+      }
+    },
+    "15": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "past-irregular",
+            "quote": "run",
+            "fix": "ran"
+          },
+          {
+            "skill": "question-forms",
+            "quote": "what the servers should tell to the guests",
+            "fix": "what should the servers tell the guests"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "time-prepositions",
+            "quote": "at lunch"
+          },
+          {
+            "skill": "modal-verbs",
+            "quote": "should"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "we run out of salmon at lunch"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "what the servers should tell to the guests"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You told the chef the salmon is gone and asked what to tell guests. Use the past tense 'ran' and the correct question form 'What should the servers tell the guests?'",
+        "betterVersion": "Chef, we've run out of salmon for lunch. What should the servers tell the guests?",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1685,
+        "cachedInput": 0,
+        "output": 1520,
+        "reasoning": 1326
+      }
+    },
+    "16": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "modal-verbs",
+            "quote": "you have to"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "clean your station"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "label all the food"
+          },
+          {
+            "part": 3,
+            "present": true,
+            "evidence": "take out the trash"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You covered all three steps, good job. Try adding a polite word like \"please\" to sound friendlier.",
+        "betterVersion": "Before you go home, please clean your station, label all the food, and take out the trash.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1687,
+        "cachedInput": 0,
+        "output": 864,
+        "reasoning": 724
+      }
+    },
+    "17": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "question-forms",
+            "quote": "where i should put these boxes of vegetable",
+            "fix": "Where should I put these boxes of vegetables?"
+          },
+          {
+            "skill": "plurals",
+            "quote": "vegetable",
+            "fix": "vegetables"
+          }
+        ],
+        "correctUses": [],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "where i should put these boxes of vegetable"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You asked where to put the boxes, which is good. Remember to use the correct question order and make \"vegetable\" plural.",
+        "betterVersion": "Where should I put these boxes of vegetables?",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1659,
+        "cachedInput": 0,
+        "output": 905,
+        "reasoning": 768
+      }
+    },
+    "18": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "place-prepositions",
+            "quote": "on another floor"
+          },
+          {
+            "skill": "articles",
+            "quote": "a quiet room"
+          },
+          {
+            "skill": "modal-verbs",
+            "quote": "i can call the room next door"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "i can call the room next door or if you prefer we can move you to a quiet room on another floor"
+          }
+        ],
+        "tone": "polite",
+        "feedback": "You apologized and offered two solutions, which is good. Try using a future form like “I’ll call” to sound more definite.",
+        "betterVersion": "I’m very sorry about the noise. I can call the room next door to ask them to lower the volume, or if you’d prefer, we can move you to a quiet room on the 6th floor.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1689,
+        "cachedInput": 0,
+        "output": 1427,
+        "reasoning": 1246
+      }
+    },
+    "19": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "past-regular",
+            "quote": "i clean",
+            "fix": "i cleaned"
+          },
+          {
+            "skill": "past-regular",
+            "quote": "change the sheet",
+            "fix": "changed the sheet"
+          },
+          {
+            "skill": "past-regular",
+            "quote": "replace the towels",
+            "fix": "replaced the towels"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "place-prepositions",
+            "quote": "in room 305"
+          },
+          {
+            "skill": "articles",
+            "quote": "the bathroom"
+          },
+          {
+            "skill": "plurals",
+            "quote": "the towels"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "in room 305 i clean the bathroom change the sheet and replace the towels"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You listed the tasks and used the right articles. Remember to use past tense for completed work.",
+        "betterVersion": "In room 305 I cleaned the bathroom, changed the sheet, and replaced the towels.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1666,
+        "cachedInput": 0,
+        "output": 831,
+        "reasoning": 644
+      }
+    },
+    "20": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "be-verbs",
+            "quote": "room 305 ok",
+            "fix": "Room 305 is ok"
+          }
+        ],
+        "correctUses": [],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": false,
+            "evidence": ""
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You said the room is okay, which is good. Try to include what work you completed, like cleaning the bathroom or changing towels.",
+        "betterVersion": "Room 305 is done; I cleaned the bathroom, changed the bed linen, and replaced the towels.",
+        "taskMet": "no"
+      },
+      "tokens": {
+        "input": 1655,
+        "cachedInput": 0,
+        "output": 632,
+        "reasoning": 513
+      }
+    },
+    "21": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "isn't ready"
+          },
+          {
+            "skill": "modal-verbs",
+            "quote": "you can wait"
+          },
+          {
+            "skill": "articles",
+            "quote": "the lobby"
+          },
+          {
+            "skill": "plurals",
+            "quote": "bags"
+          },
+          {
+            "skill": "place-prepositions",
+            "quote": "in the lobby"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "your room isn't ready until 3 pm"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "you can wait here in the lobby or leave your bags with us for a few hours"
+          }
+        ],
+        "tone": "polite",
+        "feedback": "You explained the delay and gave a waiting option clearly. Just watch the word “here” in your sentence.",
+        "betterVersion": "I’m sorry, but your room won’t be ready until 3 p.m. You’re welcome to wait here in the lobby, or you can leave your bags with us for a few hours.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1718,
+        "cachedInput": 0,
+        "output": 1806,
+        "reasoning": 1577
+      }
+    },
+    "22": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "time-prepositions",
+            "quote": "on 3 pm",
+            "fix": "at 3 p.m."
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "is"
+          },
+          {
+            "skill": "place-prepositions",
+            "quote": "in the lobby"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "your room is not ready"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "you wait in the lobby"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You explained the situation and gave a suggestion. Just change \"on 3 pm\" to \"at 3 p.m.\" for correct time wording.",
+        "betterVersion": "Your room isn’t ready yet. You can wait in the lobby and return at 3 p.m.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1707,
+        "cachedInput": 0,
+        "output": 1358,
+        "reasoning": 1115
+      }
+    },
+    "23": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "be-verbs",
+            "quote": "is five minute walking",
+            "fix": "It is a five‑minute walk"
+          },
+          {
+            "skill": "articles",
+            "quote": "is five minute walking",
+            "fix": "It is a five‑minute walk"
+          },
+          {
+            "skill": "plurals",
+            "quote": "is five minute walking",
+            "fix": "It is a five‑minute walk"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "place-prepositions",
+            "quote": "go to main street"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "you go out, turn left, go to main street"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You gave clear directions, which is good. Add a polite phrase and correct the sentence about the walking time.",
+        "betterVersion": "Sure, just go out of the hotel, turn left onto Main Street, and it’s about a five‑minute walk.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1668,
+        "cachedInput": 0,
+        "output": 1211,
+        "reasoning": 1024
+      }
+    },
+    "24": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "the pharmacy is"
+          },
+          {
+            "skill": "articles",
+            "quote": "the pharmacy"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": false,
+            "evidence": ""
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You used the article and the verb correctly. Next time, remember to give the actual directions to the pharmacy.",
+        "betterVersion": "Yes, the pharmacy is nearby. Just exit the hotel, turn left onto Main Street, and it’s about a five‑minute walk.",
+        "taskMet": "no"
+      },
+      "tokens": {
+        "input": 1660,
+        "cachedInput": 0,
+        "output": 682,
+        "reasoning": 564
+      }
+    },
+    "25": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "place-prepositions",
+            "quote": "at main street",
+            "fix": "on Main Street"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "it's on the left side after the bank"
+          },
+          {
+            "skill": "third-person-s",
+            "quote": "it takes five minutes by foot"
+          },
+          {
+            "skill": "place-prepositions",
+            "quote": "on the left side after the bank"
+          },
+          {
+            "skill": "articles",
+            "quote": "the pharmacy ... the left side ... the bank"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "the pharmacy is at main street, it's on the left side after the bank, it takes five minutes by foot"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You gave clear directions, good job. Try using \"on Main Street\" and \"on foot\" for more natural English.",
+        "betterVersion": "The pharmacy is on Main Street; it’s just left of the bank and about a five‑minute walk.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1674,
+        "cachedInput": 0,
+        "output": 1252,
+        "reasoning": 1052
+      }
+    },
+    "26": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "past-irregular",
+            "quote": "find",
+            "fix": "found"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "past-irregular",
+            "quote": "went"
+          },
+          {
+            "skill": "articles",
+            "quote": "a broken lamp"
+          },
+          {
+            "skill": "time-prepositions",
+            "quote": "at 8:15"
+          },
+          {
+            "skill": "place-prepositions",
+            "quote": "to room 214"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "a broken lamp ... room 214"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "at 8:15"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You gave the location, what is broken, and the time. Change \"find\" to \"found\" for correct past tense.",
+        "betterVersion": "I went to room 214 at 8:15 and found a broken lamp.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1691,
+        "cachedInput": 0,
+        "output": 1310,
+        "reasoning": 1036
+      }
+    },
+    "27": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "past-irregular",
+            "quote": "is broke",
+            "fix": "is broken"
+          },
+          {
+            "skill": "past-irregular",
+            "quote": "i see it",
+            "fix": "I saw it"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "articles",
+            "quote": "the lamp"
+          },
+          {
+            "skill": "time-prepositions",
+            "quote": "at 8:15"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "the lamp of room 214 is broke"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "i see it at 8:15"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You correctly said what is broken and when you saw it. Remember to use the past tense \"saw\" and say the lamp is \"broken\".",
+        "betterVersion": "The lamp in room 214 is broken; I noticed it at 8:15 this morning.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1692,
+        "cachedInput": 0,
+        "output": 1442,
+        "reasoning": 1256
+      }
+    },
+    "28": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": false,
+            "evidence": ""
+          }
+        ],
+        "tone": "polite",
+        "feedback": "You apologized, which is good. Next time, suggest or ask for a specific cleaning time.",
+        "betterVersion": "I’m sorry, I’ll clean later. What time would be convenient for you?",
+        "taskMet": "no"
+      },
+      "tokens": {
+        "input": 1662,
+        "cachedInput": 0,
+        "output": 717,
+        "reasoning": 631
+      }
+    },
+    "29": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "question-forms",
+            "quote": "you want i come back in the afternoon or tomorrow?",
+            "fix": "Do you want me to come back in the afternoon or tomorrow?"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "time-prepositions",
+            "quote": "in the afternoon"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "you want i come back in the afternoon or tomorrow?"
+          }
+        ],
+        "tone": "polite",
+        "feedback": "Good job asking about a better time. Just use the correct question form like “Do you want me to…”.",
+        "betterVersion": "Sorry for disturbing you. Would you like me to come back this afternoon or tomorrow?",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1673,
+        "cachedInput": 0,
+        "output": 963,
+        "reasoning": 812
+      }
+    },
+    "30": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "question-forms",
+            "quote": "which is better?"
+          },
+          {
+            "skill": "time-prepositions",
+            "quote": "in one hour"
+          },
+          {
+            "skill": "time-prepositions",
+            "quote": "after lunch"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "I can come back in one hour or after lunch, which is better?"
+          }
+        ],
+        "tone": "polite",
+        "feedback": "You offered two possible times and asked which works best. It’s a clear and polite response.",
+        "betterVersion": "No problem. I can return in an hour or after lunch—whichever works better for you?",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1675,
+        "cachedInput": 0,
+        "output": 1090,
+        "reasoning": 950
+      }
+    },
+    "31": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "future-forms",
+            "quote": "i'll tell the kitchen right now"
+          },
+          {
+            "skill": "third-person-s",
+            "quote": "the chef checks every plate"
+          },
+          {
+            "skill": "articles",
+            "quote": "a separate cutting board"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "i'll tell the kitchen right now"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "they use a separate cutting board for allergies"
+          },
+          {
+            "part": 3,
+            "present": true,
+            "evidence": "the chef checks every plate"
+          }
+        ],
+        "tone": "polite",
+        "feedback": "You reassured the guest and clearly explained the steps. Next time you could add a brief apology for the inconvenience.",
+        "betterVersion": "Don't worry, I'll let the kitchen know right away. We use a separate cutting board for allergies, and the chef checks each plate before it leaves the kitchen.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1718,
+        "cachedInput": 0,
+        "output": 1389,
+        "reasoning": 1199
+      }
+    },
+    "32": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "future-forms",
+            "quote": "i tell the chef",
+            "fix": "I'll tell the chef"
+          },
+          {
+            "skill": "third-person-s",
+            "quote": "he control your plate",
+            "fix": "he controls your plate"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "articles",
+            "quote": "the chef"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "i tell the chef"
+          },
+          {
+            "part": 2,
+            "present": false,
+            "evidence": ""
+          },
+          {
+            "part": 3,
+            "present": false,
+            "evidence": ""
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You let the guest know you’ll tell the chef, which is good. Add the details about the separate cutting board and the chef checking the plate, and use the future form “I’ll tell”.",
+        "betterVersion": "Okay, no peanuts. I’ll tell the chef, we use a separate cutting board, and the chef will check your plate.",
+        "taskMet": "partly"
+      },
+      "tokens": {
+        "input": 1703,
+        "cachedInput": 0,
+        "output": 1252,
+        "reasoning": 1056
+      }
+    },
+    "33": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "third-person-s",
+            "quote": "he use a separate board",
+            "fix": "he uses a separate board"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "future-forms",
+            "quote": "i will inform the chef"
+          },
+          {
+            "skill": "third-person-s",
+            "quote": "he checks each plate"
+          },
+          {
+            "skill": "articles",
+            "quote": "a separate board"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "i will inform the chef"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "he use a separate board"
+          },
+          {
+            "part": 3,
+            "present": true,
+            "evidence": "he checks each plate"
+          }
+        ],
+        "tone": "polite",
+        "feedback": "You thanked the guest and explained the steps, which is good. Just add the -s on \"he uses\" for correct verb agreement.",
+        "betterVersion": "Thank you for letting us know. I’ll inform the chef right away; the kitchen uses a separate cutting board, and the chef checks each plate.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1712,
+        "cachedInput": 0,
+        "output": 1152,
+        "reasoning": 946
+      }
+    },
+    "34": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "future-forms",
+            "quote": "i tell the chef",
+            "fix": "I'll tell the chef"
+          },
+          {
+            "skill": "modal-verbs",
+            "quote": "must to check",
+            "fix": "must check"
+          }
+        ],
+        "correctUses": [],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "i tell the chef"
+          },
+          {
+            "part": 2,
+            "present": false,
+            "evidence": ""
+          },
+          {
+            "part": 3,
+            "present": true,
+            "evidence": "he must to check your plate"
+          }
+        ],
+        "tone": "polite",
+        "feedback": "Good job reassuring the guest. Try using a future form and correct the modal verb (must check, not must to check).",
+        "betterVersion": "Don't worry, I'll tell the chef and he'll check your plate; we use a separate cutting board for allergens.",
+        "taskMet": "partly"
+      },
+      "tokens": {
+        "input": 1704,
+        "cachedInput": 0,
+        "output": 1235,
+        "reasoning": 1065
+      }
+    },
+    "35": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "third-person-s",
+            "quote": "your food come",
+            "fix": "your food comes"
+          },
+          {
+            "skill": "plurals",
+            "quote": "five minute",
+            "fix": "five minutes"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "the kitchen is very busy"
+          },
+          {
+            "skill": "articles",
+            "quote": "the kitchen"
+          },
+          {
+            "skill": "time-prepositions",
+            "quote": "in five minute"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "your food come in five minute"
+          },
+          {
+            "part": 2,
+            "present": false,
+            "evidence": ""
+          }
+        ],
+        "tone": "polite",
+        "feedback": "You apologized and gave an estimated time, which is good. Remember to use the third‑person -s on verbs and the plural -s on units of time.",
+        "betterVersion": "I’m sorry for the wait. The kitchen is very busy, but your food will be ready in about five minutes, and we’d like to offer you a free dessert for the delay.",
+        "taskMet": "partly"
+      },
+      "tokens": {
+        "input": 1726,
+        "cachedInput": 0,
+        "output": 1506,
+        "reasoning": 1200
+      }
+    },
+    "36": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "the kitchen is really busy tonight"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": false,
+            "evidence": ""
+          },
+          {
+            "part": 2,
+            "present": false,
+            "evidence": ""
+          }
+        ],
+        "tone": "polite",
+        "feedback": "You apologized nicely. Remember to tell the guests when their food will arrive and offer something extra for the wait.",
+        "betterVersion": "I'm very sorry for the delay; your food should be out in about five minutes, and we'd like to offer you a complimentary appetizer while you wait.",
+        "taskMet": "no"
+      },
+      "tokens": {
+        "input": 1721,
+        "cachedInput": 0,
+        "output": 672,
+        "reasoning": 541
+      }
+    },
+    "37": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "be-verbs",
+            "quote": "the kitchen are busy",
+            "fix": "the kitchen is busy"
+          }
+        ],
+        "correctUses": [],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": false,
+            "evidence": ""
+          },
+          {
+            "part": 2,
+            "present": false,
+            "evidence": ""
+          }
+        ],
+        "tone": "polite",
+        "feedback": "Good job apologizing. Add the expected arrival time and a small offering to improve.",
+        "betterVersion": "I’m very sorry for the delay; your meals will be out in about five minutes, and I’d like to offer you a complimentary appetizer while you wait.",
+        "taskMet": "no"
+      },
+      "tokens": {
+        "input": 1716,
+        "cachedInput": 0,
+        "output": 931,
+        "reasoning": 798
+      }
+    },
+    "38": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "future-forms",
+            "quote": "your food will be here in five minutes"
+          },
+          {
+            "skill": "modal-verbs",
+            "quote": "can i get you something to drink while you wait"
+          },
+          {
+            "skill": "be-verbs",
+            "quote": "your food will be here in five minutes"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "your food will be here in five minutes"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "can i get you something to drink while you wait, its on the house"
+          }
+        ],
+        "tone": "polite",
+        "feedback": "You apologized and gave a clear time, which is great. Just make sure you say “wait” instead of “weight.”",
+        "betterVersion": "I'm really sorry for the wait. Your food will be out in about five minutes. Can I get you something to drink while you wait? It's on the house.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1739,
+        "cachedInput": 0,
+        "output": 1576,
+        "reasoning": 1378
+      }
+    },
+    "39": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "is grilled salmon"
+          },
+          {
+            "skill": "articles",
+            "quote": "the chefs special"
+          },
+          {
+            "skill": "plurals",
+            "quote": "vegetables"
+          },
+          {
+            "skill": "possessive-s",
+            "quote": "chefs special"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "grilled salmon"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "rice and seasonal vegetables"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You correctly named the dish and mentioned the sides. You could add a friendly intro like \"Our special today is...\" to sound more natural.",
+        "betterVersion": "Our special today is grilled salmon, served with rice and seasonal vegetables.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1680,
+        "cachedInput": 0,
+        "output": 1124,
+        "reasoning": 969
+      }
+    },
+    "40": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "a rice",
+            "fix": "rice"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "is"
+          },
+          {
+            "skill": "articles",
+            "quote": "a grilled salmon"
+          },
+          {
+            "skill": "plurals",
+            "quote": "vegetables"
+          },
+          {
+            "skill": "possessive-s",
+            "quote": "today's"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "grilled salmon"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "rice and vegetables"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You correctly named the dish and listed the sides. Just remove the article before \"rice\".",
+        "betterVersion": "Today's special is grilled salmon with rice and vegetables.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1680,
+        "cachedInput": 0,
+        "output": 1043,
+        "reasoning": 894
+      }
+    },
+    "41": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "possessive-s",
+            "quote": "the chef special",
+            "fix": "the chef's special"
+          },
+          {
+            "skill": "third-person-s",
+            "quote": "it's come",
+            "fix": "it comes"
+          },
+          {
+            "skill": "plurals",
+            "quote": "some vegetable",
+            "fix": "some vegetables"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "articles",
+            "quote": "the chef special"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "salmon grill"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "rice and some vegetable"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You mentioned the dish and the sides, which is good. Try using the correct word order and adding the missing apostrophe and plural forms.",
+        "betterVersion": "Our chef's special is grilled salmon; it comes with rice and seasonal vegetables.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1682,
+        "cachedInput": 0,
+        "output": 1649,
+        "reasoning": 1384
+      }
+    },
+    "42": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "possessive-s",
+            "quote": "today special",
+            "fix": "today's special"
+          },
+          {
+            "skill": "be-verbs",
+            "quote": "very good",
+            "fix": "is very good"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "future-forms",
+            "quote": "you will like"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": false,
+            "evidence": ""
+          },
+          {
+            "part": 2,
+            "present": false,
+            "evidence": ""
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You used a future verb correctly. Add the dish name, the sides, and include the missing verb and possessive.",
+        "betterVersion": "Today's special is grilled salmon; it's very good with rice and seasonal vegetables.",
+        "taskMet": "no"
+      },
+      "tokens": {
+        "input": 1676,
+        "cachedInput": 0,
+        "output": 1199,
+        "reasoning": 1049
+      }
+    },
+    "43": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "past-irregular",
+            "quote": "ran out"
+          },
+          {
+            "skill": "time-prepositions",
+            "quote": "at 12:40"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "ran out of salmon at 12:40"
+          },
+          {
+            "part": 2,
+            "present": false,
+            "evidence": ""
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You correctly told the chef that the salmon ran out. Next time also ask what the servers should tell the guests.",
+        "betterVersion": "Chef, we ran out of salmon at 12:40. What should the servers tell the guests?",
+        "taskMet": "partly"
+      },
+      "tokens": {
+        "input": 1681,
+        "cachedInput": 0,
+        "output": 991,
+        "reasoning": 851
+      }
+    },
+    "44": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "past-regular",
+            "quote": "is finish",
+            "fix": "is finished"
+          },
+          {
+            "skill": "modal-verbs",
+            "quote": "ask what they say",
+            "fix": "ask what they should say"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "articles",
+            "quote": "the salmon"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "chef the salmon is finish"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "servers ask what they say to the clients"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You told the chef the salmon is gone and asked what the servers should tell guests. Remember to use the correct verb form ‘finished’ and add ‘should’ to the question.",
+        "betterVersion": "Chef, the salmon is finished. What should the servers tell the guests?",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1683,
+        "cachedInput": 0,
+        "output": 1409,
+        "reasoning": 1237
+      }
+    },
+    "45": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "modal-verbs",
+            "quote": "have to"
+          },
+          {
+            "skill": "plurals",
+            "quote": "labels"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "clean your station"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "put labels on all the food you store"
+          },
+          {
+            "part": 3,
+            "present": true,
+            "evidence": "take the trash out"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You covered all three steps correctly. You could add a friendly opening to sound more polite.",
+        "betterVersion": "Sure, before you leave, make sure to clean your station, label all the food you store, and take the trash out.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1692,
+        "cachedInput": 0,
+        "output": 805,
+        "reasoning": 653
+      }
+    },
+    "46": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "modal-verbs",
+            "quote": "must cleaning",
+            "fix": "must clean"
+          },
+          {
+            "skill": "modal-verbs",
+            "quote": "should to put",
+            "fix": "should put"
+          },
+          {
+            "skill": "articles",
+            "quote": "label on the food",
+            "fix": "a label on the food"
+          }
+        ],
+        "correctUses": [],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "cleaning the station"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "put label on the food"
+          },
+          {
+            "part": 3,
+            "present": false,
+            "evidence": ""
+          }
+        ],
+        "tone": "rude",
+        "feedback": "You mentioned the three steps, which is good. Work on using the correct verb forms after must and should.",
+        "betterVersion": "You should clean the station, put a label on the food, and then take out the trash.",
+        "taskMet": "partly"
+      },
+      "tokens": {
+        "input": 1685,
+        "cachedInput": 0,
+        "output": 1328,
+        "reasoning": 1153
+      }
+    },
+    "47": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "modal-verbs",
+            "quote": "you need label all the food",
+            "fix": "you need to label all the food"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "modal-verbs",
+            "quote": "you have to clean your station"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "clean your station"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "label all the food"
+          },
+          {
+            "part": 3,
+            "present": true,
+            "evidence": "take out the trash"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You covered all three steps, good. Just add 'to' after 'need' for correct grammar.",
+        "betterVersion": "You need to clean your station, label all the stored food, and take out the trash.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1686,
+        "cachedInput": 0,
+        "output": 1205,
+        "reasoning": 963
+      }
+    },
+    "48": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "place-prepositions",
+            "quote": "came in the back door",
+            "fix": "came in through the back door"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "question-forms",
+            "quote": "where do these boxes go"
+          },
+          {
+            "skill": "plurals",
+            "quote": "these boxes"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "where do these boxes go"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You asked the right question and used plurals correctly. Try using the correct preposition for the door (through).",
+        "betterVersion": "Hey, could you tell me where these boxes should go? The vegetables just came through the back door.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1666,
+        "cachedInput": 1536,
+        "output": 1011,
+        "reasoning": 864
+      }
+    },
+    "49": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "question-forms",
+            "quote": "where i put the vegetable boxes, in the fridge or in the storage room?",
+            "fix": "Where should I put the vegetable boxes, in the fridge or in the storage room?"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "place-prepositions",
+            "quote": "in the fridge"
+          },
+          {
+            "skill": "plurals",
+            "quote": "vegetable boxes"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "where i put the vegetable boxes, in the fridge or in the storage room?"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You asked where to put the boxes, which is good. Remember to use the correct question form, like \"Where should I put...\".",
+        "betterVersion": "Where should I put the vegetable boxes— in the fridge or in the storage room?",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1666,
+        "cachedInput": 0,
+        "output": 994,
+        "reasoning": 814
+      }
+    },
+    "50": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "question-forms",
+            "quote": "where to put the produce?"
+          },
+          {
+            "skill": "place-prepositions",
+            "quote": "by the back door"
+          },
+          {
+            "skill": "plurals",
+            "quote": "six boxes"
+          },
+          {
+            "skill": "be-verbs",
+            "quote": "there are six boxes"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "where to put the produce"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You asked a clear question about where to put the produce. Adding a polite word like \"please\" would make it sound friendlier.",
+        "betterVersion": "Hi, could you tell me where the six boxes of produce should be stored, please?",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1677,
+        "cachedInput": 0,
+        "output": 1459,
+        "reasoning": 1241
+      }
+    },
+    "51": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "air conditioning",
+            "fix": "the air conditioning"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "past-regular",
+            "quote": "called at 10:15"
+          },
+          {
+            "skill": "be-verbs",
+            "quote": "be ok now"
+          },
+          {
+            "skill": "time-prepositions",
+            "quote": "at 10:15"
+          },
+          {
+            "skill": "modal-verbs",
+            "quote": "should be ok now"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "called at 10:15 and again at 1:30 about the air conditioning"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "fixed it, so it should be ok now"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You listed the calls and the fix clearly. Add \"the\" before \"air conditioning\".",
+        "betterVersion": "Room 118 called at 10:15 and again at 1:30 about the air conditioning. Maintenance came at 4 p.m. and fixed it, so it should be okay now.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1733,
+        "cachedInput": 1536,
+        "output": 1551,
+        "reasoning": 1334
+      }
+    },
+    "52": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "past-regular",
+            "quote": "was call",
+            "fix": "was called"
+          },
+          {
+            "skill": "time-prepositions",
+            "quote": "in 10:15 and 1:30",
+            "fix": "at 10:15 and at 1:30"
+          },
+          {
+            "skill": "past-regular",
+            "quote": "maintenance fix it at 4",
+            "fix": "maintenance fixed it at 4"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "was"
+          },
+          {
+            "skill": "time-prepositions",
+            "quote": "at 4"
+          },
+          {
+            "skill": "plurals",
+            "quote": "two times"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "was call two times about AC, in 10:15 and 1:30"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "maintenance fix it at 4"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You mentioned the calls and that the AC was fixed—good. Watch the verb forms and use \"at\" for the times.",
+        "betterVersion": "The guest in room 118 called twice about the AC, at 10:15 a.m. and 1:30 p.m., and maintenance fixed it at 4:00 p.m.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1726,
+        "cachedInput": 0,
+        "output": 1723,
+        "reasoning": 1470
+      }
+    },
+    "53": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "is"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": false,
+            "evidence": ""
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "is ok now"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You used the be‑verb correctly. Remember to mention the guest's calls about the air conditioning as part of the briefing.",
+        "betterVersion": "The guest called twice about the air conditioning, but maintenance fixed it, so room 118 is OK now.",
+        "taskMet": "partly"
+      },
+      "tokens": {
+        "input": 1703,
+        "cachedInput": 0,
+        "output": 795,
+        "reasoning": 673
+      }
+    },
+    "54": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "future-forms",
+            "quote": "i'll call the room next door right now"
+          },
+          {
+            "skill": "place-prepositions",
+            "quote": "on the sixth floor"
+          },
+          {
+            "skill": "modal-verbs",
+            "quote": "can move you"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "i'll call the room next door right now, and if it doesn't stop i can move you to a quiet room on the sixth floor"
+          }
+        ],
+        "tone": "polite",
+        "feedback": "You apologized and offered a solution, which is great. Just keep your verb tenses consistent.",
+        "betterVersion": "I’m very sorry about that. I’ll call the room next door right now, and if the noise doesn’t stop, I’ll move you to a quiet room on the sixth floor.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1693,
+        "cachedInput": 0,
+        "output": 1282,
+        "reasoning": 1105
+      }
+    },
+    "55": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "past-regular",
+            "quote": "i send security",
+            "fix": "I sent security"
+          },
+          {
+            "skill": "question-forms",
+            "quote": "or you want change room?",
+            "fix": "Or would you like to change rooms?"
+          },
+          {
+            "skill": "articles",
+            "quote": "we have room in six floor",
+            "fix": "we have a room in six floor"
+          },
+          {
+            "skill": "place-prepositions",
+            "quote": "we have room in six floor",
+            "fix": "we have room on the sixth floor"
+          }
+        ],
+        "correctUses": [],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "i send security. or you want change room?"
+          }
+        ],
+        "tone": "polite",
+        "feedback": "You apologized and offered to send security and a new room. Work on verb tenses, articles and prepositions.",
+        "betterVersion": "I'm sorry about the noise; I'll send security right away. Would you like to change to a quiet room on the sixth floor?",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1678,
+        "cachedInput": 0,
+        "output": 1502,
+        "reasoning": 1304
+      }
+    },
+    "56": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "be-verbs",
+            "quote": "sorry for the noise",
+            "fix": "I'm sorry for the noise"
+          }
+        ],
+        "correctUses": [],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": false,
+            "evidence": ""
+          }
+        ],
+        "tone": "polite",
+        "feedback": "You apologized and showed you understand. Next time, remember to offer a solution, like stopping the music or moving the guest.",
+        "betterVersion": "I'm sorry about the noise. I’ll have the music turned down and can move you to a quiet room on the 6th floor.",
+        "taskMet": "no"
+      },
+      "tokens": {
+        "input": 1667,
+        "cachedInput": 0,
+        "output": 1120,
+        "reasoning": 995
+      }
+    },
+    "57": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "future-forms",
+            "quote": "i'll call them write now"
+          },
+          {
+            "skill": "third-person-s",
+            "quote": "it continues"
+          },
+          {
+            "skill": "place-prepositions",
+            "quote": "on the 6th floor"
+          },
+          {
+            "skill": "articles",
+            "quote": "a quiet room"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "we have a quiet room for you on the 6th floor"
+          }
+        ],
+        "tone": "polite",
+        "feedback": "You apologized and offered a quiet room, which is great. Try also to say you will stop the music right away.",
+        "betterVersion": "I'm sorry about the noise. I'll call housekeeping right now, and if it continues we can move you to a quiet room on the 6th floor.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1687,
+        "cachedInput": 0,
+        "output": 1724,
+        "reasoning": 1558
+      }
+    },
+    "58": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "be-verbs",
+            "quote": "room 305 finish.",
+            "fix": "Room 305 is finished."
+          },
+          {
+            "skill": "past-regular",
+            "quote": "i clean bathroom",
+            "fix": "I cleaned the bathroom"
+          },
+          {
+            "skill": "past-regular",
+            "quote": "change bed and towel",
+            "fix": "changed the bed and the towels"
+          },
+          {
+            "skill": "articles",
+            "quote": "bathroom",
+            "fix": "the bathroom"
+          },
+          {
+            "skill": "articles",
+            "quote": "bed",
+            "fix": "the bed"
+          },
+          {
+            "skill": "articles",
+            "quote": "towel",
+            "fix": "the towels"
+          },
+          {
+            "skill": "plurals",
+            "quote": "towel",
+            "fix": "towels"
+          }
+        ],
+        "correctUses": [],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "i clean bathroom, change bed and towel"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You listed what you did, good. Remember to use past tense and add \"the\" before the places and items.",
+        "betterVersion": "Room 305 is finished. I cleaned the bathroom and changed the bed and the towels.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1664,
+        "cachedInput": 0,
+        "output": 1415,
+        "reasoning": 1197
+      }
+    },
+    "59": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "passport",
+            "fix": "the passport"
+          },
+          {
+            "skill": "articles",
+            "quote": "credit card",
+            "fix": "the credit card"
+          }
+        ],
+        "correctUses": [],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "give me passport"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "and credit card"
+          }
+        ],
+        "tone": "rude",
+        "feedback": "You asked for the ID and the card, but you need to use articles and sound more polite.",
+        "betterVersion": "May I see your passport and your credit card, please?",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1652,
+        "cachedInput": 0,
+        "output": 833,
+        "reasoning": 705
+      }
+    },
+    "60": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "modal-verbs",
+            "quote": "please you give me the card of credit and your id",
+            "fix": "please could you give me your credit card and your ID"
+          },
+          {
+            "skill": "articles",
+            "quote": "the card of credit",
+            "fix": "the credit card"
+          }
+        ],
+        "correctUses": [],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "your id"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "the card of credit"
+          }
+        ],
+        "tone": "polite",
+        "feedback": "You asked for the ID and the credit card, which is good. Try to use a more natural phrasing with a modal verb and correct article order.",
+        "betterVersion": "Please could you give me your credit card and your ID?",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1657,
+        "cachedInput": 0,
+        "output": 1522,
+        "reasoning": 1296
+      }
+    },
+    "61": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "the room's not ready"
+          },
+          {
+            "skill": "articles",
+            "quote": "the room's"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "the room's not ready"
+          },
+          {
+            "part": 2,
+            "present": false,
+            "evidence": ""
+          }
+        ],
+        "tone": "rude",
+        "feedback": "You correctly told the guest the room isn’t ready. Try adding a polite suggestion for what they can do while they wait.",
+        "betterVersion": "I’m sorry, the room isn’t ready yet. You can relax in the lobby while you wait.",
+        "taskMet": "partly"
+      },
+      "tokens": {
+        "input": 1699,
+        "cachedInput": 0,
+        "output": 1473,
+        "reasoning": 1335
+      }
+    },
+    "62": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "the room is"
+          },
+          {
+            "skill": "articles",
+            "quote": "the room"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "the room is not ready"
+          },
+          {
+            "part": 2,
+            "present": false,
+            "evidence": ""
+          }
+        ],
+        "tone": "rude",
+        "feedback": "You correctly said the room isn’t ready. Try adding a specific suggestion for the guest and soften the language.",
+        "betterVersion": "I’m sorry, the room isn’t ready yet; it should be ready by 3 p.m. In the meantime, you could relax in our lobby lounge or have a coffee at the café.",
+        "taskMet": "partly"
+      },
+      "tokens": {
+        "input": 1699,
+        "cachedInput": 0,
+        "output": 928,
+        "reasoning": 776
+      }
+    },
+    "s1": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "past-irregular",
+            "quote": "i see it this morning",
+            "fix": "I saw it this morning"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "be-verbs",
+            "quote": "is broken"
+          },
+          {
+            "skill": "articles",
+            "quote": "the lamp"
+          },
+          {
+            "skill": "time-prepositions",
+            "quote": "at 8:15"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "the lamp in room 214 is broken"
+          },
+          {
+            "part": 2,
+            "present": true,
+            "evidence": "i see it this morning at 8:15"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You clearly said what is broken and when you saw it. Try using the past tense (saw) for something you noticed earlier.",
+        "betterVersion": "The lamp in room 214 is broken; I saw it this morning at 8:15.",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1706,
+        "cachedInput": 0,
+        "output": 1038,
+        "reasoning": 855
+      }
+    },
+    "s2": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "question-forms",
+            "quote": "what time i can clean your room",
+            "fix": "What time can I clean your room"
+          }
+        ],
+        "correctUses": [
+          {
+            "skill": "modal-verbs",
+            "quote": "what time i can clean your room"
+          }
+        ],
+        "taskParts": [
+          {
+            "part": 1,
+            "present": true,
+            "evidence": "what time i can clean your room"
+          }
+        ],
+        "tone": "neutral",
+        "feedback": "You asked the guest for a time, which is good. Remember the correct question order: \"What time can I clean your room?\"",
+        "betterVersion": "What time would you like me to clean your room?",
+        "taskMet": "yes"
+      },
+      "tokens": {
+        "input": 1679,
+        "cachedInput": 0,
+        "output": 1318,
+        "reasoning": 1179
+      }
+    }
+  }
+}
