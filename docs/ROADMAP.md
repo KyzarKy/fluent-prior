@@ -109,6 +109,11 @@ USDOL/ETA, link the license, and say the text was adapted.
   consistent. Needs the production store, and saved grades go stale when the prompt or a
   scenario changes. Not "similar" answers: similarity measures ignore the missing "is" or
   "-s" that the grammar grade is about.
+- **Explain each mistake** in a short rule. Built on the `explain-mistakes` branch and
+  parked on 2026-10-06 (results 2026-10-05T0200). On real mistakes the rules were right and
+  the tokens nearly free, but a third used grammar terms a learner won't know, and invented
+  mistakes came with confident invented rules. Revisit when the grader invents fewer
+  mistakes, with a rule against grammar terms.
 - **A backup grader for when the quota runs out.** Groq's free limits are per model, so
   gpt-oss-20b has its own daily quota. If it scores well enough on the eval, it could grade
   instead of the app showing "limit reached".
