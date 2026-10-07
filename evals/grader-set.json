@@ -1417,6 +1417,356 @@
         "wordChoice": [],
         "note": "A bare command to a guest. \"Something to do\" leaves the guest to think of an activity, so part 2 is missing."
       }
+    },
+    {
+      "id": 63,
+      "scenarioId": "left-behind-phone",
+      "role": "Housekeeping",
+      "situation": "Checkout cleaning, room 220. Under the bed: a phone. Last guest in 220: Ms. Park. Checkout: 10:30 a.m.",
+      "task": "Tell your supervisor, so the phone can get back to its owner.",
+      "answer": "i find a phone under the bed in room 220, i think it is ms park phone. she check out this morning",
+      "ky": {
+        "taskMet": "yes",
+        "tone": "neutral",
+        "mistakes": [
+          {
+            "skill": "past-irregular",
+            "quote": "i find",
+            "fix": "i found"
+          },
+          {
+            "skill": "possessive-s",
+            "quote": "ms park phone",
+            "fix": "ms park's phone"
+          },
+          {
+            "skill": "past-regular",
+            "quote": "she check out",
+            "fix": "she checked out"
+          }
+        ],
+        "wordChoice": []
+      }
+    },
+    {
+      "id": 64,
+      "scenarioId": "left-behind-phone",
+      "role": "Housekeeping",
+      "situation": "Checkout cleaning, room 220. Under the bed: a phone. Last guest in 220: Ms. Park. Checkout: 10:30 a.m.",
+      "task": "Tell your supervisor, so the phone can get back to its owner.",
+      "answer": "i found phone under the bed. i put it in the lost and found",
+      "ky": {
+        "taskMet": "partly",
+        "tone": "neutral",
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "found phone",
+            "fix": "found a phone"
+          }
+        ],
+        "wordChoice": [],
+        "note": "No room or name, so the supervisor can't tell whose phone it is."
+      }
+    },
+    {
+      "id": 65,
+      "scenarioId": "left-behind-phone",
+      "role": "Housekeeping",
+      "situation": "Checkout cleaning, room 220. Under the bed: a phone. Last guest in 220: Ms. Park. Checkout: 10:30 a.m.",
+      "task": "Tell your supervisor, so the phone can get back to its owner.",
+      "answer": "a guest forget something in the room",
+      "ky": {
+        "taskMet": "no",
+        "tone": "neutral",
+        "mistakes": [
+          {
+            "skill": "past-irregular",
+            "quote": "forget",
+            "fix": "forgot"
+          }
+        ],
+        "wordChoice": [],
+        "note": "Matches the checklist's words without meeting the need: \"something\" and \"the room\" don't say what or whose."
+      }
+    },
+    {
+      "id": 66,
+      "scenarioId": "separate-checks",
+      "role": "Front of house",
+      "situation": "Table 7 wants separate checks. Check 1: Mr. Diaz. Check 2: Mrs. Diaz. Check 3: their son, Leo.",
+      "task": "Hand out the checks so each person gets the right one.",
+      "answer": "here you go. this one is yours mr diaz, this is mrs diaz, and this one is leo",
+      "ky": {
+        "taskMet": "yes",
+        "tone": "polite",
+        "toneAlsoAccept": ["neutral"],
+        "mistakes": [
+          {
+            "skill": "possessive-s",
+            "quote": "this is mrs diaz",
+            "fix": "this is mrs diaz's"
+          },
+          {
+            "skill": "possessive-s",
+            "quote": "this one is leo",
+            "fix": "this one is leo's"
+          }
+        ],
+        "wordChoice": [],
+        "note": "Each check is matched to a person, so the task is done despite the missing 's."
+      }
+    },
+    {
+      "id": 67,
+      "scenarioId": "separate-checks",
+      "role": "Front of house",
+      "situation": "Table 7 wants separate checks. Check 1: Mr. Diaz. Check 2: Mrs. Diaz. Check 3: their son, Leo.",
+      "task": "Hand out the checks so each person gets the right one.",
+      "answer": "this check is mr diaz check, and the other ones for the family",
+      "ky": {
+        "taskMet": "partly",
+        "tone": "neutral",
+        "mistakes": [
+          {
+            "skill": "possessive-s",
+            "quote": "mr diaz check",
+            "fix": "mr diaz's check"
+          },
+          {
+            "skill": "be-verbs",
+            "quote": "the other ones for",
+            "fix": "the other ones are for"
+          }
+        ],
+        "wordChoice": [],
+        "note": "Mr. Diaz knows his check; Mrs. Diaz and Leo can't tell theirs apart."
+      }
+    },
+    {
+      "id": 68,
+      "scenarioId": "separate-checks",
+      "role": "Front of house",
+      "situation": "Table 7 wants separate checks. Check 1: Mr. Diaz. Check 2: Mrs. Diaz. Check 3: their son, Leo.",
+      "task": "Hand out the checks so each person gets the right one.",
+      "answer": "here are the checks, one for each person",
+      "ky": {
+        "taskMet": "no",
+        "tone": "neutral",
+        "mistakes": [],
+        "wordChoice": [],
+        "note": "Matches the checklist's words without meeting the need: one check each, but not which is whose."
+      }
+    },
+    {
+      "id": 69,
+      "scenarioId": "cooler-check",
+      "role": "Food prep",
+      "situation": "A new prep worker starts today. Walk-in cooler checks: 6 a.m. and 2 p.m. Safe: 41°F or below. Above 41°F: tell the chef right away.",
+      "task": "Explain the cooler check to the new prep worker.",
+      "answer": "you have to check the cooler two times, at 6 in the morning and at 2 in the afternoon. it must be 41 degrees or less. if is more, you should tell to the chef right away",
+      "ky": {
+        "taskMet": "yes",
+        "tone": "neutral",
+        "mistakes": [
+          {
+            "skill": null,
+            "gap": "missing subject",
+            "quote": "if is more",
+            "fix": "if it is more"
+          },
+          {
+            "skill": null,
+            "gap": "verb patterns",
+            "quote": "tell to the chef",
+            "fix": "tell the chef"
+          }
+        ],
+        "wordChoice": []
+      }
+    },
+    {
+      "id": 70,
+      "scenarioId": "cooler-check",
+      "role": "Food prep",
+      "situation": "A new prep worker starts today. Walk-in cooler checks: 6 a.m. and 2 p.m. Safe: 41°F or below. Above 41°F: tell the chef right away.",
+      "task": "Explain the cooler check to the new prep worker.",
+      "answer": "you need check the temperature in 6 am and 2 pm. it should be under 41 degrees",
+      "ky": {
+        "taskMet": "partly",
+        "tone": "neutral",
+        "mistakes": [
+          {
+            "skill": "modal-verbs",
+            "quote": "need check",
+            "fix": "need to check"
+          },
+          {
+            "skill": "time-prepositions",
+            "quote": "in 6 am",
+            "fix": "at 6 am"
+          }
+        ],
+        "wordChoice": [],
+        "note": "No word on telling the chef. \"Under 41\" counts as the safe temperature."
+      }
+    },
+    {
+      "id": 71,
+      "scenarioId": "cooler-check",
+      "role": "Food prep",
+      "situation": "A new prep worker starts today. Walk-in cooler checks: 6 a.m. and 2 p.m. Safe: 41°F or below. Above 41°F: tell the chef right away.",
+      "task": "Explain the cooler check to the new prep worker.",
+      "answer": "every day you check the cooler and look the temperature",
+      "ky": {
+        "taskMet": "no",
+        "tone": "neutral",
+        "mistakes": [
+          {
+            "skill": null,
+            "gap": "verb patterns",
+            "quote": "look the temperature",
+            "fix": "look at the temperature"
+          }
+        ],
+        "wordChoice": [],
+        "note": "Matches the checklist's words without meeting the need: \"every day\" isn't the two times, and nothing says what's safe or what to do."
+      }
+    },
+    {
+      "id": 72,
+      "scenarioId": "slicer-problem",
+      "role": "Food prep",
+      "situation": "Prep log, 9:10 a.m. Meat slicer: loud grinding noise, then no movement. Power: off at the wall. Ham for lunch sandwiches: half left to slice.",
+      "task": "Tell your supervisor about the slicer and the unfinished work.",
+      "answer": "the slicer make a loud noise and stop working, so i turn it off. i still need to slice half of the ham for lunch",
+      "ky": {
+        "taskMet": "yes",
+        "tone": "neutral",
+        "mistakes": [
+          {
+            "skill": "past-irregular",
+            "quote": "make",
+            "fix": "made"
+          },
+          {
+            "skill": "past-regular",
+            "quote": "stop working",
+            "fix": "stopped working"
+          },
+          {
+            "skill": "past-regular",
+            "quote": "i turn it off",
+            "fix": "i turned it off"
+          }
+        ],
+        "wordChoice": []
+      }
+    },
+    {
+      "id": 73,
+      "scenarioId": "slicer-problem",
+      "role": "Food prep",
+      "situation": "Prep log, 9:10 a.m. Meat slicer: loud grinding noise, then no movement. Power: off at the wall. Ham for lunch sandwiches: half left to slice.",
+      "task": "Tell your supervisor about the slicer and the unfinished work.",
+      "answer": "chef the slicer is broken, it made a very loud noise this morning",
+      "ky": {
+        "taskMet": "partly",
+        "tone": "neutral",
+        "mistakes": [],
+        "wordChoice": [],
+        "note": "Nothing about the ham still to slice."
+      }
+    },
+    {
+      "id": 74,
+      "scenarioId": "slicer-problem",
+      "role": "Food prep",
+      "situation": "Prep log, 9:10 a.m. Meat slicer: loud grinding noise, then no movement. Power: off at the wall. Ham for lunch sandwiches: half left to slice.",
+      "task": "Tell your supervisor about the slicer and the unfinished work.",
+      "answer": "there is problem with slicer",
+      "ky": {
+        "taskMet": "no",
+        "tone": "neutral",
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "is problem",
+            "fix": "is a problem"
+          },
+          {
+            "skill": "articles",
+            "quote": "with slicer",
+            "fix": "with the slicer"
+          }
+        ],
+        "wordChoice": [],
+        "note": "Matches the checklist's words without meeting the need: \"a problem\" doesn't say what went wrong, so the supervisor can't tell whether it still works."
+      }
+    },
+    {
+      "id": 75,
+      "scenarioId": "grill-rush",
+      "role": "Kitchen",
+      "situation": "Friday, 7:30 p.m. Your station, grill: 12 tickets waiting. Salad station: 2 tickets. Cook on salads: Marco.",
+      "task": "Get help from Marco.",
+      "answer": "marco can you help me with grill? i have twelve ticket",
+      "ky": {
+        "taskMet": "yes",
+        "tone": "neutral",
+        "toneAlsoAccept": ["polite"],
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "with grill",
+            "fix": "with the grill"
+          },
+          {
+            "skill": "plurals",
+            "quote": "twelve ticket",
+            "fix": "twelve tickets"
+          }
+        ],
+        "wordChoice": []
+      }
+    },
+    {
+      "id": 76,
+      "scenarioId": "grill-rush",
+      "role": "Kitchen",
+      "situation": "Friday, 7:30 p.m. Your station, grill: 12 tickets waiting. Salad station: 2 tickets. Cook on salads: Marco.",
+      "task": "Get help from Marco.",
+      "answer": "marco i have twelve tickets and you have only two",
+      "ky": {
+        "taskMet": "no",
+        "tone": "neutral",
+        "toneAlsoAccept": ["rude"],
+        "mistakes": [],
+        "wordChoice": [],
+        "note": "Points at the problem but never asks, so Marco has to guess what's wanted."
+      }
+    },
+    {
+      "id": 77,
+      "scenarioId": "grill-rush",
+      "role": "Kitchen",
+      "situation": "Friday, 7:30 p.m. Your station, grill: 12 tickets waiting. Salad station: 2 tickets. Cook on salads: Marco.",
+      "task": "Get help from Marco.",
+      "answer": "marco you are not busy, come help me on grill",
+      "ky": {
+        "taskMet": "yes",
+        "tone": "rude",
+        "toneAlsoAccept": ["neutral"],
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "on grill",
+            "fix": "on the grill"
+          }
+        ],
+        "wordChoice": [],
+        "note": "A command plus an accusation. Kitchens are direct, so neutral is acceptable too. Tests that tone doesn't leak into the task verdict."
+      }
     }
   ]
 }

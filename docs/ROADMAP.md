@@ -14,9 +14,9 @@
 
 ## v1.1: measure
 
-- **Grader eval.** Built: Ky's 60-answer key, `npm run eval`, `npm run trial`, and the free
-  grader's results in `evals/results`. Next: grade the same key with Sonnet 5, Haiku 4.5 and
-  Opus 5 ([ADR 0004](decisions/0004-free-grader-first.md)). The comparison decides whether
+- **Grader eval.** Built: Ky's answer key (77 answers), `npm run eval`, `npm run trial`,
+  and the free grader's results in `evals/results`. Next: grade the same key with Sonnet 5,
+  Haiku 4.5 and Opus 5 ([ADR 0004](decisions/0004-free-grader-first.md)). The comparison decides whether
   and when to switch to a paid grader.
 - **Measure `keep`.** Dictate sentences with known small-sound errors on a few phones and
   count how many survive. Replace the 0.5 guess.
