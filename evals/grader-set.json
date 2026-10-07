@@ -1551,11 +1551,11 @@
       "task": "Tell Mr. Diaz which check goes to each person.",
       "answer": "one is for you, one for your wife, and one for leo",
       "ky": {
-        "taskMet": "no",
+        "taskMet": "yes",
         "tone": "neutral",
         "mistakes": [],
         "wordChoice": [],
-        "note": "Matches the checklist's words without meeting the need: each person has a check, but nothing says which one."
+        "note": "Said while handing each check over, \"one is for you\" names the right person for each check (Ky, 2026-10-07)."
       }
     },
     {
