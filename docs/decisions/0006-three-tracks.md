@@ -55,7 +55,7 @@ never a mistake, and it's never part of `taskMet`.
 
 ## Task types and checklists
 
-The lines as of 2026-10-06. `src/core/scenarios.ts` is the source of truth.
+The lines as of 2026-10-07. `src/core/scenarios.ts` is the source of truth.
 
 | Scenario | Task type | Parts of a complete answer |
 |---|---|---|
@@ -73,8 +73,8 @@ The lines as of 2026-10-06. `src/core/scenarios.ts` is the source of truth.
 | broken-lamp | Reporting up | Says what's broken and where · Says when it was noticed |
 | ran-out-of-salmon | Reporting up | Tells the chef the salmon is gone · Asks what servers should tell guests |
 | room-report | Reporting up | Reports what was done in room 305 |
-| left-behind-phone | Reporting up | Says what was left behind · Says who it belongs to (the guest's name or room) |
-| slicer-problem | Reporting up | Says what went wrong with the slicer · Says which prep is unfinished because of it |
+| left-behind-phone | Reporting up | Says a phone was left behind · Says whose it is (the guest's name or room) |
+| slicer-problem | Reporting up | Says what's wrong with the slicer · Says what prep is still waiting |
 | end-of-shift | Briefing coworkers | Clean the station · Label stored food · Take out the trash |
 | shift-handoff | Briefing coworkers | The guest's calls about the air conditioning · That it's fixed now |
 | cooler-check | Briefing coworkers | The two times to check the cooler · The safe temperature (41°F or below) · Telling the chef when it's too warm |
@@ -122,6 +122,15 @@ chef's check.
    about "the work in room 305", not just the room. noisy-room dropped "respond to the
    guest", since every answer is a response. A shift handoff needs the current status more
    than the history, so shift-handoff checks "fixed now" instead of the maintenance visit.
+
+   **If the checklist checks it, the task asks for it in plain words** (Ky, 2026-10-07). A
+   goal that a learner could reasonably meet another way doesn't count. Phase 1 drafts
+   failed this: "Tell your supervisor, so the phone can get back to its owner" never asked
+   whose phone it was, and "Hand out the checks so each person gets the right one" was met
+   by "you can see the names at the bottom". left-behind-phone now asks "whose it is", and
+   separate-checks says the checks carry no names. cooler-check, slicer-problem and
+   grill-rush were tightened the same way ("Ask Marco for help", not "Get help from Marco",
+   which a hint can meet).
 
 Test each new line two ways: the laziest answer that matches its words without meeting the
 need should fail, and a borderline good answer should pass. Then grade the answer key's

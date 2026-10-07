@@ -1423,7 +1423,7 @@
       "scenarioId": "left-behind-phone",
       "role": "Housekeeping",
       "situation": "Checkout cleaning, room 220. Under the bed: a phone. Last guest in 220: Ms. Park. Checkout: 10:30 a.m.",
-      "task": "Tell your supervisor, so the phone can get back to its owner.",
+      "task": "Tell your supervisor about the phone and whose it is.",
       "answer": "i find a phone under the bed in room 220, i think it is ms park phone. she check out this morning",
       "ky": {
         "taskMet": "yes",
@@ -1453,7 +1453,7 @@
       "scenarioId": "left-behind-phone",
       "role": "Housekeeping",
       "situation": "Checkout cleaning, room 220. Under the bed: a phone. Last guest in 220: Ms. Park. Checkout: 10:30 a.m.",
-      "task": "Tell your supervisor, so the phone can get back to its owner.",
+      "task": "Tell your supervisor about the phone and whose it is.",
       "answer": "i found phone under the bed. i put it in the lost and found",
       "ky": {
         "taskMet": "partly",
@@ -1474,7 +1474,7 @@
       "scenarioId": "left-behind-phone",
       "role": "Housekeeping",
       "situation": "Checkout cleaning, room 220. Under the bed: a phone. Last guest in 220: Ms. Park. Checkout: 10:30 a.m.",
-      "task": "Tell your supervisor, so the phone can get back to its owner.",
+      "task": "Tell your supervisor about the phone and whose it is.",
       "answer": "a guest forget something in the room",
       "ky": {
         "taskMet": "no",
@@ -1494,9 +1494,9 @@
       "id": 66,
       "scenarioId": "separate-checks",
       "role": "Front of house",
-      "situation": "Table 7 wants separate checks. Check 1: Mr. Diaz. Check 2: Mrs. Diaz. Check 3: their son, Leo.",
-      "task": "Hand out the checks so each person gets the right one.",
-      "answer": "here you go. this one is yours mr diaz, this is mrs diaz, and this one is leo",
+      "situation": "Table 7, separate checks for Mr. Diaz, Mrs. Diaz, and their son, Leo. The checks show the food, not the names. Mr. Diaz has all three and can't tell them apart.",
+      "task": "Tell Mr. Diaz which check goes to each person.",
+      "answer": "sure, this one is yours mr diaz, this is mrs diaz, and this one is leo",
       "ky": {
         "taskMet": "yes",
         "tone": "polite",
@@ -1521,8 +1521,8 @@
       "id": 67,
       "scenarioId": "separate-checks",
       "role": "Front of house",
-      "situation": "Table 7 wants separate checks. Check 1: Mr. Diaz. Check 2: Mrs. Diaz. Check 3: their son, Leo.",
-      "task": "Hand out the checks so each person gets the right one.",
+      "situation": "Table 7, separate checks for Mr. Diaz, Mrs. Diaz, and their son, Leo. The checks show the food, not the names. Mr. Diaz has all three and can't tell them apart.",
+      "task": "Tell Mr. Diaz which check goes to each person.",
       "answer": "this check is mr diaz check, and the other ones for the family",
       "ky": {
         "taskMet": "partly",
@@ -1547,15 +1547,15 @@
       "id": 68,
       "scenarioId": "separate-checks",
       "role": "Front of house",
-      "situation": "Table 7 wants separate checks. Check 1: Mr. Diaz. Check 2: Mrs. Diaz. Check 3: their son, Leo.",
-      "task": "Hand out the checks so each person gets the right one.",
-      "answer": "here are the checks, one for each person",
+      "situation": "Table 7, separate checks for Mr. Diaz, Mrs. Diaz, and their son, Leo. The checks show the food, not the names. Mr. Diaz has all three and can't tell them apart.",
+      "task": "Tell Mr. Diaz which check goes to each person.",
+      "answer": "one is for you, one for your wife, and one for leo",
       "ky": {
         "taskMet": "no",
         "tone": "neutral",
         "mistakes": [],
         "wordChoice": [],
-        "note": "Matches the checklist's words without meeting the need: one check each, but not which is whose."
+        "note": "Matches the checklist's words without meeting the need: each person has a check, but nothing says which one."
       }
     },
     {
@@ -1563,7 +1563,7 @@
       "scenarioId": "cooler-check",
       "role": "Food prep",
       "situation": "A new prep worker starts today. Walk-in cooler checks: 6 a.m. and 2 p.m. Safe: 41°F or below. Above 41°F: tell the chef right away.",
-      "task": "Explain the cooler check to the new prep worker.",
+      "task": "Explain the cooler check to the new prep worker: when to do it, what temperature is safe, and what to do if it's too warm.",
       "answer": "you have to check the cooler two times, at 6 in the morning and at 2 in the afternoon. it must be 41 degrees or less. if is more, you should tell to the chef right away",
       "ky": {
         "taskMet": "yes",
@@ -1590,7 +1590,7 @@
       "scenarioId": "cooler-check",
       "role": "Food prep",
       "situation": "A new prep worker starts today. Walk-in cooler checks: 6 a.m. and 2 p.m. Safe: 41°F or below. Above 41°F: tell the chef right away.",
-      "task": "Explain the cooler check to the new prep worker.",
+      "task": "Explain the cooler check to the new prep worker: when to do it, what temperature is safe, and what to do if it's too warm.",
       "answer": "you need check the temperature in 6 am and 2 pm. it should be under 41 degrees",
       "ky": {
         "taskMet": "partly",
@@ -1616,7 +1616,7 @@
       "scenarioId": "cooler-check",
       "role": "Food prep",
       "situation": "A new prep worker starts today. Walk-in cooler checks: 6 a.m. and 2 p.m. Safe: 41°F or below. Above 41°F: tell the chef right away.",
-      "task": "Explain the cooler check to the new prep worker.",
+      "task": "Explain the cooler check to the new prep worker: when to do it, what temperature is safe, and what to do if it's too warm.",
       "answer": "every day you check the cooler and look the temperature",
       "ky": {
         "taskMet": "no",
@@ -1638,7 +1638,7 @@
       "scenarioId": "slicer-problem",
       "role": "Food prep",
       "situation": "Prep log, 9:10 a.m. Meat slicer: loud grinding noise, then no movement. Power: off at the wall. Ham for lunch sandwiches: half left to slice.",
-      "task": "Tell your supervisor about the slicer and the unfinished work.",
+      "task": "Tell your supervisor what's wrong with the slicer and what prep is still waiting.",
       "answer": "the slicer make a loud noise and stop working, so i turn it off. i still need to slice half of the ham for lunch",
       "ky": {
         "taskMet": "yes",
@@ -1668,7 +1668,7 @@
       "scenarioId": "slicer-problem",
       "role": "Food prep",
       "situation": "Prep log, 9:10 a.m. Meat slicer: loud grinding noise, then no movement. Power: off at the wall. Ham for lunch sandwiches: half left to slice.",
-      "task": "Tell your supervisor about the slicer and the unfinished work.",
+      "task": "Tell your supervisor what's wrong with the slicer and what prep is still waiting.",
       "answer": "chef the slicer is broken, it made a very loud noise this morning",
       "ky": {
         "taskMet": "partly",
@@ -1683,7 +1683,7 @@
       "scenarioId": "slicer-problem",
       "role": "Food prep",
       "situation": "Prep log, 9:10 a.m. Meat slicer: loud grinding noise, then no movement. Power: off at the wall. Ham for lunch sandwiches: half left to slice.",
-      "task": "Tell your supervisor about the slicer and the unfinished work.",
+      "task": "Tell your supervisor what's wrong with the slicer and what prep is still waiting.",
       "answer": "there is problem with slicer",
       "ky": {
         "taskMet": "no",
@@ -1709,7 +1709,7 @@
       "scenarioId": "grill-rush",
       "role": "Kitchen",
       "situation": "Friday, 7:30 p.m. Your station, grill: 12 tickets waiting. Salad station: 2 tickets. Cook on salads: Marco.",
-      "task": "Get help from Marco.",
+      "task": "Ask Marco for help.",
       "answer": "marco can you help me with grill? i have twelve ticket",
       "ky": {
         "taskMet": "yes",
@@ -1735,7 +1735,7 @@
       "scenarioId": "grill-rush",
       "role": "Kitchen",
       "situation": "Friday, 7:30 p.m. Your station, grill: 12 tickets waiting. Salad station: 2 tickets. Cook on salads: Marco.",
-      "task": "Get help from Marco.",
+      "task": "Ask Marco for help.",
       "answer": "marco i have twelve tickets and you have only two",
       "ky": {
         "taskMet": "no",
@@ -1751,7 +1751,7 @@
       "scenarioId": "grill-rush",
       "role": "Kitchen",
       "situation": "Friday, 7:30 p.m. Your station, grill: 12 tickets waiting. Salad station: 2 tickets. Cook on salads: Marco.",
-      "task": "Get help from Marco.",
+      "task": "Ask Marco for help.",
       "answer": "marco you are not busy, come help me on grill",
       "ky": {
         "taskMet": "yes",
