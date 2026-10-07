@@ -199,6 +199,86 @@ export const SCENARIOS: Scenario[] = [
     taskParts: ["Asks for a photo ID", "Asks for a credit card"],
     targetSkills: ["question-forms", "articles"],
   },
+
+  // Adapted from O*NET task statements (see README, Credits). Each scenario names the one
+  // it started from.
+
+  // 37-2012.00, Maids and Housekeeping Cleaners: "...report damage, theft, and found
+  // articles to supervisors."
+  {
+    id: "left-behind-phone",
+    role: "housekeeping",
+    audience: "coworker",
+    situation:
+      "Checkout cleaning, room 220. Under the bed: a phone. Last guest in 220: Ms. Park. Checkout: 10:30 a.m.",
+    task: "Tell your supervisor, so the phone can get back to its owner.",
+    taskType: "reporting-up",
+    taskParts: ["Says what was left behind", "Says who it belongs to: the guest's name or room"],
+    targetSkills: ["past-irregular", "possessive-s", "place-prepositions"],
+  },
+  // 35-3031.00, Waiters and Waitresses: "Prepare checks that itemize and total meal costs
+  // and sales taxes."
+  {
+    id: "separate-checks",
+    role: "front-of-house",
+    audience: "guest",
+    situation:
+      "Table 7 wants separate checks. Check 1: Mr. Diaz. Check 2: Mrs. Diaz. Check 3: their son, Leo.",
+    task: "Hand out the checks so each person gets the right one.",
+    taskType: "guest-information",
+    taskParts: [
+      "Says which check is Mr. Diaz's",
+      "Says which check is Mrs. Diaz's",
+      "Says which check is Leo's",
+    ],
+    targetSkills: ["possessive-s", "be-verbs"],
+  },
+  // 35-2021.00, Food Preparation Workers: "Check and log refrigerator, freezer, and cooler
+  // temperatures."
+  {
+    id: "cooler-check",
+    role: "food-prep",
+    audience: "coworker",
+    situation:
+      "A new prep worker starts today. Walk-in cooler checks: 6 a.m. and 2 p.m. Safe: 41°F or below. Above 41°F: tell the chef right away.",
+    task: "Explain the cooler check to the new prep worker.",
+    taskType: "briefing-coworkers",
+    taskParts: [
+      "The two times to check the cooler",
+      "What temperature is safe (41°F or below)",
+      "Telling the chef when it's too warm",
+    ],
+    targetSkills: ["modal-verbs", "time-prepositions"],
+  },
+  // 35-2021.00, Food Preparation Workers: "Inform supervisors when equipment is not working
+  // properly and when food and supplies are getting low..."
+  {
+    id: "slicer-problem",
+    role: "food-prep",
+    audience: "coworker",
+    situation:
+      "Prep log, 9:10 a.m. Meat slicer: loud grinding noise, then no movement. Power: off at the wall. Ham for lunch sandwiches: half left to slice.",
+    task: "Tell your supervisor about the slicer and the unfinished work.",
+    taskType: "reporting-up",
+    taskParts: [
+      "Says what went wrong with the slicer",
+      "Says which prep is unfinished because of it",
+    ],
+    targetSkills: ["past-regular", "past-irregular", "articles"],
+  },
+  // 35-2014.00, Cooks, Restaurant: "Substitute for or assist other cooks during emergencies
+  // or rush periods."
+  {
+    id: "grill-rush",
+    role: "kitchen",
+    audience: "coworker",
+    situation:
+      "Friday, 7:30 p.m. Your station, grill: 12 tickets waiting. Salad station: 2 tickets. Cook on salads: Marco.",
+    task: "Get help from Marco.",
+    taskType: "requests",
+    taskParts: ["Asks Marco for help"],
+    targetSkills: ["modal-verbs", "question-forms", "plurals"],
+  },
 ];
 
 export function findScenario(id: string): Scenario | undefined {

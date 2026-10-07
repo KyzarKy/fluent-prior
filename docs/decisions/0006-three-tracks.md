@@ -55,7 +55,7 @@ never a mistake, and it's never part of `taskMet`.
 
 ## Task types and checklists
 
-The lines as of 2026-10-04. `src/core/scenarios.ts` is the source of truth.
+The lines as of 2026-10-06. `src/core/scenarios.ts` is the source of truth.
 
 | Scenario | Task type | Parts of a complete answer |
 |---|---|---|
@@ -65,14 +65,19 @@ The lines as of 2026-10-04. `src/core/scenarios.ts` is the source of truth.
 | pharmacy-directions | Guest information | Gives directions a guest could follow |
 | todays-special | Guest information | Names the dish · Mentions the sides |
 | peanut-allergy | Guest information | Says what they'll do next about the allergy · Says the kitchen uses a separate cutting board · Says the chef checks the plate |
+| separate-checks | Guest information | Says which check is Mr. Diaz's · Says which is Mrs. Diaz's · Says which is Leo's |
 | come-back-later | Requests | Arranges a new time (asks for one or proposes one) |
 | check-in-id | Requests | Asks for photo ID · Asks for a credit card |
 | delivery-question | Requests | Asks where the delivery goes |
+| grill-rush | Requests | Asks Marco for help |
 | broken-lamp | Reporting up | Says what's broken and where · Says when it was noticed |
 | ran-out-of-salmon | Reporting up | Tells the chef the salmon is gone · Asks what servers should tell guests |
 | room-report | Reporting up | Reports what was done in room 305 |
+| left-behind-phone | Reporting up | Says what was left behind · Says who it belongs to (the guest's name or room) |
+| slicer-problem | Reporting up | Says what went wrong with the slicer · Says which prep is unfinished because of it |
 | end-of-shift | Briefing coworkers | Clean the station · Label stored food · Take out the trash |
 | shift-handoff | Briefing coworkers | The guest's calls about the air conditioning · That it's fixed now |
+| cooler-check | Briefing coworkers | The two times to check the cooler · The safe temperature (41°F or below) · Telling the chef when it's too warm |
 
 Settled in review:
 

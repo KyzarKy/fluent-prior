@@ -3,7 +3,7 @@
 ## v1: practice loop (now)
 
 - A hospitality scenario pack: front desk, housekeeping, kitchen, food prep, front of house.
-  Before shipping, fill its thin spots (phase 1 under "Scaling the scenario pack").
+  Its thin spots are filled (phase 1 under "Scaling the scenario pack").
 - Answer by dictation or typing; the model grades meaning and reports skills
   ([ADR 0001](decisions/0001-text-in-meaning-graded.md)).
 - Knowledge tracing per skill, weighted by what dictation can hear, choosing the next
@@ -69,10 +69,11 @@ Ky reviews every scenario before it ships. The O*NET database is licensed
 [CC BY 4.0](https://www.onetcenter.org/license_db.html): credit the O*NET database and
 USDOL/ETA, link the license, and say the text was adapted.
 
-- **Phase 1, before v1 ships: fill the thin spots.** As of 2026-10-04, possessive 's is
-  the target of 1 scenario, and past tense and modal verbs of 2 each. Food prep has 1
-  scenario, kitchen 2, and briefing coworkers 2. About 6 new scenarios bring every skill,
-  role and task type to at least 3.
+- **Phase 1, before v1 ships: fill the thin spots.** As of 2026-10-04, possessive 's was
+  the target of 1 scenario, and past tense and modal verbs of 2 each. Food prep had 1
+  scenario, kitchen 2, and briefing coworkers 2. Done 2026-10-06: five scenarios adapted
+  from O*NET bring every skill, role and task type to at least 3, and
+  `scenarios.test.ts` keeps it that way. Each has 3 probe answers in the answer key.
 - **Phase 2, after v1: tooling.**
   - A coverage report: scenarios per skill, task type and role, so new drafts aim at gaps.
   - A priming check that flags task text using the target grammar, like "will" in a

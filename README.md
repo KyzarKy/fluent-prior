@@ -38,3 +38,12 @@ npm run dev             # API on :8790, web app on :5180
 ```
 
 On Windows PowerShell, use `npm.cmd` in place of `npm`.
+
+## Credits
+
+Some scenarios are adapted from task statements in the [O*NET](https://www.onetcenter.org/)
+31.0 Database by the U.S. Department of Labor, Employment and Training Administration
+(USDOL/ETA). Used under the [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+license. Ky Merritt has modified all or some of this information. USDOL/ETA has not
+approved, endorsed, or tested these modifications. `src/core/scenarios.ts` names the task
+statement each adapted scenario started from.
