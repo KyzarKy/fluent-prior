@@ -13,6 +13,7 @@ import {
   recentScenarioIds,
   toObservations,
 } from "../core/learner";
+import { dailyKnowledge } from "../core/progress";
 import { SCENARIOS, type Scenario } from "../core/scenarios";
 import { requestGrade } from "./api";
 import { AnswerForm } from "./components/AnswerForm";
@@ -48,6 +49,7 @@ export function App() {
 
   const current = useMemo(() => knowledge(log), [log]);
   const counts = useMemo(() => practiceCounts(log), [log]);
+  const history = useMemo(() => dailyKnowledge(log), [log]);
   // Checked against the log as it was when the scenario was chosen; answering it clears it.
   const [retry, setRetry] = useState(() => dueRetries(log).includes(scenario.id));
 
@@ -109,7 +111,12 @@ export function App() {
         />
         {status.kind === "graded" && <FeedbackCard grade={status.grade} scenario={scenario} />}
         <StatusMessage status={status} />
-        <MasteryPanel knowledge={current} counts={counts} onReset={resetProgress} />
+        <MasteryPanel
+          knowledge={current}
+          counts={counts}
+          history={history}
+          onReset={resetProgress}
+        />
       </main>
     </div>
   );
