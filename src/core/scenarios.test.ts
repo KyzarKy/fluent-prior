@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { SCENARIOS } from "./scenarios";
-import { SKILL_IDS } from "./skills";
-import { TASK_TYPES } from "./tasks";
+import { SCENARIOS } from "./scenarios.js";
+import { SKILL_IDS } from "./skills.js";
+import { TASK_TYPES } from "./tasks.js";
 
 describe("the scenario pack", () => {
   it("targets every skill at least once, so the learner model can choose to practice it", () => {

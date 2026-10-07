@@ -3,9 +3,15 @@
 
 import Groq from "groq-sdk";
 import { z } from "zod";
-import { GraderOutput } from "../core/contract";
-import { costUsd } from "../core/pricing";
-import { type Grader, MAX_OUTPUT_TOKENS, parseReply, SYSTEM_PROMPT, userMessage } from "./grader";
+import { GraderOutput } from "../core/contract.js";
+import { costUsd } from "../core/pricing.js";
+import {
+  type Grader,
+  MAX_OUTPUT_TOKENS,
+  parseReply,
+  SYSTEM_PROMPT,
+  userMessage,
+} from "./grader.js";
 
 export const GROQ_MODEL = "openai/gpt-oss-120b";
 const OUTPUT_SCHEMA = z.toJSONSchema(GraderOutput);

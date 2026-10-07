@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { taskVerdict } from "./tasks";
+import { taskVerdict } from "./tasks.js";
 
 const present = (part: number) => ({ part, present: true });
 const missing = (part: number) => ({ part, present: false });

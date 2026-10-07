@@ -1,7 +1,7 @@
 // A grader that never calls a model, for UI work and tests without a key or a bill. The
 // server uses it only when GRADER=fake is set, so it can't be switched on by accident.
 
-import type { Grader } from "./grader";
+import type { Grader } from "./grader.js";
 
 export const fakeGrader: Grader = async (scenario, answer) => {
   const [first, second] = scenario.targetSkills;
