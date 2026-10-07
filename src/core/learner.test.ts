@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { Grade } from "./contract";
+import type { Grade } from "./contract.js";
 import {
   dueRetries,
   knowledge,
@@ -9,8 +9,8 @@ import {
   recentScenarioIds,
   toneOutcome,
   toObservations,
-} from "./learner";
-import { findScenario, SCENARIOS, type Scenario } from "./scenarios";
+} from "./learner.js";
+import { findScenario, SCENARIOS, type Scenario } from "./scenarios.js";
 
 const AT = "2026-09-26T12:00:00.000Z";
 

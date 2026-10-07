@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import type { GraderOutput } from "../core/contract";
-import { createApp } from "./app";
-import { createMemoryStore } from "./cap-store";
-import type { Grader } from "./grader";
+import type { GraderOutput } from "../core/contract.js";
+import { createApp } from "./app.js";
+import { createMemoryStore } from "./cap-store.js";
+import type { Grader } from "./grader.js";
 
 // early-arrival has two checklist parts; this answer does the first only.
 const output: GraderOutput = {

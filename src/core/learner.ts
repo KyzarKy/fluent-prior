@@ -2,12 +2,12 @@
 // for each grammar skill, each task type, and tone (ADR 0002, ADR 0006), plus the rules for
 // picking the next scenario, including bringing incomplete ones back.
 
-import { BASE_PARAMS, type Evidence, update } from "./bkt";
-import type { Grade, TaskMet, Tone } from "./contract";
-import { paramsFor, type Source, TONE_PARAMS } from "./evidence";
-import type { Scenario } from "./scenarios";
-import { SKILL_IDS, SKILLS, type SkillId } from "./skills";
-import { type Audience, TASK_TYPES, type TaskType } from "./tasks";
+import { BASE_PARAMS, type Evidence, update } from "./bkt.js";
+import type { Grade, TaskMet, Tone } from "./contract.js";
+import { paramsFor, type Source, TONE_PARAMS } from "./evidence.js";
+import type { Scenario } from "./scenarios.js";
+import { SKILL_IDS, SKILLS, type SkillId } from "./skills.js";
+import { type Audience, TASK_TYPES, type TaskType } from "./tasks.js";
 
 /** At most one correct use and one mistake count per skill per answer (ADR 0002). */
 export type Outcome = "right" | "wrong" | "mixed";

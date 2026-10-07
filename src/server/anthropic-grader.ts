@@ -3,9 +3,15 @@
 
 import type Anthropic from "@anthropic-ai/sdk";
 import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
-import { GraderOutput } from "../core/contract";
-import { costUsd } from "../core/pricing";
-import { type Grader, MAX_OUTPUT_TOKENS, parseReply, SYSTEM_PROMPT, userMessage } from "./grader";
+import { GraderOutput } from "../core/contract.js";
+import { costUsd } from "../core/pricing.js";
+import {
+  type Grader,
+  MAX_OUTPUT_TOKENS,
+  parseReply,
+  SYSTEM_PROMPT,
+  userMessage,
+} from "./grader.js";
 
 export const ANTHROPIC_MODEL = "claude-sonnet-5";
 

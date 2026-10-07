@@ -4,11 +4,11 @@
 
 import { createHash } from "node:crypto";
 import { type Context, Hono } from "hono";
-import { type CounterStore, checkCaps, recordUsage } from "../core/caps";
-import { type CapExceeded, GradeRequest, type GradeResponse } from "../core/contract";
-import { findScenario } from "../core/scenarios";
-import { taskVerdict } from "../core/tasks";
-import type { Grader } from "./grader";
+import { type CounterStore, checkCaps, recordUsage } from "../core/caps.js";
+import { type CapExceeded, GradeRequest, type GradeResponse } from "../core/contract.js";
+import { findScenario } from "../core/scenarios.js";
+import { taskVerdict } from "../core/tasks.js";
+import type { Grader } from "./grader.js";
 
 export interface AppDeps {
   grade: Grader;

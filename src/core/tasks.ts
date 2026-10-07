@@ -2,7 +2,7 @@
 // talking to, and the rule that turns a checklist into a verdict. The grader only reports
 // which parts are present; the verdict is computed here, where it can be tested.
 
-import type { TaskMet } from "./contract";
+import type { TaskMet } from "./contract.js";
 
 export const TASK_TYPES = [
   "guest-problems",
