@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { type CounterStore, checkCaps, type Limit, type Requester, recordUsage } from "./caps";
-import { costUsd } from "./pricing";
+import { type CounterStore, checkCaps, type Limit, type Requester, recordUsage } from "./caps.js";
+import { costUsd } from "./pricing.js";
 
 /** Ignores expiry; tests move the clock into a new bucket instead. */
 function memoryStore(): CounterStore {

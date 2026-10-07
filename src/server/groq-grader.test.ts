@@ -1,8 +1,8 @@
 import Groq from "groq-sdk";
 import { describe, expect, it } from "vitest";
-import type { GraderOutput } from "../core/contract";
-import { findScenario } from "../core/scenarios";
-import { createGroqGrader } from "./groq-grader";
+import type { GraderOutput } from "../core/contract.js";
+import { findScenario } from "../core/scenarios.js";
+import { createGroqGrader } from "./groq-grader.js";
 
 const output: GraderOutput = {
   mistakes: [],

@@ -38,3 +38,17 @@ npm run dev             # API on :8790, web app on :5180
 ```
 
 On Windows PowerShell, use `npm.cmd` in place of `npm`.
+
+## Deploying
+
+On Vercel, with the spend-cap counters in Upstash Redis
+([ADR 0007](docs/decisions/0007-hosting-and-counter-store.md)). Vite builds the web app,
+and `api/index.ts` serves the API as one Vercel Function. It always uses the free grader.
+
+Project settings: root directory `./`, the Vite preset, and the default build settings.
+Environment variables:
+
+- `GROQ_API_KEY`
+- `IP_HASH_SALT`: a long random string. The API won't start without it.
+- Upstash's URL and token: added by connecting Upstash for Redis in the project's Storage
+  tab.

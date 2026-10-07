@@ -1,9 +1,9 @@
 // What every grader shares: the prompt, the outcome type, and parsing the model's reply
 // against the contract. Provider files only make the call (ADR 0004).
 
-import { GraderOutput } from "../core/contract";
-import { ROLE_NAMES, type Scenario } from "../core/scenarios";
-import { SKILL_IDS, SKILLS } from "../core/skills";
+import { GraderOutput } from "../core/contract.js";
+import { ROLE_NAMES, type Scenario } from "../core/scenarios.js";
+import { SKILL_IDS, SKILLS } from "../core/skills.js";
 
 /** One call's token counts, for measuring cost and prompt-cache hits. */
 export interface TokenUsage {

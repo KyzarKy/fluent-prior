@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { BASE_PARAMS, posterior, update } from "./bkt";
+import { BASE_PARAMS, posterior, update } from "./bkt.js";
 
 const RIGHT = { right: 1, wrong: 0 };
 const WRONG = { right: 0, wrong: 1 };

@@ -1,8 +1,8 @@
 // Pins the evidence table in ADR 0002. If these numbers change, the ADR changes with them.
 
 import { describe, expect, it } from "vitest";
-import { likelihoodRatios, paramsFor } from "./evidence";
-import { SKILLS } from "./skills";
+import { likelihoodRatios, paramsFor } from "./evidence.js";
+import { SKILLS } from "./skills.js";
 
 describe("paramsFor", () => {
   it("leaves clear skills at the base parameters", () => {

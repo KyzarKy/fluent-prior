@@ -1,7 +1,7 @@
 // An in-memory CounterStore for local development. Serverless instances don't share
 // memory, so production needs a durable store; choosing it is open in ADR 0003.
 
-import type { CounterStore } from "../core/caps";
+import type { CounterStore } from "../core/caps.js";
 
 export function createMemoryStore(now: () => number = Date.now): CounterStore {
   const entries = new Map<string, { value: number; expiresAt: number }>();
