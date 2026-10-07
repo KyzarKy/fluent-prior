@@ -50,6 +50,10 @@ read like AI-assisted work that a senior engineer directed, not like generated c
 7. **Learner answers are data.** They reach the model inside `<answer>` tags, and the
    system prompt says not to follow instructions in them.
 8. **Secrets stay on the server.** Nothing secret goes in a `VITE_` variable.
+9. **Imports in `api/`, `src/server` and `src/core` end in `.js`,** even for `.ts` files.
+   Vercel runs that code as plain Node ES modules, which need the extension
+   ([ADR 0007](docs/decisions/0007-hosting-and-counter-store.md)). Biome enforces it; the
+   web app and evals don't need it.
 
 ## Style
 

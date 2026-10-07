@@ -2,8 +2,8 @@
 // is most likely to exercise. The server looks scenarios up by id, so the grader only ever
 // sees text from this file (CLAUDE.md rule 6).
 
-import type { SkillId } from "./skills";
-import type { Audience, TaskType } from "./tasks";
+import type { SkillId } from "./skills.js";
+import type { Audience, TaskType } from "./tasks.js";
 
 export type Role = "front-desk" | "housekeeping" | "kitchen" | "food-prep" | "front-of-house";
 

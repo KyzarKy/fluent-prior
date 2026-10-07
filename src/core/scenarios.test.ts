@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { ROLE_NAMES, SCENARIOS, type Scenario } from "./scenarios";
-import { SKILL_IDS } from "./skills";
-import { TASK_TYPES } from "./tasks";
+import { ROLE_NAMES, SCENARIOS, type Scenario } from "./scenarios.js";
+import { SKILL_IDS } from "./skills.js";
+import { TASK_TYPES } from "./tasks.js";
 
 /**
  * With fewer, a learner practicing one skill, role or task type keeps getting the same

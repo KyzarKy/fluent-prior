@@ -3,7 +3,7 @@
 // is `unknown` until one of them parses it (CLAUDE.md rule 2).
 
 import { z } from "zod";
-import { SKILL_IDS } from "./skills";
+import { SKILL_IDS } from "./skills.js";
 
 export const MAX_ANSWER_CHARS = 600;
 

@@ -4,12 +4,12 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { serve } from "@hono/node-server";
 import Groq from "groq-sdk";
-import { createAnthropicGrader } from "./anthropic-grader";
-import { createApp } from "./app";
-import { createMemoryStore } from "./cap-store";
-import { fakeGrader } from "./fake-grader";
-import type { Grader } from "./grader";
-import { createGroqGrader } from "./groq-grader";
+import { createAnthropicGrader } from "./anthropic-grader.js";
+import { createApp } from "./app.js";
+import { createMemoryStore } from "./cap-store.js";
+import { fakeGrader } from "./fake-grader.js";
+import type { Grader } from "./grader.js";
+import { createGroqGrader } from "./groq-grader.js";
 
 function chooseGrader(name: string): Grader {
   switch (name) {

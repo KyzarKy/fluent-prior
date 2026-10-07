@@ -2,7 +2,7 @@
 // whether any is full. Counters live behind CounterStore, so this runs in tests without a
 // server; the server supplies the store.
 
-import type { CapLayer } from "./contract";
+import type { CapLayer } from "./contract.js";
 
 export interface CounterStore {
   get(key: string): Promise<number>;

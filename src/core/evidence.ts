@@ -3,8 +3,8 @@
 // observation: it keeps a small-sound error only with probability DICTATION_KEEP, so the
 // errors we can see are the true error rates times that keep rate (ADR 0002).
 
-import { BASE_PARAMS, type BktParams } from "./bkt";
-import type { Skill } from "./skills";
+import { BASE_PARAMS, type BktParams } from "./bkt.js";
+import type { Skill } from "./skills.js";
 
 /**
  * Where an observation came from. v1 has one source; "typed-drill" and "tutor" join it
