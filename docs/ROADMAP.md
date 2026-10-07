@@ -10,7 +10,9 @@
   scenario ([ADR 0002](decisions/0002-learner-model.md)).
 - Layered spend caps ([ADR 0003](decisions/0003-spend-caps.md)).
 - A free grader by default ([ADR 0004](decisions/0004-free-grader-first.md)).
-- Runs locally. Deploy once the production counter store is chosen. The repo stays private until v1 ships.
+- Deploys to Vercel, with the spend-cap counters in Upstash Redis
+  ([ADR 0007](decisions/0007-hosting-and-counter-store.md)). The repo stays private until v1
+  ships.
 
 ## v1.1: measure
 

@@ -1,7 +1,7 @@
 # 0003. Layered spend caps
 
 **Status:** accepted, 2026-09-26. The numbers are starting values, for Ky to adjust. The
-production counter store is open (see Consequences).
+production counter store is Upstash Redis ([ADR 0007](0007-hosting-and-counter-store.md)).
 
 ## Context
 
@@ -48,10 +48,10 @@ the layers are unit-tested without a server.
 
 ## Consequences
 
-- **Open: the production counter store.** Serverless functions don't share memory, so the
-  in-memory store is for local development only. Before deploying, pick a durable store.
-  The leading option is Upstash Redis on its free tier: atomic increment with expiry fits
-  windowed counters. It stays separate from every other project's infrastructure.
+- **The production counter store** is Upstash Redis on its free tier
+  ([ADR 0007](0007-hosting-and-counter-store.md)). Serverless functions don't share memory,
+  so the in-memory store is for local development only. It stays separate from every other
+  project's infrastructure.
 - Typical cost per graded answer is estimated at about 1¢ (about 1,500 tokens in, 700 out
   including thinking, at Sonnet 5 prices). Replace the estimate with measured numbers after
   the first week.
