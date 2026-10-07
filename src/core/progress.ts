@@ -8,7 +8,7 @@ import {
   type Observation,
   type PracticeCounts,
   practiceCounts,
-} from "./learner";
+} from "./learner.js";
 
 export interface DayKnowledge {
   /** The learner's local calendar day, YYYY-MM-DD. */

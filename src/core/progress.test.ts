@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { knowledge, type Observation, practiceCounts } from "./learner";
-import { dailyKnowledge, localDay } from "./progress";
+import { knowledge, type Observation, practiceCounts } from "./learner.js";
+import { dailyKnowledge, localDay } from "./progress.js";
 
 /** A timestamp at a local time, so the tests pass in any time zone. */
 const at = (day: number, hour: number) => new Date(2026, 9, day, hour).toISOString();
