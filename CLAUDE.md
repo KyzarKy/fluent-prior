@@ -7,7 +7,10 @@ it's also the working agreement between Ky and Claude.
 
 Fluent Prior is English speaking practice for hospitality workers, used between sessions
 with a tutor. It's one of Ky Merritt's portfolio projects, and the one that depends on no
-one but Ky. It shares no code or infrastructure with Ky's other projects, on purpose.
+one but Ky. It must never be blocked by unfinished work elsewhere, so it shares no code or
+infrastructure with Ky's other apps, Mini Mind included. Published, versioned packages are
+fine, Ky's own included (Ky, 2026-10-07): a pinned version can't change under this project
+or hold it up.
 
 Read these before changing anything: [README](README.md), [ROADMAP](docs/ROADMAP.md), and
 the ADRs in [docs/decisions](docs/decisions/).
