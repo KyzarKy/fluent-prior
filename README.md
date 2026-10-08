@@ -52,3 +52,12 @@ Environment variables:
 - `IP_HASH_SALT`: a long random string. The API won't start without it.
 - Upstash's URL and token: added by connecting Upstash for Redis in the project's Storage
   tab.
+
+## Credits
+
+Some scenarios are adapted from task statements in the [O*NET](https://www.onetcenter.org/)
+31.0 Database by the U.S. Department of Labor, Employment and Training Administration
+(USDOL/ETA). Used under the [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+license. Ky Merritt has modified all or some of this information. USDOL/ETA has not
+approved, endorsed, or tested these modifications. `src/core/scenarios.ts` names the task
+statement each adapted scenario started from.
