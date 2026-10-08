@@ -31,22 +31,27 @@ const jsonValidateFailed = new Groq.BadRequestError(
   new Headers(),
 );
 
+/** Fails the first call with `error`, then answers. Records each call's reasoning effort. */
 function clientFailingFirst(error: unknown) {
-  let calls = 0;
-  const create = async () => {
-    calls++;
-    if (calls === 1) throw error;
+  const efforts: unknown[] = [];
+  const create = async (params: { reasoning_effort?: unknown }) => {
+    efforts.push(params.reasoning_effort);
+    if (efforts.length === 1) throw error;
     return reply;
   };
-  return { client: { chat: { completions: { create } } } as unknown as Groq, calls: () => calls };
+  return {
+    client: { chat: { completions: { create } } } as unknown as Groq,
+    calls: () => efforts.length,
+    efforts,
+  };
 }
 
 describe("createGroqGrader", () => {
   const scenario = findScenario("delivery-question");
   if (!scenario) throw new Error("missing scenario");
 
-  it("retries once when Groq rejects the reply's JSON", async () => {
-    const { client, calls } = clientFailingFirst(jsonValidateFailed);
+  it("retries once, at low reasoning effort, when Groq rejects the reply's JSON", async () => {
+    const { client, calls, efforts } = clientFailingFirst(jsonValidateFailed);
     const outcome = await createGroqGrader(client)(scenario, "where do these go");
     expect(outcome).toMatchObject({
       ok: true,
@@ -54,6 +59,7 @@ describe("createGroqGrader", () => {
       tokens: { input: 100, cachedInput: 80, output: 50, reasoning: 30 },
     });
     expect(calls()).toBe(2);
+    expect(efforts).toEqual(["medium", "low"]);
   });
 
   it("doesn't retry other errors", async () => {
