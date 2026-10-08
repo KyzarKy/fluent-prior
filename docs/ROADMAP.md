@@ -47,7 +47,10 @@ The learner sees how they've improved, as charts with a short written explanatio
 relative to the tutor work, accounts and security is open.
 
 - **Charts per track:** mastery for each grammar skill, tone, and task completion by task
-  type, over days and weeks.
+  type, over days and weeks. Built 2026-10-06: "What you know" has an "Over time" view with
+  a small step chart per row (`src/core/progress.ts`). Each runs from that row's first day
+  with practice to today, by calendar day, so the model's starting guess never shows as
+  progress.
 - **A written summary** in simple English, for example "Your past tense is much steadier
   than two weeks ago; articles still come and go." Code computes the trends and the model
   only words them, so the summary can't invent progress (CLAUDE.md rule 3). Each summary is
@@ -105,7 +108,11 @@ USDOL/ETA, link the license, and say the text was adapted.
   when describing rooms and dishes.
 - Feedback in the learner's first language.
 - Scenarios generated for the learner's own workplace, reviewed before use.
-- Forgetting: a decay term, so old practice counts for less.
+- **Forgetting:** a decay term, so old practice counts for less. BKT as built has none, so a
+  long streak makes the model slow to notice a slip. Found testing the progress charts
+  (2026-10-07): after 20 polite answers in a row, tone showed no drop until the 10th rude
+  answer, then fell to 49% by the 15th. Changes the learner model, so it needs an ADR and an
+  eval.
 - Detecting dictated versus typed answers from how the text arrives.
 - **Reuse grades for identical answers**, after removing what isn't graded (punctuation,
   capitalization, spacing). Same answer, same grade: it saves little, but grading becomes
