@@ -1647,20 +1647,24 @@
           {
             "skill": "past-irregular",
             "quote": "make",
-            "fix": "made"
+            "fix": "made / makes",
+            "alsoAccept": ["third-person-s"]
           },
           {
             "skill": "past-regular",
             "quote": "stop working",
-            "fix": "stopped working"
+            "fix": "stopped working / stops working",
+            "alsoAccept": ["third-person-s"]
           },
           {
             "skill": "past-regular",
             "quote": "i turn it off",
-            "fix": "i turned it off"
+            "fix": "i turned it off",
+            "optional": true
           }
         ],
-        "wordChoice": []
+        "wordChoice": [],
+        "note": "Also correct as a present-tense story (\"the slicer makes a noise and stops, so I turn it off\"), so he/she/it -s counts for make and stop, and \"turn\" is optional: the same call as #2 (Ky, 2026-10-07)."
       }
     },
     {
@@ -1686,7 +1690,7 @@
       "task": "Tell your supervisor what's wrong with the slicer and what prep is still waiting.",
       "answer": "there is problem with slicer",
       "ky": {
-        "taskMet": "no",
+        "taskMet": "partly",
         "tone": "neutral",
         "mistakes": [
           {
@@ -1701,7 +1705,7 @@
           }
         ],
         "wordChoice": [],
-        "note": "Matches the checklist's words without meeting the need: \"a problem\" doesn't say what went wrong, so the supervisor can't tell whether it still works."
+        "note": "\"There is a problem\" says something is wrong with the slicer, without saying what. Ky was on the fence and accepts partly, the grader's reading in 3 of 3 trials (2026-10-07)."
       }
     },
     {
