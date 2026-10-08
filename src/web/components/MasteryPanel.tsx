@@ -19,6 +19,12 @@ interface Props {
 
 const percent = (p: number) => Math.round(p * 100);
 
+/**
+ * The model is never certain, so it never says 100%. Rounding would show 100% from 99.5% up,
+ * where after a long streak several slips can pass without the number moving.
+ */
+const percentLabel = (p: number) => (percent(p) === 100 ? "99%+" : `${percent(p)}%`);
+
 /** "2026-10-04" as "Oct 4". Without a time zone offset, the date is read as local. */
 const shortDate = (day: string) =>
   new Date(`${day}T00:00`).toLocaleDateString(undefined, { month: "short", day: "numeric" });
@@ -40,10 +46,10 @@ function Meter({
   trend?: readonly (number | null)[];
   faint?: boolean;
 }) {
-  let detail = `${percent(p)}% · ${count} ${count === 1 ? "answer" : "answers"}`;
+  let detail = `${percentLabel(p)} · ${count} ${count === 1 ? "answer" : "answers"}`;
   if (trend) {
     const first = trend.find((value) => value !== null) ?? p;
-    detail = count > 0 ? `${percent(first)}% → ${percent(p)}%` : "Not practiced yet";
+    detail = count > 0 ? `${percentLabel(first)} → ${percentLabel(p)}` : "Not practiced yet";
   }
 
   return (
