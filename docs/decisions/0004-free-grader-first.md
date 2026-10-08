@@ -24,9 +24,13 @@ Recheck them against the provider's own docs before relying on them.
 - **Out of quota:** the grader reports it, and the learner sees the same message as for the
   whole-app spend cap. It's a limit, not a failure.
 - **Rejected JSON:** Groq sometimes refuses a reply that breaks the schema
-  (`json_validate_failed`, 1 in 60 in the first eval). The grader retries once, inside the
-  same capped request. That second call isn't checked against the caps again, which is safe
-  only because the free grader costs $0; a paid grader shouldn't copy it.
+  (`json_validate_failed`, 1 in 60 in the first eval), including one cut off at the output
+  ceiling. The grader retries once, inside the same capped request, at `low` reasoning
+  effort (Ky, 2026-10-07): a reply that ran out of tokens at medium would likely run out
+  again, and low effort used less than half the output (2026-09-27, below). A retried
+  grade may be a little less accurate (same measurement). That second call isn't checked
+  against the caps again, which is safe only because the free grader costs $0; a paid
+  grader shouldn't copy it.
 - **Sonnet stays:** `GRADER=anthropic` selects it; `GRADER=fake` still exists for UI work.
   The prompt, the parsing, and the contract are shared, so the only difference between
   graders is the provider call.
@@ -98,3 +102,11 @@ Two full eval runs, 128 grades (results 2026-10-05T0159 and T0200):
 - **Little headroom under the output ceiling.** The largest reply was 1,964 of 2,000
   tokens. A longer one is cut off and fails. Lower reasoning effort is the lever if that
   starts happening.
+
+## Measured, 2026-10-07: the first cut-off
+
+Trials of the 15 phase 1 probes (45 grades, PR #1): #69, at 168 characters the longest
+answer in the key, ran out of output tokens once. Groq returned `json_validate_failed`, and
+the retry, then still at medium effort, ran out too, so the grade failed. In the app the
+learner would have seen "couldn't grade". That's 1 grade in 45, and why the retry now uses
+low effort.
