@@ -108,7 +108,11 @@ USDOL/ETA, link the license, and say the text was adapted.
   when describing rooms and dishes.
 - Feedback in the learner's first language.
 - Scenarios generated for the learner's own workplace, reviewed before use.
-- Forgetting: a decay term, so old practice counts for less.
+- **Forgetting:** a decay term, so old practice counts for less. BKT as built has none, so a
+  long streak makes the model slow to notice a slip. Found testing the progress charts
+  (2026-10-07): after 20 polite answers in a row, tone showed no drop until the 10th rude
+  answer, then fell to 49% by the 15th. Changes the learner model, so it needs an ADR and an
+  eval.
 - Detecting dictated versus typed answers from how the text arrives.
 - **Reuse grades for identical answers**, after removing what isn't graded (punctuation,
   capitalization, spacing). Same answer, same grade: it saves little, but grading becomes
