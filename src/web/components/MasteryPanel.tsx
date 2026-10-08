@@ -5,7 +5,7 @@
 
 import { useState } from "react";
 import type { Knowledge, PracticeCounts } from "../../core/learner";
-import type { DayKnowledge } from "../../core/progress";
+import { type DayKnowledge, localDay, type TrendPoint, trendLine } from "../../core/progress";
 import { SKILL_IDS, SKILLS } from "../../core/skills";
 import { TASK_TYPE_NAMES, TASK_TYPES } from "../../core/tasks";
 import { Sparkline } from "./Sparkline";
@@ -25,10 +25,6 @@ const percent = (p: number) => Math.round(p * 100);
  */
 const percentLabel = (p: number) => (percent(p) === 100 ? "99%+" : `${percent(p)}%`);
 
-/** "2026-10-04" as "Oct 4". Without a time zone offset, the date is read as local. */
-const shortDate = (day: string) =>
-  new Date(`${day}T00:00`).toLocaleDateString(undefined, { month: "short", day: "numeric" });
-
 function Meter({
   label,
   p,
@@ -39,16 +35,13 @@ function Meter({
   label: string;
   p: number;
   count: number;
-  /**
-   * P(known) at the end of each day with practice, null before this one was first
-   * practiced. Set only in the over-time view.
-   */
-  trend?: readonly (number | null)[];
+  /** This row's line, from its first day with practice to today. Only in the over-time view. */
+  trend?: readonly TrendPoint[];
   faint?: boolean;
 }) {
   let detail = `${percentLabel(p)} · ${count} ${count === 1 ? "answer" : "answers"}`;
   if (trend) {
-    const first = trend.find((value) => value !== null) ?? p;
+    const first = trend[0]?.p ?? p;
     detail = count > 0 ? `${percentLabel(first)} → ${percentLabel(p)}` : "Not practiced yet";
   }
 
@@ -71,7 +64,7 @@ function Meter({
           <div className="h-full rounded-full bg-meter" style={{ width: `${percent(p)}%` }} />
         </div>
       )}
-      {trend && count > 0 && <Sparkline values={trend} />}
+      {trend && <Sparkline points={trend} />}
     </li>
   );
 }
@@ -82,13 +75,9 @@ export function MasteryPanel({ knowledge, counts, history, onReset }: Props) {
   // A line needs two days. Until then there's only "now".
   const canShowTrend = history.length >= 2;
   const showTrend = overTime && canShowTrend;
-  // Knowledge and PracticeCounts have the same shape, so one picker reads both.
+  const today = localDay(new Date().toISOString());
   const trendOf = (pick: (k: Knowledge) => number) =>
-    showTrend
-      ? history.map((day) => (pick(day.counts) > 0 ? pick(day.knowledge) : null))
-      : undefined;
-  const firstDay = history[0]?.day ?? "";
-  const lastDay = history.at(-1)?.day ?? "";
+    showTrend ? trendLine(history, pick, today) : undefined;
 
   return (
     <section
@@ -120,7 +109,7 @@ export function MasteryPanel({ knowledge, counts, history, onReset }: Props) {
       </div>
       <p className="mt-1 text-muted text-sm">
         {showTrend
-          ? `How the chance you've got each one changed from ${shortDate(firstDay)} to ${shortDate(lastDay)}, one point for each day you practiced.`
+          ? "How the chance you've got each one changed, from the day you first practiced it (left) to today (right)."
           : "The chance you've got each one, based on your answers."}
       </p>
       {history.length === 1 && (

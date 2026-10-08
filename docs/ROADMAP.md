@@ -48,8 +48,8 @@ relative to the tutor work, accounts and security is open.
 
 - **Charts per track:** mastery for each grammar skill, tone, and task completion by task
   type, over days and weeks. Built 2026-10-06: "What you know" has an "Over time" view with
-  a small line per row, one point per day practiced (`src/core/progress.ts`). A line starts
-  on that row's first day with practice, so the model's starting guess never shows as
+  a small step chart per row (`src/core/progress.ts`). Each runs from that row's first day
+  with practice to today, by calendar day, so the model's starting guess never shows as
   progress.
 - **A written summary** in simple English, for example "Your past tense is much steadier
   than two weeks ago; articles still come and go." Code computes the trends and the model
