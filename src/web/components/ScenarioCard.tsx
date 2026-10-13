@@ -9,16 +9,16 @@ export function ScenarioCard({ scenario, retry }: { scenario: Scenario; retry: b
   return (
     <section
       aria-labelledby="scenario-heading"
-      className="rounded-2xl border border-border bg-surface p-5 shadow-sm"
+      className="rounded-2xl border border-border bg-card p-5 shadow-sm"
     >
       <div className="mb-3 flex flex-wrap gap-2">
-        <p className={`${CHIP} bg-surface-muted text-muted`}>{ROLE_NAMES[scenario.role]}</p>
-        {retry && <p className={`${CHIP} bg-partly/15 text-partly`}>Second try</p>}
+        <p className={`${CHIP} bg-muted text-muted-foreground`}>{ROLE_NAMES[scenario.role]}</p>
+        {retry && <p className={`${CHIP} bg-warning/15 text-warning`}>Second try</p>}
       </div>
       <h2 id="scenario-heading" className="text-lg leading-snug">
         {scenario.situation}
       </h2>
-      <p className="mt-4 font-medium text-muted text-sm">Your task</p>
+      <p className="mt-4 font-medium text-muted-foreground text-sm">Your task</p>
       <p className="mt-1 text-base">{scenario.task}</p>
     </section>
   );
