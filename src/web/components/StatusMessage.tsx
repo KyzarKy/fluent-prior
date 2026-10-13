@@ -33,7 +33,7 @@ export function StatusMessage({ status }: { status: Status }) {
   }
   if (!message) return null;
   return (
-    <p role="status" className="rounded-xl border border-partly/40 bg-partly/10 p-4 text-sm">
+    <p role="status" className="rounded-xl border border-warning/40 bg-warning/10 p-4 text-sm">
       {message}
     </p>
   );

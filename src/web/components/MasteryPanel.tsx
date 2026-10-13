@@ -51,17 +51,17 @@ function Meter({
         <span>
           {label}
           {faint && (
-            <span className="ml-1 text-muted" title="Hard for dictation to hear">
+            <span className="ml-1 text-muted-foreground" title="Hard for dictation to hear">
               ◐
             </span>
           )}
         </span>
-        <span className="shrink-0 text-muted tabular-nums">{detail}</span>
+        <span className="shrink-0 text-muted-foreground tabular-nums">{detail}</span>
       </div>
       {/* Decorative: the text above is what screen readers get. */}
       {!trend && (
-        <div aria-hidden="true" className="mt-1 h-2 overflow-hidden rounded-full bg-surface-muted">
-          <div className="h-full rounded-full bg-meter" style={{ width: `${percent(p)}%` }} />
+        <div aria-hidden="true" className="mt-1 h-2 overflow-hidden rounded-full bg-muted">
+          <div className="h-full rounded-full bg-primary" style={{ width: `${percent(p)}%` }} />
         </div>
       )}
       {trend && <Sparkline points={trend} />}
@@ -82,14 +82,14 @@ export function MasteryPanel({ knowledge, counts, history, onReset }: Props) {
   return (
     <section
       aria-labelledby="mastery-heading"
-      className="rounded-2xl border border-border bg-surface p-5 shadow-sm"
+      className="rounded-2xl border border-border bg-card p-5 shadow-sm"
     >
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h2 id="mastery-heading" className="font-semibold text-lg">
           What you know
         </h2>
         {canShowTrend && (
-          <fieldset className="flex rounded-full bg-surface-muted p-1 text-sm">
+          <fieldset className="flex rounded-full bg-muted p-1 text-sm">
             <legend className="sr-only">Show</legend>
             {[false, true].map((value) => (
               <button
@@ -98,7 +98,7 @@ export function MasteryPanel({ knowledge, counts, history, onReset }: Props) {
                 aria-pressed={overTime === value}
                 onClick={() => setOverTime(value)}
                 className={`min-h-11 rounded-full px-4 ${
-                  overTime === value ? "bg-surface font-medium shadow-sm" : "text-muted"
+                  overTime === value ? "bg-card font-medium shadow-sm" : "text-muted-foreground"
                 }`}
               >
                 {value ? "Over time" : "Now"}
@@ -107,13 +107,13 @@ export function MasteryPanel({ knowledge, counts, history, onReset }: Props) {
           </fieldset>
         )}
       </div>
-      <p className="mt-1 text-muted text-sm">
+      <p className="mt-1 text-muted-foreground text-sm">
         {showTrend
           ? "How the chance you've got each one changed, from the day you first practiced it (left) to today (right)."
           : "The chance you've got each one, based on your answers."}
       </p>
       {history.length === 1 && (
-        <p className="mt-1 text-muted text-sm">
+        <p className="mt-1 text-muted-foreground text-sm">
           Practice on another day to see your progress over time.
         </p>
       )}
@@ -142,7 +142,7 @@ export function MasteryPanel({ knowledge, counts, history, onReset }: Props) {
       </ul>
 
       <h3 className="mt-5 font-medium">Grammar</h3>
-      <p className="mt-1 text-muted text-sm">
+      <p className="mt-1 text-muted-foreground text-sm">
         ◐ marks grammar that phone dictation often can't hear, so a correct answer counts for less.
       </p>
       <ul className="mt-2 flex flex-col gap-3">
@@ -169,7 +169,7 @@ export function MasteryPanel({ knowledge, counts, history, onReset }: Props) {
           }
         }}
         onBlur={() => setConfirming(false)}
-        className="mt-5 min-h-11 text-muted text-sm underline underline-offset-4"
+        className="mt-5 min-h-11 text-muted-foreground text-sm underline underline-offset-4"
       >
         {confirming ? "Tap again to erase all progress" : "Reset progress"}
       </button>

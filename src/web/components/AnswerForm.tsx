@@ -28,7 +28,7 @@ export function AnswerForm({ answer, onChange, onSubmit, onNext, status }: Props
       <label htmlFor="answer" className="font-medium">
         Your answer
       </label>
-      <p id="answer-help" className="text-muted text-sm">
+      <p id="answer-help" className="text-muted-foreground text-sm">
         Tap the microphone on your keyboard and say it out loud, or type it. Fix anything your phone
         heard wrong before you check.
       </p>
@@ -42,9 +42,9 @@ export function AnswerForm({ answer, onChange, onSubmit, onNext, status }: Props
         autoCapitalize="sentences"
         autoCorrect="off"
         spellCheck={false}
-        className="w-full resize-y rounded-xl border border-border bg-surface p-3 text-base outline-none focus:border-accent focus:ring-2 focus:ring-accent/30"
+        className="w-full resize-y rounded-xl border border-input bg-card p-3 text-base outline-none focus:border-ring focus:ring-2 focus:ring-ring/30"
       />
-      <p className="self-end text-muted text-xs" aria-live="polite">
+      <p className="self-end text-muted-foreground text-xs" aria-live="polite">
         {answer.length} / {MAX_ANSWER_CHARS}
       </p>
 
@@ -52,7 +52,7 @@ export function AnswerForm({ answer, onChange, onSubmit, onNext, status }: Props
         <button
           type="submit"
           disabled={empty || grading}
-          className="min-h-11 flex-1 rounded-xl bg-accent px-5 font-semibold text-accent-text disabled:opacity-50"
+          className="min-h-11 flex-1 rounded-xl bg-primary px-5 font-semibold text-primary-foreground disabled:opacity-50"
         >
           {grading ? "Checking…" : graded ? "Check again" : "Check my answer"}
         </button>
@@ -60,7 +60,7 @@ export function AnswerForm({ answer, onChange, onSubmit, onNext, status }: Props
           <button
             type="button"
             onClick={onNext}
-            className="min-h-11 flex-1 rounded-xl border border-border bg-surface px-5 font-semibold"
+            className="min-h-11 flex-1 rounded-xl border border-border bg-card px-5 font-semibold"
           >
             Next situation
           </button>

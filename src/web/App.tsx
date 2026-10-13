@@ -97,7 +97,9 @@ export function App() {
     <div className="mx-auto flex min-h-dvh max-w-xl flex-col gap-5 px-4 pt-6 pb-10">
       <header>
         <h1 className="font-semibold text-2xl tracking-tight">Fluent Prior</h1>
-        <p className="text-muted text-sm">English practice for hotel, resort and restaurant work</p>
+        <p className="text-muted-foreground text-sm">
+          English practice for hotel, resort and restaurant work
+        </p>
       </header>
 
       <main className="flex flex-col gap-5">

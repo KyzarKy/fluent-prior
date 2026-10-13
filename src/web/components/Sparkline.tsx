@@ -19,7 +19,7 @@ export function Sparkline({ points }: { points: readonly TrendPoint[] }) {
   ].join(" ");
   // Padding in CSS pixels, so it's the same on every side however wide the row is.
   return (
-    <div className="mt-1 rounded-md bg-surface-muted p-2">
+    <div className="mt-1 rounded-md bg-muted p-2">
       <svg
         aria-hidden="true"
         viewBox="0 0 100 100"
@@ -29,7 +29,7 @@ export function Sparkline({ points }: { points: readonly TrendPoint[] }) {
         <path
           d={path}
           fill="none"
-          stroke="var(--meter)"
+          stroke="var(--primary)"
           strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"

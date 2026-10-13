@@ -8,9 +8,9 @@ import { SKILLS } from "../../core/skills";
 import type { Audience } from "../../core/tasks";
 
 const TASK_LABEL = {
-  yes: { text: "Did every part", className: "bg-good/15 text-good" },
-  partly: { text: "Did part of it", className: "bg-partly/15 text-partly" },
-  no: { text: "Missed the task", className: "bg-bad/15 text-bad" },
+  yes: { text: "Did every part", className: "bg-success/15 text-success" },
+  partly: { text: "Did part of it", className: "bg-warning/15 text-warning" },
+  no: { text: "Missed the task", className: "bg-destructive/15 text-destructive" },
 } as const;
 
 /** Describes the effect, not the learner: whether they meant it can't be known (ADR 0006). */
@@ -34,7 +34,7 @@ export function FeedbackCard({ grade, scenario }: { grade: Grade; scenario: Scen
   return (
     <section
       aria-label="Feedback"
-      className="flex flex-col gap-4 rounded-2xl border border-border bg-surface p-5 shadow-sm"
+      className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm"
     >
       <p className={`self-start rounded-full px-3 py-1 font-semibold text-sm ${label.className}`}>
         {label.text}
@@ -49,13 +49,13 @@ export function FeedbackCard({ grade, scenario }: { grade: Grade; scenario: Scen
           </ul>
         </div>
       )}
-      <p className={`text-sm ${grade.tone === "rude" ? "text-partly" : "text-muted"}`}>
+      <p className={`text-sm ${grade.tone === "rude" ? "text-warning" : "text-muted-foreground"}`}>
         {toneMessage(grade.tone, scenario.audience)}
       </p>
       <p>{grade.feedback}</p>
 
-      <div className="rounded-xl bg-surface-muted p-4">
-        <p className="font-medium text-muted text-sm">A coworker might say</p>
+      <div className="rounded-xl bg-muted p-4">
+        <p className="font-medium text-muted-foreground text-sm">A coworker might say</p>
         <p className="mt-1">“{grade.betterVersion}”</p>
       </div>
 
@@ -63,7 +63,7 @@ export function FeedbackCard({ grade, scenario }: { grade: Grade; scenario: Scen
         <ul className="flex flex-col gap-3">
           {grade.mistakes.map((mistake) => (
             <li key={`x-${mistake.skill}-${mistake.quote}`} className="flex gap-3">
-              <span aria-hidden="true" className="mt-0.5 font-bold text-bad">
+              <span aria-hidden="true" className="mt-0.5 font-bold text-destructive">
                 ✗
               </span>
               <div>
@@ -71,7 +71,7 @@ export function FeedbackCard({ grade, scenario }: { grade: Grade; scenario: Scen
                   <span className="sr-only">Needs work: </span>
                   {SKILLS[mistake.skill].name}
                 </p>
-                <p className="text-muted text-sm">
+                <p className="text-muted-foreground text-sm">
                   “{mistake.quote}” → “{mistake.fix}”
                 </p>
               </div>
@@ -79,7 +79,7 @@ export function FeedbackCard({ grade, scenario }: { grade: Grade; scenario: Scen
           ))}
           {grade.correctUses.map((use) => (
             <li key={`ok-${use.skill}-${use.quote}`} className="flex gap-3">
-              <span aria-hidden="true" className="mt-0.5 font-bold text-good">
+              <span aria-hidden="true" className="mt-0.5 font-bold text-success">
                 ✓
               </span>
               <div>
@@ -87,7 +87,7 @@ export function FeedbackCard({ grade, scenario }: { grade: Grade; scenario: Scen
                   <span className="sr-only">Correct: </span>
                   {SKILLS[use.skill].name}
                 </p>
-                <p className="text-muted text-sm">“{use.quote}”</p>
+                <p className="text-muted-foreground text-sm">“{use.quote}”</p>
               </div>
             </li>
           ))}
