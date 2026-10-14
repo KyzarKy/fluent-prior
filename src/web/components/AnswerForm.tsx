@@ -1,6 +1,7 @@
 // The answer box. The app takes text; learners speak through their keyboard's microphone
 // (ADR 0001), so the box doubles as "here's what your phone heard", and they can fix it.
 
+import { Button } from "@kyzarky/ui";
 import { MAX_ANSWER_CHARS } from "../../core/contract";
 import type { Status } from "../App";
 
@@ -49,21 +50,13 @@ export function AnswerForm({ answer, onChange, onSubmit, onNext, status }: Props
       </p>
 
       <div className="flex flex-wrap gap-3">
-        <button
-          type="submit"
-          disabled={empty || grading}
-          className="min-h-11 flex-1 rounded-xl bg-primary px-5 font-semibold text-primary-foreground disabled:opacity-50"
-        >
+        <Button type="submit" disabled={empty || grading} className="flex-1">
           {grading ? "Checking…" : graded ? "Check again" : "Check my answer"}
-        </button>
+        </Button>
         {graded && (
-          <button
-            type="button"
-            onClick={onNext}
-            className="min-h-11 flex-1 rounded-xl border border-border bg-card px-5 font-semibold"
-          >
+          <Button variant="outline" onClick={onNext} className="flex-1">
             Next situation
-          </button>
+          </Button>
         )}
       </div>
     </form>

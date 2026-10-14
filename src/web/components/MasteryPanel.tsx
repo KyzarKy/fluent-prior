@@ -3,6 +3,7 @@
 // (ROADMAP: progress over time). Faint skills are marked, because a correct answer counts
 // for less when dictation may have filled it in (ADR 0002).
 
+import { Card, List, ListRow, Meter, SegmentedControl } from "@kyzarky/ui";
 import { useState } from "react";
 import type { Knowledge, PracticeCounts } from "../../core/learner";
 import { type DayKnowledge, localDay, type TrendPoint, trendLine } from "../../core/progress";
@@ -25,7 +26,7 @@ const percent = (p: number) => Math.round(p * 100);
  */
 const percentLabel = (p: number) => (percent(p) === 100 ? "99%+" : `${percent(p)}%`);
 
-function Meter({
+function MasteryRow({
   label,
   p,
   count,
@@ -46,26 +47,21 @@ function Meter({
   }
 
   return (
-    <li>
-      <div className="flex items-baseline justify-between gap-3 text-sm">
-        <span>
+    <ListRow
+      label={
+        <>
           {label}
           {faint && (
             <span className="ml-1 text-muted-foreground" title="Hard for dictation to hear">
               ◐
             </span>
           )}
-        </span>
-        <span className="shrink-0 text-muted-foreground tabular-nums">{detail}</span>
-      </div>
-      {/* Decorative: the text above is what screen readers get. */}
-      {!trend && (
-        <div aria-hidden="true" className="mt-1 h-2 overflow-hidden rounded-full bg-muted">
-          <div className="h-full rounded-full bg-primary" style={{ width: `${percent(p)}%` }} />
-        </div>
-      )}
-      {trend && <Sparkline points={trend} />}
-    </li>
+        </>
+      }
+      detail={detail}
+    >
+      {trend ? <Sparkline points={trend} /> : <Meter value={p} />}
+    </ListRow>
   );
 }
 
@@ -80,31 +76,21 @@ export function MasteryPanel({ knowledge, counts, history, onReset }: Props) {
     showTrend ? trendLine(history, pick, today) : undefined;
 
   return (
-    <section
-      aria-labelledby="mastery-heading"
-      className="rounded-2xl border border-border bg-card p-5 shadow-sm"
-    >
+    <Card aria-labelledby="mastery-heading">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h2 id="mastery-heading" className="font-semibold text-lg">
           What you know
         </h2>
         {canShowTrend && (
-          <fieldset className="flex rounded-full bg-muted p-1 text-sm">
-            <legend className="sr-only">Show</legend>
-            {[false, true].map((value) => (
-              <button
-                key={String(value)}
-                type="button"
-                aria-pressed={overTime === value}
-                onClick={() => setOverTime(value)}
-                className={`min-h-11 rounded-full px-4 ${
-                  overTime === value ? "bg-card font-medium shadow-sm" : "text-muted-foreground"
-                }`}
-              >
-                {value ? "Over time" : "Now"}
-              </button>
-            ))}
-          </fieldset>
+          <SegmentedControl
+            label="Show"
+            value={overTime ? "over-time" : "now"}
+            onChange={(view) => setOverTime(view === "over-time")}
+            options={[
+              { value: "now", label: "Now" },
+              { value: "over-time", label: "Over time" },
+            ]}
+          />
         )}
       </div>
       <p className="mt-1 text-muted-foreground text-sm">
@@ -118,10 +104,9 @@ export function MasteryPanel({ knowledge, counts, history, onReset }: Props) {
         </p>
       )}
 
-      <h3 className="mt-5 font-medium">Tasks</h3>
-      <ul className="mt-2 flex flex-col gap-3">
+      <List heading={<h3>Tasks</h3>}>
         {TASK_TYPES.map((type) => (
-          <Meter
+          <MasteryRow
             key={type}
             label={TASK_TYPE_NAMES[type]}
             p={knowledge.tasks[type]}
@@ -129,25 +114,23 @@ export function MasteryPanel({ knowledge, counts, history, onReset }: Props) {
             trend={trendOf((k) => k.tasks[type])}
           />
         ))}
-      </ul>
+      </List>
 
-      <h3 className="mt-5 font-medium">Tone</h3>
-      <ul className="mt-2">
-        <Meter
+      <List heading={<h3>Tone</h3>}>
+        <MasteryRow
           label="Right tone for the listener"
           p={knowledge.tone}
           count={counts.tone}
           trend={trendOf((k) => k.tone)}
         />
-      </ul>
+      </List>
 
-      <h3 className="mt-5 font-medium">Grammar</h3>
-      <p className="mt-1 text-muted-foreground text-sm">
-        ◐ marks grammar that phone dictation often can't hear, so a correct answer counts for less.
-      </p>
-      <ul className="mt-2 flex flex-col gap-3">
+      <List
+        heading={<h3>Grammar</h3>}
+        description="◐ marks grammar that phone dictation often can't hear, so a correct answer counts for less."
+      >
         {SKILL_IDS.map((id) => (
-          <Meter
+          <MasteryRow
             key={id}
             label={SKILLS[id].name}
             p={knowledge.skills[id]}
@@ -156,7 +139,7 @@ export function MasteryPanel({ knowledge, counts, history, onReset }: Props) {
             faint={SKILLS[id].audibility === "faint"}
           />
         ))}
-      </ul>
+      </List>
 
       <button
         type="button"
@@ -173,6 +156,6 @@ export function MasteryPanel({ knowledge, counts, history, onReset }: Props) {
       >
         {confirming ? "Tap again to erase all progress" : "Reset progress"}
       </button>
-    </section>
+    </Card>
   );
 }

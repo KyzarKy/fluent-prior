@@ -1,7 +1,8 @@
-# 0008. Colors come from @kyzarky/ui
+# 0008. Colors and shared components come from @kyzarky/ui
 
 **Status:** accepted, 2026-10-13 (Ky decided on 2026-10-07 to build the package and have
-each of his apps depend on it).
+each of his apps depend on it). Amended the same day: upgraded to 0.3.0, taking its
+components (the last section).
 
 ## Context
 
@@ -15,7 +16,7 @@ change under this project or hold it up.
 
 ## Decision
 
-- **`@kyzarky/ui` is a dependency, pinned to an exact version** (0.1.0 today). An upgrade is
+- **`@kyzarky/ui` is a dependency, pinned to an exact version** (0.3.0 today). An upgrade is
   its own commit, made on purpose, after reading the package's changelog.
 - **`styles.css` imports the package's `theme.css`** in place of its own token block. The
   app keeps only what's its own: the font stack.
@@ -43,8 +44,25 @@ light and dark. Three intended changes, all for contrast, and nothing else:
   both.
 - **A package release can't break this app,** because the version is pinned. The cost is
   that fixes don't arrive on their own.
-- **The row readability problem in "What you know" isn't fixed yet.** That's the package's
-  0.2.0 (`List`, `ListRow`, `Meter`), adopted here when it ships. The cards, buttons, and
-  the Now / Over time control follow in 0.3.0.
-- **The second button ("Next") keeps the faint `border` edge** until the package's `Button`
-  arrives, though by the package's rule a control's edge should be `input`.
+- **The row readability problem in "What you know" wasn't fixed by the tokens.** The
+  amendment below fixes it.
+
+## Amendment, 2026-10-13: the components, at 0.3.0
+
+Ky chose to skip 0.2.0 and upgrade once. The app now takes from the package:
+
+- **`List`, `ListRow`, and `Meter`** in "What you know". Each row has a divider and 24px
+  between it and the next row's content, against 8px between a label and its own graphic,
+  and each group sits 32px below the one before. This is the fix for rows that ran
+  together. The panel is 375px taller at phone width. The app's own `Meter` is gone; its
+  `Sparkline` stays, since it's specific to the learner model, and sits in a `ListRow`.
+- **`Card`** for the three cards, **`Button`** for the two in the answer form, and
+  **`SegmentedControl`** for Now / Over time.
+
+What changed on screen and in behavior, beyond the list's spacing:
+
+- **"Next situation" has the darker `input` edge,** like the answer box.
+- **Now / Over time is a group of radio buttons,** where it was two toggle buttons. Arrow
+  keys move between the options, and a screen reader announces a radio group.
+- **Buttons show focus as an outline in the brand color,** where the browser's default
+  showed before.
