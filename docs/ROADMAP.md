@@ -10,10 +10,9 @@
   scenario ([ADR 0002](decisions/0002-learner-model.md)).
 - Layered spend caps ([ADR 0003](decisions/0003-spend-caps.md)).
 - A free grader by default ([ADR 0004](decisions/0004-free-grader-first.md)).
-- Colors come from Ky's design system, `@kyzarky/ui`
-  ([ADR 0008](decisions/0008-shared-design-tokens.md)). Still to adopt as the package ships
-  them: list rows and meters (0.2.0), which fix the hard-to-read "What you know" rows, then
-  cards, buttons and the segmented control (0.3.0).
+- Colors and shared components come from Ky's design system, `@kyzarky/ui`
+  ([ADR 0008](decisions/0008-shared-design-tokens.md)): its list rows and meters, which
+  fixed the hard-to-read "What you know" rows, and its cards, buttons and segmented control.
 - Deploys to Vercel, with the spend-cap counters in Upstash Redis
   ([ADR 0007](decisions/0007-hosting-and-counter-store.md)). The repo stays private until v1
   ships.

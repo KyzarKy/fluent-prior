@@ -2,6 +2,7 @@
 // task (and which parts are missing), how it may sound, and the grammar it used. Plus one
 // piece of feedback and a more natural version.
 
+import { Card } from "@kyzarky/ui";
 import type { Grade, Tone } from "../../core/contract";
 import type { Scenario } from "../../core/scenarios";
 import { SKILLS } from "../../core/skills";
@@ -32,10 +33,7 @@ export function FeedbackCard({ grade, scenario }: { grade: Grade; scenario: Scen
     .filter((part) => part !== undefined);
 
   return (
-    <section
-      aria-label="Feedback"
-      className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm"
-    >
+    <Card aria-label="Feedback" className="flex flex-col gap-4">
       <p className={`self-start rounded-full px-3 py-1 font-semibold text-sm ${label.className}`}>
         {label.text}
       </p>
@@ -93,6 +91,6 @@ export function FeedbackCard({ grade, scenario }: { grade: Grade; scenario: Scen
           ))}
         </ul>
       )}
-    </section>
+    </Card>
   );
 }
