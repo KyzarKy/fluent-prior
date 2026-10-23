@@ -71,6 +71,7 @@ abstractions, no `utils` grab-bags. Use the standard tool the standard way.
 | `npm run dev` | API on :8790 and the web app on :5180 (Vite proxies `/api`) |
 | `npm run verify` | Typecheck, lint, unit tests, build |
 | `npm test` | Unit tests (Vitest) |
+| `npm run e2e` | The practice loop in a phone-sized browser, with an accessibility check (Playwright and axe). Starts its own servers with the fake grader; stop `npm run dev` first. Needs `npx playwright install chromium` once |
 | `npm run format` | Biome: format and apply safe lint fixes |
 | `npm run eval -- [results file]` | Grade Ky's answer key with the free grader and score it; a results file resumes or re-scores |
 | `npm run trial -- <ids> [tries]` | Grade a few key answers several times each (default 3), to test a prompt or checklist change |
