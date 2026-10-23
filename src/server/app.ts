@@ -85,7 +85,10 @@ export function createApp(deps: AppDeps): Hono {
     // The verdict is computed here from the checklist, never taken from the model (ADR 0006).
     const taskMet = taskVerdict(scenario.taskParts.length, outcome.output.taskParts);
     if (!taskMet) {
-      console.error("Grader reply unusable: task parts", outcome.output.taskParts);
+      // Parts and verdicts only: the evidence quotes are the learner's own words, and
+      // Fluent Prior doesn't keep answers, not even in logs.
+      const parts = outcome.output.taskParts.map(({ part, present }) => ({ part, present }));
+      console.error("Grader reply unusable: task parts", parts);
       return c.json({ error: "grader-unavailable" }, 502);
     }
     const graded: GradeResponse = {

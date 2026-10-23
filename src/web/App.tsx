@@ -19,6 +19,7 @@ import { SCENARIOS, type Scenario } from "../core/scenarios";
 import { requestGrade } from "./api";
 import { AnswerForm } from "./components/AnswerForm";
 import { FeedbackCard } from "./components/FeedbackCard";
+import { HowItWorks } from "./components/HowItWorks";
 import { MasteryPanel } from "./components/MasteryPanel";
 import { ScenarioCard } from "./components/ScenarioCard";
 import { StatusMessage } from "./components/StatusMessage";
@@ -111,7 +112,10 @@ export function App() {
       <header>
         <h1 className="font-semibold text-2xl tracking-tight">Fluent Prior</h1>
         <p className="text-muted-foreground text-sm">
-          English practice for hotel, resort and restaurant work
+          English practice for hotel, resort and restaurant work.{" "}
+          <a href="#how-it-works" className="text-primary underline underline-offset-4">
+            How it works
+          </a>
         </p>
       </header>
 
@@ -139,6 +143,7 @@ export function App() {
             onShowSample={() => setViewingSample(true)}
           />
         )}
+        <HowItWorks />
       </main>
     </div>
   );
