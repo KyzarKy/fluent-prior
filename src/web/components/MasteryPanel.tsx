@@ -3,7 +3,7 @@
 // (ROADMAP: progress over time). Faint skills are marked, because a correct answer counts
 // for less when dictation may have filled it in (ADR 0002).
 
-import { Card, List, ListRow, Meter, SegmentedControl } from "@kyzarky/ui";
+import { Button, Card, List, ListRow, Meter, SegmentedControl } from "@kyzarky/ui";
 import { useState } from "react";
 import type { Knowledge, PracticeCounts } from "../../core/learner";
 import { type DayKnowledge, localDay, type TrendPoint, trendLine } from "../../core/progress";
@@ -15,7 +15,11 @@ interface Props {
   knowledge: Knowledge;
   counts: PracticeCounts;
   history: readonly DayKnowledge[];
-  onReset: () => void;
+  /** Showing the made-up sample learner instead of this learner's own progress. */
+  sample?: boolean;
+  onReset?: () => void;
+  onShowSample?: () => void;
+  onBack?: () => void;
 }
 
 const percent = (p: number) => Math.round(p * 100);
@@ -65,9 +69,18 @@ function MasteryRow({
   );
 }
 
-export function MasteryPanel({ knowledge, counts, history, onReset }: Props) {
+export function MasteryPanel({
+  knowledge,
+  counts,
+  history,
+  sample = false,
+  onReset,
+  onShowSample,
+  onBack,
+}: Props) {
   const [confirming, setConfirming] = useState(false);
-  const [overTime, setOverTime] = useState(false);
+  // The sample is there to show progress, so it opens on Over time.
+  const [overTime, setOverTime] = useState(sample);
   // A line needs two days. Until then there's only "now".
   const canShowTrend = history.length >= 2;
   const showTrend = overTime && canShowTrend;
@@ -79,7 +92,7 @@ export function MasteryPanel({ knowledge, counts, history, onReset }: Props) {
     <Card aria-labelledby="mastery-heading">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h2 id="mastery-heading" className="font-semibold text-lg">
-          What you know
+          {sample ? "What a sample learner knows" : "What you know"}
         </h2>
         {canShowTrend && (
           <SegmentedControl
@@ -93,14 +106,29 @@ export function MasteryPanel({ knowledge, counts, history, onReset }: Props) {
           />
         )}
       </div>
-      <p className="mt-1 text-muted-foreground text-sm">
+      {sample && (
+        <div className="mt-3 flex flex-wrap items-center justify-between gap-2 rounded-xl bg-muted p-3 text-sm">
+          <p>A made-up learner's two weeks, to show how progress looks.</p>
+          <Button variant="outline" onClick={onBack}>
+            Back to your progress
+          </Button>
+        </div>
+      )}
+      <p className="mt-3 text-muted-foreground text-sm">
         {showTrend
-          ? "How the chance you've got each one changed, from the day you first practiced it (left) to today (right)."
-          : "The chance you've got each one, based on your answers."}
+          ? `How the chance ${sample ? "they've" : "you've"} got each one changed, from the day ${sample ? "they" : "you"} first practiced it (left) to today (right).`
+          : `The chance ${sample ? "they've" : "you've"} got each one, based on ${sample ? "their" : "your"} answers.`}
       </p>
-      {history.length === 1 && (
+      {!sample && history.length < 2 && (
         <p className="mt-1 text-muted-foreground text-sm">
-          Practice on another day to see your progress over time.
+          {history.length === 1 && "Practice on another day to see your progress over time. "}
+          <button
+            type="button"
+            onClick={onShowSample}
+            className="min-h-11 text-primary underline underline-offset-4"
+          >
+            See a sample learner's two weeks
+          </button>
         </p>
       )}
 
@@ -141,21 +169,23 @@ export function MasteryPanel({ knowledge, counts, history, onReset }: Props) {
         ))}
       </List>
 
-      <button
-        type="button"
-        onClick={() => {
-          if (confirming) {
-            onReset();
-            setConfirming(false);
-          } else {
-            setConfirming(true);
-          }
-        }}
-        onBlur={() => setConfirming(false)}
-        className="mt-5 min-h-11 text-muted-foreground text-sm underline underline-offset-4"
-      >
-        {confirming ? "Tap again to erase all progress" : "Reset progress"}
-      </button>
+      {onReset && (
+        <button
+          type="button"
+          onClick={() => {
+            if (confirming) {
+              onReset();
+              setConfirming(false);
+            } else {
+              setConfirming(true);
+            }
+          }}
+          onBlur={() => setConfirming(false)}
+          className="mt-5 min-h-11 text-muted-foreground text-sm underline underline-offset-4"
+        >
+          {confirming ? "Tap again to erase all progress" : "Reset progress"}
+        </button>
+      )}
     </Card>
   );
 }

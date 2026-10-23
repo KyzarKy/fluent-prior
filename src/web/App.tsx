@@ -14,6 +14,7 @@ import {
   toObservations,
 } from "../core/learner";
 import { dailyKnowledge } from "../core/progress";
+import { sampleLearnerLog } from "../core/sample-learner";
 import { SCENARIOS, type Scenario } from "../core/scenarios";
 import { requestGrade } from "./api";
 import { AnswerForm } from "./components/AnswerForm";
@@ -50,6 +51,16 @@ export function App() {
   const current = useMemo(() => knowledge(log), [log]);
   const counts = useMemo(() => practiceCounts(log), [log]);
   const history = useMemo(() => dailyKnowledge(log), [log]);
+  // Shown in place of the learner's own progress when asked for; never saved or mixed in.
+  const [viewingSample, setViewingSample] = useState(false);
+  const sample = useMemo(() => {
+    const sampleLog = sampleLearnerLog(new Date());
+    return {
+      knowledge: knowledge(sampleLog),
+      counts: practiceCounts(sampleLog),
+      history: dailyKnowledge(sampleLog),
+    };
+  }, []);
   // Checked against the log as it was when the scenario was chosen; answering it clears it.
   const [retry, setRetry] = useState(() => dueRetries(log).includes(scenario.id));
 
@@ -59,6 +70,8 @@ export function App() {
   }
 
   async function submit() {
+    // An answer is the learner's own, so their own progress is what should show.
+    setViewingSample(false);
     setStatus({ kind: "grading" });
     const result = await requestGrade({
       scenarioId: scenario.id,
@@ -114,12 +127,18 @@ export function App() {
         />
         {status.kind === "graded" && <FeedbackCard grade={status.grade} scenario={scenario} />}
         <StatusMessage status={status} />
-        <MasteryPanel
-          knowledge={current}
-          counts={counts}
-          history={history}
-          onReset={resetProgress}
-        />
+        {viewingSample ? (
+          <MasteryPanel key="sample" {...sample} sample onBack={() => setViewingSample(false)} />
+        ) : (
+          <MasteryPanel
+            key="own"
+            knowledge={current}
+            counts={counts}
+            history={history}
+            onReset={resetProgress}
+            onShowSample={() => setViewingSample(true)}
+          />
+        )}
       </main>
     </div>
   );
