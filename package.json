@@ -15,6 +15,7 @@
     "format": "biome check --write .",
     "test": "vitest run",
     "verify": "npm run typecheck && npm run lint && npm run test && npm run build",
+    "e2e": "playwright test",
     "eval": "tsx --env-file-if-exists=.env evals/score.ts",
     "trial": "tsx --env-file-if-exists=.env evals/trial.ts"
   },
@@ -30,7 +31,9 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
     "@biomejs/biome": "^2.5.14",
+    "@playwright/test": "^1.64.1",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.6.3",
     "@types/react": "^19.3.0",
