@@ -11,6 +11,7 @@ export interface Prices {
 export const PRICES: Record<string, Prices> = {
   // Groq free tier with no payment method on the account (ADR 0004): over quota is a 429.
   "openai/gpt-oss-120b": { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
+  "openai/gpt-oss-20b": { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
   "claude-sonnet-5": { input: 2, output: 10, cacheRead: 0.2, cacheWrite: 2.5 },
   "claude-haiku-4-5": { input: 1, output: 5, cacheRead: 0.1, cacheWrite: 1.25 },
   "claude-opus-5": { input: 5, output: 25, cacheRead: 0.5, cacheWrite: 6.25 },

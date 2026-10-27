@@ -14,15 +14,17 @@ import {
 } from "./grader.js";
 
 export const GROQ_MODEL = "openai/gpt-oss-120b";
+/** A smaller model with its own free quota on Groq, measured as a backup grader. */
+export const GROQ_BACKUP_MODEL = "openai/gpt-oss-20b";
 const OUTPUT_SCHEMA = z.toJSONSchema(GraderOutput);
 /** If Groq doesn't say when the quota resets, assume the daily window. */
 const DEFAULT_RETRY_SECONDS = 60 * 60;
 
-export function createGroqGrader(client: Groq): Grader {
+export function createGroqGrader(client: Groq, model = GROQ_MODEL): Grader {
   return async (scenario, answer) => {
     const request = (effort: "medium" | "low") =>
       client.chat.completions.create({
-        model: GROQ_MODEL,
+        model,
         max_completion_tokens: MAX_OUTPUT_TOKENS,
         reasoning_effort: effort,
         response_format: {
@@ -45,7 +47,7 @@ export function createGroqGrader(client: Groq): Grader {
         throw error;
       });
       const usage = response.usage;
-      const cost = costUsd(GROQ_MODEL, {
+      const cost = costUsd(model, {
         input_tokens: usage?.prompt_tokens ?? 0,
         output_tokens: usage?.completion_tokens ?? 0,
       });

@@ -3,6 +3,10 @@
 //   npm run eval                        grade everything into a new results file, then score
 //   npm run eval -- <results file>      resume that file (grade only what's missing), then
 //                                       score; a finished file is just re-scored, for free
+//   npm run eval -- <file> --score-only score what the file has, grading nothing
+//
+// EVAL_MODEL picks the model for a new results file (default the live grader's); a resumed
+// file keeps its own.
 //
 // Results are saved after every answer, so running out of quota loses nothing.
 
@@ -37,12 +41,13 @@ function openResults(path: string | undefined): [string, ResultsFile] {
   const commit = execSync("git rev-parse --short HEAD").toString().trim() + dirty;
   const startedAt = new Date().toISOString();
   mkdirSync("evals/results", { recursive: true });
-  const name = `evals/results/${startedAt.slice(0, 16).replace(":", "")}-${GROQ_MODEL.split("/").pop()}.json`;
-  return [path ?? name, { model: GROQ_MODEL, commit, startedAt, results: {} }];
+  const model = process.env.EVAL_MODEL ?? GROQ_MODEL;
+  const name = `evals/results/${startedAt.slice(0, 16).replace(":", "")}-${model.split("/").pop()}.json`;
+  return [path ?? name, { model, commit, startedAt, results: {} }];
 }
 
 async function gradeMissing(path: string, file: ResultsFile) {
-  const grade = createGroqGrader(new Groq());
+  const grade = createGroqGrader(new Groq(), file.model);
   const todo = [...answers, ...security].filter((entry) => !(String(entry.id) in file.results));
   for (const [index, entry] of todo.entries()) {
     const result = await gradeEntry(grade, entry);
@@ -171,6 +176,6 @@ function report(file: ResultsFile) {
 }
 
 const [path, file] = openResults(process.argv[2]);
-const finished = await gradeMissing(path, file);
+const finished = process.argv.includes("--score-only") || (await gradeMissing(path, file));
 report(file);
 if (!finished) process.exitCode = 1;
