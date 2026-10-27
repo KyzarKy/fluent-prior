@@ -10,25 +10,23 @@ export function HowItWorks() {
         How it works
       </h2>
       <div className="mt-3 flex flex-col gap-3">
+        <p>You get a real moment from hotel, resort, or restaurant work, and you answer.</p>
         <p>
-          You get a real moment from hotel, resort, or restaurant work, and you answer out loud with
-          your phone's keyboard microphone, or you type.
+          A "grader", the <code>openai/gpt-oss-120b</code> model on Groq, checks three separate
+          things: whether you did every part of the task, how your tone might sound to the listener,
+          and which grammar rules you used and how well you applied them. The app, not the model,
+          decides how much each answer counts toward your learning progress for each rule.
         </p>
         <p>
-          A free open model checks three separate things: whether you did every part of the task,
-          how you might sound to the listener, and which grammar you used. It reports what it saw.
-          The app, not the model, decides how much each answer counts.
-        </p>
-        <p>
-          A Bayesian model keeps a running estimate for each grammar skill, each kind of task, and
+          A Bayesian model keeps a running estimate for each grammar rule, each kind of task, and
           tone, and picks your next situation to practice what's weakest.
         </p>
         <h3 className="font-semibold">Why "prior"</h3>
         <p>
-          Speech recognition is trained on fluent speakers. When a small sound is unclear, it
-          guesses the grammatical version, so "he go" can come out as "he goes". That means a
-          mistake that makes it through dictation is strong evidence, and a correct -s or -ed is
-          weak evidence. Skills marked ◐ count correct answers for less for that reason.
+          Speech recognition is trained on fluent speakers. When a small sound is unclear, the
+          recognizer guesses the grammatical version, so "he go" can come out as "he goes". That
+          means a mistake that makes it through dictation is strong evidence, and a correct -s or
+          -ed is weak evidence. Skills marked ◐ count correct answers for less for that reason.
         </p>
         <h3 className="font-semibold">Your data</h3>
         <p className="text-muted-foreground text-sm">
