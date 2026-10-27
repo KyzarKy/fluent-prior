@@ -59,6 +59,14 @@ test("a new visitor can look at a sample learner's progress and come back", asyn
   await expect(page.getByText(/· 0 answers$/).first()).toBeVisible();
 });
 
+test("how it works is one tap from the top", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("link", { name: "How it works" }).click();
+  await expect(page).toHaveURL(/#how-it-works$/);
+  await expect(page.getByRole("heading", { name: 'Why "prior"' })).toBeInViewport();
+  await expectNoAxeViolations(page);
+});
+
 test("progress over time draws a line for each practiced row", async ({ page }) => {
   // Two days of practice, written before the app loads, in the stored log's format.
   await page.addInitScript(() => {
