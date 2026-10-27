@@ -122,13 +122,9 @@ export function MasteryPanel({
       {!sample && history.length < 2 && (
         <p className="mt-1 text-muted-foreground text-sm">
           {history.length === 1 && "Practice on another day to see your progress over time. "}
-          <button
-            type="button"
-            onClick={onShowSample}
-            className="min-h-11 text-primary underline underline-offset-4"
-          >
+          <Button variant="outline" onClick={onShowSample} className="mt-2">
             See a sample learner's two weeks
-          </button>
+          </Button>
         </p>
       )}
 
@@ -170,8 +166,8 @@ export function MasteryPanel({
       </List>
 
       {onReset && (
-        <button
-          type="button"
+        <Button
+          variant="outline"
           onClick={() => {
             if (confirming) {
               onReset();
@@ -181,10 +177,10 @@ export function MasteryPanel({
             }
           }}
           onBlur={() => setConfirming(false)}
-          className="mt-5 min-h-11 text-muted-foreground text-sm underline underline-offset-4"
+          className={`mt-5 ${confirming ? "text-destructive" : ""}`}
         >
           {confirming ? "Tap again to erase all progress" : "Reset progress"}
-        </button>
+        </Button>
       )}
     </Card>
   );

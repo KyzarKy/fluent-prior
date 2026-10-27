@@ -1,7 +1,8 @@
 // The answer box. The app takes text; learners speak through their keyboard's microphone
 // (ADR 0001), so the box doubles as "here's what your phone heard", and they can fix it.
 // Once checked, the answer is final: one answer per showing of a situation, so each grade
-// is one observation in the log, never a second try at the same words.
+// is one observation in the log, never a second try at the same words. The Check button
+// lives in the page's action bar and submits this form by its id.
 
 import { Button } from "@kyzarky/ui";
 import { MAX_ANSWER_CHARS } from "../../core/contract";
@@ -24,10 +25,11 @@ export function AnswerForm({ answer, sampleAnswer, onChange, onSubmit, status }:
 
   return (
     <form
+      id="answer-form"
       className="flex flex-col gap-2"
       onSubmit={(event) => {
         event.preventDefault();
-        if (!empty && !grading) onSubmit();
+        if (!empty && !grading && !graded) onSubmit();
       }}
     >
       <label htmlFor="answer" className="font-medium">
@@ -52,11 +54,7 @@ export function AnswerForm({ answer, sampleAnswer, onChange, onSubmit, status }:
       />
       <div className="flex items-center justify-between gap-3">
         {empty && !grading ? (
-          <Button
-            variant="ghost"
-            onClick={() => onChange(sampleAnswer)}
-            className="-ml-3 px-3 text-sm text-primary underline underline-offset-4"
-          >
+          <Button variant="outline" onClick={() => onChange(sampleAnswer)}>
             Try a sample answer
           </Button>
         ) : (
@@ -70,12 +68,6 @@ export function AnswerForm({ answer, sampleAnswer, onChange, onSubmit, status }:
         <p className="text-muted-foreground text-sm">
           A real learner's answer, mistakes included. Check it to see how it's graded.
         </p>
-      )}
-
-      {!graded && (
-        <Button type="submit" disabled={empty || grading}>
-          {grading ? "Checking…" : "Check my answer"}
-        </Button>
       )}
     </form>
   );

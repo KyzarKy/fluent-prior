@@ -25,9 +25,9 @@ test("answering a scenario shows a grade and updates what you know", async ({ pa
   await expect(feedback).toContainText("Fake grader");
   await expectNoAxeViolations(page);
 
-  // One answer per situation: it's frozen, and moving on is the only thing left to do.
+  // One answer per situation: it's frozen, and Check is off until the next one.
   await expect(page.getByLabel("Your answer")).not.toBeEditable();
-  await expect(page.getByRole("button", { name: "Check my answer" })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Check my answer" })).toBeDisabled();
   await page.getByRole("button", { name: "Next situation" }).click();
   await expect(page.getByLabel("Your answer")).toBeEditable();
   await expect(page.getByLabel("Your answer")).toHaveValue("");
@@ -70,18 +70,44 @@ test("a new visitor can look at a sample learner's progress and come back", asyn
   await expect(page.getByText(/· 0 answers$/).first()).toBeVisible();
 });
 
-test("how it works opens over the page and closes", async ({ page }) => {
+test("how it works is a link that opens a modal, and closes", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: "How it works" }).click();
+  await page.getByRole("link", { name: "How it works" }).click();
+  await expect(page).toHaveURL(/#how-it-works$/);
   const dialog = page.getByRole("dialog", { name: "How it works" });
   await expect(dialog.getByRole("heading", { name: 'Why "prior"' })).toBeVisible();
   await expectNoAxeViolations(page);
 
+  // The title and close button stay in view while the body scrolls.
+  await dialog.getByRole("heading", { name: "Your data" }).scrollIntoViewIfNeeded();
+  await expect(dialog.getByRole("button", { name: "Close" })).toBeInViewport();
+
   await page.keyboard.press("Escape");
   await expect(dialog).toBeHidden();
-  await page.getByRole("button", { name: "How it works" }).click();
+  await expect(page).not.toHaveURL(/#how-it-works$/);
+  await page.getByRole("link", { name: "How it works" }).click();
   await dialog.getByRole("button", { name: "Close" }).click();
   await expect(dialog).toBeHidden();
+
+  // The URL opens it directly.
+  await page.goto("/#how-it-works");
+  await expect(dialog).toBeVisible();
+});
+
+test("check and next are always on screen, and next skips a situation", async ({ page }) => {
+  await page.goto("/");
+  const check = page.getByRole("button", { name: "Check my answer" });
+  const next = page.getByRole("button", { name: "Next situation" });
+  await expect(check).toBeDisabled();
+  await expect(check).toBeInViewport();
+  await expect(next).toBeInViewport();
+
+  await page.getByLabel("Your answer").fill("one");
+  await expect(check).toBeEnabled();
+  const situation = await page.locator("#scenario-heading").textContent();
+  await next.click();
+  await expect(page.locator("#scenario-heading")).not.toHaveText(situation ?? "");
+  await expect(page.getByLabel("Your answer")).toHaveValue("");
 });
 
 test("the tabs switch views and follow the arrow keys", async ({ page }) => {
