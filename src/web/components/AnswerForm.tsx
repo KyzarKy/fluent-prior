@@ -1,5 +1,7 @@
 // The answer box. The app takes text; learners speak through their keyboard's microphone
 // (ADR 0001), so the box doubles as "here's what your phone heard", and they can fix it.
+// Once checked, the answer is final: one answer per showing of a situation, so each grade
+// is one observation in the log, never a second try at the same words.
 
 import { Button } from "@kyzarky/ui";
 import { MAX_ANSWER_CHARS } from "../../core/contract";
@@ -11,11 +13,10 @@ interface Props {
   sampleAnswer: string;
   onChange: (answer: string) => void;
   onSubmit: () => void;
-  onNext: () => void;
   status: Status;
 }
 
-export function AnswerForm({ answer, sampleAnswer, onChange, onSubmit, onNext, status }: Props) {
+export function AnswerForm({ answer, sampleAnswer, onChange, onSubmit, status }: Props) {
   const grading = status.kind === "grading";
   const graded = status.kind === "graded";
   const empty = answer.trim().length === 0;
@@ -40,13 +41,14 @@ export function AnswerForm({ answer, sampleAnswer, onChange, onSubmit, onNext, s
         id="answer"
         aria-describedby="answer-help"
         value={answer}
+        readOnly={graded}
         onChange={(event) => onChange(event.target.value)}
         maxLength={MAX_ANSWER_CHARS}
         rows={4}
         autoCapitalize="sentences"
         autoCorrect="off"
         spellCheck={false}
-        className="w-full resize-y rounded-xl border border-input bg-card p-3 text-base outline-none focus:border-ring focus:ring-2 focus:ring-ring/30"
+        className="w-full resize-y rounded-xl border border-input bg-card p-3 text-base outline-none focus:border-ring focus:ring-2 focus:ring-ring/30 read-only:resize-none read-only:bg-muted"
       />
       <div className="flex items-center justify-between gap-3">
         {empty && !grading ? (
@@ -70,16 +72,11 @@ export function AnswerForm({ answer, sampleAnswer, onChange, onSubmit, onNext, s
         </p>
       )}
 
-      <div className="flex flex-wrap gap-3">
-        <Button type="submit" disabled={empty || grading} className="flex-1">
-          {grading ? "Checking…" : graded ? "Check again" : "Check my answer"}
+      {!graded && (
+        <Button type="submit" disabled={empty || grading}>
+          {grading ? "Checking…" : "Check my answer"}
         </Button>
-        {graded && (
-          <Button variant="outline" onClick={onNext} className="flex-1">
-            Next situation
-          </Button>
-        )}
-      </div>
+      )}
     </form>
   );
 }

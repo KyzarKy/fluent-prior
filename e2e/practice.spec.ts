@@ -25,8 +25,17 @@ test("answering a scenario shows a grade and updates what you know", async ({ pa
   await expect(feedback).toContainText("Fake grader");
   await expectNoAxeViolations(page);
 
+  // One answer per situation: it's frozen, and moving on is the only thing left to do.
+  await expect(page.getByLabel("Your answer")).not.toBeEditable();
+  await expect(page.getByRole("button", { name: "Check my answer" })).toHaveCount(0);
+  await page.getByRole("button", { name: "Next situation" }).click();
+  await expect(page.getByLabel("Your answer")).toBeEditable();
+  await expect(page.getByLabel("Your answer")).toHaveValue("");
+  await expect(feedback).toHaveCount(0);
+
   // The answer was logged: it survives a reload and counts toward a task type.
   await page.reload();
+  await page.getByRole("tab", { name: "Progress" }).click();
   await expect(page.getByText(/· 1 answer$/).first()).toBeVisible();
 });
 
@@ -43,6 +52,7 @@ test("a visitor can check a sample answer without writing one", async ({ page })
 
 test("a new visitor can look at a sample learner's progress and come back", async ({ page }) => {
   await page.goto("/");
+  await page.getByRole("tab", { name: "Progress" }).click();
   await page.getByRole("button", { name: "See a sample learner's two weeks" }).click();
 
   await expect(page.getByRole("heading", { name: "What a sample learner knows" })).toBeVisible();
@@ -56,14 +66,36 @@ test("a new visitor can look at a sample learner's progress and come back", asyn
   await expect(page.getByRole("heading", { name: "What you know" })).toBeVisible();
   // The sample was never saved as the visitor's own.
   await page.reload();
+  await page.getByRole("tab", { name: "Progress" }).click();
   await expect(page.getByText(/· 0 answers$/).first()).toBeVisible();
 });
 
-test("how it works is one tap from the top", async ({ page }) => {
+test("how it works opens over the page and closes", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("link", { name: "How it works" }).click();
-  await expect(page).toHaveURL(/#how-it-works$/);
-  await expect(page.getByRole("heading", { name: 'Why "prior"' })).toBeInViewport();
+  await page.getByRole("button", { name: "How it works" }).click();
+  const dialog = page.getByRole("dialog", { name: "How it works" });
+  await expect(dialog.getByRole("heading", { name: 'Why "prior"' })).toBeVisible();
+  await expectNoAxeViolations(page);
+
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
+  await page.getByRole("button", { name: "How it works" }).click();
+  await dialog.getByRole("button", { name: "Close" }).click();
+  await expect(dialog).toBeHidden();
+});
+
+test("the tabs switch views and follow the arrow keys", async ({ page }) => {
+  await page.goto("/");
+  const practice = page.getByRole("tab", { name: "Practice" });
+  await expect(practice).toHaveAttribute("aria-selected", "true");
+  await expect(page.getByLabel("Your answer")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "What you know" })).toBeHidden();
+
+  await practice.focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(page.getByRole("tab", { name: "Progress" })).toBeFocused();
+  await expect(page.getByRole("heading", { name: "What you know" })).toBeVisible();
+  await expect(page.getByLabel("Your answer")).toBeHidden();
   await expectNoAxeViolations(page);
 });
 
@@ -85,6 +117,7 @@ test("progress over time draws a line for each practiced row", async ({ page }) 
     );
   });
   await page.goto("/");
+  await page.getByRole("tab", { name: "Progress" }).click();
 
   // The radio itself is visually hidden; a learner taps its label.
   await page.locator("label", { hasText: "Over time" }).click();

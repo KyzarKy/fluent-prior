@@ -2,6 +2,7 @@
 // model, and choose the next scenario. Logic lives in src/core; this file wires it to
 // React state and the browser.
 
+import { Button } from "@kyzarky/ui";
 import { useMemo, useState } from "react";
 import type { CapExceeded, Grade } from "../core/contract";
 import {
@@ -23,12 +24,18 @@ import { HowItWorks } from "./components/HowItWorks";
 import { MasteryPanel } from "./components/MasteryPanel";
 import { ScenarioCard } from "./components/ScenarioCard";
 import { StatusMessage } from "./components/StatusMessage";
+import { Tabs } from "./components/Tabs";
 import { learnerId, loadLog, saveLog } from "./storage";
 
 /** New per page load. Only the per-session spend cap uses it. */
 const SESSION_ID = crypto.randomUUID();
 const LEARNER_ID = learnerId();
 const RECENT_TO_SKIP = 3;
+const VIEWS = [
+  { id: "practice", label: "Practice" },
+  { id: "progress", label: "Progress" },
+] as const;
+type View = (typeof VIEWS)[number]["id"];
 
 export type Status =
   | { kind: "answering" }
@@ -48,6 +55,8 @@ export function App() {
   const [scenario, setScenario] = useState(() => chooseNext(log));
   const [answer, setAnswer] = useState("");
   const [status, setStatus] = useState<Status>({ kind: "answering" });
+  const [view, setView] = useState<View>("practice");
+  const [showHowItWorks, setShowHowItWorks] = useState(false);
 
   const current = useMemo(() => knowledge(log), [log]);
   const counts = useMemo(() => practiceCounts(log), [log]);
@@ -97,6 +106,9 @@ export function App() {
     setRetry(dueRetries(log).includes(chosen.id));
     setAnswer("");
     setStatus({ kind: "answering" });
+    // The button is at the bottom of the feedback; the new situation is at the top.
+    window.scrollTo({ top: 0 });
+    document.getElementById("scenario-heading")?.focus({ preventScroll: true });
   }
 
   function resetProgress() {
@@ -113,38 +125,65 @@ export function App() {
         <h1 className="font-semibold text-2xl tracking-tight">Fluent Prior</h1>
         <p className="text-muted-foreground text-sm">
           English practice for hotel, resort and restaurant work.{" "}
-          <a href="#how-it-works" className="text-primary underline underline-offset-4">
+          <button
+            type="button"
+            aria-haspopup="dialog"
+            onClick={() => setShowHowItWorks(true)}
+            className="text-primary underline underline-offset-4"
+          >
             How it works
-          </a>
+          </button>
         </p>
       </header>
 
       <main className="flex flex-col gap-5">
-        <ScenarioCard scenario={scenario} retry={retry} />
-        <AnswerForm
-          answer={answer}
-          sampleAnswer={scenario.sampleAnswer}
-          onChange={setAnswer}
-          onSubmit={submit}
-          onNext={next}
-          status={status}
-        />
-        {status.kind === "graded" && <FeedbackCard grade={status.grade} scenario={scenario} />}
-        <StatusMessage status={status} />
-        {viewingSample ? (
-          <MasteryPanel key="sample" {...sample} sample onBack={() => setViewingSample(false)} />
-        ) : (
-          <MasteryPanel
-            key="own"
-            knowledge={current}
-            counts={counts}
-            history={history}
-            onReset={resetProgress}
-            onShowSample={() => setViewingSample(true)}
+        <Tabs label="View" tabs={VIEWS} selected={view} onSelect={setView} />
+        <div
+          role="tabpanel"
+          id="panel-practice"
+          aria-labelledby="tab-practice"
+          hidden={view !== "practice"}
+          className="flex flex-col gap-5"
+        >
+          <ScenarioCard scenario={scenario} retry={retry} />
+          <AnswerForm
+            answer={answer}
+            sampleAnswer={scenario.sampleAnswer}
+            onChange={setAnswer}
+            onSubmit={submit}
+            status={status}
           />
-        )}
-        <HowItWorks />
+          {status.kind === "graded" && (
+            <>
+              <FeedbackCard grade={status.grade} scenario={scenario} />
+              <Button variant="outline" onClick={next}>
+                Next situation <span aria-hidden="true">→</span>
+              </Button>
+            </>
+          )}
+          <StatusMessage status={status} />
+        </div>
+        <div
+          role="tabpanel"
+          id="panel-progress"
+          aria-labelledby="tab-progress"
+          hidden={view !== "progress"}
+        >
+          {viewingSample ? (
+            <MasteryPanel key="sample" {...sample} sample onBack={() => setViewingSample(false)} />
+          ) : (
+            <MasteryPanel
+              key="own"
+              knowledge={current}
+              counts={counts}
+              history={history}
+              onReset={resetProgress}
+              onShowSample={() => setViewingSample(true)}
+            />
+          )}
+        </div>
       </main>
+      <HowItWorks open={showHowItWorks} onClose={() => setShowHowItWorks(false)} />
     </div>
   );
 }

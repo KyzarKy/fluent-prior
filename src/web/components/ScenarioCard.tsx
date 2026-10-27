@@ -13,7 +13,8 @@ export function ScenarioCard({ scenario, retry }: { scenario: Scenario; retry: b
         <p className={`${CHIP} bg-muted text-muted-foreground`}>{ROLE_NAMES[scenario.role]}</p>
         {retry && <p className={`${CHIP} bg-warning/15 text-warning`}>Second try</p>}
       </div>
-      <h2 id="scenario-heading" className="text-lg leading-snug">
+      {/* Focused when a new situation appears, so screen readers start there. */}
+      <h2 id="scenario-heading" tabIndex={-1} className="text-lg leading-snug outline-none">
         {scenario.situation}
       </h2>
       <p className="mt-4 font-medium text-muted-foreground text-sm">Your task</p>
