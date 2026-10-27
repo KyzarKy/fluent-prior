@@ -30,6 +30,11 @@ export interface Scenario {
    */
   taskParts: string[];
   targetSkills: SkillId[];
+  /**
+   * A learner's answer from the answer key (evals/grader-set.json), mistakes included, so a
+   * visitor can see a real grade without writing one. Only filled in when asked for.
+   */
+  sampleAnswer: string;
 }
 
 // Situations are written as work notes (logs, checklists, tickets) and tasks as goals, so
@@ -50,6 +55,7 @@ export const SCENARIOS: Scenario[] = [
       "Suggests a specific activity or place to spend the wait",
     ],
     targetSkills: ["be-verbs", "time-prepositions"],
+    sampleAnswer: "your room is not ready. you wait in the lobby and come back on 3 pm",
   },
   {
     id: "pharmacy-directions",
@@ -61,6 +67,7 @@ export const SCENARIOS: Scenario[] = [
     taskType: "guest-information",
     taskParts: ["Gives directions the guest could follow to the pharmacy"],
     targetSkills: ["place-prepositions", "articles"],
+    sampleAnswer: "pharmacy is two block away you go left in main street",
   },
   {
     id: "broken-lamp",
@@ -74,6 +81,8 @@ export const SCENARIOS: Scenario[] = [
       "Says when it was noticed (this morning, around 8:15)",
     ],
     targetSkills: ["past-irregular", "articles", "time-prepositions"],
+    sampleAnswer:
+      "this morning i find a broken lamp in room 214 i think somebody broke it yesterday",
   },
   {
     id: "come-back-later",
@@ -84,6 +93,7 @@ export const SCENARIOS: Scenario[] = [
     taskType: "requests",
     taskParts: ["Arranges a time to clean: asks the guest for one, or proposes one"],
     targetSkills: ["question-forms", "time-prepositions"],
+    sampleAnswer: "sorry for disturb you. you want i come back in the afternoon or tomorrow?",
   },
   {
     id: "peanut-allergy",
@@ -99,6 +109,8 @@ export const SCENARIOS: Scenario[] = [
       "Says the chef checks the plate",
     ],
     targetSkills: ["future-forms", "third-person-s", "modal-verbs"],
+    sampleAnswer:
+      "thank you for telling me i will tell the chef right away the kitchen use separate board for allergy orders so your food will be safe",
   },
   {
     id: "slow-food",
@@ -113,6 +125,7 @@ export const SCENARIOS: Scenario[] = [
       "Offers something extra, beyond an apology, to make up for the wait",
     ],
     targetSkills: ["future-forms", "be-verbs"],
+    sampleAnswer: "excuse me for the wait, the kitchen is very busy. your food come in five minute",
   },
   {
     id: "todays-special",
@@ -124,6 +137,7 @@ export const SCENARIOS: Scenario[] = [
     taskType: "guest-information",
     taskParts: ["Names the dish (grilled salmon)", "Mentions the sides (rice, vegetables)"],
     targetSkills: ["third-person-s", "plurals", "articles", "possessive-s"],
+    sampleAnswer: "today special is grilled salmon it come with rice and vegetable",
   },
   {
     id: "ran-out-of-salmon",
@@ -135,6 +149,7 @@ export const SCENARIOS: Scenario[] = [
     taskType: "reporting-up",
     taskParts: ["Tells the chef the salmon is gone", "Asks what the servers should tell guests"],
     targetSkills: ["past-irregular", "question-forms", "articles"],
+    sampleAnswer: "chef we run out of salmon at lunch what the servers should tell to the guests",
   },
   {
     id: "end-of-shift",
@@ -146,6 +161,8 @@ export const SCENARIOS: Scenario[] = [
     taskType: "briefing-coworkers",
     taskParts: ["Cleaning the station", "Labeling stored food", "Taking out the trash"],
     targetSkills: ["modal-verbs", "plurals"],
+    sampleAnswer:
+      "you must cleaning the station and you should to put label on the food, then trash",
   },
   {
     id: "delivery-question",
@@ -156,6 +173,7 @@ export const SCENARIOS: Scenario[] = [
     taskType: "requests",
     taskParts: ["Asks where the delivery should go"],
     targetSkills: ["question-forms", "place-prepositions", "plurals"],
+    sampleAnswer: "where i should put these boxes of vegetable",
   },
   {
     id: "shift-handoff",
@@ -167,6 +185,8 @@ export const SCENARIOS: Scenario[] = [
     taskType: "briefing-coworkers",
     taskParts: ["The guest's calls about the air conditioning", "That the problem is fixed now"],
     targetSkills: ["past-regular", "be-verbs", "time-prepositions", "third-person-s"],
+    sampleAnswer:
+      "the guest in room 118 call two times today about the air conditioning. maintenance visit at 4 pm and he say it works now",
   },
   {
     id: "noisy-room",
@@ -178,6 +198,7 @@ export const SCENARIOS: Scenario[] = [
     taskType: "guest-problems",
     taskParts: ["Offers a fix: stopping the noise, or moving the guest away from it"],
     targetSkills: ["future-forms", "place-prepositions"],
+    sampleAnswer: "sorry, i send security. or you want change room? we have room in six floor",
   },
   {
     id: "room-report",
@@ -188,6 +209,7 @@ export const SCENARIOS: Scenario[] = [
     taskType: "reporting-up",
     taskParts: ["Reports what was done in room 305"],
     targetSkills: ["past-regular", "plurals", "articles"],
+    sampleAnswer: "in room 305 i clean the bathroom change the sheet and replace the towels",
   },
   {
     id: "check-in-id",
@@ -198,6 +220,7 @@ export const SCENARIOS: Scenario[] = [
     taskType: "requests",
     taskParts: ["Asks for a photo ID", "Asks for a credit card"],
     targetSkills: ["question-forms", "articles"],
+    sampleAnswer: "please you give me the card of credit and your id",
   },
 
   // Adapted from O*NET task statements (see README, Credits). Each scenario names the one
@@ -215,6 +238,8 @@ export const SCENARIOS: Scenario[] = [
     taskType: "reporting-up",
     taskParts: ["Says a phone was left behind", "Says whose it is: the guest's name or room"],
     targetSkills: ["past-irregular", "possessive-s", "place-prepositions"],
+    sampleAnswer:
+      "i find a phone under the bed in room 220, i think it is ms park phone. she check out this morning",
   },
   // 35-3031.00, Waiters and Waitresses: "Prepare checks that itemize and total meal costs
   // and sales taxes."
@@ -232,6 +257,7 @@ export const SCENARIOS: Scenario[] = [
       "Says which check is Leo's",
     ],
     targetSkills: ["possessive-s", "be-verbs"],
+    sampleAnswer: "this check is mr diaz check, and the other ones for the family",
   },
   // 35-2021.00, Food Preparation Workers: "Check and log refrigerator, freezer, and cooler
   // temperatures."
@@ -249,6 +275,7 @@ export const SCENARIOS: Scenario[] = [
       "Telling the chef when it's too warm",
     ],
     targetSkills: ["modal-verbs", "time-prepositions"],
+    sampleAnswer: "you need check the temperature in 6 am and 2 pm. it should be under 41 degrees",
   },
   // 35-2021.00, Food Preparation Workers: "Inform supervisors when equipment is not working
   // properly and when food and supplies are getting low..."
@@ -262,6 +289,8 @@ export const SCENARIOS: Scenario[] = [
     taskType: "reporting-up",
     taskParts: ["Says what's wrong with the slicer", "Says what prep is still waiting"],
     targetSkills: ["past-regular", "past-irregular", "articles"],
+    sampleAnswer:
+      "the slicer make a loud noise and stop working, so i turn it off. i still need to slice half of the ham for lunch",
   },
   // 35-2014.00, Cooks, Restaurant: "Substitute for or assist other cooks during emergencies
   // or rush periods."
@@ -275,6 +304,7 @@ export const SCENARIOS: Scenario[] = [
     taskType: "requests",
     taskParts: ["Asks Marco for help"],
     targetSkills: ["modal-verbs", "question-forms", "plurals"],
+    sampleAnswer: "marco can you help me with grill? i have twelve ticket",
   },
 ];
 

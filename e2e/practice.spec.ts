@@ -30,6 +30,17 @@ test("answering a scenario shows a grade and updates what you know", async ({ pa
   await expect(page.getByText(/· 1 answer$/).first()).toBeVisible();
 });
 
+test("a visitor can check a sample answer without writing one", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Try a sample answer" }).click();
+  await expect(page.getByLabel("Your answer")).not.toHaveValue("");
+  await expect(page.getByText("A real learner's answer")).toBeVisible();
+  await expectNoAxeViolations(page);
+
+  await page.getByRole("button", { name: "Check my answer" }).click();
+  await expect(page.getByRole("region", { name: "Feedback" })).toBeVisible();
+});
+
 test("progress over time draws a line for each practiced row", async ({ page }) => {
   // Two days of practice, written before the app loads, in the stored log's format.
   await page.addInitScript(() => {

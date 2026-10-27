@@ -106,6 +106,7 @@ export function App() {
         <ScenarioCard scenario={scenario} retry={retry} />
         <AnswerForm
           answer={answer}
+          sampleAnswer={scenario.sampleAnswer}
           onChange={setAnswer}
           onSubmit={submit}
           onNext={next}
