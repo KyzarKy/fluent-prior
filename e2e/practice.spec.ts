@@ -41,6 +41,24 @@ test("a visitor can check a sample answer without writing one", async ({ page })
   await expect(page.getByRole("region", { name: "Feedback" })).toBeVisible();
 });
 
+test("a new visitor can look at a sample learner's progress and come back", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "See a sample learner's two weeks" }).click();
+
+  await expect(page.getByRole("heading", { name: "What a sample learner knows" })).toBeVisible();
+  await expect(page.getByRole("radio", { name: "Over time" })).toBeChecked();
+  await expect(
+    page.getByRole("listitem").filter({ hasText: "Irregular past tense" }),
+  ).toContainText("→");
+  await expectNoAxeViolations(page);
+
+  await page.getByRole("button", { name: "Back to your progress" }).click();
+  await expect(page.getByRole("heading", { name: "What you know" })).toBeVisible();
+  // The sample was never saved as the visitor's own.
+  await page.reload();
+  await expect(page.getByText(/· 0 answers$/).first()).toBeVisible();
+});
+
 test("progress over time draws a line for each practiced row", async ({ page }) => {
   // Two days of practice, written before the app loads, in the stored log's format.
   await page.addInitScript(() => {
