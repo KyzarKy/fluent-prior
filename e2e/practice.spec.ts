@@ -108,6 +108,18 @@ test("check and next are always on screen, and next skips a situation", async ({
   await next.click();
   await expect(page.locator("#scenario-heading")).not.toHaveText(situation ?? "");
   await expect(page.getByLabel("Your answer")).toHaveValue("");
+
+  // With feedback the page scrolls. Scrolled to the end, the buttons are the last thing on
+  // it: nothing blank scrolls into view below them.
+  await page.getByLabel("Your answer").fill("i can clean you room later");
+  await check.click();
+  await expect(page.getByRole("region", { name: "Feedback" })).toBeVisible();
+  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+  expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
+  const barEnd = await next.evaluate(
+    (button) => button.parentElement?.getBoundingClientRect().bottom,
+  );
+  expect(barEnd).toBeCloseTo(page.viewportSize()?.height ?? 0, 0);
 });
 
 test("the tabs switch views and follow the arrow keys", async ({ page }) => {

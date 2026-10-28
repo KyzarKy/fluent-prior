@@ -150,7 +150,11 @@ export function App() {
     answer.trim().length > 0 && status.kind !== "grading" && status.kind !== "graded";
 
   return (
-    <div className="mx-auto flex min-h-dvh max-w-xl flex-col gap-5 px-4 pt-6 pb-10">
+    // On Practice the action bar is the page's last row, and its own padding is the bottom
+    // margin: more below it would scroll into view as a blank strip under the buttons.
+    <div
+      className={`mx-auto flex min-h-dvh max-w-xl flex-col gap-5 px-4 pt-6 ${view === "practice" ? "" : "pb-10"}`}
+    >
       <header>
         <h1 className="font-semibold text-2xl tracking-tight">Fluent Prior</h1>
         <p className="text-muted-foreground text-sm">
