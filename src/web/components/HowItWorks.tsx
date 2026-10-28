@@ -11,8 +11,11 @@ export function HowItWorks({ open, onClose }: { open: boolean; onClose: () => vo
         <p>
           A "grader", the <code>openai/gpt-oss-120b</code> model on Groq, checks three separate
           things: whether you did every part of the task, how your tone might sound to the listener,
-          and which grammar rules you used and how well you applied them. The app, not the model,
-          decides how much each answer counts toward your learning progress for each rule.
+          and which grammar rules you used and how well you applied them. When that model reaches
+          its free limit, a smaller one, <code>openai/gpt-oss-20b</code>, grades instead; it more
+          often flags a mistake you didn't make, or hears a polite answer as neutral. The app, not
+          the grader, decides how much each answer counts toward your learning progress for each
+          rule.
         </p>
         <p>
           A Bayesian model keeps a running estimate for each grammar rule, each kind of task, and

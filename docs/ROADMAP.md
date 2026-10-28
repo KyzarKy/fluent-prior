@@ -127,6 +127,3 @@ USDOL/ETA, link the license, and say the text was adapted.
   the tokens nearly free, but a third used grammar terms a learner won't know, and invented
   mistakes came with confident invented rules. Revisit when the grader invents fewer
   mistakes, with a rule against grammar terms.
-- **A backup grader for when the quota runs out.** Groq's free limits are per model, so
-  gpt-oss-20b has its own daily quota. If it scores well enough on the eval, it could grade
-  instead of the app showing "limit reached".

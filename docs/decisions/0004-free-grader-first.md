@@ -1,7 +1,8 @@
 # 0004. A free open model is the primary grader
 
 **Status:** accepted, 2026-09-27. Replaces the grader choice in
-[ADR 0001](0001-text-in-meaning-graded.md); the rest of 0001 stands.
+[ADR 0001](0001-text-in-meaning-graded.md); the rest of 0001 stands. [ADR 0009](0009-backup-grader.md)
+adds gpt-oss-20b as a backup for when this model's quota runs out.
 
 ## Context
 

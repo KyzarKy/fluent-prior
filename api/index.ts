@@ -5,15 +5,17 @@
 import { Redis } from "@upstash/redis";
 import Groq from "groq-sdk";
 import { createApp } from "../src/server/app.js";
-import { createGroqGrader } from "../src/server/groq-grader.js";
+import { withBackup } from "../src/server/grader.js";
+import { createGroqGrader, GROQ_BACKUP_MODEL } from "../src/server/groq-grader.js";
 import { createRedisStore } from "../src/server/redis-store.js";
 
 const ipHashSalt = process.env.IP_HASH_SALT;
 // A known salt would let anyone holding the counter keys test guesses at IP addresses.
 if (!ipHashSalt) throw new Error("IP_HASH_SALT is not set");
 
+const groq = new Groq();
 const app = createApp({
-  grade: createGroqGrader(new Groq()),
+  grade: withBackup(createGroqGrader(groq), createGroqGrader(groq, GROQ_BACKUP_MODEL)),
   store: createRedisStore(Redis.fromEnv()),
   ipHashSalt,
 });
