@@ -43,7 +43,7 @@ in. The learner model weighs each answer with that in mind
 ## Architecture
 
 ```mermaid
-flowchart LR
+flowchart TD
   subgraph Browser
     UI[React app] --> Log[(Observation log<br>localStorage)]
     Log --> Model[Learner model<br>BKT, src/core]
