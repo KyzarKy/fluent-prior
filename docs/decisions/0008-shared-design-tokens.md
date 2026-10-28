@@ -2,7 +2,8 @@
 
 **Status:** accepted, 2026-10-13 (Ky decided on 2026-10-07 to build the package and have
 each of his apps depend on it). Amended the same day: upgraded to 0.3.0, taking its
-components (the last section).
+components. Amended 2026-10-28: upgraded to 0.4.0 for `Modal` and `Link` (the last two
+sections).
 
 ## Context
 
@@ -16,7 +17,7 @@ change under this project or hold it up.
 
 ## Decision
 
-- **`@kyzarky/ui` is a dependency, pinned to an exact version** (0.3.0 today). An upgrade is
+- **`@kyzarky/ui` is a dependency, pinned to an exact version** (0.4.0 today). An upgrade is
   its own commit, made on purpose, after reading the package's changelog.
 - **`styles.css` imports the package's `theme.css`** in place of its own token block. The
   app keeps only what's its own: the font stack.
@@ -66,3 +67,10 @@ What changed on screen and in behavior, beyond the list's spacing:
   keys move between the options, and a screen reader announces a radio group.
 - **Buttons show focus as an outline in the brand color,** where the browser's default
   showed before.
+
+## Amendment, 2026-10-28: Modal and Link, at 0.4.0
+
+`Modal` and `Link` started in this app for "How it works" and moved to the package
+(its ADR 0004), along with two rules: links go somewhere and buttons do something, and a
+modal has a title and a body. The app's own copies are gone. Nothing changes on screen:
+the package's versions are the same code.

@@ -2,7 +2,7 @@
 // model, and choose the next scenario. Logic lives in src/core; this file wires it to
 // React state and the browser.
 
-import { Button } from "@kyzarky/ui";
+import { Button, Link } from "@kyzarky/ui";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { CapExceeded, Grade } from "../core/contract";
 import {
@@ -21,7 +21,6 @@ import { requestGrade } from "./api";
 import { AnswerForm } from "./components/AnswerForm";
 import { FeedbackCard } from "./components/FeedbackCard";
 import { HowItWorks } from "./components/HowItWorks";
-import { Link } from "./components/Link";
 import { MasteryPanel } from "./components/MasteryPanel";
 import { ScenarioCard } from "./components/ScenarioCard";
 import { StatusMessage } from "./components/StatusMessage";
