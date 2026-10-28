@@ -1,15 +1,12 @@
 // What the app does and why, in plain words, for learners and for anyone looking at it as
 // a portfolio piece. The "prior" paragraph is the idea behind the name (README).
 
-import { Card } from "@kyzarky/ui";
+import { Modal } from "./Modal";
 
-export function HowItWorks() {
+export function HowItWorks({ open, onClose }: { open: boolean; onClose: () => void }) {
   return (
-    <Card id="how-it-works" aria-labelledby="how-it-works-heading">
-      <h2 id="how-it-works-heading" className="font-semibold text-lg">
-        How it works
-      </h2>
-      <div className="mt-3 flex flex-col gap-3">
+    <Modal open={open} onClose={onClose} title="How it works">
+      <div className="flex flex-col gap-3">
         <p>You get a real moment from hotel, resort, or restaurant work, and you answer.</p>
         <p>
           A "grader", the <code>openai/gpt-oss-120b</code> model on Groq, checks three separate
@@ -34,6 +31,6 @@ export function HowItWorks() {
           open model hosted by Groq, to be checked, and Fluent Prior doesn't save them.
         </p>
       </div>
-    </Card>
+    </Modal>
   );
 }
