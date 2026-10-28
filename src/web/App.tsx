@@ -22,6 +22,7 @@ import { AnswerForm } from "./components/AnswerForm";
 import { FeedbackCard } from "./components/FeedbackCard";
 import { HowItWorks } from "./components/HowItWorks";
 import { MasteryPanel } from "./components/MasteryPanel";
+import { PageHeader } from "./components/PageHeader";
 import { ScenarioCard } from "./components/ScenarioCard";
 import { StatusMessage } from "./components/StatusMessage";
 import { Tabs } from "./components/Tabs";
@@ -154,13 +155,11 @@ export function App() {
     <div
       className={`mx-auto flex min-h-dvh max-w-xl flex-col gap-5 px-4 pt-6 ${view === "practice" ? "" : "pb-10"}`}
     >
-      <header>
-        <h1 className="font-semibold text-2xl tracking-tight">Fluent Prior</h1>
-        <p className="text-muted-foreground text-sm">
-          English practice for hotel, resort and restaurant work.{" "}
-          <Link href={HOW_IT_WORKS}>How it works</Link>
-        </p>
-      </header>
+      <PageHeader
+        title="Fluent Prior"
+        description="English practice for hotel, resort, and restaurant work."
+        actions={<Link href={HOW_IT_WORKS}>How it works</Link>}
+      />
 
       <main className="flex flex-col gap-5">
         <Tabs label="View" tabs={VIEWS} selected={view} onSelect={setView} />

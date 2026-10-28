@@ -116,16 +116,21 @@ export function MasteryPanel({
       )}
       <p className="mt-3 text-muted-foreground text-sm">
         {showTrend
-          ? `How the chance ${sample ? "they've" : "you've"} got each one changed, from the day ${sample ? "they" : "you"} first practiced it (left) to today (right).`
-          : `The chance ${sample ? "they've" : "you've"} got each one, based on ${sample ? "their" : "your"} answers.`}
+          ? `How sure the app is that ${sample ? "they know" : "you know"} each one, from the day ${sample ? "they" : "you"} first practiced it (left) to today (right).`
+          : `How sure the app is that ${sample ? "they know" : "you know"} each one, based on ${sample ? "their" : "your"} answers.`}
       </p>
       {!sample && history.length < 2 && (
-        <p className="mt-1 text-muted-foreground text-sm">
-          {history.length === 1 && "Practice on another day to see your progress over time. "}
-          <Button variant="outline" onClick={onShowSample} className="mt-2">
+        <>
+          {history.length === 1 && (
+            <p className="mt-1 text-muted-foreground text-sm">
+              Practice on another day to see your progress over time.
+            </p>
+          )}
+          {/* Its own row: a button inside a paragraph sits partway along the text's line. */}
+          <Button variant="outline" onClick={onShowSample} className="mt-3">
             See a sample learner's two weeks
           </Button>
-        </p>
+        </>
       )}
 
       <List heading={<h3>Tasks</h3>}>

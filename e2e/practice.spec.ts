@@ -133,6 +133,8 @@ test("the tabs switch views and follow the arrow keys", async ({ page }) => {
   await page.keyboard.press("ArrowRight");
   await expect(page.getByRole("tab", { name: "Progress" })).toBeFocused();
   await expect(page.getByRole("heading", { name: "What you know" })).toBeVisible();
+  // A button inside a paragraph sits partway along the text's line (design-system rule).
+  await expect(page.locator("p button")).toHaveCount(0);
   await expect(page.getByLabel("Your answer")).toBeHidden();
   await expectNoAxeViolations(page);
 });
