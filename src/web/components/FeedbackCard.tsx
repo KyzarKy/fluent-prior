@@ -3,6 +3,7 @@
 // piece of feedback and a more natural version.
 
 import { Card } from "@kyzarky/ui";
+import { useEffect, useRef } from "react";
 import type { Grade, Tone } from "../../core/contract";
 import type { Scenario } from "../../core/scenarios";
 import { SKILLS } from "../../core/skills";
@@ -26,6 +27,10 @@ function toneMessage(tone: Tone, audience: Audience): string {
 
 export function FeedbackCard({ grade, scenario }: { grade: Grade; scenario: Scenario }) {
   const label = TASK_LABEL[grade.taskMet];
+  // The check button is gone once an answer is graded, so focus moves here, which also
+  // scrolls the grade into view on a phone.
+  const card = useRef<HTMLElement>(null);
+  useEffect(() => card.current?.focus(), []);
   // Shown only after answering: before, a list of what a good answer says would prime it.
   const missing = grade.taskParts
     .filter((report) => !report.present)
@@ -33,7 +38,12 @@ export function FeedbackCard({ grade, scenario }: { grade: Grade; scenario: Scen
     .filter((part) => part !== undefined);
 
   return (
-    <Card aria-label="Feedback" className="flex flex-col gap-4">
+    <Card
+      ref={card}
+      tabIndex={-1}
+      aria-label="Feedback"
+      className="flex flex-col gap-4 outline-none"
+    >
       <p className={`self-start rounded-full px-3 py-1 font-semibold text-sm ${label.className}`}>
         {label.text}
       </p>
