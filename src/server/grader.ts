@@ -77,3 +77,20 @@ export function parseReply(text: string | undefined | null, costUsd: number): Gr
   if (!parsed.success) return { ok: false, reason: `schema: ${parsed.error.message}`, costUsd };
   return { ok: true, output: parsed.data, costUsd };
 }
+
+/**
+ * Grades with `backup` when `primary` is out of quota (ADR 0009). If both are, the learner
+ * waits for whichever frees up first.
+ */
+export function withBackup(primary: Grader, backup: Grader): Grader {
+  return async (scenario, answer) => {
+    const first = await primary(scenario, answer);
+    if (!("retryAfterSeconds" in first)) return first;
+    const second = await backup(scenario, answer);
+    if (!("retryAfterSeconds" in second)) return second;
+    return {
+      ...second,
+      retryAfterSeconds: Math.min(first.retryAfterSeconds, second.retryAfterSeconds),
+    };
+  };
+}

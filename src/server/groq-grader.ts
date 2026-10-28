@@ -14,7 +14,7 @@ import {
 } from "./grader.js";
 
 export const GROQ_MODEL = "openai/gpt-oss-120b";
-/** A smaller model with its own free quota on Groq, measured as a backup grader. */
+/** A smaller model with its own free quota on Groq: grades when 120b's runs out (ADR 0009). */
 export const GROQ_BACKUP_MODEL = "openai/gpt-oss-20b";
 const OUTPUT_SCHEMA = z.toJSONSchema(GraderOutput);
 /** If Groq doesn't say when the quota resets, assume the daily window. */
