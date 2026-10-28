@@ -128,5 +128,9 @@ USDOL/ETA, link the license, and say the text was adapted.
   mistakes came with confident invented rules. Revisit when the grader invents fewer
   mistakes, with a rule against grammar terms.
 - **A backup grader for when the quota runs out.** Groq's free limits are per model, so
-  gpt-oss-20b has its own daily quota. If it scores well enough on the eval, it could grade
-  instead of the app showing "limit reached".
+  gpt-oss-20b has its own daily quota. Measured 2026-10-27 (results 2026-10-27T1619): on
+  the same 62 answers it matched 120b on task (97%) and caught the same grammar mistakes,
+  but invented more (precision 77% to 120b's 85%) and read more polite answers as neutral
+  (tone 85% to 94%). It failed the s2 prompt injection, reporting no mistakes, so it missed
+  the bar. The fallback is built and parked on the `backup-fallback` branch (draft ADR
+  0009). Revisit if a prompt change or reruns of s2 get it over the bar.
