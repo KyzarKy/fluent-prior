@@ -1,7 +1,7 @@
 // What the app does and why, in plain words, for learners and for anyone looking at it as
 // a portfolio piece. The "prior" paragraph is the idea behind the name (README).
 
-import { Modal } from "./Modal";
+import { Modal } from "@kyzarky/ui";
 
 export function HowItWorks({ open, onClose }: { open: boolean; onClose: () => void }) {
   return (
