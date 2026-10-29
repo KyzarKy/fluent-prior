@@ -3,7 +3,8 @@
 **Status:** accepted, 2026-10-13 (Ky decided on 2026-10-07 to build the package and have
 each of his apps depend on it). Amended the same day: upgraded to 0.3.0, taking its
 components. Amended 2026-10-28: upgraded to 0.4.0 for `Modal` and `Link`. Amended 2026-10-29:
-upgraded to 0.5.0 for `PageHeader` (the last three sections).
+upgraded to 0.5.0 for `PageHeader`, then 0.5.1 for the iPhone scroll fix (the last
+three sections).
 
 ## Context
 
@@ -17,7 +18,7 @@ change under this project or hold it up.
 
 ## Decision
 
-- **`@kyzarky/ui` is a dependency, pinned to an exact version** (0.5.0 today). An upgrade is
+- **`@kyzarky/ui` is a dependency, pinned to an exact version** (0.5.1 today). An upgrade is
   its own commit, made on purpose, after reading the package's changelog.
 - **`styles.css` imports the package's `theme.css`** in place of its own token block. The
   app keeps only what's its own: the font stack.
@@ -89,3 +90,8 @@ copy. What changed on screen:
 - **The link is a 24px target.**
 - **The page behind How it works no longer scrolls,** a fix in the package's `Modal` and
   `theme.css`.
+
+0.5.1, the same day: that fix held in Chrome but not on an iPhone, where Safari still
+scrolled the page. 0.5.1's `Modal` pins the page in place while it's open and puts it
+back where it was on close. The scroll test now starts partway down the page and checks
+the page comes back there.

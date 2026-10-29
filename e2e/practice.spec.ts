@@ -118,15 +118,28 @@ test("the page behind how it works doesn't scroll", async ({ page }) => {
   expect(
     await page.evaluate(() => document.documentElement.scrollHeight - innerHeight),
   ).toBeGreaterThan(500);
-  await page.getByRole("link", { name: "How it works" }).click();
-  await expect(page.getByRole("dialog", { name: "How it works" })).toBeVisible();
+  await page.evaluate(() => window.scrollTo(0, 200));
+  // Opened by its URL, as the link does: clicking the link would scroll it back into view.
+  await page.evaluate(() => {
+    location.hash = "how-it-works";
+  });
+  const dialog = page.getByRole("dialog", { name: "How it works" });
+  await expect(dialog).toBeVisible();
+  const pageTop = () => page.evaluate(() => document.body.getBoundingClientRect().top);
+  const before = await pageTop();
+  expect(before).toBe(-200);
 
   // A real wheel on the backdrop: a script's scrollTo moves the page even when the user can't.
   await page.mouse.move(5, 5);
   await page.mouse.wheel(0, 500);
   // The wheel scrolls on a later frame.
   await page.waitForTimeout(300);
-  expect(await page.evaluate(() => window.scrollY)).toBe(0);
+  expect(await pageTop()).toBe(before);
+
+  // Closing puts the page back where it was.
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(200);
 });
 
 test("check and next are always on screen, and next skips a situation", async ({ page }) => {
