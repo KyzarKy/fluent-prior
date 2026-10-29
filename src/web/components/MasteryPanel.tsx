@@ -85,6 +85,8 @@ export function MasteryPanel({
   const canShowTrend = history.length >= 2;
   const showTrend = overTime && canShowTrend;
   const today = localDay(new Date().toISOString());
+  const who = sample ? "they" : "you";
+  const whose = sample ? "their" : "your";
   const trendOf = (pick: (k: Knowledge) => number) =>
     showTrend ? trendLine(history, pick, today) : undefined;
 
@@ -116,8 +118,8 @@ export function MasteryPanel({
       )}
       <p className="mt-3 text-muted-foreground text-sm">
         {showTrend
-          ? `How sure the app is that ${sample ? "they know" : "you know"} each one, from the day ${sample ? "they" : "you"} first practiced it (left) to today (right).`
-          : `How sure the app is that ${sample ? "they know" : "you know"} each one, based on ${sample ? "their" : "your"} answers.`}
+          ? `How sure the app has been that ${who} know each one, day by day, from the day ${who} first practiced it (left) to today (right).`
+          : `How sure the app is that ${who} know each one, based on ${whose} answers.`}
       </p>
       {!sample && history.length < 2 && (
         <>

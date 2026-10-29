@@ -2,8 +2,8 @@
 
 **Status:** accepted, 2026-10-13 (Ky decided on 2026-10-07 to build the package and have
 each of his apps depend on it). Amended the same day: upgraded to 0.3.0, taking its
-components. Amended 2026-10-28: upgraded to 0.4.0 for `Modal` and `Link` (the last two
-sections).
+components. Amended 2026-10-28: upgraded to 0.4.0 for `Modal` and `Link`. Amended 2026-10-29:
+upgraded to 0.5.0 for `PageHeader` (the last three sections).
 
 ## Context
 
@@ -17,7 +17,7 @@ change under this project or hold it up.
 
 ## Decision
 
-- **`@kyzarky/ui` is a dependency, pinned to an exact version** (0.4.0 today). An upgrade is
+- **`@kyzarky/ui` is a dependency, pinned to an exact version** (0.5.0 today). An upgrade is
   its own commit, made on purpose, after reading the package's changelog.
 - **`styles.css` imports the package's `theme.css`** in place of its own token block. The
   app keeps only what's its own: the font stack.
@@ -74,3 +74,18 @@ What changed on screen and in behavior, beyond the list's spacing:
 (its ADR 0004), along with two rules: links go somewhere and buttons do something, and a
 modal has a title and a body. The app's own copies are gone. Nothing changes on screen:
 the package's versions are the same code.
+
+## Amendment, 2026-10-29: PageHeader, at 0.5.0
+
+The header's new layout (the package's ADR 0005) was built in the package first and tried
+here from an unpublished build before 0.5.0 was published, so the app never had its own
+copy. What changed on screen:
+
+- **"How it works" sits beside the title on a phone** and on a row of its own from 640px
+  up, never at the end of the description's sentence. The header went from 118px tall
+  (stacked, during review) to 86px at 375px wide, so more of the answer box shows on a
+  small phone.
+- **The description is at body size,** where it was `text-sm`.
+- **The link is a 24px target.**
+- **The page behind How it works no longer scrolls,** a fix in the package's `Modal` and
+  `theme.css`.

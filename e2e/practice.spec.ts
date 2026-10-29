@@ -37,6 +37,9 @@ test("answering a scenario shows a grade and updates what you know", async ({ pa
   await page.reload();
   await page.getByRole("tab", { name: "Progress" }).click();
   await expect(page.getByText(/· 1 answer$/).first()).toBeVisible();
+  // One day of practice: the note and the sample button, with the button outside the note.
+  await expect(page.getByText("Practice on another day")).toBeVisible();
+  await expect(page.locator("p button")).toHaveCount(0);
 });
 
 test("a visitor can check a sample answer without writing one", async ({ page }) => {
@@ -72,7 +75,16 @@ test("a new visitor can look at a sample learner's progress and come back", asyn
 
 test("how it works is a link that opens a modal, and closes", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("link", { name: "How it works" }).click();
+  // On a phone the link sits beside the title, and is a 24px target (WCAG 2.5.8).
+  const link = page.getByRole("link", { name: "How it works" });
+  const title = await page.getByRole("heading", { level: 1 }).boundingBox();
+  const description = await page.getByText("English practice for hotel").boundingBox();
+  const linkBox = await link.boundingBox();
+  expect(linkBox?.height).toBeGreaterThanOrEqual(24);
+  expect(linkBox?.y ?? 0).toBeLessThan(description?.y ?? 0);
+  expect(linkBox?.x ?? 0).toBeGreaterThan((title?.x ?? 0) + (title?.width ?? 0));
+
+  await link.click();
   await expect(page).toHaveURL(/#how-it-works$/);
   const dialog = page.getByRole("dialog", { name: "How it works" });
   await expect(dialog.getByRole("heading", { name: 'Why "prior"' })).toBeVisible();
@@ -85,6 +97,11 @@ test("how it works is a link that opens a modal, and closes", async ({ page }) =
   await page.keyboard.press("Escape");
   await expect(dialog).toBeHidden();
   await expect(page).not.toHaveURL(/#how-it-works$/);
+  // Closing went Back, so Forward reopens it, and there's no second entry for the page.
+  await page.goForward();
+  await expect(dialog).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
   await page.getByRole("link", { name: "How it works" }).click();
   await dialog.getByRole("button", { name: "Close" }).click();
   await expect(dialog).toBeHidden();
@@ -92,6 +109,24 @@ test("how it works is a link that opens a modal, and closes", async ({ page }) =
   // The URL opens it directly.
   await page.goto("/#how-it-works");
   await expect(dialog).toBeVisible();
+});
+
+test("the page behind how it works doesn't scroll", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("tab", { name: "Progress" }).click();
+  // Long enough to scroll well past 500px, so staying at 0 means the lock held.
+  expect(
+    await page.evaluate(() => document.documentElement.scrollHeight - innerHeight),
+  ).toBeGreaterThan(500);
+  await page.getByRole("link", { name: "How it works" }).click();
+  await expect(page.getByRole("dialog", { name: "How it works" })).toBeVisible();
+
+  // A real wheel on the backdrop: a script's scrollTo moves the page even when the user can't.
+  await page.mouse.move(5, 5);
+  await page.mouse.wheel(0, 500);
+  // The wheel scrolls on a later frame.
+  await page.waitForTimeout(300);
+  expect(await page.evaluate(() => window.scrollY)).toBe(0);
 });
 
 test("check and next are always on screen, and next skips a situation", async ({ page }) => {

@@ -2,7 +2,7 @@
 // model, and choose the next scenario. Logic lives in src/core; this file wires it to
 // React state and the browser.
 
-import { Button, Link } from "@kyzarky/ui";
+import { Button, Link, PageHeader } from "@kyzarky/ui";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { CapExceeded, Grade } from "../core/contract";
 import {
@@ -22,7 +22,6 @@ import { AnswerForm } from "./components/AnswerForm";
 import { FeedbackCard } from "./components/FeedbackCard";
 import { HowItWorks } from "./components/HowItWorks";
 import { MasteryPanel } from "./components/MasteryPanel";
-import { PageHeader } from "./components/PageHeader";
 import { ScenarioCard } from "./components/ScenarioCard";
 import { StatusMessage } from "./components/StatusMessage";
 import { Tabs } from "./components/Tabs";
@@ -60,10 +59,33 @@ export function App() {
   const [status, setStatus] = useState<Status>({ kind: "answering" });
   const [view, setView] = useState<View>("practice");
   const [hash, setHash] = useState(() => window.location.hash);
+  // Opened by navigating in the app, not by landing on the URL: closing then goes Back, so
+  // it doesn't leave a second entry for the same page.
+  const openedInApp = useRef(false);
   useEffect(() => {
-    const onHashChange = () => setHash(window.location.hash);
+    const onHashChange = () => {
+      setHash(window.location.hash);
+      openedInApp.current = window.location.hash === HOW_IT_WORKS;
+    };
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
+  // iOS Safari doesn't shrink the page for the keyboard (Android does, with the viewport's
+  // interactive-widget), so the sticky action bar would sit behind it. This lifts the bar
+  // by the keyboard's height. Not yet checked on a real iPhone.
+  useEffect(() => {
+    const viewport = window.visualViewport;
+    if (!viewport) return;
+    const update = () => {
+      const inset = Math.max(0, window.innerHeight - viewport.height - viewport.offsetTop);
+      document.documentElement.style.setProperty("--keyboard-inset", `${inset}px`);
+    };
+    viewport.addEventListener("resize", update);
+    viewport.addEventListener("scroll", update);
+    return () => {
+      viewport.removeEventListener("resize", update);
+      viewport.removeEventListener("scroll", update);
+    };
   }, []);
   // Counts situations shown, so a grade that arrives after Next is logged but not shown.
   const showing = useRef(0);
@@ -90,7 +112,13 @@ export function App() {
   }
 
   function closeHowItWorks() {
-    // Drop the fragment without adding a history entry, so Back doesn't reopen it.
+    // Back already closed it; going back again would leave the page.
+    if (window.location.hash !== HOW_IT_WORKS) return;
+    if (openedInApp.current) {
+      window.history.back();
+      return;
+    }
+    // Landed on the URL: there's nothing to go back to in the app, so drop the fragment.
     window.history.replaceState(null, "", window.location.pathname + window.location.search);
     setHash("");
   }
@@ -181,11 +209,20 @@ export function App() {
           {status.kind === "graded" && <FeedbackCard grade={status.grade} scenario={scenario} />}
           <StatusMessage status={status} />
           {/* Always on screen on a phone, and never moving: stuck to the bottom of the view. */}
-          <div className="sticky bottom-0 -mx-4 flex gap-3 border-border border-t bg-background px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
-            <Button type="submit" form="answer-form" disabled={!canCheck} className="flex-1 px-3!">
+          <div className="sticky bottom-[var(--keyboard-inset,0px)] -mx-4 flex gap-3 border-border border-t bg-background px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+            <Button
+              type="submit"
+              form="answer-form"
+              disabled={!canCheck}
+              className="flex-1 px-3! max-[359px]:px-2! max-[359px]:text-sm"
+            >
               {status.kind === "grading" ? "Checking…" : "Check my answer"}
             </Button>
-            <Button variant="outline" onClick={next} className="flex-1 px-3!">
+            <Button
+              variant="outline"
+              onClick={next}
+              className="flex-1 px-3! max-[359px]:px-2! max-[359px]:text-sm"
+            >
               Next situation <span aria-hidden="true">→</span>
             </Button>
           </div>
