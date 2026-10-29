@@ -35,7 +35,7 @@ in. The learner model weighs each answer with that in mind
   <tr>
     <td><img src="docs/media/desktop.png" alt="Desktop: a graded answer" width="420"></td>
     <td><img src="docs/media/tablet.png" alt="Tablet: a graded answer" width="230"></td>
-    <td><img src="docs/media/phone.png" alt="Phone: a graded answer" width="150"></td>
+    <td><img src="docs/media/phone.png" alt="Phone: a checked answer, with its grade starting below it" width="150"></td>
     <td><img src="docs/media/phone-progress.png" alt="Phone: the Progress tab" width="150"></td>
   </tr>
 </table>
