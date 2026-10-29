@@ -2,7 +2,8 @@
 
 **Status:** accepted, 2026-09-27. Replaces the grader choice in
 [ADR 0001](0001-text-in-meaning-graded.md); the rest of 0001 stands. [ADR 0009](0009-backup-grader.md)
-adds gpt-oss-20b as a backup for when this model's quota runs out.
+adds gpt-oss-20b as a backup for when this model's quota runs out. Amended 2026-10-29:
+Groq's 30-day log caveat, from Groq's own docs.
 
 ## Context
 
@@ -40,7 +41,9 @@ Recheck them against the provider's own docs before relying on them.
 
 - Groq's free tier needs no card, so "free" is enforced by the provider rather than by our
   code.
-- Groq keeps no inference data by default. Learner answers are personal, so this matters
+- Groq keeps no inference data by default. It may keep request logs for up to 30 days when
+  looking into errors or suspected abuse
+  ([Your Data in GroqCloud](https://console.groq.com/docs/your-data), checked 2026-10-29). Learner answers are personal, so this matters
   more than speed.
 - Among Groq's strong models, `gpt-oss-120b` had the largest free daily token allowance
   (about 200K tokens a day, per the sources above). At about 2,400 tokens a grade (measured below), that's

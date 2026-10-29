@@ -114,6 +114,7 @@ test("check and next are always on screen, and next skips a situation", async ({
   await page.getByLabel("Your answer").fill("i can clean you room later");
   await check.click();
   await expect(page.getByRole("region", { name: "Feedback" })).toBeVisible();
+  await expectNoAxeViolations(page);
   await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
   expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
   const barEnd = await next.evaluate(
