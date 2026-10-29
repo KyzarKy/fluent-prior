@@ -85,6 +85,8 @@ export function MasteryPanel({
   const canShowTrend = history.length >= 2;
   const showTrend = overTime && canShowTrend;
   const today = localDay(new Date().toISOString());
+  const who = sample ? "they" : "you";
+  const whose = sample ? "their" : "your";
   const trendOf = (pick: (k: Knowledge) => number) =>
     showTrend ? trendLine(history, pick, today) : undefined;
 
@@ -116,16 +118,21 @@ export function MasteryPanel({
       )}
       <p className="mt-3 text-muted-foreground text-sm">
         {showTrend
-          ? `How the chance ${sample ? "they've" : "you've"} got each one changed, from the day ${sample ? "they" : "you"} first practiced it (left) to today (right).`
-          : `The chance ${sample ? "they've" : "you've"} got each one, based on ${sample ? "their" : "your"} answers.`}
+          ? `How sure the app has been that ${who} know each one, day by day, from the day ${who} first practiced it (left) to today (right).`
+          : `How sure the app is that ${who} know each one, based on ${whose} answers.`}
       </p>
       {!sample && history.length < 2 && (
-        <p className="mt-1 text-muted-foreground text-sm">
-          {history.length === 1 && "Practice on another day to see your progress over time. "}
-          <Button variant="outline" onClick={onShowSample} className="mt-2">
+        <>
+          {history.length === 1 && (
+            <p className="mt-1 text-muted-foreground text-sm">
+              Practice on another day to see your progress over time.
+            </p>
+          )}
+          {/* Its own row: a button inside a paragraph sits partway along the text's line. */}
+          <Button variant="outline" onClick={onShowSample} className="mt-3">
             See a sample learner's two weeks
           </Button>
-        </p>
+        </>
       )}
 
       <List heading={<h3>Tasks</h3>}>

@@ -41,7 +41,7 @@ export function AnswerForm({ answer, sampleAnswer, onChange, onSubmit, status }:
       </p>
       <textarea
         id="answer"
-        aria-describedby="answer-help"
+        aria-describedby="answer-help answer-count"
         value={answer}
         readOnly={graded}
         onChange={(event) => onChange(event.target.value)}
@@ -60,7 +60,8 @@ export function AnswerForm({ answer, sampleAnswer, onChange, onSubmit, status }:
         ) : (
           <span />
         )}
-        <p className="text-muted-foreground text-xs" aria-live="polite">
+        {/* Read with the box, not announced on every keystroke. */}
+        <p id="answer-count" className="text-muted-foreground text-xs">
           {answer.length} / {MAX_ANSWER_CHARS}
         </p>
       </div>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Fluent Prior</title>
+  <!-- primary and primary-foreground from @kyzarky/ui; a favicon can't read CSS variables. -->
+  <style>
+    rect { fill: #1d6b73; }
+    text { fill: #ffffff; }
+    @media (prefers-color-scheme: dark) {
+      rect { fill: #5fb3ba; }
+      text { fill: #0e1a1c; }
+    }
+  </style>
+  <rect width="64" height="64" rx="14" />
+  <text x="32" y="43" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="30" font-weight="700" letter-spacing="-1">FP</text>
+</svg>
