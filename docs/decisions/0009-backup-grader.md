@@ -62,8 +62,8 @@ answers (results 2026-10-05T0159 for 120b, 2026-10-27T1619 for 20b):
 - **What it costs:** a learner who tells the grader to report no mistakes, while 20b is
   grading, gets a clean grade about one time in five. They'd only be fooling their own
   progress estimate, which lives in their browser, so the harm is to themselves.
-- **Otherwise at the edge on tone and precision.** It catches the same mistakes as 120b
-  but invents more, and calls more polite answers neutral. A learner graded by 20b gets a
+- **Otherwise at the edge on tone and precision.** It catches as many mistakes as 120b
+  (56 of 63, though each catches 5 the other misses) but invents more, and calls more polite answers neutral. A learner graded by 20b gets a
   slightly harsher grade. That's acceptable for the hours 120b is out.
 - **About 2,960 tokens a grade** (prompt 1,683, output 1,279 of which 1,108 reasoning), about
   what 120b uses. The largest reply was 1,970 of 2,000 output tokens.

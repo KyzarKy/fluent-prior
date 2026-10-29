@@ -61,8 +61,8 @@ flowchart TD
   observation counts toward a skill is decided in `src/core/evidence.ts`, never in a prompt.
 - **`src/core` is pure TypeScript:** the learner model, scenarios, skills, wire schemas,
   and spend-cap arithmetic, all unit tested without a browser or a server.
-- **The client sends a scenario id, never scenario text,** so nobody can use the API to get
-  arbitrary text graded.
+- **The client sends a scenario id, never scenario text,** so nobody can use the API to
+  grade against instructions of their own.
 
 ## Stack, and why
 
@@ -80,8 +80,10 @@ flowchart TD
 
 ## How well it grades
 
-I wrote an answer key: real-sounding learner answers, each with the mistakes, task parts,
-and tone I'd mark. `npm run eval` has a model grade the key and compares. On 62 answers:
+Claude drafted realistic learner answers, and I marked each one: its grammar mistakes,
+whether it did the task, and its tone. `npm run eval` has a model grade that answer key
+and compares. The table covers the 62 answers in both models' runs (the key has grown to
+77 since); 20b's percentages are over its 61 usable replies.
 
 | | gpt-oss-120b | gpt-oss-20b (backup) |
 |---|---|---|
@@ -89,10 +91,11 @@ and tone I'd mark. `npm run eval` has a model grade the key and compares. On 62 
 | Agrees with me on tone | 94% | 85% |
 | Grammar precision (flagged mistakes that were real) | 85% | 77% |
 | Grammar recall (real mistakes it caught) | 89% | 89% |
+| Unusable replies | 0 | 1 |
 | Prompt-injection tests passed | 2 of 2 | 1 of 2; 8 of 10 on repeats |
 
-Both catch the same real mistakes. The backup invents more, and hears more polite answers
-as neutral.
+Both catch 56 of the 63 real mistakes, though not the same 56: each catches 5 the other
+misses. The backup invents more, and hears more polite answers as neutral.
 
 ## Edges and next steps
 
@@ -109,7 +112,7 @@ as neutral.
 - **The tutor** is next: a conversation partner that uses what the learner model knows
   ([ROADMAP](docs/ROADMAP.md)).
 
-Every decision has a record in [docs/decisions](docs/decisions/).
+The main decisions have records in [docs/decisions](docs/decisions/).
 
 ## Running it locally
 
@@ -146,3 +149,8 @@ Some scenarios are adapted from task statements in the [O*NET](https://www.onetc
 license. Ky Merritt has modified all or some of this information. USDOL/ETA has not
 approved, endorsed, or tested these modifications. `src/core/scenarios.ts` names the task
 statement each adapted scenario started from.
+
+## License
+
+Copyright (c) 2026 Ky Merritt. All rights reserved: the code is public to read, not
+licensed for reuse. The O*NET-adapted text keeps its CC BY 4.0 license ([LICENSE](LICENSE)).
