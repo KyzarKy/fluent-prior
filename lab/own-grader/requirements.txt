@@ -1,0 +1,5 @@
+# torch is installed first from the CUDA index (README); these are the rest.
+transformers==5.24.0
+sentencepiece==0.2.3
+protobuf==7.36.2
+spacy==3.8.18

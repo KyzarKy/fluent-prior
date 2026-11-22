@@ -58,20 +58,29 @@ two working days at most, costs $0, and uses no Groq quota.
 
 ### Data
 
-1. **Correct answers.** Claude writes about 150 correct answers for each of the 21
-   scenarios, about 3,150 in all. They vary in completeness and vocabulary, and they look
+1. **Correct answers.** Claude writes about 150 correct answers for each of the 19
+   scenarios, about 2,850 in all. They vary in completeness and vocabulary, and they look
    dictated: lowercase, little punctuation. The writer is never shown the answer key. Any
    answer that shares five words in a row with a key answer is dropped, so the test can't
    measure memorization (the same rule as for prompt examples).
 2. **Corruption by code** (Python with spaCy):
-   - articles: delete a determiner, or swap a, an and the;
-   - past-regular: turn a regular past form (lemma + -ed) back into its lemma;
+   - articles: delete a/an before a singular noun, delete the before a singular noun,
+     swap a and an, or put a before a plural noun. Swapping a for the is left out: it
+     often leaves a correct sentence, which would be a wrong label;
+   - past-regular: turn a regular past form (lemma + -ed) back into its lemma, as a past
+     verb or after have. Passives are skipped, since "was cleaned" to "was clean" is still
+     correct;
    - other skills, labeled as no mistake: drop a form of be, swap in/on/at, drop a
-     third-person -s, so the model learns that not every error is one of its two.
+     third-person -s, make a plural singular, and turn an irregular past back into its
+     lemma ("found" to "find"), so the model learns that not every error is one of its
+     two, and that past-irregular isn't past-regular.
+
+   Most answers are also lowercased and stripped of punctuation, as dictation leaves
+   them.
 
    About 40% of examples keep no target error. One answer can have more than one error.
-3. **Labels.** Each token is tagged with no mistake, articles, or past-regular. A deleted
-   word is marked on the token after the gap, as GECToR does.
+3. **Labels.** Each word gets two yes-or-no labels: an articles mistake, a past-regular
+   mistake. A deleted word is marked on the word after the gap, as GECToR does.
 4. **Splits.** Three whole scenarios are held out as the synthetic test set, which shows
    whether the model carries over to scenarios it never trained on. The rest split 90/10
    into train and dev.
@@ -79,8 +88,9 @@ two working days at most, costs $0, and uses no Groq quota.
 ### Model
 
 DeBERTa-v3-small (MIT license), fine-tuned for token classification with Hugging Face
-Transformers on Ky's laptop GPU (RTX 3050, 4 GB), with a free Colab GPU as the fallback. A skill counts as flagged in an answer when any token's
-probability for it passes a threshold. The threshold is chosen on the synthetic dev set,
+Transformers on Ky's laptop GPU (RTX 3050, 4 GB), with a free Colab GPU as the fallback.
+A skill counts as flagged in an answer when any word's probability for it passes a
+threshold. The threshold is chosen on the synthetic dev set,
 never on the key.
 
 ### Scoring
@@ -88,8 +98,9 @@ never on the key.
 - **First, a sanity check.** On the held-out synthetic scenarios, answer-level F0.5 must
   reach 90% for each skill. If it doesn't, training is broken: fix it before touching the
   key.
-- **Then the key, once.** Predictions go into `evals/results/` in the existing results
-  format (mistakes only, with an empty fix), so they sit next to 120b's and 20b's. A new
+- **Then the key, once.** Predictions go into `lab/own-grader/results/` in the results
+  format the eval uses, with only the mistakes filled in. They stay out of
+  `evals/results/`, where `npm run eval` would try to resume them with Groq. A new
   `evals/skill-report.ts` prints caught, missed and invented for chosen skills across
   results files, counted only on answers every file has. It uses `compareSkills` from
   `evals/scoring.ts`, so the counting rules are the same as the eval's.
@@ -152,6 +163,47 @@ The other 10 skills, correct uses, task parts, tone, feedback, the better versio
 
 1. **Claude writes the correct answers.** Ky checked Anthropic's terms on using Claude's
    output to train a model and found this use allowed. Claude subagents write them, one
-   scenario each, so no single context holds all 3,150.
+   scenario each, so no single context holds all 2,850.
 2. **The code goes in `lab/` in this repo.**
 3. **Articles and past-regular,** as proposed.
+
+## Log
+
+**2026-11-21, data.** 19 Sonnet subagents wrote 150 correct answers each. The first run
+let them keep scratch files in one shared folder, and parallel writers overwrote each
+other's drafts: 8 of 19 files ended up mostly holding other scenarios' answers under the
+wrong scenarioId. Their own checks passed, because they checked only the count and the
+JSON. `lab/own-grader/check-clean.mjs` now also checks that each answer shares words with
+its own scenario; the 8 files were rewritten with the Write tool only, and all 19 pass.
+486 of 2,850 answers (17%) were dropped for sharing five words in a row with the key,
+mostly fact phrases like "lamp in room 214".
+
+**2026-11-21, training run 1.** 3,606 training examples, 4 epochs, 2.5 minutes on the RTX
+3050. Transformers 5 loads this checkpoint as float16, which turned every weight to NaN
+after the first AdamW step; `train.py` now loads it as float32. Held-out scenarios:
+
+| Skill | Caught | Missed | Invented | F0.5 |
+|---|---|---|---|---|
+| articles | 346 | 59 | 7 | 95% |
+| past-regular | 41 | 1 | 21 | 71% |
+
+**Past-regular failed the sanity check.** All 21 invented flags were correct present-tense
+or noun uses of common verbs ("we check it at 2 p.m."). The answers mostly reported the
+past, so the model rarely saw those verbs used correctly in the present, and learned to
+flag their base form. The fix was more data, not tuning: one writer added 300 present-tense
+answers about routines, avoiding the held-out topics (the supplement section of
+`lab/own-grader/WRITER-BRIEF.md`). This means the held-out set has now steered one data
+change, so it's a slightly weaker test than before.
+
+**2026-11-21, training run 2.** 4,146 training examples. Held-out scenarios:
+
+| Skill | Caught | Missed | Invented | F0.5 |
+|---|---|---|---|---|
+| articles | 344 | 61 | 7 | 95% |
+| past-regular | 39 | 3 | 6 | 88% |
+
+Past-regular is 2 points under the 90% bar. Of its 6 invented flags, 2 are real mistakes
+filed under the wrong skill ("what each person eat", and a dropped "is" next to the noun
+"check"), 1 is ambiguous, and 3 are correct second-person instructions after a past-tense
+sentence ("you check it at 2 p.m."). Whether that counts as passing is Ky's call; the key
+hasn't been used.

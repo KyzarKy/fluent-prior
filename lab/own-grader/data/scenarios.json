@@ -1,0 +1,213 @@
+[
+  {
+    "id": "early-arrival",
+    "audience": "guest",
+    "situation": "Guest at the desk. Time now: 11:00 a.m. Check-in time: 3:00 p.m. Room status: not ready.",
+    "task": "Explain the situation to the guest and suggest a way for them to spend the wait.",
+    "taskType": "guest-problems",
+    "taskParts": [
+      "Explains that the room isn't ready, or when it will be",
+      "Suggests a specific activity or place to spend the wait"
+    ],
+    "targetSkills": ["be-verbs", "time-prepositions"],
+    "role": "Front desk"
+  },
+  {
+    "id": "pharmacy-directions",
+    "audience": "guest",
+    "situation": "A guest needs a pharmacy. Nearest one: exit the hotel, turn left, Main Street, about five minutes on foot.",
+    "task": "Help the guest get there.",
+    "taskType": "guest-information",
+    "taskParts": ["Gives directions the guest could follow to the pharmacy"],
+    "targetSkills": ["place-prepositions", "articles"],
+    "role": "Front desk"
+  },
+  {
+    "id": "broken-lamp",
+    "audience": "coworker",
+    "situation": "Your notes from this morning's rounds. 8:15 a.m., room 214: lamp, broken.",
+    "task": "Report it to your supervisor.",
+    "taskType": "reporting-up",
+    "taskParts": [
+      "Says what is broken and where (the lamp in room 214)",
+      "Says when it was noticed (this morning, around 8:15)"
+    ],
+    "targetSkills": ["past-irregular", "articles", "time-prepositions"],
+    "role": "Housekeeping"
+  },
+  {
+    "id": "come-back-later",
+    "audience": "guest",
+    "situation": "Room 409, cleaning time. The guest opens the door: \"Not now, please.\"",
+    "task": "Arrange a better time for cleaning with the guest.",
+    "taskType": "requests",
+    "taskParts": ["Arranges a time to clean: asks the guest for one, or proposes one"],
+    "targetSkills": ["question-forms", "time-prepositions"],
+    "role": "Housekeeping"
+  },
+  {
+    "id": "peanut-allergy",
+    "audience": "guest",
+    "situation": "Table 6, ordering. Guest's note: peanut allergy. Kitchen procedure for allergies: separate cutting board, chef checks every plate.",
+    "task": "Reassure the guest by explaining your next step and the kitchen's procedure.",
+    "taskType": "guest-information",
+    "taskParts": [
+      "Says what they will do next about the allergy",
+      "Says the kitchen uses a separate cutting board",
+      "Says the chef checks the plate"
+    ],
+    "targetSkills": ["future-forms", "third-person-s", "modal-verbs"],
+    "role": "Front of house"
+  },
+  {
+    "id": "slow-food",
+    "audience": "guest",
+    "situation": "Table 12. Order time: 7:05 p.m. Time now: 7:45 p.m. No food yet. The guests look unhappy. Kitchen status: very busy, food ready in about 5 minutes.",
+    "task": "Talk to the table: give them a time for their food, and offer something for their trouble.",
+    "taskType": "guest-problems",
+    "taskParts": [
+      "Tells the guests when their food will arrive",
+      "Offers something extra, beyond an apology, to make up for the wait"
+    ],
+    "targetSkills": ["future-forms", "be-verbs"],
+    "role": "Front of house"
+  },
+  {
+    "id": "todays-special",
+    "audience": "guest",
+    "situation": "Menu board, today's special: grilled salmon. Sides: rice, seasonal veg. A guest asks about the special.",
+    "task": "Describe the dish to the guest.",
+    "taskType": "guest-information",
+    "taskParts": ["Names the dish (grilled salmon)", "Mentions the sides (rice, vegetables)"],
+    "targetSkills": ["third-person-s", "plurals", "articles", "possessive-s"],
+    "role": "Front of house"
+  },
+  {
+    "id": "ran-out-of-salmon",
+    "audience": "coworker",
+    "situation": "Lunch service. Salmon count at 12:40: zero. Servers keep asking what to say to guests.",
+    "task": "Let the head chef know, and get instructions for the servers.",
+    "taskType": "reporting-up",
+    "taskParts": ["Tells the chef the salmon is gone", "Asks what the servers should tell guests"],
+    "targetSkills": ["past-irregular", "question-forms", "articles"],
+    "role": "Kitchen"
+  },
+  {
+    "id": "end-of-shift",
+    "audience": "coworker",
+    "situation": "A new coworker, first day, asks about the end of the shift. Checklist: station clean-down, labels on all stored food, trash out.",
+    "task": "Explain the end-of-shift routine.",
+    "taskType": "briefing-coworkers",
+    "taskParts": ["Cleaning the station", "Labeling stored food", "Taking out the trash"],
+    "targetSkills": ["modal-verbs", "plurals"],
+    "role": "Kitchen"
+  },
+  {
+    "id": "delivery-question",
+    "audience": "coworker",
+    "situation": "Delivery at the back door: fresh produce, six cartons. Storage location: unknown.",
+    "task": "Get the information you need from a coworker.",
+    "taskType": "requests",
+    "taskParts": ["Asks where the delivery should go"],
+    "targetSkills": ["question-forms", "place-prepositions", "plurals"],
+    "role": "Food prep"
+  },
+  {
+    "id": "shift-handoff",
+    "audience": "coworker",
+    "situation": "Log for room 118. 10:15 a.m.: guest phone call, air conditioning too warm. 1:30 p.m.: guest phone call, same problem. 4:00 p.m.: maintenance visit, problem fixed.",
+    "task": "Brief the next shift on room 118.",
+    "taskType": "briefing-coworkers",
+    "taskParts": ["The guest's calls about the air conditioning", "That the problem is fixed now"],
+    "targetSkills": ["past-regular", "be-verbs", "time-prepositions", "third-person-s"],
+    "role": "Front desk"
+  },
+  {
+    "id": "noisy-room",
+    "audience": "guest",
+    "situation": "Phone call from room 402. Complaint: loud music next door. Available: a quiet room on the 6th floor.",
+    "task": "Solve the guest's problem.",
+    "taskType": "guest-problems",
+    "taskParts": ["Offers a fix: stopping the noise, or moving the guest away from it"],
+    "targetSkills": ["future-forms", "place-prepositions"],
+    "role": "Front desk"
+  },
+  {
+    "id": "room-report",
+    "audience": "coworker",
+    "situation": "Room 305, status: complete. ✓ bathroom ✓ bed linen ✓ towel change.",
+    "task": "Tell your supervisor about the work in room 305.",
+    "taskType": "reporting-up",
+    "taskParts": ["Reports what was done in room 305"],
+    "targetSkills": ["past-regular", "plurals", "articles"],
+    "role": "Housekeeping"
+  },
+  {
+    "id": "check-in-id",
+    "audience": "guest",
+    "situation": "Guest checking in. Requirements: photo ID, credit card.",
+    "task": "Get what you need from the guest.",
+    "taskType": "requests",
+    "taskParts": ["Asks for a photo ID", "Asks for a credit card"],
+    "targetSkills": ["question-forms", "articles"],
+    "role": "Front desk"
+  },
+  {
+    "id": "left-behind-phone",
+    "audience": "coworker",
+    "situation": "Checkout cleaning, room 220. Under the bed: a phone. Last guest in 220: Ms. Park. Checkout: 10:30 a.m.",
+    "task": "Tell your supervisor about the phone and whose it is.",
+    "taskType": "reporting-up",
+    "taskParts": ["Says a phone was left behind", "Says whose it is: the guest's name or room"],
+    "targetSkills": ["past-irregular", "possessive-s", "place-prepositions"],
+    "role": "Housekeeping"
+  },
+  {
+    "id": "separate-checks",
+    "audience": "guest",
+    "situation": "Table 7, separate checks for Mr. Diaz, Mrs. Diaz, and their son, Leo. The checks show the food, not the names. Mr. Diaz has all three and can't tell them apart.",
+    "task": "Tell Mr. Diaz which check goes to each person.",
+    "taskType": "guest-information",
+    "taskParts": [
+      "Says which check is Mr. Diaz's",
+      "Says which check is Mrs. Diaz's",
+      "Says which check is Leo's"
+    ],
+    "targetSkills": ["possessive-s", "be-verbs"],
+    "role": "Front of house"
+  },
+  {
+    "id": "cooler-check",
+    "audience": "coworker",
+    "situation": "A new prep worker starts today. Walk-in cooler checks: 6 a.m. and 2 p.m. Safe: 41°F or below. Above 41°F: tell the chef right away.",
+    "task": "Explain the cooler check to the new prep worker: when to do it, what temperature is safe, and what to do if it's too warm.",
+    "taskType": "briefing-coworkers",
+    "taskParts": [
+      "The two times to check the cooler",
+      "What temperature is safe (41°F or below)",
+      "Telling the chef when it's too warm"
+    ],
+    "targetSkills": ["modal-verbs", "time-prepositions"],
+    "role": "Food prep"
+  },
+  {
+    "id": "slicer-problem",
+    "audience": "coworker",
+    "situation": "Prep log, 9:10 a.m. Meat slicer: loud grinding noise, then no movement. Power: off at the wall. Ham for lunch sandwiches: half left to slice.",
+    "task": "Tell your supervisor what's wrong with the slicer and what prep is still waiting.",
+    "taskType": "reporting-up",
+    "taskParts": ["Says what's wrong with the slicer", "Says what prep is still waiting"],
+    "targetSkills": ["past-regular", "past-irregular", "articles"],
+    "role": "Food prep"
+  },
+  {
+    "id": "grill-rush",
+    "audience": "coworker",
+    "situation": "Friday, 7:30 p.m. Your station, grill: 12 tickets waiting. Salad station: 2 tickets. Cook on salads: Marco.",
+    "task": "Ask Marco for help.",
+    "taskType": "requests",
+    "taskParts": ["Asks Marco for help"],
+    "targetSkills": ["modal-verbs", "question-forms", "plurals"],
+    "role": "Kitchen"
+  }
+]

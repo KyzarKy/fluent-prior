@@ -8,3 +8,6 @@ dist/
 coverage/
 test-results/
 playwright-report/
+lab/**/.venv/
+lab/**/model/
+__pycache__/
