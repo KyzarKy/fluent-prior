@@ -79,7 +79,7 @@ two working days at most, costs $0, and uses no Groq quota.
 ### Model
 
 DeBERTa-v3-small (MIT license), fine-tuned for token classification with Hugging Face
-Transformers on a free Colab GPU. A skill counts as flagged in an answer when any token's
+Transformers on Ky's laptop GPU (RTX 3050, 4 GB), with a free Colab GPU as the fallback. A skill counts as flagged in an answer when any token's
 probability for it passes a threshold. The threshold is chosen on the synthetic dev set,
 never on the key.
 
@@ -148,13 +148,10 @@ The other 10 skills, correct uses, task parts, tone, feedback, the better versio
 - **Python joins a TypeScript repo,** in `lab/` only. CLAUDE.md's commands table gains a
   line for the lab, and Biome ignores it.
 
-## Open questions for Ky
+## Decided by Ky, 2026-11-21
 
-1. **Who writes the correct answers.** Anthropic's terms restrict using Claude's output to
-   build competing models. A grammar tagger probably isn't one, but read the terms first.
-   If they rule it out, gpt-oss-120b (Apache 2.0) can write them on Groq, about 60 calls of
-   50 answers each, spread over a day or two of quota.
-2. **`lab/` in this repo or a separate repo.** In this repo, the results sit next to the
-   eval. A separate repo keeps Python out of a TypeScript project.
-3. **These two skills,** or others. Third-person -s is the easiest to corrupt, but has only
-   5 mistakes in the key.
+1. **Claude writes the correct answers.** Ky checked Anthropic's terms on using Claude's
+   output to train a model and found this use allowed. Claude subagents write them, one
+   scenario each, so no single context holds all 3,150.
+2. **The code goes in `lab/` in this repo.**
+3. **Articles and past-regular,** as proposed.
