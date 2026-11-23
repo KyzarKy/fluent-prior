@@ -1,0 +1,1038 @@
+{
+  "model": "own-grader (deberta-v3-small)",
+  "commit": "95b5f93",
+  "startedAt": "2026-11-23T00:14:14.420959+00:00",
+  "skills": [
+    "articles",
+    "past-regular"
+  ],
+  "thresholds": {
+    "articles": 0.17,
+    "past-regular": 0.9
+  },
+  "results": {
+    "1": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0004,
+        "past-regular": 0.0073
+      }
+    },
+    "2": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "past-regular",
+            "quote": "call",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0025,
+        "past-regular": 0.9917
+      }
+    },
+    "3": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0006,
+        "past-regular": 0.0002
+      }
+    },
+    "4": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0005,
+        "past-regular": 0.0002
+      }
+    },
+    "5": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "room",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.9964,
+        "past-regular": 0.0005
+      }
+    },
+    "6": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0003,
+        "past-regular": 0.0002
+      }
+    },
+    "7": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "pharmacy",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.9988,
+        "past-regular": 0.0011
+      }
+    },
+    "8": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0002,
+        "past-regular": 0.0002
+      }
+    },
+    "9": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0002,
+        "past-regular": 0.0007
+      }
+    },
+    "10": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "separate",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.9949,
+        "past-regular": 0.0005
+      }
+    },
+    "11": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0003,
+        "past-regular": 0.0009
+      }
+    },
+    "12": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0011,
+        "past-regular": 0.0006
+      }
+    },
+    "13": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0007,
+        "past-regular": 0.0002
+      }
+    },
+    "14": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "special",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.9939,
+        "past-regular": 0.0006
+      }
+    },
+    "15": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0025,
+        "past-regular": 0.002
+      }
+    },
+    "16": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0004,
+        "past-regular": 0.0002
+      }
+    },
+    "17": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0006,
+        "past-regular": 0.0003
+      }
+    },
+    "18": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.001,
+        "past-regular": 0.0004
+      }
+    },
+    "19": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "past-regular",
+            "quote": "clean",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0051,
+        "past-regular": 0.9903
+      }
+    },
+    "20": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0006,
+        "past-regular": 0.0002
+      }
+    },
+    "21": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "hear",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.3225,
+        "past-regular": 0.0002
+      }
+    },
+    "22": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0002,
+        "past-regular": 0.0216
+      }
+    },
+    "23": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.018,
+        "past-regular": 0.0003
+      }
+    },
+    "24": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0012,
+        "past-regular": 0.0002
+      }
+    },
+    "25": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0003,
+        "past-regular": 0.0002
+      }
+    },
+    "26": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0005,
+        "past-regular": 0.0967
+      }
+    },
+    "27": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0002,
+        "past-regular": 0.0011
+      }
+    },
+    "28": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0003,
+        "past-regular": 0.0002
+      }
+    },
+    "29": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "disturb",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.6575,
+        "past-regular": 0.7017
+      }
+    },
+    "30": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0003,
+        "past-regular": 0.0002
+      }
+    },
+    "31": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0017,
+        "past-regular": 0.0002
+      }
+    },
+    "32": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0009,
+        "past-regular": 0.0583
+      }
+    },
+    "33": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0006,
+        "past-regular": 0.0008
+      }
+    },
+    "34": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0049,
+        "past-regular": 0.0013
+      }
+    },
+    "35": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0002,
+        "past-regular": 0.0003
+      }
+    },
+    "36": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0004,
+        "past-regular": 0.0003
+      }
+    },
+    "37": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0008,
+        "past-regular": 0.0009
+      }
+    },
+    "38": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0003,
+        "past-regular": 0.0004
+      }
+    },
+    "39": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "special",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.2798,
+        "past-regular": 0.0003
+      }
+    },
+    "40": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "a",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.9859,
+        "past-regular": 0.0061
+      }
+    },
+    "41": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "salmon",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.9684,
+        "past-regular": 0.0004
+      }
+    },
+    "42": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "special",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.9425,
+        "past-regular": 0.0003
+      }
+    },
+    "43": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0042,
+        "past-regular": 0.0004
+      }
+    },
+    "44": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0876,
+        "past-regular": 0.2408
+      }
+    },
+    "45": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0007,
+        "past-regular": 0.001
+      }
+    },
+    "46": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "label",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.9971,
+        "past-regular": 0.0008
+      }
+    },
+    "47": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0264,
+        "past-regular": 0.0002
+      }
+    },
+    "48": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0002,
+        "past-regular": 0.0003
+      }
+    },
+    "49": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0006,
+        "past-regular": 0.0003
+      }
+    },
+    "50": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.1375,
+        "past-regular": 0.001
+      }
+    },
+    "51": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0003,
+        "past-regular": 0.0003
+      }
+    },
+    "52": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "AC,",
+            "fix": ""
+          },
+          {
+            "skill": "past-regular",
+            "quote": "fix",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.9914,
+        "past-regular": 0.9879
+      }
+    },
+    "53": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0005,
+        "past-regular": 0.0002
+      }
+    },
+    "54": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0007,
+        "past-regular": 0.0004
+      }
+    },
+    "55": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "room?",
+            "fix": ""
+          },
+          {
+            "skill": "past-regular",
+            "quote": "send",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.9553,
+        "past-regular": 0.9698
+      }
+    },
+    "56": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0002,
+        "past-regular": 0.0007
+      }
+    },
+    "57": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.1321,
+        "past-regular": 0.0003
+      }
+    },
+    "58": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "bathroom,",
+            "fix": ""
+          },
+          {
+            "skill": "past-regular",
+            "quote": "change",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.9724,
+        "past-regular": 0.9689
+      }
+    },
+    "59": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "passport",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.9408,
+        "past-regular": 0.0003
+      }
+    },
+    "60": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "credit",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.4625,
+        "past-regular": 0.0002
+      }
+    },
+    "61": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0005,
+        "past-regular": 0.0008
+      }
+    },
+    "62": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0006,
+        "past-regular": 0.0008
+      }
+    },
+    "63": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "phone.",
+            "fix": ""
+          },
+          {
+            "skill": "past-regular",
+            "quote": "check",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.3693,
+        "past-regular": 0.9966
+      }
+    },
+    "64": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "phone",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.9994,
+        "past-regular": 0.0019
+      }
+    },
+    "65": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0067,
+        "past-regular": 0.0012
+      }
+    },
+    "66": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0091,
+        "past-regular": 0.0005
+      }
+    },
+    "67": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0302,
+        "past-regular": 0.0003
+      }
+    },
+    "68": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "leo",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.9664,
+        "past-regular": 0.0003
+      }
+    },
+    "69": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "is",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.5751,
+        "past-regular": 0.0004
+      }
+    },
+    "70": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0003,
+        "past-regular": 0.0048
+      }
+    },
+    "71": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0007,
+        "past-regular": 0.0004
+      }
+    },
+    "72": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "past-regular",
+            "quote": "stop",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0035,
+        "past-regular": 0.9897
+      }
+    },
+    "73": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0005,
+        "past-regular": 0.0002
+      }
+    },
+    "74": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "problem",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.9841,
+        "past-regular": 0.0004
+      }
+    },
+    "75": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "grill?",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.9993,
+        "past-regular": 0.0018
+      }
+    },
+    "76": {
+      "ok": true,
+      "grade": {
+        "mistakes": [],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.0008,
+        "past-regular": 0.0007
+      }
+    },
+    "77": {
+      "ok": true,
+      "grade": {
+        "mistakes": [
+          {
+            "skill": "articles",
+            "quote": "grill",
+            "fix": ""
+          }
+        ],
+        "correctUses": []
+      },
+      "probabilities": {
+        "articles": 0.9994,
+        "past-regular": 0.0023
+      }
+    }
+  }
+}

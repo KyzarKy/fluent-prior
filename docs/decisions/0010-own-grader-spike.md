@@ -1,7 +1,7 @@
 # 0010. Test whether a model we train ourselves can grade two skills
 
-**Status:** proposed, 2026-11-21. Changes nothing in the app. If the test passes, a later
-ADR proposes the full build, and that one would amend [ADR 0004](0004-free-grader-first.md).
+**Status:** tested, 2026-11-22: **no-go** by the bar set before training (it invented 9
+mistakes; the stop line was 8). Changes nothing in the app. See the log at the end.
 
 ## Context
 
@@ -207,3 +207,39 @@ filed under the wrong skill ("what each person eat", and a dropped "is" next to 
 "check"), 1 is ambiguous, and 3 are correct second-person instructions after a past-tense
 sentence ("you check it at 2 p.m."). Whether that counts as passing is Ky's call; the key
 hasn't been used.
+Ky decided to count it as passing (2026-11-21): the misses are explained, which is what
+the sanity check is for, and another fix would tune the model to the held-out set.
+
+**2026-11-22, the key, scored once** (`lab/own-grader/results/2026-11-23T0014-own-grader.json`). On the 62
+answers in 120b's run:
+
+| | Caught (of 12) | Missed | Invented | F0.5 |
+|---|---|---|---|---|
+| gpt-oss-120b | 12 | 0 | 4 | 79% |
+| Own model | 11 | 1 | 9 | 60% |
+| By skill: articles | 7 | 0 | 8 | 52% |
+| By skill: past-regular | 4 | 1 | 1 | 80% |
+
+On all 77 answers: 17 caught, 1 missed, 12 invented. **No-go: it catches enough (11 of 12,
+over the bar of 10) but invents 9, past the stop line of 8.**
+
+Past-regular nearly matches 120b. Articles is where it fails, and the invented flags have a
+pattern: most sit next to a different mistake the model never saw as a decoy in training.
+
+- A missing possessive -s ("today special", "ms park phone", "the chef special") reads as a
+  missing article: 5 flags, one of them on "the chefs special", which the key counts as
+  correct.
+- Mistakes the key files under no skill ("for disturb you", "if is more", "the card of
+  credit"): 3 flags.
+- "wait hear" (a dictation homophone), "one for leo", and "about AC" (arguably a missing
+  "the"): 1 each.
+
+The decoy errors in `examples.py` covered be, prepositions, third-person -s, plurals and
+irregular past, but not possessive -s or mistakes outside the catalog, so the model learned
+that anything wrong next to a noun is an article.
+
+**What this shows.** Synthetic data transferred to real answers for past-regular, and for
+catching article mistakes (11 of 11 on all 77 answers). It didn't transfer for telling an
+article mistake from the mistakes around it. A second attempt would add possessive and
+word-order decoys and score a new results file, and this log would record it as the key's
+second use.
