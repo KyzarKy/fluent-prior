@@ -116,6 +116,10 @@ USDOL/ETA, link the license, and say the text was adapted.
   answer, then fell to 49% by the 15th. Changes the learner model, so it needs an ADR and an
   eval.
 - Detecting dictated versus typed answers from how the text arrives.
+- **A grader we train ourselves,** with no quota, no prompt to inject, and probabilities
+  for the learner model. First, a two-day test on two skills
+  ([ADR 0010](decisions/0010-own-grader-spike.md)): tested 2026-11-22, no-go on articles
+  precision; past-regular nearly matched 120b.
 - **Reuse grades for identical answers**, after removing what isn't graded (punctuation,
   capitalization, spacing). Same answer, same grade: it saves little, but grading becomes
   consistent. Needs the production store, and saved grades go stale when the prompt or a
